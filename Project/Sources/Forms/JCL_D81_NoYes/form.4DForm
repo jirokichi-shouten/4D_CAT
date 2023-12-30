@@ -1,4 +1,4 @@
-﻿{
+{
 	"destination": "detailScreen",
 	"width": 576,
 	"height": 220,
@@ -44,13 +44,13 @@
 					"sizingY": "grow",
 					"stroke": "transparent"
 				},
-				"vD81_txtTitle": {
+				"vJCL_D81_txtTitle": {
 					"type": "input",
 					"top": 16,
 					"left": 20,
 					"width": 506,
 					"height": 17,
-					"dataSource": "vD81_txtTitle",
+					"dataSource": "vJCL_D81_txtTitle",
 					"stroke": "#000000",
 					"class": "Jiro_Text14",
 					"focusable": false,
@@ -68,13 +68,13 @@
 						"onPrintingDetail"
 					]
 				},
-				"vD81_txtMsg": {
+				"vJCL_D81_txtMsg": {
 					"type": "input",
 					"top": 58,
 					"left": 20,
 					"width": 536,
 					"height": 94,
-					"dataSource": "vD81_txtMsg",
+					"dataSource": "vJCL_D81_txtMsg",
 					"stroke": "#000000",
 					"class": "Jiro_Text12",
 					"focusable": false,
@@ -99,13 +99,13 @@
 					"width": 536,
 					"sizingX": "grow"
 				},
-				"vD81_btnValidate": {
+				"vJCL_D81_btnValidate": {
 					"type": "button",
 					"top": 174,
 					"left": 446,
 					"width": 110,
 					"height": 26,
-					"dataSource": "vD81_btnValidate",
+					"dataSource": "vJCL_D81_btnValidate",
 					"action": "accept",
 					"shortcutKey": "[Esc]",
 					"text": "Yes",
@@ -115,17 +115,17 @@
 						"onClick"
 					]
 				},
-				"vD81_btnCancel": {
+				"vJCL_D81_btnCancel": {
 					"type": "button",
 					"top": 174,
 					"left": 316,
 					"width": 110,
 					"height": 26,
-					"dataSource": "vD81_btnCancel",
+					"dataSource": "vJCL_D81_btnCancel",
 					"action": "cancel",
 					"shortcutKey": "[Return]",
 					"text": "キャンセル",
-					"class": "Jiro_btn26_bold",
+					"class": "JCL_Meiryo12",
 					"focusable": false,
 					"events": [
 						"onClick"
@@ -133,5 +133,10 @@
 				}
 			}
 		}
-	]
+	],
+	"geometryStamp": 6,
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	}
 }

@@ -1,26 +1,19 @@
-//%attributes = {"shared":true}
-  //JCL_file_GetDirSeparator
-  //20110920 wat
-  //OSに合わせたフォルダの区切りを返す
-  //$1:なし
-  //$0:OSに合わせたフォルダの区切り
-  //20090602　矢部　新規作成
+//%attributes = {"preemptive":"capable"}
+//JCL_file_GetDirSeparator
+//20231230 yabe wat
+//OSに合わせたフォルダの区切りを返す
+//$0:OSに合わせたフォルダの区切り
 
-C_TEXT:C284($0;$separator)
+C_TEXT:C284($0; $separator)
 $separator:=""
 
-C_TEXT:C284($vlPlatform)
-$vlPlatform:=JCL_str_Platform 
-
-If ($vlPlatform="Win")
-	
-	  //winなら
+//実行されているのが
+If (Is Windows:C1573)
+	//winなら
 	$separator:="\\"
 	
-End if 
-
-If ($vlPlatform="Mac")
-	  //macなら
+Else 
+	//macなら
 	$separator:=":"
 	
 End if 

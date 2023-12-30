@@ -1,4 +1,4 @@
-﻿{
+{
 	"destination": "detailScreen",
 	"width": 576,
 	"height": 220,
@@ -45,13 +45,13 @@
 					"fill": "transparent",
 					"stroke": "transparent"
 				},
-				"vD84_txtTitle": {
+				"vJCL_D84_txtTitle": {
 					"type": "input",
 					"top": 16,
 					"left": 20,
 					"width": 506,
 					"height": 17,
-					"dataSource": "vD84_txtTitle",
+					"dataSource": "vJCL_D84_txtTitle",
 					"stroke": "#000000",
 					"class": "Jiro_Text14",
 					"focusable": false,
@@ -69,13 +69,13 @@
 						"onPrintingDetail"
 					]
 				},
-				"vD84_txtMsg": {
+				"vJCL_D84_txtMsg": {
 					"type": "input",
 					"top": 58,
 					"left": 20,
 					"width": 536,
 					"height": 94,
-					"dataSource": "vD84_txtMsg",
+					"dataSource": "vJCL_D84_txtMsg",
 					"stroke": "#000000",
 					"class": "Jiro_Text12",
 					"focusable": false,
@@ -100,13 +100,13 @@
 					"width": 536,
 					"sizingX": "grow"
 				},
-				"vD84_btnValidate": {
+				"vJCL_D84_btnValidate": {
 					"type": "button",
 					"top": 174,
 					"left": 446,
 					"width": 110,
 					"height": 26,
-					"dataSource": "vD84_btnValidate",
+					"dataSource": "vJCL_D84_btnValidate",
 					"action": "accept",
 					"shortcutKey": "[Return]",
 					"text": "Yes",
@@ -116,13 +116,13 @@
 						"onClick"
 					]
 				},
-				"vD84_btnCancel": {
+				"vJCL_D84_btnCancel": {
 					"type": "button",
 					"top": 174,
 					"left": 316,
 					"width": 110,
 					"height": 26,
-					"dataSource": "vD84_btnCancel",
+					"dataSource": "vJCL_D84_btnCancel",
 					"action": "cancel",
 					"shortcutKey": "[Esc]",
 					"text": "キャンセル",
@@ -132,13 +132,13 @@
 						"onClick"
 					]
 				},
-				"vD84_fldInput": {
+				"vJCL_D84_fldInput": {
 					"type": "input",
 					"top": 129,
 					"left": 42,
 					"width": 492,
 					"height": 15,
-					"dataSource": "vD84_fldInput",
+					"dataSource": "vJCL_D84_fldInput",
 					"class": "Jiro_StaticText",
 					"fill": "#FFFFFF",
 					"borderStyle": "sunken",
@@ -177,5 +177,10 @@
 				}
 			}
 		}
-	]
+	],
+	"geometryStamp": 5,
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	}
 }

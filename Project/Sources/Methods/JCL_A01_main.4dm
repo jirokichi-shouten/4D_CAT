@@ -7,5 +7,5 @@
 SET MENU BAR:C67(2)
 
 //メイン画面表示
-A01_Display
+//A01_Display
 

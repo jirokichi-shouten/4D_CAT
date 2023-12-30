@@ -9,7 +9,7 @@
 //新プロセス内で初期化しようとしても、先に親プロセスが実行されることがあるため
 // 20211227 hisa wat ike
 
-<>D50_Cancel:=False:C215
+<>JCL_D91_Cancel:=False:C215
 
 C_TEXT:C284($1; $msg)
 $msg:=$1

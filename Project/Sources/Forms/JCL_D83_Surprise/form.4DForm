@@ -44,13 +44,13 @@
 					"sizingY": "grow",
 					"stroke": "transparent"
 				},
-				"vD83_txtTitle": {
+				"vJCL_D83_txtTitle": {
 					"type": "input",
 					"top": 16,
 					"left": 20,
 					"width": 506,
 					"height": 17,
-					"dataSource": "vD83_txtTitle",
+					"dataSource": "vJCL_D83_txtTitle",
 					"stroke": "#000000",
 					"class": "Jiro_Text14",
 					"focusable": false,
@@ -68,13 +68,13 @@
 						"onPrintingDetail"
 					]
 				},
-				"vD83_txtMsg": {
+				"vJCL_D83_txtMsg": {
 					"type": "input",
 					"top": 58,
 					"left": 20,
 					"width": 536,
 					"height": 94,
-					"dataSource": "vD83_txtMsg",
+					"dataSource": "vJCL_D83_txtMsg",
 					"stroke": "#000000",
 					"class": "Jiro_Text12",
 					"focusable": false,
@@ -99,13 +99,13 @@
 					"width": 536,
 					"sizingX": "grow"
 				},
-				"vD83_btnValidate": {
+				"vJCL_D83_btnValidate": {
 					"type": "button",
 					"top": 174,
 					"left": 446,
 					"width": 110,
 					"height": 26,
-					"dataSource": "vD83_btnValidate",
+					"dataSource": "vJCL_D83_btnValidate",
 					"action": "accept",
 					"shortcutKey": "[Return]",
 					"text": "Yes",
@@ -118,7 +118,7 @@
 			}
 		}
 	],
-	"geometryStamp": 3,
+	"geometryStamp": 6,
 	"$4d": {
 		"version": "1",
 		"kind": "form"

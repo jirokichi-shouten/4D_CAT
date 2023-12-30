@@ -1,4 +1,4 @@
-//%attributes = {"shared":true}
+//%attributes = {"preemptive":"capable"}
   //JCL_str_Datemark
   //$1: date; $2: time
   //20100701 wat, 20121207 wat replace string

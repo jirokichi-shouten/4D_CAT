@@ -6,4 +6,4 @@
 
 C_BOOLEAN:C305($0)
 
-$0:=<>P01_Cancel
+$0:=<>JCL_D90_Cancel

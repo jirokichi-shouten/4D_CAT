@@ -9,10 +9,10 @@
 //20080924　矢部　現在処理しているものを表示とカウントを追加
 
 C_LONGINT:C283($1)
-<>P01_Meter:=$1
+<>JCL_D90_Meter:=$1
 
 C_TEXT:C284($2)
-<>P01_Msg:=$2
+<>JCL_D90_Msg:=$2
 
 C_LONGINT:C283($3; $4)
-<>P01_Count:=String:C10($3)+"／"+String:C10($4)
+<>JCL_D90_Count:=String:C10($3)+"／"+String:C10($4)

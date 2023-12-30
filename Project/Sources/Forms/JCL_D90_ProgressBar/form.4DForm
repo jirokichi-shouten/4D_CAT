@@ -1,4 +1,4 @@
-﻿{
+{
 	"destination": "detailScreen",
 	"width": 576,
 	"height": 220,
@@ -44,13 +44,13 @@
 					"sizingY": "grow",
 					"stroke": "transparent"
 				},
-				"vP01_Title": {
+				"vJCL_D90_Title": {
 					"type": "input",
 					"top": 16,
 					"left": 20,
 					"width": 506,
 					"height": 17,
-					"dataSource": "vP01_Title",
+					"dataSource": "vJCL_D90_Title",
 					"stroke": "#000000",
 					"class": "Jiro_Text14",
 					"focusable": false,
@@ -68,13 +68,13 @@
 						"onPrintingDetail"
 					]
 				},
-				"<>P01_Msg": {
+				"<>JCL_D90_Msg": {
 					"type": "input",
 					"top": 58,
 					"left": 20,
 					"width": 536,
 					"height": 54,
-					"dataSource": "<>P01_Msg",
+					"dataSource": "<>JCL_D90_Msg",
 					"stroke": "#000000",
 					"class": "Jiro_Text12",
 					"focusable": false,
@@ -99,27 +99,27 @@
 					"width": 536,
 					"sizingX": "grow"
 				},
-				"vP01_btnCancel": {
+				"vJCL_D90_btnCancel": {
 					"type": "button",
 					"top": 174,
 					"left": 446,
 					"width": 110,
 					"height": 26,
-					"dataSource": "vP01_btnCancel",
+					"dataSource": "vJCL_D90_btnCancel",
 					"text": "キャンセル",
 					"focusable": false,
-					"method": "ObjectMethods/vP01_btnCancel.4dm",
+					"method": "ObjectMethods/vJCL_D90_btnCancel.4dm",
 					"events": [
 						"onClick"
 					]
 				},
-				"<>P01_Count": {
+				"<>JCL_D90_Count": {
 					"type": "input",
 					"top": 174,
 					"left": 93,
 					"width": 198,
 					"height": 33,
-					"dataSource": "<>P01_Count",
+					"dataSource": "<>JCL_D90_Count",
 					"stroke": "#000000",
 					"class": "Jiro_Text12",
 					"textAlign": "right",
@@ -138,18 +138,18 @@
 						"onPrintingDetail"
 					]
 				},
-				"<>P01_Meter": {
+				"<>JCL_D90_Meter": {
 					"type": "progress",
 					"top": 110,
 					"left": 20,
 					"width": 536,
 					"height": 16,
-					"dataSource": "<>P01_Meter",
+					"dataSource": "<>JCL_D90_Meter",
 					"continuousExecution": false,
 					"min": 0,
 					"max": 100,
 					"graduationStep": 1,
-					"fontFamily": ".SF NS Text",
+					"fontFamily": "System Font Regular",
 					"fontSize": 9,
 					"events": [
 						"onClick",
@@ -163,5 +163,17 @@
 				}
 			}
 		}
-	]
+	],
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"geometryStamp": 5,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	}
 }

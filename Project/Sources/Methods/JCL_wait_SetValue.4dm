@@ -8,15 +8,15 @@
 //20080924　矢部　現在処理しているものを表示とカウントを追加
 
 C_TEXT:C284($1)
-<>D50_Msg:=$1
+<>JCL_D91_Msg:=$1
 
 C_LONGINT:C283($2; $3)
 If ($3=0)
 	
-	<>D50_Count:=""
+	<>JCL_D91_Count:=""
 	
 Else 
 	
-	<>D50_Count:=String:C10($2)+"／"+String:C10($3)
+	<>JCL_D91_Count:=String:C10($2)+"／"+String:C10($3)
 	
 End if 

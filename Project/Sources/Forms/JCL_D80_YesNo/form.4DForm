@@ -1,4 +1,4 @@
-﻿{
+{
 	"destination": "detailScreen",
 	"width": 576,
 	"height": 220,
@@ -44,15 +44,15 @@
 					"sizingY": "grow",
 					"stroke": "transparent"
 				},
-				"vD80_txtTitle": {
+				"vJCL_D80_txtTitle": {
 					"type": "input",
 					"top": 16,
 					"left": 20,
 					"width": 506,
 					"height": 17,
-					"dataSource": "vD80_txtTitle",
+					"dataSource": "vJCL_D80_txtTitle",
 					"stroke": "#000000",
-					"class": "Jiro_Text14",
+					"class": "JCL_Maryo12",
 					"focusable": false,
 					"fill": "transparent",
 					"borderStyle": "none",
@@ -66,17 +66,18 @@
 						"onDisplayDetail",
 						"onDataChange",
 						"onPrintingDetail"
-					]
+					],
+					"fontFamily": "YuGothic Medium"
 				},
-				"vD80_txtMsg": {
+				"vJCL_D80_txtMsg": {
 					"type": "input",
 					"top": 58,
 					"left": 20,
 					"width": 536,
 					"height": 94,
-					"dataSource": "vD80_txtMsg",
+					"dataSource": "vJCL_D80_txtMsg",
 					"stroke": "#000000",
-					"class": "Jiro_Text12",
+					"class": "JCL_YuGothic12",
 					"focusable": false,
 					"fill": "transparent",
 					"borderStyle": "none",
@@ -90,7 +91,8 @@
 						"onDisplayDetail",
 						"onDataChange",
 						"onPrintingDetail"
-					]
+					],
+					"fontFamily": "YuGothic Medium"
 				},
 				"線7": {
 					"type": "line",
@@ -99,38 +101,52 @@
 					"width": 536,
 					"sizingX": "grow"
 				},
-				"vD80_btnValidate": {
+				"vJCL_D80_btnValidate": {
 					"type": "button",
 					"top": 174,
 					"left": 446,
 					"width": 110,
 					"height": 26,
-					"dataSource": "vD80_btnValidate",
+					"dataSource": "vJCL_D80_btnValidate",
 					"action": "accept",
 					"text": "Yes",
-					"class": "Jiro_btn26_bold",
+					"class": "JCL_YuGothic12",
 					"focusable": false,
 					"events": [
 						"onClick"
-					]
+					],
+					"fontFamily": "YuGothic Medium"
 				},
-				"vD80_btnCancel": {
+				"vJCL_D80_btnCancel": {
 					"type": "button",
 					"top": 174,
 					"left": 316,
 					"width": 110,
 					"height": 26,
-					"dataSource": "vD80_btnCancel",
+					"dataSource": "vJCL_D80_btnCancel",
 					"action": "cancel",
 					"shortcutKey": "[Esc]",
 					"text": "キャンセル",
-					"class": "Jiro_btn26",
+					"class": "JCL_YuGothic8",
 					"focusable": false,
 					"events": [
 						"onClick"
-					]
+					],
+					"fontFamily": "YuGothic Medium"
 				}
 			}
 		}
-	]
+	],
+	"geometryStamp": 36,
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	}
 }

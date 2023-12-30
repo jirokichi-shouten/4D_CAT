@@ -3,7 +3,7 @@
 //20100918 wat new
 //驚きのサープライズダイアログ
 
-C_LONGINT:C283($0; $dialog_ok)
+C_LONGINT:C283($0)
 C_TEXT:C284($1; $title; $2; $msg; $3; $ok_str)
 $title:=$1
 $msg:=$2
@@ -40,6 +40,4 @@ DIALOG:C40("JCL_D83_Surprise")
 
 CLOSE WINDOW:C154($wref)
 
-$dialog_ok:=OK
-
-$0:=$dialog_ok
+$0:=OK

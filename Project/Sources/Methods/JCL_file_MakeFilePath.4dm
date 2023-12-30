@@ -1,4 +1,4 @@
-//%attributes = {"shared":true}
+//%attributes = {"preemptive":"capable"}
 //JCL_file_MakeFilePath
 //20110222 wat
 //ファイルパスを生成
