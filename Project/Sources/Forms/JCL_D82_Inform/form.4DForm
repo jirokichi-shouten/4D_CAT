@@ -52,7 +52,7 @@
 					"height": 17,
 					"dataSource": "vJCL_D82_txtTitle",
 					"stroke": "#000000",
-					"class": "Jiro_Text14",
+					"class": "JCL_YuGothic12",
 					"focusable": false,
 					"fill": "transparent",
 					"borderStyle": "none",
@@ -76,7 +76,7 @@
 					"height": 94,
 					"dataSource": "vJCL_D82_txtMsg",
 					"stroke": "#000000",
-					"class": "Jiro_Text12",
+					"class": "JCL_YuGothic12",
 					"focusable": false,
 					"fill": "transparent",
 					"borderStyle": "none",
@@ -108,7 +108,7 @@
 					"dataSource": "vJCL_D82_btnValidate",
 					"action": "accept",
 					"text": "Yes",
-					"class": "Jiro_btn26_bold",
+					"class": "JCL_YuGothic14",
 					"focusable": false,
 					"events": [
 						"onClick"
@@ -117,7 +117,7 @@
 			}
 		}
 	],
-	"geometryStamp": 3,
+	"geometryStamp": 9,
 	"$4d": {
 		"version": "1",
 		"kind": "form"

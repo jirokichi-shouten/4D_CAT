@@ -52,7 +52,7 @@
 					"height": 17,
 					"dataSource": "vJCL_D90_Title",
 					"stroke": "#000000",
-					"class": "Jiro_Text14",
+					"class": "JCL_YuGothic12",
 					"focusable": false,
 					"fill": "transparent",
 					"borderStyle": "none",
@@ -76,7 +76,7 @@
 					"height": 54,
 					"dataSource": "<>JCL_D90_Msg",
 					"stroke": "#000000",
-					"class": "Jiro_Text12",
+					"class": "JCL_YuGothic12",
 					"focusable": false,
 					"fill": "transparent",
 					"borderStyle": "none",
@@ -111,7 +111,8 @@
 					"method": "ObjectMethods/vJCL_D90_btnCancel.4dm",
 					"events": [
 						"onClick"
-					]
+					],
+					"class": "JCL_YuGothic14"
 				},
 				"<>JCL_D90_Count": {
 					"type": "input",
@@ -121,7 +122,7 @@
 					"height": 33,
 					"dataSource": "<>JCL_D90_Count",
 					"stroke": "#000000",
-					"class": "Jiro_Text12",
+					"class": "JCL_YuGothic12",
 					"textAlign": "right",
 					"focusable": false,
 					"fill": "transparent",
@@ -168,7 +169,7 @@
 		"version": "1",
 		"kind": "form"
 	},
-	"geometryStamp": 5,
+	"geometryStamp": 13,
 	"editor": {
 		"activeView": "View 1",
 		"defaultView": "View 1",

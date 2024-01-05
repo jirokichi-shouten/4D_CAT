@@ -52,7 +52,7 @@
 					"height": 17,
 					"dataSource": "vJCL_D80_txtTitle",
 					"stroke": "#000000",
-					"class": "JCL_Maryo12",
+					"class": "JCL_YuGothic12",
 					"focusable": false,
 					"fill": "transparent",
 					"borderStyle": "none",
@@ -110,7 +110,7 @@
 					"dataSource": "vJCL_D80_btnValidate",
 					"action": "accept",
 					"text": "Yes",
-					"class": "JCL_YuGothic12",
+					"class": "JCL_YuGothic14",
 					"focusable": false,
 					"events": [
 						"onClick"
@@ -127,7 +127,7 @@
 					"action": "cancel",
 					"shortcutKey": "[Esc]",
 					"text": "キャンセル",
-					"class": "JCL_YuGothic8",
+					"class": "JCL_YuGothic14",
 					"focusable": false,
 					"events": [
 						"onClick"
@@ -137,7 +137,7 @@
 			}
 		}
 	],
-	"geometryStamp": 36,
+	"geometryStamp": 46,
 	"$4d": {
 		"version": "1",
 		"kind": "form"

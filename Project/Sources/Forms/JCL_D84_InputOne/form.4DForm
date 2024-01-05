@@ -53,7 +53,7 @@
 					"height": 17,
 					"dataSource": "vJCL_D84_txtTitle",
 					"stroke": "#000000",
-					"class": "Jiro_Text14",
+					"class": "JCL_YuGothic12",
 					"focusable": false,
 					"fill": "transparent",
 					"borderStyle": "none",
@@ -77,7 +77,7 @@
 					"height": 94,
 					"dataSource": "vJCL_D84_txtMsg",
 					"stroke": "#000000",
-					"class": "Jiro_Text12",
+					"class": "JCL_YuGothic12",
 					"focusable": false,
 					"fill": "transparent",
 					"borderStyle": "none",
@@ -110,7 +110,7 @@
 					"action": "accept",
 					"shortcutKey": "[Return]",
 					"text": "Yes",
-					"class": "Jiro_btn26_bold",
+					"class": "JCL_YuGothic14",
 					"focusable": false,
 					"events": [
 						"onClick"
@@ -126,7 +126,7 @@
 					"action": "cancel",
 					"shortcutKey": "[Esc]",
 					"text": "キャンセル",
-					"class": "Jiro_btn26",
+					"class": "JCL_YuGothic14",
 					"focusable": false,
 					"events": [
 						"onClick"
@@ -139,7 +139,7 @@
 					"width": 492,
 					"height": 15,
 					"dataSource": "vJCL_D84_fldInput",
-					"class": "Jiro_StaticText",
+					"class": "JCL_YuGothic12",
 					"fill": "#FFFFFF",
 					"borderStyle": "sunken",
 					"contextMenu": "none",
@@ -162,7 +162,7 @@
 					"width": 742,
 					"height": 19,
 					"stroke": "#98FB98",
-					"class": "Jiro_Text12",
+					"class": "JCL_YuGothic12",
 					"text": "Last touched on: 20190822 フィールドを少し下にずらした。"
 				},
 				"Text1": {
@@ -172,13 +172,13 @@
 					"width": 742,
 					"height": 19,
 					"stroke": "#98FB98",
-					"class": "Jiro_Text12",
+					"class": "JCL_YuGothic12",
 					"text": "Last touched on: 20190619 変数名が間違っていて表示されなかったのを修正。"
 				}
 			}
 		}
 	],
-	"geometryStamp": 5,
+	"geometryStamp": 19,
 	"$4d": {
 		"version": "1",
 		"kind": "form"

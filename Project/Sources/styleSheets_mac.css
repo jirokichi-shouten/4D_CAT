@@ -1,8 +1,3 @@
-.JCL_Maryo6 {
-	font-family: Meiryo;
-	font-size: 6px;
-}
-
 .JCL_YuGothic8 {
 	font-family: YuGothic Medium;
 	font-size: 8px;
@@ -11,13 +6,29 @@
 	font-family: YuGothic;
 	font-size: 9px;
 }
+.JCL_YuGothic10 {
+	font-family: YuGothic Medium;
+	font-size: 10px;
+}
 .JCL_YuGothic11 {
 	font-family: 游ゴシック体;
-	font-size: 12px;
+	font-size: 11px;
 }
 .JCL_YuGothic12 {
 	font-family: 游ゴシック体 ミディアム;
 	font-size: 12px;
+}
+.JCL_YuGothic13 {
+	font-family: YuGothic Medium;
+	font-size: 13px;
+}
+.JCL_YuGothic14 {
+	font-family: YuGothic Medium;
+	font-size: 14px;
+}
+.JCL_YuGothic16 {
+	font-family: YuGothic Medium;
+	font-size: 16px;
 }
 
 

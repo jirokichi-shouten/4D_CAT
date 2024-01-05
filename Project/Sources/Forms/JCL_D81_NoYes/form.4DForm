@@ -52,7 +52,7 @@
 					"height": 17,
 					"dataSource": "vJCL_D81_txtTitle",
 					"stroke": "#000000",
-					"class": "Jiro_Text14",
+					"class": "JCL_YuGothic12",
 					"focusable": false,
 					"fill": "transparent",
 					"borderStyle": "none",
@@ -76,7 +76,7 @@
 					"height": 94,
 					"dataSource": "vJCL_D81_txtMsg",
 					"stroke": "#000000",
-					"class": "Jiro_Text12",
+					"class": "JCL_YuGothic12",
 					"focusable": false,
 					"fill": "transparent",
 					"borderStyle": "none",
@@ -109,7 +109,7 @@
 					"action": "accept",
 					"shortcutKey": "[Esc]",
 					"text": "Yes",
-					"class": "Jiro_btn26",
+					"class": "JCL_YuGothic14",
 					"focusable": false,
 					"events": [
 						"onClick"
@@ -125,7 +125,7 @@
 					"action": "cancel",
 					"shortcutKey": "[Return]",
 					"text": "キャンセル",
-					"class": "JCL_Meiryo12",
+					"class": "JCL_YuGothic14",
 					"focusable": false,
 					"events": [
 						"onClick"
@@ -134,7 +134,7 @@
 			}
 		}
 	],
-	"geometryStamp": 6,
+	"geometryStamp": 18,
 	"$4d": {
 		"version": "1",
 		"kind": "form"

@@ -55,7 +55,7 @@
 					"events": [
 						"onClick"
 					],
-					"class": "JCL_ButtonTitle26",
+					"class": "JCL_YuGothic14",
 					"action": "accept"
 				},
 				"vJCL_D01_btnCancel": {
@@ -70,7 +70,7 @@
 					"events": [
 						"onClick"
 					],
-					"class": "JCL_ButtonTitle26",
+					"class": "JCL_YuGothic14",
 					"shortcutAccel": true,
 					"shortcutControl": false,
 					"shortcutShift": false,
@@ -81,9 +81,10 @@
 					"type": "text",
 					"top": 80,
 					"left": 34,
-					"width": 66,
-					"height": 16,
-					"text": "テーブル名"
+					"width": 72,
+					"height": 22,
+					"text": "テーブル名",
+					"class": "JCL_YuGothic12"
 				},
 				"Text1": {
 					"type": "text",
@@ -94,7 +95,7 @@
 					"fontFamily": "メイリオ",
 					"fontSize": 20,
 					"text": "JCL_FormGenerator",
-					"class": "JCL_Title24"
+					"class": "JCL_YuGothic16"
 				},
 				"vJCL_D01_popGoldenRatio": {
 					"type": "dropdown",
@@ -118,7 +119,7 @@
 					"events": [
 						"onDataChange"
 					],
-					"class": "JCL_Meiryo12",
+					"class": "JCL_YuGothic12",
 					"dataSource": "vJCL_D01_aryTableName",
 					"method": "ObjectMethods/vJCL_D01_aryTableName.4dm"
 				},
@@ -134,7 +135,7 @@
 					"events": [
 						"onClick"
 					],
-					"class": "JCL_ButtonTitle26",
+					"class": "JCL_YuGothic14",
 					"method": "ObjectMethods/vJCL_D01_btnColor.4dm"
 				},
 				"vJCL_D01_btnUseColor0": {
@@ -149,7 +150,7 @@
 					"events": [
 						"onClick"
 					],
-					"class": "JCL_ButtonTitle26",
+					"class": "JCL_YuGothic12",
 					"method": "ObjectMethods/vJCL_D01_btnUseColor0.4dm"
 				},
 				"vJCL_D01_rectColor0": {
@@ -174,7 +175,7 @@
 					"rowHeight": "20px",
 					"rowHeightAutoMin": "20px",
 					"rowHeightAutoMax": "20px",
-					"class": "JCL_Meiryo12",
+					"class": "JCL_YuGothic12",
 					"events": [
 						"onClick",
 						"onDoubleClick",
@@ -190,7 +191,7 @@
 							"width": 42,
 							"enterable": false,
 							"truncateMode": "none",
-							"class": "JCL_Meiryo12",
+							"class": "JCL_YuGothic12",
 							"events": [
 								"onClick",
 								"onDataChange"
@@ -214,7 +215,7 @@
 							"width": 90,
 							"enterable": false,
 							"truncateMode": "none",
-							"class": "JCL_Meiryo12",
+							"class": "JCL_YuGothic12",
 							"events": [
 								"onClick",
 								"onDataChange"
@@ -237,7 +238,7 @@
 							"width": 178,
 							"enterable": false,
 							"truncateMode": "none",
-							"class": "JCL_Meiryo12",
+							"class": "JCL_YuGothic12",
 							"events": [
 								"onClick",
 								"onDataChange"
@@ -268,7 +269,7 @@
 					"events": [
 						"onClick"
 					],
-					"class": "JCL_ButtonTitle26",
+					"class": "JCL_YuGothic12",
 					"method": "ObjectMethods/vJCL_D01_btnUseColor1.4dm"
 				},
 				"vJCL_D01_rectColor1": {
@@ -278,7 +279,8 @@
 					"width": 90,
 					"height": 26,
 					"fill": "#f5deb3",
-					"stroke": "#f5deb3"
+					"stroke": "#f5deb3",
+					"class": "JCL_YuGothic12"
 				},
 				"vJCL_D01_btnUseColor2": {
 					"type": "button",
@@ -292,7 +294,7 @@
 					"events": [
 						"onClick"
 					],
-					"class": "JCL_ButtonTitle26",
+					"class": "JCL_YuGothic12",
 					"method": "ObjectMethods/vJCL_D01_btnUseColor2.4dm"
 				},
 				"vJCL_D01_rectColor2": {
@@ -316,7 +318,7 @@
 					"events": [
 						"onClick"
 					],
-					"class": "JCL_ButtonTitle26",
+					"class": "JCL_YuGothic12",
 					"method": "ObjectMethods/vJCL_D01_btnUseColor3.4dm"
 				},
 				"vJCL_D01_rectColor3": {
@@ -340,7 +342,7 @@
 					"events": [
 						"onClick"
 					],
-					"class": "JCL_ButtonTitle26",
+					"class": "JCL_YuGothic12",
 					"method": "ObjectMethods/vJCL_D01_btnUseColor4.4dm"
 				},
 				"vJCL_D01_rectColor4": {
@@ -358,7 +360,8 @@
 					"left": 262,
 					"width": 146,
 					"height": 16,
-					"text": "↑この色でフォームを作成"
+					"text": "↑この色でフォームを作成",
+					"class": "JCL_YuGothic12"
 				},
 				"vJCL_D01_varColorText0": {
 					"type": "input",
@@ -367,7 +370,7 @@
 					"width": 68,
 					"height": 17,
 					"dataSource": "vJCL_D01_varColorText0",
-					"class": "JCL_Meiryo12",
+					"class": "JCL_YuGothic12",
 					"focusable": false,
 					"fill": "transparent",
 					"borderStyle": "none",
@@ -407,7 +410,7 @@
 					"width": 68,
 					"height": 17,
 					"dataSource": "vJCL_D01_varColorText2",
-					"class": "JCL_Meiryo12",
+					"class": "JCL_YuGothic12",
 					"focusable": false,
 					"fill": "transparent",
 					"borderStyle": "none",
@@ -427,7 +430,7 @@
 					"width": 68,
 					"height": 17,
 					"dataSource": "vJCL_D01_varColorText3",
-					"class": "JCL_Meiryo12",
+					"class": "JCL_YuGothic12",
 					"focusable": false,
 					"fill": "transparent",
 					"borderStyle": "none",
@@ -447,7 +450,7 @@
 					"width": 68,
 					"height": 17,
 					"dataSource": "vJCL_D01_varColorText4",
-					"class": "JCL_Meiryo12",
+					"class": "JCL_YuGothic12",
 					"focusable": false,
 					"fill": "transparent",
 					"borderStyle": "none",
@@ -463,7 +466,7 @@
 			}
 		}
 	],
-	"geometryStamp": 581,
+	"geometryStamp": 663,
 	"$4d": {
 		"version": "1",
 		"kind": "form"

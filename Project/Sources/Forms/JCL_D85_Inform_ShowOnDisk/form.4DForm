@@ -52,7 +52,7 @@
 					"height": 17,
 					"dataSource": "vJCL_D85_txtTitle",
 					"stroke": "#000000",
-					"class": "Jiro_Text14",
+					"class": "JCL_YuGothic12",
 					"focusable": false,
 					"fill": "transparent",
 					"borderStyle": "none",
@@ -76,7 +76,7 @@
 					"height": 94,
 					"dataSource": "vJCL_D85_txtMsg",
 					"stroke": "#000000",
-					"class": "Jiro_Text12",
+					"class": "JCL_YuGothic12",
 					"focusable": false,
 					"fill": "transparent",
 					"borderStyle": "none",
@@ -108,7 +108,7 @@
 					"dataSource": "vJCL_D85_btnValidate",
 					"action": "accept",
 					"text": "Yes",
-					"class": "Jiro_btn26_bold",
+					"class": "JCL_YuGothic14",
 					"focusable": false,
 					"events": [
 						"onClick"
@@ -122,7 +122,7 @@
 					"height": 26,
 					"dataSource": "vJCL_D85_btnShowOnDisk",
 					"text": "保存先を表示",
-					"class": "Jiro_btn26_bold",
+					"class": "JCL_YuGothic14",
 					"focusable": false,
 					"method": "ObjectMethods/vJCL_D85_btnShowOnDisk.4dm",
 					"events": [
@@ -132,7 +132,7 @@
 			}
 		}
 	],
-	"geometryStamp": 4,
+	"geometryStamp": 12,
 	"$4d": {
 		"version": "1",
 		"kind": "form"
