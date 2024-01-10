@@ -2,7 +2,7 @@
 	"bars": [
 		{
 			"id": 1,
-			"name": "Barre #1",
+			"name": "4DMenuBar",
 			"items": [
 				{
 					"link": 32001
@@ -12,6 +12,18 @@
 				},
 				{
 					"link": 32003
+				}
+			]
+		},
+		{
+			"id": 2,
+			"name": "AppMenuBar",
+			"items": [
+				{
+					"link": 32001
+				},
+				{
+					"link": 32002
 				}
 			]
 		}
@@ -87,6 +99,8 @@
 			"items": [
 				{
 					"title": ":xliff:CommonMenuItemDesign",
+					"shortcutAccel": true,
+					"shortcutKey": "y",
 					"action": "design"
 				}
 			]

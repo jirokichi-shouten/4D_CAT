@@ -1,0 +1,88 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "fixed",
+	"windowSizingY": "fixed",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"events": [
+		"onLoad",
+		"onPageChange",
+		"onValidate",
+		"onClick",
+		"onDoubleClick",
+		"onOutsideCall",
+		"onBeginDragOver",
+		"onDragOver",
+		"onDrop",
+		"onAfterKeystroke",
+		"onMenuSelect",
+		"onPluginArea",
+		"onAfterEdit",
+		"onTimer",
+		"onBoundVariableChange"
+	],
+	"windowTitle": "window title",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {}
+		},
+		{
+			"objects": {
+				"vA01_btnQuit": {
+					"type": "button",
+					"text": "終了",
+					"top": 16,
+					"left": 480,
+					"width": 110,
+					"height": 26,
+					"events": [
+						"onClick"
+					],
+					"dataSource": "vA01_btnQuit",
+					"shortcutAccel": true,
+					"shortcutControl": false,
+					"shortcutShift": false,
+					"shortcutAlt": false,
+					"shortcutKey": "q",
+					"action": "quit",
+					"class": "JCL_YuGothic12"
+				},
+				"vA01_btnDesignMode": {
+					"type": "button",
+					"text": "デザインモードへ",
+					"top": 56,
+					"left": 480,
+					"width": 110,
+					"height": 26,
+					"events": [
+						"onClick"
+					],
+					"dataSource": "vA01_btnDesignMode",
+					"shortcutAccel": false,
+					"shortcutControl": false,
+					"shortcutShift": false,
+					"shortcutAlt": false,
+					"shortcutKey": "[Esc]",
+					"action": "cancel",
+					"class": "JCL_YuGothic12"
+				}
+			}
+		}
+	],
+	"width": 610,
+	"height": 466,
+	"geometryStamp": 30,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	}
+}
