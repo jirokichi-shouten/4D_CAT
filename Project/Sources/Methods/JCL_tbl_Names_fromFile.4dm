@@ -5,6 +5,7 @@
 //20121001 wat rename, 20130429 wat mod , 20130430 mod
 //20150826 yabe フォーム作成フラグ追加
 //テーブル名の配列を得る
+//20240114 yabe wat テーブル区切りはアンダースコアではなくハイフンに統一
 
 C_TEXT:C284($1; $inFileText)
 $inFileText:=$1  //読み込んだファイルの中身
@@ -27,7 +28,6 @@ $numOfLines:=JCL_str_Extract_byReturn($inFileText; ->$lineAry)  //add_ikeda 2022
 //最初のテーブル名を取得
 $numOfItems:=JCL_str_Extract($lineAry{1}; Char:C90(Tab:K15:37); ->$itemAry)
 APPEND TO ARRAY:C911($outAryTableNamePtr->; $itemAry{1})
-//APPEND TO ARRAY($outAryPrefixPtr->;$itemAry{2}+"_")//外部ファイルに＿は不要
 APPEND TO ARRAY:C911($outAryPrefixPtr->; $itemAry{2})  //20130501 使うときに＿をつける
 APPEND TO ARRAY:C911($outAryFormsFlagPtr->; $itemAry{3})  //20150826 フォーム作成フラグ
 APPEND TO ARRAY:C911($outAryStartLineNrPtr->; 1)
@@ -38,24 +38,20 @@ For ($i; 2; $numOfLines-1)
 	
 	DELETE FROM ARRAY:C228($itemAry; 1; Size of array:C274($itemAry))
 	$numOfItems:=JCL_str_Extract($lineAry{$i}; Char:C90(Tab:K15:37); ->$itemAry)
-	If ($itemAry{1}="_")
-		
-		//＿（アンダースコア）の次の行からテーブル名を取得
+	If ($itemAry{1}="-")
+		//-（ハイフン）の次の行からテーブル名を取得
 		DELETE FROM ARRAY:C228($itemAry; 1; Size of array:C274($itemAry))
 		$numOfItems:=JCL_str_Extract($lineAry{$i+1}; Char:C90(Tab:K15:37); ->$itemAry)
 		If ($itemAry{1}#"")
 			
 			APPEND TO ARRAY:C911($outAryTableNamePtr->; $itemAry{1})
-			//APPEND TO ARRAY($outAryPrefixPtr->;$itemAry{2}+"_")//外部ファイルに＿は不要
 			APPEND TO ARRAY:C911($outAryPrefixPtr->; $itemAry{2})  //20130501 使うときに＿をつける
 			APPEND TO ARRAY:C911($outAryFormsFlagPtr->; $itemAry{3})  //20150826 フォーム作成フラグ
 			APPEND TO ARRAY:C911($outAryStartLineNrPtr->; $i+1)
 			$cnt:=$cnt+1
 			
 		End if 
-		
 	End if 
-	
 End for 
 
 $0:=$cnt

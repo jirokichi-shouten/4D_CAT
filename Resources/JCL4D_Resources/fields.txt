@@ -6,14 +6,14 @@ VALUE	Is Text	0	0	0	バリュー文字列
 LONG_VALUE	Is LongInt	0	0	0	バリュー整数値	
 SORT_ORDER	Is LongInt	0	1	0	ソート順	値一覧の並び順
 DEL_FLAG	Is LongInt	0	1	0	削除フラグ	
-_						
+-						
 Z_KeyValue	KV				キーバリュー	設定情報などを保持する
 ID	Is LongInt	0	0	0	ID	
 KEY	Is Alpha Field	80	1	0	キー文字列	
 VALUE	Is Text	0	0	0	バリュー文字列	
 LONG_VALUE	Is LongInt	0	0	0	バリュー整数値	
 DEL_FLAG	Is LongInt	0	1	0	削除フラグ	
-_						
+-						
 USERS	US	フォーム作る			ログインユーザ	
 ID	Is LongInt	0	1	0	ID	
 NAME	Is Alpha Field	80	0	0	ユーザ名	
@@ -23,11 +23,13 @@ PASSWORD	Is Alpha Field	255	0	0	パスワード	暗号化する
 REMEMBER_TOKEN	Is Alpha Field	255	0	0	リメンバートークン	ログインセッション保持用のトークン。Generate digest($param; MD5 digest)で生成
 CREATE_AT	Is Alpha Field	20	0	0	作成デイトマーク	
 UPDATE_AT	Is Alpha Field	20	0	0	更新デイトマーク	
-_						
+DEL_FLAG	Is LongInt	0	1	0	削除フラグ	
+-						
 PASSWORD_RESETS	PR	フォーム作る			パスワードリセット	パスワードリセット中のトークン管理用
 ID	Is LongInt	0	1	0	ID	
 US_ID	Is LongInt	0	1	0	ユーザID	
 EMAIL	Is Alpha Field	255	1	0	メールアドレス	
 TOKEN	Is Alpha Field	255	0	0	トークン	Generate digest($param; MD5 digest)で生成
 CREATE_AT	Is Alpha Field	20	0	0	作成デイトマーク	
-_						
+DEL_FLAG	Is LongInt	0	1	0	削除フラグ	
+-						

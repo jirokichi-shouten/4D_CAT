@@ -2,6 +2,7 @@
 //JCL_fields_cache
 //20210210 ike wat
 //キャッシュからラベルを取得
+//20240114 yabe wat テーブル区切りはアンダースコアではなくハイフンに統一
 
 C_LONGINT:C283($i; $numOfLines)
 C_TEXT:C284($fldName; $label; $prefix)
@@ -16,12 +17,10 @@ ARRAY TEXT:C222($itemAry; 0)
 //リソースフォルダからフィールズを読み込む
 $folderPath:=JCL_file_MakeFilePath(Get 4D folder:C485(Database folder:K5:14); "Resources")
 $outFilePath:=JCL_file_MakeFilePath($folderPath; "JCL4D_Resources")
-//$outFilePath:=JCL_file_MakeFilePath ($outFilePath;"tbl_definitions")
 $outFilePath:=JCL_file_MakeFilePath($outFilePath; "fields.txt")
 
 $fileText:=Document to text:C1236($outFilePath; UTF8 text without length:K22:17)
 If ($fileText#"")
-	
 	//改行コードをLFに統一
 	$fileText:=JCL_str_ReplaceReturn($fileText)  //add_ikeda 20221228
 	
@@ -40,8 +39,8 @@ If ($fileText#"")
 		
 		DELETE FROM ARRAY:C228($itemAry; 1; Size of array:C274($itemAry))
 		$numOfItems:=JCL_str_Extract($lineAry{$i}; Char:C90(Tab:K15:37); ->$itemAry)
-		If ($itemAry{1}="_")
-			//＿（アンダースコア）の次の行からテーブル名を取得
+		If ($itemAry{1}="-")
+			//-（ハイフン）の次の行からテーブル名を取得
 			DELETE FROM ARRAY:C228($itemAry; 1; Size of array:C274($itemAry))
 			$numOfItems:=JCL_str_Extract($lineAry{$i+1}; Char:C90(Tab:K15:37); ->$itemAry)
 			If ($itemAry{1}#"")
@@ -62,6 +61,5 @@ If ($fileText#"")
 			
 		End if 
 	End for 
-	
 End if 
 //ALERT("end")
