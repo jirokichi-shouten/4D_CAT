@@ -2,22 +2,19 @@
 //JCL_method_GenerateOne
 //20130322 yabe
 
-C_TEXT:C284($1; $inFileText)
-$inFileText:=$1  //読み込んだファイルの中身
+C_TEXT:C284($1; $inBlockText)
+$inBlockText:=$1  //読み込んだファイルの中身
 C_TEXT:C284($2; $inTableName)
 $inTableName:=$2  //テーブル名
-C_LONGINT:C283($3; $inStartLineNr)
-$inStartLineNr:=$3  //テーブル定義始まりの行番号,スタート行番号
-C_TEXT:C284($4; $inPrefix)
-$inPrefix:=$4  //フィールドのプリフィックス
-C_POINTER:C301($5; $aryFileNamePtr)
-$aryFileNamePtr:=$5
-C_POINTER:C301($6; $aryFileContentsPtr)
-$aryFileContentsPtr:=$6
-
+C_TEXT:C284($3; $inPrefix)
+$inPrefix:=$3  //フィールドのプリフィックス
+C_POINTER:C301($4; $aryFileNamePtr)
+$aryFileNamePtr:=$4
+C_POINTER:C301($5; $aryFileContentsPtr)
+$aryFileContentsPtr:=$5
 C_LONGINT:C283($0)
-ARRAY TEXT:C222($lineAry; 0)
-ARRAY TEXT:C222($itemAry; 0)
+ARRAY TEXT:C222($aryLines; 0)
+ARRAY TEXT:C222($aryItems; 0)
 C_LONGINT:C283($numOfLines; $numOfItems)
 ARRAY TEXT:C222($aryFieldName; 0)  //フィールド名の配列
 ARRAY TEXT:C222($aryFieldType; 0)  //フィールドタイプの配列
@@ -25,6 +22,7 @@ ARRAY TEXT:C222($aryCharLength; 0)  //文字長さの配列
 C_TEXT:C284($methodName)
 C_TEXT:C284($method)
 $method:=""
+C_TEXT:C284($row)
 
 C_DATE:C307($date)
 $date:=Current date:C33
@@ -55,39 +53,29 @@ $propertiesArray{6}:=0  //メソッドがSQLから利用可能であれば1、�
 $propertiesArray{7}:=0  //メソッドに"サーバ上で実行"属性を設定する場合は1、そうでなければ0。
 
 //改行で切り分ける
-$numOfLines:=JCL_str_Extract_byReturn($inFileText; ->$lineAry)  //add_ikeda 20221227
+$numOfLines:=JCL_str_Extract_byReturn($inBlockText; ->$aryLines)  //add_ikeda 20221227
 
 //スタート行番号の次の行からフィールド定義を得る
-For ($i; $inStartLineNr+1; $numOfLines)
+For ($i; 2; $numOfLines)
 	
-	DELETE FROM ARRAY:C228($itemAry; 1; Size of array:C274($itemAry))
-	$numOfItems:=JCL_str_Extract($lineAry{$i}; Char:C90(Tab:K15:37); ->$itemAry)
+	DELETE FROM ARRAY:C228($aryItems; 1; Size of array:C274($aryItems))
+	$numOfItems:=JCL_str_Extract($aryLines{$i}; Char:C90(Tab:K15:37); ->$aryItems)
 	If (3<=$numOfItems)
-		
-		If ($itemAry{1}#"_")
-			//最初のセルが＿（アンダーバー）じゃなかったらフィールド情報取得
-			APPEND TO ARRAY:C911($aryFieldName; $itemAry{1})  //フィールド名
-			APPEND TO ARRAY:C911($aryFieldType; $itemAry{2})  //タイプ
-			APPEND TO ARRAY:C911($aryCharLength; $itemAry{3})  //文字長さ
-			
-		Else 
-			//最初のセルが＿（アンダーバー）だったらフィールド情報取得は終わり
-			$i:=$numOfLines+1  //ループを抜ける
-			
-		End if 
-	Else 
-		$i:=$numOfLines+1  //ループを抜ける
+		//フィールド情報取得
+		APPEND TO ARRAY:C911($aryFieldName; $aryItems{1})  //フィールド名
+		APPEND TO ARRAY:C911($aryFieldType; $aryItems{2})  //タイプ
+		APPEND TO ARRAY:C911($aryCharLength; $aryItems{3})  //文字長さ
 		
 	End if 
 End for 
 
+//テンプレートファイルごとにメソッド生成
 For ($i; 1; Size of array:C274($aryFileNamePtr->))
-	//メソッド名生成
+	//メソッド名
 	$methodName:=$aryFileNamePtr->{$i}
 	$methodName:=Replace string:C233($methodName; "[--TABLE]"; $inTableName)
 	$methodName:=Replace string:C233($methodName; "[--PREFIX]"; $inPrefix)
 	
-	$date_time:=String:C10(Current date:C33)+" "+String:C10(Current time:C178)
 	//メソッド生成
 	$method:=$aryFileContentsPtr->{$i}
 	$method:=Replace string:C233($method; "[--DATE]"; $dateTimeStr)
@@ -105,12 +93,9 @@ For ($i; 1; Size of array:C274($aryFileNamePtr->))
 			$row:=$row+$chr
 			
 			If (JCL_str_IsCharRetrurn($chr))  //add_ikeda 20221227
-				
 				$pos:=Position:C15("[--FIELD]"; $row)
 				If ($pos#0)
-					
 					For ($k; 1; Size of array:C274($aryFieldName))
-						
 						//フィールド名を置換
 						$fieldName:=$inPrefix+"_"+$aryFieldName{$k}  //20130501
 						//$newRow:=""
@@ -141,18 +126,7 @@ For ($i; 1; Size of array:C274($aryFileNamePtr->))
 		
 	End if 
 	
-	//v14で不要になった
-	//SET BLOB SIZE($blob;0)
-	//TEXT TO BLOB($method;$blob;Mac C string)
-	
-	//メソッドがなければ作成
-	//v14
+	//メソッド作成
 	METHOD SET CODE:C1194($methodName; $method)
-	
-	//If (AP Does method exist($methodName)=0)
-	//AP Create method($methodName;$propertiesArray;$blob)
-	//Else 
-	//AP Modify method($methodName;$blob)  //20130501
-	//End if 
 	
 End for 

@@ -13,16 +13,16 @@ C_TEXT:C284($4; $templateFileName)
 $templateFileName:=$4
 C_POINTER:C301($5; $aryFieldNamePtr)
 $aryFieldNamePtr:=$5
-C_POINTER:C301($6; $aryFieldTypePtr->)
-$aryFieldTypePtr->:=$6
+C_POINTER:C301($6; $aryFieldTypePtr)
+$aryFieldTypePtr:=$6
 C_LONGINT:C283($0)
 C_TEXT:C284($tbl_prefix)
 C_LONGINT:C283($pos; $pos_method; $pos_row)
 C_TEXT:C284($dateTimeStr)
 C_TEXT:C284($newmethod)
+C_TEXT:C284($dataType; $initValue)
 
 //フィールド名のプリフィックス
-//$tbl_prefix:=JCL_tbl_Prefix ($aryFieldNamePtr)
 $pos:=Position:C15("_"; $aryFieldNamePtr->{1})
 $tbl_prefix:=Substring:C12($aryFieldNamePtr->{1}; 1; $pos-1)
 
@@ -44,7 +44,6 @@ $method:=Replace string:C233($method; "[--TBL_PREFIX]"; $tbl_prefix)
 $method:=Replace string:C233($method; "[--FRM_PREFIX]"; $inFrmPrefix)
 
 $pos_method:=Position:C15("[--FIELD]"; $method)
-//If ($pos_method#0)
 $len:=Length:C16($method)
 $row:=""
 $newmethod:=""

@@ -55,9 +55,9 @@ For ($i; $inStartLineNr+1; $numOfLines)
 	
 End for 
 
+$sizeOfAry:=Size of array:C274($aryFieldName)
 //テーブル作成
 $sql:="CREATE TABLE "+$inTableName+"("
-$sizeOfAry:=Size of array:C274($aryFieldName)
 For ($i; 1; $sizeOfAry)
 	
 	//ＳＱＬのカラム定義節を組み立て
