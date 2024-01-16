@@ -184,6 +184,7 @@
 						"onHeaderClick"
 					],
 					"method": "ObjectMethods/vD01_lstTB.4dm",
+					"showFooters": false,
 					"columns": [
 						{
 							"name": "vD01_lstTB_Nr",
@@ -203,7 +204,7 @@
 								"class": "JCL_Meiryo10"
 							},
 							"footer": {
-								"name": "vFL01_lftFL_ID1",
+								"name": "vJCL_D01_lftTB_Nr",
 								"timeFormat": "hh_mm_ss",
 								"class": "JCL_Meiryo12"
 							},
@@ -227,7 +228,7 @@
 								"class": "JCL_Meiryo10"
 							},
 							"footer": {
-								"name": "vFL01_lftFL_ID",
+								"name": "vJCL_D01_lftTB_COLOR",
 								"timeFormat": "hh_mm_ss",
 								"class": "JCL_Meiryo12"
 							}
@@ -250,7 +251,7 @@
 								"class": "JCL_Meiryo10"
 							},
 							"footer": {
-								"name": "vFL01_lftFL_NAME",
+								"name": "vJCL_D01_lftTB_NAME",
 								"timeFormat": "hh_mm_ss",
 								"class": "JCL_Meiryo12"
 							}
@@ -466,7 +467,7 @@
 			}
 		}
 	],
-	"geometryStamp": 663,
+	"geometryStamp": 670,
 	"$4d": {
 		"version": "1",
 		"kind": "form"

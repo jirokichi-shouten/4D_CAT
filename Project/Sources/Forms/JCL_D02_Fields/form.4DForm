@@ -1,0 +1,823 @@
+{
+	"destination": "detailScreen",
+	"windowMinWidth": 712,
+	"windowMinHeight": 178,
+	"width": 1152,
+	"height": 466,
+	"markerHeader": 15,
+	"markerBody": 200,
+	"markerBreak": 220,
+	"markerFooter": 240,
+	"events": [
+		"onLoad",
+		"onValidate",
+		"onClick",
+		"onHeader",
+		"onPrintingBreak",
+		"onPrintingFooter",
+		"onDisplayDetail",
+		"onOutsideCall",
+		"onDoubleClick",
+		"onDrop",
+		"onMenuSelect",
+		"onPluginArea",
+		"onDataChange",
+		"onDragOver",
+		"onPrintingDetail",
+		"onOpenDetail",
+		"onCloseDetail",
+		"onTimer",
+		"onAfterKeystroke",
+		"onLoadRecord",
+		"onAfterEdit",
+		"onBeginDragOver",
+		"onBoundVariableChange",
+		"onPageChange"
+	],
+	"method": "method.4dm",
+	"pageFormat": {
+		"paperName": "A4",
+		"paperWidth": "595pt",
+		"paperHeight": "842pt"
+	},
+	"pages": [
+		null,
+		{
+			"objects": {
+				"Rectangle1": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 0,
+					"width": 1152,
+					"height": 48,
+					"sizingX": "grow",
+					"stroke": "#FFFFFF",
+					"fill": "#c0c0c0"
+				},
+				"vJCL_D02_txtTitle": {
+					"type": "text",
+					"top": 16,
+					"left": 10,
+					"width": 303,
+					"height": 23,
+					"class": "JCL_YuGothic16",
+					"text": "フィールドラベル"
+				},
+				"vJCL_D02_btnClose": {
+					"type": "button",
+					"top": 14,
+					"left": 1090,
+					"width": 42,
+					"height": 26,
+					"sizingX": "move",
+					"dataSource": "vJCL_D02_btnClose",
+					"tooltip": {
+						"$ref": "/SOURCES/tips.json#/閉じる"
+					},
+					"action": "accept",
+					"shortcutKey": "w",
+					"shortcutAccel": true,
+					"text": "Ｘ",
+					"class": "JCL_YuGothic12",
+					"focusable": false,
+					"events": [
+						"onClick"
+					]
+				},
+				"vJCL_D02_lstFL": {
+					"type": "listbox",
+					"top": 94,
+					"left": 390,
+					"width": 754,
+					"height": 356,
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"resizingMode": "legacy",
+					"dataSource": "vJCL_D02_lstFL",
+					"movableRows": false,
+					"rowHeight": "20px",
+					"rowHeightAutoMin": "20px",
+					"rowHeightAutoMax": "20px",
+					"horizontalLineStroke": "#AAAAAA",
+					"verticalLineStroke": "#AAAAAA",
+					"stroke": "#000000",
+					"fill": "#FFFFFF",
+					"alternateFill": "automatic",
+					"fontFamily": "Meiryo",
+					"fontSize": 12,
+					"borderStyle": "solid",
+					"method": "ObjectMethods/vJCL_D02_lstFL.4dm",
+					"events": [
+						"onClick",
+						"onDoubleClick",
+						"onAfterSort",
+						"onSelectionChange"
+					],
+					"class": "JCL_YuGothic12",
+					"columns": [
+						{
+							"name": "vJCL_D02_lstFL_NAME",
+							"dataSource": "vJCL_D02_lstFL_NAME",
+							"width": 168,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"enterable": false,
+							"stroke": "#000000",
+							"fill": "#FFFFFF",
+							"alternateFill": "automatic",
+							"textAlign": "automatic",
+							"verticalAlign": "automatic",
+							"fontFamily": "Meiryo",
+							"fontSize": 12,
+							"events": [
+								"onClick",
+								"onDataChange"
+							],
+							"header": {
+								"name": "HvJCL_D02_lstFL_FIELD_NAME",
+								"text": "フィールド名",
+								"dataSource": "HvJCL_D02_lstFL_FIELD_NAME",
+								"stroke": "#000000",
+								"textAlign": "automatic",
+								"verticalAlign": "automatic",
+								"fontFamily": "Meiryo",
+								"fontSize": 12
+							},
+							"footer": {
+								"name": "Footer10",
+								"timeFormat": "hh_mm_ss",
+								"stroke": "#000000",
+								"fill": "#FFFFFF",
+								"textAlign": "automatic",
+								"verticalAlign": "automatic",
+								"fontFamily": "Meiryo",
+								"fontSize": 12
+							}
+						},
+						{
+							"name": "vJCL_D02_lstFL_LABEL",
+							"dataSource": "vJCL_D02_lstFL_LABEL",
+							"width": 144,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"enterable": false,
+							"stroke": "#000000",
+							"fill": "#FFFFFF",
+							"alternateFill": "automatic",
+							"textAlign": "automatic",
+							"verticalAlign": "automatic",
+							"fontFamily": "Meiryo",
+							"fontSize": 12,
+							"events": [
+								"onClick",
+								"onDataChange"
+							],
+							"header": {
+								"name": "HvJCL_D02_lstFL_LABEL",
+								"text": "フィールドラベル",
+								"dataSource": "HvJCL_D02_lstFL_LABEL",
+								"stroke": "#000000",
+								"textAlign": "automatic",
+								"verticalAlign": "automatic",
+								"fontFamily": "Meiryo",
+								"fontSize": 12
+							},
+							"footer": {
+								"name": "Footer8",
+								"timeFormat": "hh_mm_ss",
+								"stroke": "#000000",
+								"fill": "#FFFFFF",
+								"textAlign": "automatic",
+								"verticalAlign": "automatic",
+								"fontFamily": "Meiryo",
+								"fontSize": 12
+							}
+						},
+						{
+							"name": "vJCL_D02_lstFL_DATA_TYPE",
+							"dataSource": "vJCL_D02_lstFL_DATA_TYPE",
+							"width": 90,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"enterable": false,
+							"stroke": "#000000",
+							"fill": "#FFFFFF",
+							"alternateFill": "automatic",
+							"textAlign": "automatic",
+							"verticalAlign": "automatic",
+							"fontFamily": "Meiryo",
+							"fontSize": 12,
+							"events": [
+								"onClick",
+								"onDataChange"
+							],
+							"header": {
+								"name": "HvJCL_D02_lstFL_DATA_TYPE",
+								"text": "データ型",
+								"dataSource": "HvJCL_D02_lstFL_DATA_TYPE",
+								"stroke": "#000000",
+								"textAlign": "automatic",
+								"verticalAlign": "automatic",
+								"fontFamily": "Meiryo",
+								"fontSize": 12
+							},
+							"footer": {
+								"name": "Footer3",
+								"timeFormat": "hh_mm_ss",
+								"stroke": "#000000",
+								"fill": "#FFFFFF",
+								"textAlign": "automatic",
+								"verticalAlign": "automatic",
+								"fontFamily": "Meiryo",
+								"fontSize": 12
+							}
+						},
+						{
+							"name": "vJCL_D02_lstFL_LENGTH",
+							"dataSource": "vJCL_D02_lstFL_LENGTH",
+							"dataSourceTypeHint": "number",
+							"width": 48,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"enterable": false,
+							"stroke": "#000000",
+							"fill": "#FFFFFF",
+							"alternateFill": "automatic",
+							"textAlign": "center",
+							"verticalAlign": "automatic",
+							"fontFamily": "Meiryo",
+							"fontSize": 12,
+							"events": [
+								"onClick",
+								"onDataChange"
+							],
+							"header": {
+								"name": "HvJCL_D02_lstFL_LENGTH",
+								"text": "長さ",
+								"dataSource": "HvJCL_D02_lstFL_LENGTH",
+								"stroke": "#000000",
+								"textAlign": "automatic",
+								"verticalAlign": "automatic",
+								"fontFamily": "Meiryo",
+								"fontSize": 12
+							},
+							"footer": {
+								"name": "Footer5",
+								"timeFormat": "hh_mm_ss",
+								"stroke": "#000000",
+								"fill": "#FFFFFF",
+								"textAlign": "automatic",
+								"verticalAlign": "automatic",
+								"fontFamily": "Meiryo",
+								"fontSize": 12
+							}
+						},
+						{
+							"name": "vJCL_D02_lstFL_INDEX",
+							"dataSource": "vJCL_D02_lstFL_INDEX",
+							"dataSourceTypeHint": "number",
+							"width": 48,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"enterable": false,
+							"stroke": "#000000",
+							"fill": "#FFFFFF",
+							"alternateFill": "automatic",
+							"textAlign": "center",
+							"verticalAlign": "automatic",
+							"fontFamily": "Meiryo",
+							"fontSize": 12,
+							"events": [
+								"onClick",
+								"onDataChange"
+							],
+							"header": {
+								"name": "HvJCL_D02_lstFL_INDEX",
+								"text": "インデックス",
+								"dataSource": "HvJCL_D02_lstFL_INDEX",
+								"stroke": "#000000",
+								"textAlign": "automatic",
+								"verticalAlign": "automatic",
+								"fontFamily": "Meiryo",
+								"fontSize": 12
+							},
+							"footer": {
+								"name": "Footer4",
+								"timeFormat": "hh_mm_ss",
+								"stroke": "#000000",
+								"fill": "#FFFFFF",
+								"textAlign": "automatic",
+								"verticalAlign": "automatic",
+								"fontFamily": "Meiryo",
+								"fontSize": 12
+							}
+						},
+						{
+							"name": "vJCL_D02_lstFL_UNIQUE",
+							"dataSource": "vJCL_D02_lstFL_UNIQUE",
+							"dataSourceTypeHint": "number",
+							"width": 48,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"enterable": false,
+							"stroke": "#000000",
+							"fill": "#FFFFFF",
+							"alternateFill": "automatic",
+							"textAlign": "center",
+							"verticalAlign": "automatic",
+							"fontFamily": "Meiryo",
+							"fontSize": 12,
+							"events": [
+								"onClick",
+								"onDataChange"
+							],
+							"header": {
+								"name": "HvJCL_D02_lstFL_UNIQUE",
+								"text": "ユニーク",
+								"dataSource": "HvJCL_D02_lstFL_UNIQUE",
+								"stroke": "#000000",
+								"textAlign": "automatic",
+								"verticalAlign": "automatic",
+								"fontFamily": "Meiryo",
+								"fontSize": 12
+							},
+							"footer": {
+								"name": "Footer12",
+								"timeFormat": "hh_mm_ss",
+								"stroke": "#000000",
+								"fill": "#FFFFFF",
+								"textAlign": "automatic",
+								"verticalAlign": "automatic",
+								"fontFamily": "Meiryo",
+								"fontSize": 12
+							}
+						},
+						{
+							"name": "vJCL_D02_lstFL_COMMENT",
+							"dataSource": "vJCL_D02_lstFL_COMMENT",
+							"width": 110,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"enterable": false,
+							"stroke": "#000000",
+							"fill": "#FFFFFF",
+							"alternateFill": "automatic",
+							"textAlign": "automatic",
+							"verticalAlign": "automatic",
+							"fontFamily": "Meiryo",
+							"fontSize": 12,
+							"events": [
+								"onClick",
+								"onDataChange"
+							],
+							"header": {
+								"name": "HvJCL_D02_lstFL_COMMENT",
+								"text": "コメント",
+								"dataSource": "HvJCL_D02_lstFL_COMMENT",
+								"stroke": "#000000",
+								"textAlign": "automatic",
+								"verticalAlign": "automatic",
+								"fontFamily": "Meiryo",
+								"fontSize": 12
+							},
+							"footer": {
+								"name": "Footer2",
+								"timeFormat": "hh_mm_ss",
+								"stroke": "#000000",
+								"fill": "#FFFFFF",
+								"textAlign": "automatic",
+								"verticalAlign": "automatic",
+								"fontFamily": "Meiryo",
+								"fontSize": 12
+							}
+						},
+						{
+							"name": "vJCL_D02_lstFL_REMARK",
+							"dataSource": "vJCL_D02_lstFL_REMARK",
+							"width": 110,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"enterable": false,
+							"stroke": "#000000",
+							"fill": "#FFFFFF",
+							"alternateFill": "automatic",
+							"textAlign": "automatic",
+							"verticalAlign": "automatic",
+							"fontFamily": "Meiryo",
+							"fontSize": 12,
+							"events": [
+								"onClick",
+								"onDataChange"
+							],
+							"header": {
+								"name": "HvJCL_D02_lstFL_REMARK",
+								"text": "備考",
+								"dataSource": "HvJCL_D02_lstFL_REMARK",
+								"stroke": "#000000",
+								"textAlign": "automatic",
+								"verticalAlign": "automatic",
+								"fontFamily": "Meiryo",
+								"fontSize": 12
+							},
+							"footer": {
+								"name": "Footer7",
+								"timeFormat": "hh_mm_ss",
+								"stroke": "#000000",
+								"fill": "#FFFFFF",
+								"textAlign": "automatic",
+								"verticalAlign": "automatic",
+								"fontFamily": "Meiryo",
+								"fontSize": 12
+							}
+						}
+					]
+				},
+				"vJCL_D02_varNumOfTables": {
+					"type": "input",
+					"top": 68,
+					"left": 48,
+					"width": 179,
+					"height": 18,
+					"dataSource": "vJCL_D02_varNumOfTables",
+					"class": "JCL_YuGothic12",
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"enterable": false,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"LastTouchOn4": {
+					"type": "text",
+					"top": 507,
+					"left": 7,
+					"width": 487,
+					"height": 33,
+					"sizingY": "move",
+					"stroke": "#ADFF2F",
+					"class": "JCL_YuGothic12",
+					"text": "Last touch on: 20240115 new"
+				},
+				"vJCL_D02_btnImport": {
+					"type": "button",
+					"top": 14,
+					"left": 754,
+					"width": 90,
+					"height": 26,
+					"dataSource": "vJCL_D02_btnImport",
+					"shortcutKey": "n",
+					"shortcutAccel": true,
+					"text": "読込",
+					"class": "JCL_YuGothic12",
+					"method": "ObjectMethods/vJCL_D02_btnImport.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"vJCL_D02_lstTB": {
+					"type": "listbox",
+					"top": 94,
+					"left": 6,
+					"width": 378,
+					"height": 356,
+					"sizingY": "grow",
+					"resizingMode": "legacy",
+					"dataSource": "vJCL_D02_lstTB",
+					"movableRows": false,
+					"rowHeight": "20px",
+					"rowHeightAutoMin": "20px",
+					"rowHeightAutoMax": "20px",
+					"horizontalLineStroke": "#AAAAAA",
+					"verticalLineStroke": "#AAAAAA",
+					"stroke": "#000000",
+					"fill": "#FFFFFF",
+					"alternateFill": "automatic",
+					"fontFamily": "Meiryo",
+					"fontSize": 12,
+					"borderStyle": "solid",
+					"method": "ObjectMethods/vJCL_D02_lstTB.4dm",
+					"events": [
+						"onClick",
+						"onDoubleClick",
+						"onAfterSort",
+						"onSelectionChange"
+					],
+					"class": "JCL_YuGothic12",
+					"columns": [
+						{
+							"name": "vJCL_D02_lstTB_LABEL",
+							"dataSource": "vJCL_D02_lstTB_LABEL",
+							"width": 90,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"enterable": false,
+							"stroke": "#000000",
+							"fill": "#FFFFFF",
+							"alternateFill": "automatic",
+							"textAlign": "left",
+							"verticalAlign": "automatic",
+							"fontFamily": "Meiryo",
+							"fontSize": 12,
+							"events": [
+								"onClick",
+								"onDataChange"
+							],
+							"header": {
+								"name": "HvJCL_D02_lstTB_LABEL",
+								"text": "ラベル",
+								"dataSource": "HvJCL_D02_lstTB_LABEL",
+								"stroke": "#000000",
+								"textAlign": "automatic",
+								"verticalAlign": "automatic",
+								"fontFamily": "Meiryo",
+								"fontSize": 12,
+								"class": "JCL_YuGothic12"
+							},
+							"footer": {
+								"name": "Footer13",
+								"timeFormat": "hh_mm_ss",
+								"stroke": "#000000",
+								"fill": "#FFFFFF",
+								"textAlign": "automatic",
+								"verticalAlign": "automatic",
+								"fontFamily": "Meiryo",
+								"fontSize": 12
+							},
+							"class": "JCL_YuGothic12"
+						},
+						{
+							"name": "vJCL_D02_lstTB_NAME",
+							"dataSource": "vJCL_D02_lstTB_NAME",
+							"width": 110,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"enterable": false,
+							"stroke": "#000000",
+							"fill": "#FFFFFF",
+							"alternateFill": "automatic",
+							"textAlign": "automatic",
+							"verticalAlign": "automatic",
+							"fontFamily": "Meiryo",
+							"fontSize": 12,
+							"events": [
+								"onClick",
+								"onDataChange"
+							],
+							"header": {
+								"name": "HvJCL_D02_lstTB_NAME",
+								"text": "テーブル名",
+								"dataSource": "HvJCL_D02_lstTB_NAME",
+								"stroke": "#000000",
+								"textAlign": "automatic",
+								"verticalAlign": "automatic",
+								"fontFamily": "Meiryo",
+								"fontSize": 12,
+								"class": "JCL_YuGothic12"
+							},
+							"footer": {
+								"name": "Footer14",
+								"timeFormat": "hh_mm_ss",
+								"stroke": "#000000",
+								"fill": "#FFFFFF",
+								"textAlign": "automatic",
+								"verticalAlign": "automatic",
+								"fontFamily": "Meiryo",
+								"fontSize": 12
+							},
+							"class": "JCL_YuGothic12"
+						},
+						{
+							"name": "vJCL_D02_lstTB_PREFIX",
+							"dataSource": "vJCL_D02_lstTB_PREFIX",
+							"width": 42,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"enterable": false,
+							"stroke": "#000000",
+							"fill": "#FFFFFF",
+							"alternateFill": "automatic",
+							"textAlign": "center",
+							"verticalAlign": "automatic",
+							"fontFamily": "Meiryo",
+							"fontSize": 12,
+							"events": [
+								"onClick",
+								"onDataChange"
+							],
+							"header": {
+								"name": "HvJCL_D02_lstTB_PREFIX",
+								"text": "接頭辞",
+								"dataSource": "HvJCL_D02_lstTB_PREFIX",
+								"stroke": "#000000",
+								"textAlign": "automatic",
+								"verticalAlign": "automatic",
+								"fontFamily": "Meiryo",
+								"fontSize": 12,
+								"class": "JCL_YuGothic12"
+							},
+							"footer": {
+								"name": "Footer6",
+								"timeFormat": "hh_mm_ss",
+								"stroke": "#000000",
+								"fill": "#FFFFFF",
+								"textAlign": "automatic",
+								"verticalAlign": "automatic",
+								"fontFamily": "Meiryo",
+								"fontSize": 12
+							},
+							"class": "JCL_YuGothic12"
+						},
+						{
+							"name": "vJCL_D02_lstTB_NO_FORM",
+							"dataSource": "vJCL_D02_lstTB_NO_FORM",
+							"width": 68,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"enterable": false,
+							"stroke": "#000000",
+							"fill": "#FFFFFF",
+							"alternateFill": "automatic",
+							"textAlign": "automatic",
+							"verticalAlign": "automatic",
+							"fontFamily": "Meiryo",
+							"fontSize": 12,
+							"events": [
+								"onClick",
+								"onDataChange"
+							],
+							"header": {
+								"name": "HvJCL_D02_lstTB_NO_FORM",
+								"text": "フォーム生成",
+								"dataSource": "HvJCL_D02_lstTB_NO_FORM",
+								"stroke": "#000000",
+								"textAlign": "automatic",
+								"verticalAlign": "automatic",
+								"fontFamily": "Meiryo",
+								"fontSize": 12,
+								"class": "JCL_YuGothic12"
+							},
+							"footer": {
+								"name": "Footer1",
+								"timeFormat": "hh_mm_ss",
+								"stroke": "#000000",
+								"fill": "#FFFFFF",
+								"textAlign": "automatic",
+								"verticalAlign": "automatic",
+								"fontFamily": "Meiryo",
+								"fontSize": 12
+							},
+							"class": "JCL_YuGothic12"
+						},
+						{
+							"name": "vJCL_D02_lstTB_DESCRIPTION",
+							"dataSource": "vJCL_D02_lstTB_DESCRIPTION",
+							"width": 90,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"enterable": false,
+							"stroke": "#000000",
+							"fill": "#FFFFFF",
+							"alternateFill": "automatic",
+							"textAlign": "automatic",
+							"verticalAlign": "automatic",
+							"fontFamily": "Meiryo",
+							"fontSize": 12,
+							"events": [
+								"onClick",
+								"onDataChange"
+							],
+							"header": {
+								"name": "HvJCL_D02_lstTB_DESCRIPTION",
+								"text": "テーブル説明",
+								"dataSource": "HvJCL_D02_lstTB_DESCRIPTION",
+								"stroke": "#000000",
+								"textAlign": "automatic",
+								"verticalAlign": "automatic",
+								"fontFamily": "Meiryo",
+								"fontSize": 12,
+								"class": "JCL_YuGothic12"
+							},
+							"footer": {
+								"name": "Footer15",
+								"timeFormat": "hh_mm_ss",
+								"stroke": "#000000",
+								"fill": "#FFFFFF",
+								"textAlign": "automatic",
+								"verticalAlign": "automatic",
+								"fontFamily": "Meiryo",
+								"fontSize": 12
+							},
+							"class": "JCL_YuGothic12"
+						},
+						{
+							"name": "vJCL_D02_lstTB_Block",
+							"dataSource": "vJCL_D02_lstTB_Block",
+							"width": 90,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"enterable": false,
+							"stroke": "#000000",
+							"fill": "#FFFFFF",
+							"alternateFill": "automatic",
+							"textAlign": "automatic",
+							"verticalAlign": "automatic",
+							"fontFamily": "Meiryo",
+							"fontSize": 12,
+							"events": [
+								"onClick",
+								"onDataChange"
+							],
+							"header": {
+								"name": "HvJCL_D02_lstTB_Block",
+								"text": "フィールド定義ブロック",
+								"dataSource": "HvJCL_D02_lstTB_Block",
+								"stroke": "#000000",
+								"textAlign": "automatic",
+								"verticalAlign": "automatic",
+								"fontFamily": "Meiryo",
+								"fontSize": 12,
+								"class": "JCL_YuGothic12"
+							},
+							"footer": {
+								"name": "Footer11",
+								"timeFormat": "hh_mm_ss",
+								"stroke": "#000000",
+								"fill": "#FFFFFF",
+								"textAlign": "automatic",
+								"verticalAlign": "automatic",
+								"fontFamily": "Meiryo",
+								"fontSize": 12
+							},
+							"class": "JCL_YuGothic12",
+							"visibility": "hidden"
+						}
+					]
+				},
+				"Splitter": {
+					"type": "splitter",
+					"top": 536,
+					"left": 691,
+					"width": 1,
+					"height": 1,
+					"events": [
+						"onClick"
+					]
+				},
+				"vJCL_D02_varNumOfFields": {
+					"type": "input",
+					"top": 68,
+					"left": 848,
+					"width": 179,
+					"height": 18,
+					"dataSource": "vJCL_D02_varNumOfFields",
+					"class": "JCL_YuGothic12",
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"enterable": false,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"vJCL_D02_varTableName": {
+					"type": "input",
+					"top": 68,
+					"left": 390,
+					"width": 179,
+					"height": 18,
+					"dataSource": "vJCL_D02_varTableName",
+					"class": "JCL_YuGothic12",
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"enterable": false,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				}
+			}
+		}
+	],
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"geometryStamp": 264,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	}
+}
