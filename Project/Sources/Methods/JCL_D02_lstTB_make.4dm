@@ -5,6 +5,8 @@
 
 C_TEXT:C284($1; $block)
 $block:=$1
+C_TEXT:C284($2; $status)
+$status:=$2
 C_TEXT:C284($fieleBlock)
 C_LONGINT:C283($i; $numOfLines)
 C_LONGINT:C283($numOfLines; $numOfItems)
@@ -17,18 +19,33 @@ If ($block#"")
 	
 	//最初の要素はテーブル情報
 	$numOfItems:=JCL_str_Extract($aryLines{1}; Char:C90(Tab:K15:37); ->$aryItems)
-	APPEND TO ARRAY:C911(vJCL_D02_lstTB_LABEL; $aryItems{6})  // テーブルラベル（論理名）
-	APPEND TO ARRAY:C911(vJCL_D02_lstTB_NAME; $aryItems{1})  // テーブル名
-	APPEND TO ARRAY:C911(vJCL_D02_lstTB_PREFIX; $aryItems{2})  // プリフィックス
-	APPEND TO ARRAY:C911(vJCL_D02_lstTB_NO_FORM; $aryItems{3})  // NoFormでなければフォームを作る
-	APPEND TO ARRAY:C911(vJCL_D02_lstTB_DESCRIPTION; $aryItems{7})  // 説明
+	If ($numOfItems>5)
+		APPEND TO ARRAY:C911(vJCL_D02_lstTB_status; $status)  //fields情報ステータス：exist, temporary
+		APPEND TO ARRAY:C911(vJCL_D02_lstTB_error; "")  //エラー文字
+		APPEND TO ARRAY:C911(vJCL_D02_lstTB_NAME; $aryItems{1})  // テーブル名
+		APPEND TO ARRAY:C911(vJCL_D02_lstTB_PREFIX; $aryItems{2})  // プリフィックス
+		APPEND TO ARRAY:C911(vJCL_D02_lstTB_NO_FORM; $aryItems{3})  // NoFormでなければフォームを作る
+		APPEND TO ARRAY:C911(vJCL_D02_lstTB_LABEL; $aryItems{6})  // テーブルラベル（論理名）
+		If ($numOfItems>6)
+			APPEND TO ARRAY:C911(vJCL_D02_lstTB_DESCRIPTION; $aryItems{7})  // 説明
+		Else 
+			APPEND TO ARRAY:C911(vJCL_D02_lstTB_DESCRIPTION; "")  // 説明
+		End if 
+		If ($numOfItems>7)
+			APPEND TO ARRAY:C911(vJCL_D02_lstTB_REMARK; $aryItems{8})  // サンプルデータ等
+		Else 
+			APPEND TO ARRAY:C911(vJCL_D02_lstTB_REMARK; "")  // 説明
+		End if 
+	End if 
 	
-	//２行目から最後まではフィールド情報
-	For ($i; 2; $numOfLines)
-		//改行でつなげる
-		$fieleBlock:=$fieleBlock+$aryLines{$i}+Char:C90(Line feed:K15:40)
-		
-	End for 
-	APPEND TO ARRAY:C911(vJCL_D02_lstTB_Block; $fieleBlock)  // フィールド情報
+	APPEND TO ARRAY:C911(vJCL_D02_lstTB_Block; $block)  // フィールド情報
+	
+	If ($status="temporary")
+		APPEND TO ARRAY:C911(vJCL_D20_lstTB_BakColor; JCL_num_GetRGB(255; 255; 255))  // 背景色
+		APPEND TO ARRAY:C911(vJCL_D20_lstTB_FontColor; JCL_num_GetRGB(255; 0; 0))  // フォントカラー
+	Else 
+		APPEND TO ARRAY:C911(vJCL_D20_lstTB_BakColor; JCL_num_GetRGB(255; 255; 255))  // 背景色
+		APPEND TO ARRAY:C911(vJCL_D20_lstTB_FontColor; JCL_num_GetRGB(0; 0; 0))  // フォントカラー
+	End if 
 	
 End if 

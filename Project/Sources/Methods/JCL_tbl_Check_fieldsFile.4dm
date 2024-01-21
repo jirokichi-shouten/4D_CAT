@@ -35,34 +35,7 @@ Else
 			//テーブル情報取得
 			$numOfItems:=JCL_str_Extract($arylines{1}; Char:C90(Tab:K15:37); ->$aryTableItems)
 			If ($numOfItems>2)
-				//テーブル名重複チェック
-				$tblPtr:=JCL_tbl_Ptr_byName($aryTableItems{1})
-				If ($tblPtr=Null:C1517)
-					For ($i; 2; $numOfLines)
-						//フィールド情報を取得
-						DELETE FROM ARRAY:C228($aryFieldItems; 1; Size of array:C274($aryFieldItems))
-						$numOfItems:=JCL_str_Extract($arylines{$i}; Char:C90(Tab:K15:37); ->$aryFieldItems)
-						If ($numOfItems<6)
-							//フィールド情報に配列要素が６個以上なかった
-							$msg:="フォーマットエラー"+Char:C90(Carriage return:K15:38)
-							$msg:=$msg+"フィールド名の行のフォーマットが正しくないようです。"
-							ALERT:C41($msg)
-							$i:=$numOfLines
-							$k:=$numOfTables
-							$errFlag:=1
-							
-						End if 
-					End for 
-				Else 
-					//フィールド情報に配列要素が６個以上なかった
-					$msg:="テーブル重複エラー"+Char:C90(Carriage return:K15:38)
-					$msg:=$msg+"テーブル名["+$aryTableItems{1}+"]はすでに存在します。"
-					ALERT:C41($msg)
-					$i:=$numOfLines
-					$k:=$numOfTables
-					$errFlag:=1
-					
-				End if 
+				
 			Else 
 				//ブロックに配列要素が３個以上なかった
 				$msg:="フォーマットエラー"+Char:C90(Carriage return:K15:38)

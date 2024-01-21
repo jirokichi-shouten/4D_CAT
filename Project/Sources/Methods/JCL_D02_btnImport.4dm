@@ -3,6 +3,12 @@
 //20240116 wat
 //ファイル選択ダイアログ、fields読み込み
 
+ARRAY TEXT:C222($aryBlock; 0)  //20240114
+C_LONGINT:C283($dlg_ok)
+C_TEXT:C284($fileText)
+C_LONGINT:C283($errFlag)
+C_LONGINT:C283($i; $numOfTables)
+
 //定義ファイルを選択
 $dlg_ok:=JCL_file_SelectFileDlg(->$fileBlob)
 If ($dlg_ok=1)
@@ -14,28 +20,36 @@ If ($dlg_ok=1)
 	
 	$errFlag:=JCL_tbl_Check_fieldsFile($fileText)
 	If ($errFlag=0)
+		//一時テーブルを削除
+		JCL_D02_lstTB_remove_temporary
+		
 		$numOfTables:=JCL_tbl_Blocks_fromFile($fileText; ->$aryBlock)
 		For ($i; 1; $numOfTables)
 			//テーブルリストボックス用配列を作成
-			JCL_D02_lstTB_make(->$aryBlock{$i})
+			JCL_D02_lstTB_make($aryBlock{$i}; "temporary")
+			
+			//テーブル情報チェック
+			JCL_D02_lstTB_check
 			
 			//フィールドリストボックス用配列作成
-			JCL_D02_lstFL_make(->$aryBlock{$i})
+			//JCL_D02_lstFL_make($aryBlock{$i})
 			
+			//fields内容チェック
+			JCL_tbl_Check_fields
 			
-			//モデルメソッド群をテンプレートから作成
-			//JCL_tbl_Create_method($aryBlock{$i})
+			JCL_D02_SetControlsValues
 			
 		End for 
 		
-		$msg:="完了"+Char:C90(Carriage return:K15:38)
-		$msg:=$msg+String:C10($numOfTables)+"個のテーブルを作成しました。"
-		ALERT:C41($msg)
+		JCL_D02_SetControlsValues
+		
+		//$msg:="完了"+Char(Carriage return)
+		//$msg:=$msg+String($numOfTables)+"個のテーブルを作成しました。"
+		//ALERT($msg)
 	End if 
-	
 Else 
-	$msg:="エラー"+Char:C90(Carriage return:K15:38)
-	$msg:=$msg+"テーブルは作成されていません。"
-	ALERT:C41($msg)
+	//$msg:="エラー"+Char(Carriage return)
+	//$msg:=$msg+"テーブルは作成されていません。"
+	//ALERT($msg)
 	
 End if 

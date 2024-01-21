@@ -2,6 +2,7 @@
 //JCL_tbl_CreateTable
 //20240114 yabe wat
 //fieldsのテキストブロックからSQL文を作成、実行してテーブル作成
+//20240121 yabe wat UNIQUE サポート
 
 C_TEXT:C284($1; $inBlockText)
 $inBlockText:=$1  //ブロックの中身
@@ -29,7 +30,7 @@ For ($i; 2; $numOfLines)
 	//ＳＱＬのカラム定義節を組み立て
 	$fldName:=Replace string:C233($aryFieldItems{1}; " "; "_")
 	$fldName:=$aryTableItems{2}+"_"+$fldName
-	$typeStr:=JCL_tbl_Type_SQL($aryFieldItems{2}; $aryFieldItems{3})
+	$typeStr:=JCL_tbl_Type_SQL($aryFieldItems{2}; $aryFieldItems{3}; $aryFieldItems{5})  //20240121
 	$sql:=$sql+$fldName+$typeStr
 	
 End for 

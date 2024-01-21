@@ -3,7 +3,7 @@
 	"windowMinWidth": 712,
 	"windowMinHeight": 178,
 	"width": 1152,
-	"height": 466,
+	"height": 610,
 	"markerHeader": 15,
 	"markerBody": 200,
 	"markerBreak": 220,
@@ -61,7 +61,7 @@
 					"width": 303,
 					"height": 23,
 					"class": "JCL_YuGothic16",
-					"text": "フィールドラベル"
+					"text": "fields admin"
 				},
 				"vJCL_D02_btnClose": {
 					"type": "button",
@@ -100,7 +100,7 @@
 					"rowHeightAutoMax": "20px",
 					"horizontalLineStroke": "#AAAAAA",
 					"verticalLineStroke": "#AAAAAA",
-					"stroke": "#000000",
+					"stroke": "automatic",
 					"fill": "#FFFFFF",
 					"alternateFill": "automatic",
 					"fontFamily": "Meiryo",
@@ -145,45 +145,6 @@
 							},
 							"footer": {
 								"name": "Footer10",
-								"timeFormat": "hh_mm_ss",
-								"stroke": "#000000",
-								"fill": "#FFFFFF",
-								"textAlign": "automatic",
-								"verticalAlign": "automatic",
-								"fontFamily": "Meiryo",
-								"fontSize": 12
-							}
-						},
-						{
-							"name": "vJCL_D02_lstFL_LABEL",
-							"dataSource": "vJCL_D02_lstFL_LABEL",
-							"width": 144,
-							"minWidth": 10,
-							"maxWidth": 32000,
-							"enterable": false,
-							"stroke": "#000000",
-							"fill": "#FFFFFF",
-							"alternateFill": "automatic",
-							"textAlign": "automatic",
-							"verticalAlign": "automatic",
-							"fontFamily": "Meiryo",
-							"fontSize": 12,
-							"events": [
-								"onClick",
-								"onDataChange"
-							],
-							"header": {
-								"name": "HvJCL_D02_lstFL_LABEL",
-								"text": "フィールドラベル",
-								"dataSource": "HvJCL_D02_lstFL_LABEL",
-								"stroke": "#000000",
-								"textAlign": "automatic",
-								"verticalAlign": "automatic",
-								"fontFamily": "Meiryo",
-								"fontSize": 12
-							},
-							"footer": {
-								"name": "Footer8",
 								"timeFormat": "hh_mm_ss",
 								"stroke": "#000000",
 								"fill": "#FFFFFF",
@@ -353,6 +314,45 @@
 							}
 						},
 						{
+							"name": "vJCL_D02_lstFL_LABEL",
+							"dataSource": "vJCL_D02_lstFL_LABEL",
+							"width": 144,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"enterable": false,
+							"stroke": "#000000",
+							"fill": "#FFFFFF",
+							"alternateFill": "automatic",
+							"textAlign": "automatic",
+							"verticalAlign": "automatic",
+							"fontFamily": "Meiryo",
+							"fontSize": 12,
+							"events": [
+								"onClick",
+								"onDataChange"
+							],
+							"header": {
+								"name": "HvJCL_D02_lstFL_LABEL",
+								"text": "フィールドラベル",
+								"dataSource": "HvJCL_D02_lstFL_LABEL",
+								"stroke": "#000000",
+								"textAlign": "automatic",
+								"verticalAlign": "automatic",
+								"fontFamily": "Meiryo",
+								"fontSize": 12
+							},
+							"footer": {
+								"name": "Footer8",
+								"timeFormat": "hh_mm_ss",
+								"stroke": "#000000",
+								"fill": "#FFFFFF",
+								"textAlign": "automatic",
+								"verticalAlign": "automatic",
+								"fontFamily": "Meiryo",
+								"fontSize": 12
+							}
+						},
+						{
 							"name": "vJCL_D02_lstFL_COMMENT",
 							"dataSource": "vJCL_D02_lstFL_COMMENT",
 							"width": 110,
@@ -453,7 +453,7 @@
 				},
 				"LastTouchOn4": {
 					"type": "text",
-					"top": 507,
+					"top": 627,
 					"left": 7,
 					"width": 487,
 					"height": 33,
@@ -471,7 +471,7 @@
 					"dataSource": "vJCL_D02_btnImport",
 					"shortcutKey": "n",
 					"shortcutAccel": true,
-					"text": "読込",
+					"text": "fields読込",
 					"class": "JCL_YuGothic12",
 					"method": "ObjectMethods/vJCL_D02_btnImport.4dm",
 					"events": [
@@ -493,7 +493,7 @@
 					"rowHeightAutoMax": "20px",
 					"horizontalLineStroke": "#AAAAAA",
 					"verticalLineStroke": "#AAAAAA",
-					"stroke": "#000000",
+					"stroke": "automatic",
 					"fill": "#FFFFFF",
 					"alternateFill": "automatic",
 					"fontFamily": "Meiryo",
@@ -507,7 +507,91 @@
 						"onSelectionChange"
 					],
 					"class": "JCL_YuGothic12",
+					"rowFillSource": "vJCL_D20_lstTB_BakColor",
+					"rowStrokeSource": "vJCL_D20_lstTB_FontColor",
 					"columns": [
+						{
+							"name": "vJCL_D02_lstTB_status",
+							"dataSource": "vJCL_D02_lstTB_status",
+							"width": 42,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"enterable": false,
+							"stroke": "#000000",
+							"fill": "#FFFFFF",
+							"alternateFill": "automatic",
+							"textAlign": "left",
+							"verticalAlign": "automatic",
+							"fontFamily": "Meiryo",
+							"fontSize": 12,
+							"events": [
+								"onClick",
+								"onDataChange"
+							],
+							"header": {
+								"name": "HvJCL_D02_lstTB_status",
+								"text": "status",
+								"dataSource": "HvJCL_D02_lstTB_status",
+								"stroke": "#000000",
+								"textAlign": "automatic",
+								"verticalAlign": "automatic",
+								"fontFamily": "Meiryo",
+								"fontSize": 12,
+								"class": "JCL_YuGothic12"
+							},
+							"footer": {
+								"name": "Footer16",
+								"timeFormat": "hh_mm_ss",
+								"stroke": "#000000",
+								"fill": "#FFFFFF",
+								"textAlign": "automatic",
+								"verticalAlign": "automatic",
+								"fontFamily": "Meiryo",
+								"fontSize": 12
+							},
+							"class": "JCL_YuGothic12"
+						},
+						{
+							"name": "vJCL_D02_lstTB_error",
+							"dataSource": "vJCL_D02_lstTB_error",
+							"width": 42,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"enterable": false,
+							"stroke": "#000000",
+							"fill": "#FFFFFF",
+							"alternateFill": "automatic",
+							"textAlign": "left",
+							"verticalAlign": "automatic",
+							"fontFamily": "Meiryo",
+							"fontSize": 12,
+							"events": [
+								"onClick",
+								"onDataChange"
+							],
+							"header": {
+								"name": "HvJCL_D02_lstTB_error",
+								"text": "error",
+								"dataSource": "HvJCL_D02_lstTB_error",
+								"stroke": "#000000",
+								"textAlign": "automatic",
+								"verticalAlign": "automatic",
+								"fontFamily": "Meiryo",
+								"fontSize": 12,
+								"class": "JCL_YuGothic12"
+							},
+							"footer": {
+								"name": "Footer9",
+								"timeFormat": "hh_mm_ss",
+								"stroke": "#000000",
+								"fill": "#FFFFFF",
+								"textAlign": "automatic",
+								"verticalAlign": "automatic",
+								"fontFamily": "Meiryo",
+								"fontSize": 12
+							},
+							"class": "JCL_YuGothic12"
+						},
 						{
 							"name": "vJCL_D02_lstTB_LABEL",
 							"dataSource": "vJCL_D02_lstTB_LABEL",
@@ -812,7 +896,7 @@
 		"version": "1",
 		"kind": "form"
 	},
-	"geometryStamp": 264,
+	"geometryStamp": 275,
 	"editor": {
 		"activeView": "View 1",
 		"defaultView": "View 1",

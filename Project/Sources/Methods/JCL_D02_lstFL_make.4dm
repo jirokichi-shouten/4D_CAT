@@ -17,19 +17,27 @@ If ($fieldBlock#"")
 	$numOfLines:=JCL_str_Extract_byReturn($fieldBlock; ->$aryLines)  //改行で切り分ける
 	
 	//１行目はテーブル情報
-	For ($i; 1; $numOfLines-1)
+	For ($i; 2; $numOfLines)
 		//フィールド情報を取得
 		DELETE FROM ARRAY:C228($aryItems; 1; Size of array:C274($aryItems))
 		$numOfItems:=JCL_str_Extract($aryLines{$i}; Char:C90(Tab:K15:37); ->$aryItems)
-		If ($numOfItems>7)
+		If ($numOfItems>5)
 			APPEND TO ARRAY:C911(vJCL_D02_lstFL_NAME; $aryItems{1})  // フィールド名
-			APPEND TO ARRAY:C911(vJCL_D02_lstFL_LABEL; $aryItems{2})  // フィールドラベル（論理名）
-			APPEND TO ARRAY:C911(vJCL_D02_lstFL_DATA_TYPE; $aryItems{3})  // データ型
-			APPEND TO ARRAY:C911(vJCL_D02_lstFL_LENGTH; Num:C11($aryItems{4}))  // 文字長さ
-			APPEND TO ARRAY:C911(vJCL_D02_lstFL_INDEX; Num:C11($aryItems{5}))  // インデックス対象かどうか
-			APPEND TO ARRAY:C911(vJCL_D02_lstFL_UNIQUE; Num:C11($aryItems{6}))  // ユニークフィールド
-			APPEND TO ARRAY:C911(vJCL_D02_lstFL_COMMENT; $aryItems{7})  // 説明
-			APPEND TO ARRAY:C911(vJCL_D02_lstFL_REMARK; $aryItems{8})  // サンプルデータ等
+			APPEND TO ARRAY:C911(vJCL_D02_lstFL_DATA_TYPE; $aryItems{2})  // データ型
+			APPEND TO ARRAY:C911(vJCL_D02_lstFL_LENGTH; Num:C11($aryItems{3}))  // 文字長さ
+			APPEND TO ARRAY:C911(vJCL_D02_lstFL_INDEX; Num:C11($aryItems{4}))  // インデックス対象かどうか
+			APPEND TO ARRAY:C911(vJCL_D02_lstFL_UNIQUE; Num:C11($aryItems{5}))  // ユニークフィールド
+			APPEND TO ARRAY:C911(vJCL_D02_lstFL_LABEL; $aryItems{6})  // フィールドラベル（論理名）
+			If ($numOfItems>6)
+				APPEND TO ARRAY:C911(vJCL_D02_lstFL_COMMENT; $aryItems{7})  // 説明
+			Else 
+				APPEND TO ARRAY:C911(vJCL_D02_lstFL_COMMENT; "")  // 説明
+			End if 
+			If ($numOfItems>7)
+				APPEND TO ARRAY:C911(vJCL_D02_lstFL_REMARK; $aryItems{8})  // サンプルデータ等
+			Else 
+				APPEND TO ARRAY:C911(vJCL_D02_lstFL_REMARK; "")  // 説明
+			End if 
 			
 		End if 
 	End for 

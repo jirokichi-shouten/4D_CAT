@@ -71,13 +71,33 @@
 					"shortcutKey": "[Esc]",
 					"action": "cancel",
 					"class": "JCL_YuGothic12"
+				},
+				"vA01_btnFields": {
+					"type": "button",
+					"text": "fields",
+					"top": 96,
+					"left": 480,
+					"width": 110,
+					"height": 26,
+					"events": [
+						"onClick"
+					],
+					"dataSource": "vA01_btnFields",
+					"shortcutAccel": false,
+					"shortcutControl": false,
+					"shortcutShift": false,
+					"shortcutAlt": false,
+					"shortcutKey": "[Esc]",
+					"action": "cancel",
+					"class": "JCL_YuGothic12",
+					"method": "ObjectMethods/vA01_btnFields.4dm"
 				}
 			}
 		}
 	],
 	"width": 610,
 	"height": 466,
-	"geometryStamp": 30,
+	"geometryStamp": 34,
 	"editor": {
 		"activeView": "View 1",
 		"defaultView": "View 1",
