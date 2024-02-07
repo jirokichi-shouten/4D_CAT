@@ -17,7 +17,10 @@ vA01_var4D_DataFile:="データファイル："+Data file:C490
 ARRAY BOOLEAN:C223(vA01_lstT; 0)  //リストボックス自身
 ARRAY LONGINT:C221(vA01_lstT_nr; 0)
 ARRAY TEXT:C222(vA01_lstT_name; 0)
+ARRAY TEXT:C222(vA01_lstT_label; 0)
+ARRAY TEXT:C222(vA01_lstT_prefix; 0)
 ARRAY LONGINT:C221(vA01_lstT_numOfRecs; 0)
 
 C_TEXT:C284(vA01_txtNumOfRecs)
 
+C_TEXT:C284(vA01_varTableName)

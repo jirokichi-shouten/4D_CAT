@@ -12,21 +12,29 @@ C_LONGINT:C283($numOfTables; $i)
 DELETE FROM ARRAY:C228(vA01_lstT; 1; Size of array:C274(vA01_lstT))
 DELETE FROM ARRAY:C228(vA01_lstT_nr; 1; Size of array:C274(vA01_lstT_nr))
 DELETE FROM ARRAY:C228(vA01_lstT_name; 1; Size of array:C274(vA01_lstT_name))
+DELETE FROM ARRAY:C228(vA01_lstT_label; 1; Size of array:C274(vA01_lstT_label))
+DELETE FROM ARRAY:C228(vA01_lstT_prefix; 1; Size of array:C274(vA01_lstT_prefix))
 DELETE FROM ARRAY:C228(vA01_lstT_numOfRecs; 1; Size of array:C274(vA01_lstT_numOfRecs))
 
 $numOfTables:=Get last table number:C254
 For ($i; 1; $numOfTables)
 	
 	If (Is table number valid:C999($i)=True:C214)
-		APPEND TO ARRAY:C911(vA01_lstT_nr; $i)
+		APPEND TO ARRAY:C911(vA01_lstT_nr; $i)  //番号
 		
 		$table_name:=Table name:C256($i)
-		APPEND TO ARRAY:C911(vA01_lstT_name; $table_name)
+		APPEND TO ARRAY:C911(vA01_lstT_name; $table_name)  //テーブル名
+		
+		$label:=JCL_fields_cache_TableLabel($table_name)
+		APPEND TO ARRAY:C911(vA01_lstT_label; $label)  //テーブルラベル
+		
+		$tbl_prefix:=JCL_tbl_GetPrefix_fromStructure($table_name)
+		APPEND TO ARRAY:C911(vA01_lstT_prefix; $tbl_prefix)  //プレフィックス
 		
 		$tblPtr:=Table:C252($i)
 		ALL RECORDS:C47($tblPtr->)
 		$numOfRecs:=Records in selection:C76($tblPtr->)
-		APPEND TO ARRAY:C911(vA01_lstT_numOfRecs; $numOfRecs)
+		APPEND TO ARRAY:C911(vA01_lstT_numOfRecs; $numOfRecs)  //レコード数
 		
 	End if 
 End for 

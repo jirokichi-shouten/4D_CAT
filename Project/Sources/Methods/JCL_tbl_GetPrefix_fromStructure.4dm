@@ -19,6 +19,8 @@ For ($i; 1; $numOfTables)
 	If ($isValid=True:C214)
 		If ($tableName=Table name:C256($i))
 			$fieldName:=Field name:C257($i; 1)
+			
+			//最初のアンダースコアより前の文字列をプリフィックスとする
 			$pos:=Position:C15("_"; $fieldName)
 			$prefix:=Substring:C12($fieldName; 1; $pos-1)
 			

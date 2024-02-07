@@ -46,10 +46,10 @@
 			"objects": {
 				"Rectangle1": {
 					"type": "rectangle",
-					"top": 0,
+					"top": 40,
 					"left": 0,
 					"width": 1152,
-					"height": 48,
+					"height": 8,
 					"sizingX": "grow",
 					"stroke": "#FFFFFF",
 					"fill": "#c0c0c0"
@@ -65,7 +65,7 @@
 				},
 				"vJCL_D02_btnClose": {
 					"type": "button",
-					"top": 14,
+					"top": 10,
 					"left": 1090,
 					"width": 42,
 					"height": 26,
@@ -912,7 +912,7 @@
 		"version": "1",
 		"kind": "form"
 	},
-	"geometryStamp": 351,
+	"geometryStamp": 361,
 	"editor": {
 		"activeView": "View 1",
 		"defaultView": "View 1",
