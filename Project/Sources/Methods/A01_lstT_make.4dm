@@ -8,6 +8,12 @@ C_TEXT:C284($table_name)
 C_LONGINT:C283($numOfRecs)
 C_LONGINT:C283($numOfTables; $i)
 
+//配列初期化
+DELETE FROM ARRAY:C228(vA01_lstT; 1; Size of array:C274(vA01_lstT))
+DELETE FROM ARRAY:C228(vA01_lstT_nr; 1; Size of array:C274(vA01_lstT_nr))
+DELETE FROM ARRAY:C228(vA01_lstT_name; 1; Size of array:C274(vA01_lstT_name))
+DELETE FROM ARRAY:C228(vA01_lstT_numOfRecs; 1; Size of array:C274(vA01_lstT_numOfRecs))
+
 $numOfTables:=Get last table number:C254
 For ($i; 1; $numOfTables)
 	

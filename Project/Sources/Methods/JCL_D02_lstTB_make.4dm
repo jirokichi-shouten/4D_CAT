@@ -7,11 +7,14 @@ C_TEXT:C284($1; $block)
 $block:=$1
 C_TEXT:C284($2; $status)
 $status:=$2
+C_LONGINT:C283($3; $nr)
+$nr:=$3
 C_TEXT:C284($fieleBlock)
 C_LONGINT:C283($i; $numOfLines)
 C_LONGINT:C283($numOfLines; $numOfItems)
 ARRAY TEXT:C222($aryLines; 0)
 ARRAY TEXT:C222($aryItems; 0)
+C_LONGINT:C283($tblNr)
 
 If ($block#"")
 	$block:=JCL_str_ReplaceReturn($block)  //改行コードをLFに統一
@@ -20,7 +23,14 @@ If ($block#"")
 	//最初の要素はテーブル情報
 	$numOfItems:=JCL_str_Extract($aryLines{1}; Char:C90(Tab:K15:37); ->$aryItems)
 	If ($numOfItems>5)
-		APPEND TO ARRAY:C911(vJCL_D02_lstTB_status; $status)  //fields情報ステータス：exist, temporary
+		If ($aryItems{1}#"")
+			//テーブルが作成されているか？
+			$tblNr:=JCL_tbl_GetNumber($aryItems{1})
+			If ($tblNr#0)
+				$status:=String:C10($tblNr)
+			End if 
+		End if 
+		APPEND TO ARRAY:C911(vJCL_D02_lstTB_status; $status)  //fields情報ステータス：Nr, NA, temporary
 		APPEND TO ARRAY:C911(vJCL_D02_lstTB_error; "")  //エラー文字
 		APPEND TO ARRAY:C911(vJCL_D02_lstTB_NAME; $aryItems{1})  // テーブル名
 		APPEND TO ARRAY:C911(vJCL_D02_lstTB_PREFIX; $aryItems{2})  // プリフィックス

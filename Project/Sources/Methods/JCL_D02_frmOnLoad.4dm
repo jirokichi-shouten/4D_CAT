@@ -3,6 +3,12 @@
 //20240116 wat
 //オンロード
 
+//
+C_LONGINT:C283($i; $sizeOfAry)
+ARRAY TEXT:C222($aryBlocks; 0)
+JCL_D02_fields_load(->$aryBlocks)
+$sizeOfAry:=Size of array:C274($aryBlocks)
+
 //frmDefInit
 C_TEXT:C284(vJCL_D02_txtTitle)
 OBJECT SET TITLE:C194(*; "vJCL_D02_txtTitle"; "fields.txt")
@@ -49,13 +55,9 @@ DELETE FROM ARRAY:C228(vJCL_D20_lstTB_BakColor; 1; Size of array:C274(vJCL_D20_l
 DELETE FROM ARRAY:C228(vJCL_D20_lstTB_FontColor; 1; Size of array:C274(vJCL_D20_lstTB_FontColor))
 
 //load values
-C_LONGINT:C283($i; $sizeOfAry)
-ARRAY TEXT:C222($aryBlocks; 0)
-JCL_D02_fields_load(->$aryBlocks)
-$sizeOfAry:=Size of array:C274($aryBlocks)
 For ($i; 1; $sizeOfAry)
 	//テーブル情報
-	JCL_D02_lstTB_make($aryBlocks{$i}; "exist")
+	//JCL_D02_lstTB_make($aryBlocks{$i}; "NA"; $i)  //default status="NA"
 	
 	//フィールド情報
 	//JCL_D02_lstFL_make($aryBlocks$i})

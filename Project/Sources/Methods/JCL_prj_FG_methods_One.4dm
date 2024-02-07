@@ -85,7 +85,8 @@ $folderPath:=JCL_file_MakeFilePath(Get 4D folder:C485(Database folder:K5:14); "P
 $folderPath:=JCL_file_MakeFilePath($folderPath; "Sources")
 $folderPath:=JCL_file_MakeFilePath($folderPath; "Methods")
 $outFilePath:=JCL_file_MakeFilePath($folderPath; $methodName+".4dm")
-TEXT TO DOCUMENT:C1237($outFilePath; $newmethod)
+//TEXT TO DOCUMENT($outFilePath; $newmethod)
+JCL_file_Text2Document($outFilePath; $newmethod)
 
 C_TEXT:C284($m)
 $m:="JCL_prj_FG_methods_One"

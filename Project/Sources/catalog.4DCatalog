@@ -2,6 +2,53 @@
 <!DOCTYPE base SYSTEM "http://www.4d.com/dtd/2007/base.dtd" >
 <base name="JCL4D_v20" uuid="DAA4C825FB044A1FA494F50E1DC454DC" collation_locale="ja">
 	<schema name="DEFAULT_SCHEMA"/>
+	<table name="Z_KeyNValue" uuid="10C4B0FFDD1A4A82998FCECDB2137074" id="1" leave_tag_on_delete="true" prevent_journaling="true">
+		<field name="KN_ID" uuid="1F2764E0381B4815AB3D289BAFA829D8" type="4" not_null="true" id="1"/>
+		<field name="KN_KEY" uuid="9A2EAD339CE640B79A78AEC0CE3A4083" type="10" limiting_length="80" not_null="true" id="2"/>
+		<field name="KN_CODE" uuid="3AE2A5469A304609882F5D4F51F71D40" type="10" limiting_length="80" not_null="true" id="3"/>
+		<field name="KN_VALUE" uuid="9B4F786F0AB54E838EAB0A45EDFD31E2" type="10" not_null="true" id="4"/>
+		<field name="KN_LONG_VALUE" uuid="F146705CDD2C49DE8262A3042E656E1E" type="4" not_null="true" id="5"/>
+		<field name="KN_SORT_ORDER" uuid="B3F5DABB2E1546A39539F2DDDF0AFB83" type="4" not_null="true" id="6"/>
+		<field name="KN_DEL_FLAG" uuid="A7C1231718D4439BB596F5E7802C6E5D" type="4" not_null="true" id="7"/>
+	</table>
+	<table name="Z_KeyValue" uuid="09F72442E1B2403096A3AA51EB43DED0" id="2" leave_tag_on_delete="true" prevent_journaling="true">
+		<field name="KV_ID" uuid="984495EAC93F47D0B5D0DDDF6917F6C6" type="4" not_null="true" id="1"/>
+		<field name="KV_KEY" uuid="B1B81C93E6FF4117A9971FB9409A4359" type="10" limiting_length="80" not_null="true" id="2"/>
+		<field name="KV_VALUE" uuid="A3E5177DAB2C43C0994E9860875B7100" type="10" not_null="true" id="3"/>
+		<field name="KV_LONG_VALUE" uuid="DD25645AB89548DB80BEB5F3F78BDB7E" type="4" not_null="true" id="4"/>
+		<field name="KV_DEL_FLAG" uuid="6F67C24024E64F38A07908C824FF1A5D" type="4" not_null="true" id="5"/>
+	</table>
+	<table name="(USERS)" uuid="BF30AD00DE0949079CD639D7468D2FDF" id="3" leave_tag_on_delete="true" hide_in_REST="true" prevent_journaling="true">
+		<field name="US_ID" uuid="A75957812D7049A389E454045060F980" type="4" not_null="true" id="1"/>
+		<field name="US_NAME" uuid="75AED098E6C64B15AF0BC4857650E21F" type="10" limiting_length="80" not_null="true" id="2"/>
+		<field name="US_EMAIL" uuid="74D938C7E6BC4229BECE49575E159444" type="10" limiting_length="255" not_null="true" id="3"/>
+		<field name="US_EMAIL_VERIFIED_AT" uuid="47511A7B8DE94135B6D529DADCAA9895" type="10" limiting_length="20" not_null="true" id="4"/>
+		<field name="US_PASSWORD" uuid="2547F840F168433AAB6F74D8E898C14A" type="10" limiting_length="255" not_null="true" id="5"/>
+		<field name="US_REMEMBER_TOKEN" uuid="924EE5B5AA364A3B9F0554817E498278" type="10" limiting_length="255" not_null="true" id="6"/>
+		<field name="US_CREATE_AT" uuid="24C600A39ADF44CF816F7DADF7EB9C53" type="10" limiting_length="20" not_null="true" id="7"/>
+		<field name="US_UPDATE_AT" uuid="910CC6090BF54B9EA031073D5F21D394" type="10" limiting_length="20" not_null="true" id="8"/>
+		<field name="US_DEL_FLAG" uuid="9AB3C10489174C34B544D6BE82795B70" type="4" not_null="true" id="9"/>
+		<table_extra trashed="true"/>
+	</table>
+	<table name="PASSWORD_RESETS" uuid="7BE7CF7854064A1C9CE2D1CF6FF8695D" id="4" leave_tag_on_delete="true" prevent_journaling="true">
+		<field name="PR_ID" uuid="4D21E0B9BECF481A803CCF6363CDAB8A" type="4" not_null="true" id="1"/>
+		<field name="PR_US_ID" uuid="B38B34F328E543A39E17182336359B6A" type="4" not_null="true" id="2"/>
+		<field name="PR_EMAIL" uuid="09907349B73A43E89C2DA83B8821B14B" type="10" limiting_length="255" not_null="true" id="3"/>
+		<field name="PR_TOKEN" uuid="126A3A0774BB4A1D93D4734139C24F26" type="10" limiting_length="255" not_null="true" id="4"/>
+		<field name="PR_CREATE_AT" uuid="8F435EE6C5644ABEA4A0C5FDEAB86370" type="10" limiting_length="20" not_null="true" id="5"/>
+		<field name="PR_DEL_FLAG" uuid="99930DFB16764210AEFA043207909108" type="4" not_null="true" id="6"/>
+	</table>
+	<table name="USERS" uuid="BD0ADE64A8704540B1DEA6DD2638A5BE" id="5" leave_tag_on_delete="true" prevent_journaling="true">
+		<field name="US_ID" uuid="08A3CBBB9E3746A1A82B0A4257A9BAD2" type="4" not_null="true" id="1"/>
+		<field name="US_NAME" uuid="E2415B96770646829596EDEEF68A8CF9" type="10" limiting_length="80" not_null="true" id="2"/>
+		<field name="US_EMAIL" uuid="DEA1CC0F6B9C4D6B9DE356B5F6FB9AB3" type="10" limiting_length="255" not_null="true" id="3"/>
+		<field name="US_EMAIL_VERIFIED_AT" uuid="70960C22C6584D929BE3AD3FB928197D" type="10" limiting_length="20" not_null="true" id="4"/>
+		<field name="US_PASSWORD" uuid="2D2459D9E0F44C9180563CF002A928A0" type="10" limiting_length="255" not_null="true" id="5"/>
+		<field name="US_REMEMBER_TOKEN" uuid="08FB1C0C0CE74805961D0A31CF9FFE11" type="10" limiting_length="255" not_null="true" id="6"/>
+		<field name="US_CREATE_AT" uuid="2C83EC7A99EA4BBD90D5C30FA8ABD89C" type="10" limiting_length="20" not_null="true" id="7"/>
+		<field name="US_UPDATE_AT" uuid="2CC655858C62473399E4560BC2016FC0" type="10" limiting_length="20" not_null="true" id="8"/>
+		<field name="US_DEL_FLAG" uuid="7A9A6155F5B54C68B94B749787213B82" type="4" not_null="true" id="9"/>
+	</table>
 	<base_extra>
 		<journal_file journal_file_enabled="true"/>
 	</base_extra>

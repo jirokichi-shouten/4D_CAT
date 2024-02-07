@@ -9,7 +9,7 @@ C_TEXT:C284($fileText)
 C_LONGINT:C283($errFlag)
 C_LONGINT:C283($i; $numOfTables)
 
-//定義ファイルを選択
+//定義ファイル（fieldsフォーマット）を選択
 $dlg_ok:=JCL_file_SelectFileDlg(->$fileBlob)
 If ($dlg_ok=1)
 	//読み込んだファイルの内容を4Dの文字セットにエンコード
@@ -21,7 +21,7 @@ If ($dlg_ok=1)
 	$errFlag:=JCL_tbl_Check_fieldsFile($fileText)
 	If ($errFlag=0)
 		//一時テーブルを削除
-		JCL_D02_lstTB_remove_temporary
+		JCL_D02_lstTB_remove_all
 		
 		$numOfTables:=JCL_tbl_Blocks_fromFile($fileText; ->$aryBlock)
 		For ($i; 1; $numOfTables)

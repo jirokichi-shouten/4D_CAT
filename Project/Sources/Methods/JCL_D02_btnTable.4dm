@@ -15,7 +15,7 @@ $sizeOfAry:=Size of array:C274(vJCL_D02_lstTB_status)
 For ($i; 1; $sizeOfAry)
 	//ステータスで未作成を判断
 	$status:=vJCL_D02_lstTB_status{$i}
-	If ($status="temporary")
+	If (($status="temporary") | ($status="NA"))
 		//テーブル作成
 		$block:=vJCL_D02_lstTB_Block{$i}
 		

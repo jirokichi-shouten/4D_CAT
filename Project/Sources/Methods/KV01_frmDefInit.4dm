@@ -1,0 +1,18 @@
+//KV01_frmDefInit
+//FG v202103 2024/02/07 17:31:34
+//Z_KeyValue プロセス変数宣言・初期化
+
+C_TEXT(vKV01_varNumOfRecs)
+
+// リストボックス用配列
+ARRAY BOOLEAN(vKV01_lstKV;0)//リストボックス自身
+
+ARRAY LONGINT(vKV01_lstKV_ID;0)
+ARRAY TEXT(vKV01_lstKV_KEY;0)
+ARRAY TEXT(vKV01_lstKV_VALUE;0)
+ARRAY LONGINT(vKV01_lstKV_LONG_VALUE;0)
+ARRAY LONGINT(vKV01_lstKV_DEL_FLAG;0)
+
+  // ソート順を覚えるため
+ARRAY TEXT(vKV01_lstKV_HeaderNames;0)
+ARRAY LONGINT(vKV01_lstKV_SortOrders;0)

@@ -17,8 +17,8 @@ $dlgOk:=JCL_D01_Display
 If ($dlgOk=1)
 	//フォームのサイズを返す
 	$objFrm.tblName:=vJCL_D01_objFrm.tblName
-	$objFrm.width:=vJCL_D01_objFrm.width
-	$objFrm.height:=vJCL_D01_objFrm.height
+	//$objFrm.width:=vJCL_D01_objFrm.width
+	//$objFrm.height:=vJCL_D01_objFrm.height
 	$objFrm.color_text:=vJCL_D01_objFrm.color_text
 	
 End if 

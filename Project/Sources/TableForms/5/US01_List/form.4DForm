@@ -1,0 +1,396 @@
+{
+	"destination": "detailScreen",
+	"width": 1042,
+	"height": 576,
+	"windowMinHeight": 178,
+	"events": [
+		"onLoad",
+		"onValidate",
+		"onClick",
+		"onHeader",
+		"onDoubleClick",
+		"onDrop",
+		"onDataChange",
+		"onAfterKeystroke",
+		"onAfterEdit",
+		"onBeginDragOver",
+		"onPageChange"
+	],
+	"method": "method.4dm",
+	"pages": [
+		null,
+		{
+			"objects": {
+								"vUS01_rectTitle": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 0,
+					"width": 1042,
+					"height": 55,
+					"fill": "#7C4C69",
+					"stroke": "#7C4C69"
+				},
+				"vUS01_txtTitle": {
+					"type": "text",
+					"top": 16,
+					"left": 20,
+					"width": 192,
+					"height": 26,
+					"class": "JCL_Maryo16B",
+					"text": "ログインユーザ一覧"
+				}
+,
+								"vUS01_btnAdd": {
+					"type": "pictureButton",
+					"top": 64,
+					"left": 20,
+					"width": 26,
+					"height": 26,
+					"dataSource": "vUS01_btnAdd",
+					"rowCount": 4,
+					"picture": "/RESOURCES/JCL4D_Resources/pictures/plus_rectangle.png",
+					"switchBackWhenReleased": true,
+					"method": "ObjectMethods/vUS01_btnAdd.4dm",
+					"events": [
+						"onClick"
+					]
+				}
+,
+								"vUS01_btnMod": {
+					"type": "pictureButton",
+					"top": 64,
+					"left": 68,
+					"width": 26,
+					"height": 26,
+					"dataSource": "vUS01_btnMod",
+					"rowCount": 4,
+					"picture": "/RESOURCES/JCL4D_Resources/pictures/square_and_pencil_w.png",
+					"switchBackWhenReleased": true,
+					"method": "ObjectMethods/vUS01_btnMod.4dm",
+					"events": [
+						"onClick"
+					]
+				}
+,
+								"vUS01_btnDel": {
+					"type": "pictureButton",
+					"top": 64,
+					"left": 162,
+					"width": 26,
+					"height": 26,
+					"dataSource": "vUS01_btnDel",
+					"rowCount": 4,
+					"picture": "/RESOURCES/JCL4D_Resources/pictures/minus_rectangle.png",
+					"switchBackWhenReleased": true,
+				"method": "ObjectMethods/vUS01_btnDel.4dm",
+					"events": [
+						"onClick"
+					]
+				}
+,
+								"vUS01_btnClose": {
+					"type": "button",
+					"top": 10,
+					"left": 980,
+					"width": 42,
+					"height": 26,
+					"dataSource": "vUS01_btnClose",
+					"action": "cancel",
+					"shortcutKey": "w",
+					"shortcutAccel": true,
+					"text": "X",
+					"class": "JCL_Maryo16",
+					"events": [
+						"onClick"
+					]
+				}
+,
+								"vUS01_btnExport": {
+					"type": "pictureButton",
+					"top": 64,
+					"left": 880,
+					"width": 26,
+					"height": 26,
+					"dataSource": "vUS01_btnExport",
+					"rowCount": 4,
+					"picture": "/RESOURCES/JCL4D_Resources/pictures/square_and_arrow_down.png",
+					"switchBackWhenReleased": true,
+					"method": "ObjectMethods/vUS01_btnExport.4dm",
+					"events": [
+						"onClick"
+					]
+				}
+,
+								"vUS01_varNumOfRecs": {
+					"type": "input",
+					"top": 73,
+					"left": 914,
+					"width": 110,
+					"height": 17,
+					"dataSource": "vUS01_varNumOfRecs",
+					"class": "JCL_Meiryo12",
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"enterable": false,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				}
+,
+				"vUS01_lstUS": {
+	"type": "listbox",
+	"top": 94,
+	"left": 20,
+	"width": 1002,
+	"height": 472,
+	"sizingX": "grow",
+	"sizingY": "grow",
+	"resizingMode": "legacy",
+	"dataSource": "vUS01_lstUS",
+	"rowHeight": "20px",
+	"rowHeightAutoMin": "20px",
+	"rowHeightAutoMax": "20px",
+	"class": "JCL_Meiryo12",
+	"method": "ObjectMethods/vUS01_lstUS.4dm",
+	"events": [
+		"onClick",
+		"onDoubleClick",
+		"onDataChange",
+		"onSelectionChange",
+		"onHeaderClick"
+	],
+	"columns": [
+	{
+	"name": "vUS01_lstUS_ID",
+	"dataSource": "vUS01_lstUS_ID",
+	"width": 42,
+	"enterable": false,
+	"truncateMode": "none",
+	"class": "JCL_Meiryo12",
+	"events": [
+		"onClick",
+		"onDataChange"
+	],
+	"header": {
+		"name": "vUS01_lhdUS_ID",
+		"text": "US_ID",
+		"dataSource": "vUS01_lhdUS_ID",
+		"class": "JCL_Meiryo10"
+	},
+	"footer": {
+		"name": "vUS01_lftUS_ID",
+		"dataSource": "vUS01_lftUS_ID",
+		"timeFormat": "hh_mm_ss",
+		"class": "JCL_Meiryo12"
+	}
+}
+,{
+	"name": "vUS01_lstUS_NAME",
+	"dataSource": "vUS01_lstUS_NAME",
+	"width": 80,
+	"enterable": false,
+	"truncateMode": "none",
+	"class": "JCL_Meiryo12",
+	"events": [
+		"onClick",
+		"onDataChange"
+	],
+	"header": {
+		"name": "vUS01_lhdUS_NAME",
+		"text": "US_NAME",
+		"dataSource": "vUS01_lhdUS_NAME",
+		"class": "JCL_Meiryo10"
+	},
+	"footer": {
+		"name": "vUS01_lftUS_NAME",
+		"dataSource": "vUS01_lftUS_NAME",
+		"timeFormat": "hh_mm_ss",
+		"class": "JCL_Meiryo12"
+	}
+}
+,{
+	"name": "vUS01_lstUS_EMAIL",
+	"dataSource": "vUS01_lstUS_EMAIL",
+	"width": 255,
+	"enterable": false,
+	"truncateMode": "none",
+	"class": "JCL_Meiryo12",
+	"events": [
+		"onClick",
+		"onDataChange"
+	],
+	"header": {
+		"name": "vUS01_lhdUS_EMAIL",
+		"text": "US_EMAIL",
+		"dataSource": "vUS01_lhdUS_EMAIL",
+		"class": "JCL_Meiryo10"
+	},
+	"footer": {
+		"name": "vUS01_lftUS_EMAIL",
+		"dataSource": "vUS01_lftUS_EMAIL",
+		"timeFormat": "hh_mm_ss",
+		"class": "JCL_Meiryo12"
+	}
+}
+,{
+	"name": "vUS01_lstUS_EMAIL_VERIFIED_AT",
+	"dataSource": "vUS01_lstUS_EMAIL_VERIFIED_AT",
+	"width": 20,
+	"enterable": false,
+	"truncateMode": "none",
+	"class": "JCL_Meiryo12",
+	"events": [
+		"onClick",
+		"onDataChange"
+	],
+	"header": {
+		"name": "vUS01_lhdUS_EMAIL_VERIFIED_AT",
+		"text": "US_EMAIL_VERIFIED_AT",
+		"dataSource": "vUS01_lhdUS_EMAIL_VERIFIED_AT",
+		"class": "JCL_Meiryo10"
+	},
+	"footer": {
+		"name": "vUS01_lftUS_EMAIL_VERIFIED_AT",
+		"dataSource": "vUS01_lftUS_EMAIL_VERIFIED_AT",
+		"timeFormat": "hh_mm_ss",
+		"class": "JCL_Meiryo12"
+	}
+}
+,{
+	"name": "vUS01_lstUS_PASSWORD",
+	"dataSource": "vUS01_lstUS_PASSWORD",
+	"width": 255,
+	"enterable": false,
+	"truncateMode": "none",
+	"class": "JCL_Meiryo12",
+	"events": [
+		"onClick",
+		"onDataChange"
+	],
+	"header": {
+		"name": "vUS01_lhdUS_PASSWORD",
+		"text": "US_PASSWORD",
+		"dataSource": "vUS01_lhdUS_PASSWORD",
+		"class": "JCL_Meiryo10"
+	},
+	"footer": {
+		"name": "vUS01_lftUS_PASSWORD",
+		"dataSource": "vUS01_lftUS_PASSWORD",
+		"timeFormat": "hh_mm_ss",
+		"class": "JCL_Meiryo12"
+	}
+}
+,{
+	"name": "vUS01_lstUS_REMEMBER_TOKEN",
+	"dataSource": "vUS01_lstUS_REMEMBER_TOKEN",
+	"width": 255,
+	"enterable": false,
+	"truncateMode": "none",
+	"class": "JCL_Meiryo12",
+	"events": [
+		"onClick",
+		"onDataChange"
+	],
+	"header": {
+		"name": "vUS01_lhdUS_REMEMBER_TOKEN",
+		"text": "US_REMEMBER_TOKEN",
+		"dataSource": "vUS01_lhdUS_REMEMBER_TOKEN",
+		"class": "JCL_Meiryo10"
+	},
+	"footer": {
+		"name": "vUS01_lftUS_REMEMBER_TOKEN",
+		"dataSource": "vUS01_lftUS_REMEMBER_TOKEN",
+		"timeFormat": "hh_mm_ss",
+		"class": "JCL_Meiryo12"
+	}
+}
+,{
+	"name": "vUS01_lstUS_CREATE_AT",
+	"dataSource": "vUS01_lstUS_CREATE_AT",
+	"width": 20,
+	"enterable": false,
+	"truncateMode": "none",
+	"class": "JCL_Meiryo12",
+	"events": [
+		"onClick",
+		"onDataChange"
+	],
+	"header": {
+		"name": "vUS01_lhdUS_CREATE_AT",
+		"text": "US_CREATE_AT",
+		"dataSource": "vUS01_lhdUS_CREATE_AT",
+		"class": "JCL_Meiryo10"
+	},
+	"footer": {
+		"name": "vUS01_lftUS_CREATE_AT",
+		"dataSource": "vUS01_lftUS_CREATE_AT",
+		"timeFormat": "hh_mm_ss",
+		"class": "JCL_Meiryo12"
+	}
+}
+,{
+	"name": "vUS01_lstUS_UPDATE_AT",
+	"dataSource": "vUS01_lstUS_UPDATE_AT",
+	"width": 20,
+	"enterable": false,
+	"truncateMode": "none",
+	"class": "JCL_Meiryo12",
+	"events": [
+		"onClick",
+		"onDataChange"
+	],
+	"header": {
+		"name": "vUS01_lhdUS_UPDATE_AT",
+		"text": "US_UPDATE_AT",
+		"dataSource": "vUS01_lhdUS_UPDATE_AT",
+		"class": "JCL_Meiryo10"
+	},
+	"footer": {
+		"name": "vUS01_lftUS_UPDATE_AT",
+		"dataSource": "vUS01_lftUS_UPDATE_AT",
+		"timeFormat": "hh_mm_ss",
+		"class": "JCL_Meiryo12"
+	}
+}
+,{
+	"name": "vUS01_lstUS_DEL_FLAG",
+	"dataSource": "vUS01_lstUS_DEL_FLAG",
+	"width": 42,
+	"enterable": false,
+	"truncateMode": "none",
+	"class": "JCL_Meiryo12",
+	"events": [
+		"onClick",
+		"onDataChange"
+	],
+	"header": {
+		"name": "vUS01_lhdUS_DEL_FLAG",
+		"text": "US_DEL_FLAG",
+		"dataSource": "vUS01_lhdUS_DEL_FLAG",
+		"class": "JCL_Meiryo10"
+	},
+	"footer": {
+		"name": "vUS01_lftUS_DEL_FLAG",
+		"dataSource": "vUS01_lftUS_DEL_FLAG",
+		"timeFormat": "hh_mm_ss",
+		"class": "JCL_Meiryo12"
+	}
+}
+
+	]
+}
+
+				
+			}
+		}
+	],
+	"geometryStamp": 2,
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	}
+}

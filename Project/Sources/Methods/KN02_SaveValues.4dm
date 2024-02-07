@@ -1,0 +1,12 @@
+//KN02_SaveValues
+//FG v202103 2024/02/07 18:10:39
+//Z_KeyNValue プロセス変数の値をレコードに保存
+
+
+[Z_KeyNValue]KN_ID:=vKN02_varKN_ID
+[Z_KeyNValue]KN_KEY:=vKN02_varKN_KEY
+[Z_KeyNValue]KN_CODE:=vKN02_varKN_CODE
+[Z_KeyNValue]KN_VALUE:=vKN02_varKN_VALUE
+[Z_KeyNValue]KN_LONG_VALUE:=vKN02_varKN_LONG_VALUE
+[Z_KeyNValue]KN_SORT_ORDER:=vKN02_varKN_SORT_ORDER
+[Z_KeyNValue]KN_DEL_FLAG:=vKN02_varKN_DEL_FLAG

@@ -17,7 +17,7 @@ C_TEXT:C284($msg)
 //リソースフォルダからフィールズを読み込む
 $folderPath:=JCL_file_MakeFilePath(Get 4D folder:C485(Database folder:K5:14); "Resources")
 $folderPath:=JCL_file_MakeFilePath($folderPath; "JCL4D_Resources")
-$filePath:=JCL_file_MakeFilePath($folderPath; "fields.txt")
+$filePath:=JCL_file_MakeFilePath($folderPath; "field_labels.txt")  //20240207
 
 $fileText:=Document to text:C1236($filePath; UTF8 text without length:K22:17)
 

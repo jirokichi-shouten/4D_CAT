@@ -64,11 +64,11 @@
 						"onClick"
 					],
 					"dataSource": "vA01_btnDesignMode",
-					"shortcutAccel": false,
+					"shortcutAccel": true,
 					"shortcutControl": false,
-					"shortcutShift": false,
+					"shortcutShift": true,
 					"shortcutAlt": false,
-					"shortcutKey": "[Esc]",
+					"shortcutKey": "w",
 					"action": "cancel",
 					"class": "JCL_YuGothic12"
 				},
@@ -116,9 +116,10 @@
 					"height": 330,
 					"events": [
 						"onClick",
-						"onHeaderClick",
+						"onDoubleClick",
 						"onDataChange",
-						"onSelectionChange"
+						"onSelectionChange",
+						"onHeaderClick"
 					],
 					"dataSource": "vA01_lstT",
 					"sizingY": "grow",
@@ -252,7 +253,7 @@
 			}
 		}
 	],
-	"geometryStamp": 230,
+	"geometryStamp": 232,
 	"editor": {
 		"activeView": "View 1",
 		"defaultView": "View 1",

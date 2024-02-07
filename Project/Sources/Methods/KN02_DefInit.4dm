@@ -1,0 +1,15 @@
+//KN02_DefInit
+//FG v202103 2024/02/07 18:10:39
+//Z_KeyNValue プロセス変数宣言・初期化
+
+//モード
+C_TEXT(vKN02_varMode)
+
+//入力用プロセス変数
+C_LONGINT(vKN02_varKN_ID)
+C_TEXT(vKN02_varKN_KEY)
+C_TEXT(vKN02_varKN_CODE)
+C_TEXT(vKN02_varKN_VALUE)
+C_LONGINT(vKN02_varKN_LONG_VALUE)
+C_LONGINT(vKN02_varKN_SORT_ORDER)
+C_LONGINT(vKN02_varKN_DEL_FLAG)
