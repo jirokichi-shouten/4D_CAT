@@ -5,6 +5,7 @@
 //20240114 yabe wat テーブル区切りはアンダースコアではなくハイフンに統一
 
 C_TEXT:C284($folderPath; $filePath)
+C_TEXT:C284($fileText)
 C_LONGINT:C283($i; $numOfLines)
 C_TEXT:C284($fldName; $label; $prefix)
 ARRAY TEXT:C222(vJCL_fields_tblName; 0)

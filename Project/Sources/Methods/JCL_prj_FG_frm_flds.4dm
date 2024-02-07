@@ -47,7 +47,7 @@ For ($i; 1; $sizeOfAry)
 	$body_flds:=Replace string:C233($body_flds; "[--LABEL]"; $label)
 	
 	//フィールド位置
-	$objFldPos:=JCL_prj_fg_fldNextPos($objFldPos)
+	$objFldPos:=JCL_prj_fg_fldNextPos($objFldPos; 90)  //20240201 90はトップの戻るところ 
 	$body_flds:=Replace string:C233($body_flds; "[--FIELD_TOP]"; String:C10($objFldPos.top))
 	$body_flds:=Replace string:C233($body_flds; "[--FIELD_LEFT]"; String:C10($objFldPos.left))
 	$body_flds:=Replace string:C233($body_flds; "[--FIELD_LABEL_LEFT]"; String:C10($objFldPos.label_left))

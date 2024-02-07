@@ -435,7 +435,7 @@
 				"vJCL_D02_varNumOfTables": {
 					"type": "input",
 					"top": 68,
-					"left": 48,
+					"left": 6,
 					"width": 179,
 					"height": 18,
 					"dataSource": "vJCL_D02_varNumOfTables",
@@ -464,8 +464,8 @@
 				},
 				"vJCL_D02_btnImport": {
 					"type": "button",
-					"top": 14,
-					"left": 754,
+					"top": 58,
+					"left": 154,
 					"width": 90,
 					"height": 26,
 					"dataSource": "vJCL_D02_btnImport",
@@ -888,6 +888,22 @@
 					"events": [
 						"onDataChange"
 					]
+				},
+				"vJCL_D02_btnTable": {
+					"type": "button",
+					"top": 58,
+					"left": 274,
+					"width": 90,
+					"height": 26,
+					"dataSource": "vJCL_D02_btnTable",
+					"shortcutKey": "n",
+					"shortcutAccel": true,
+					"text": "テーブル作成",
+					"class": "JCL_YuGothic12",
+					"method": "ObjectMethods/vJCL_D02_btnTable.4dm",
+					"events": [
+						"onClick"
+					]
 				}
 			}
 		}
@@ -896,7 +912,7 @@
 		"version": "1",
 		"kind": "form"
 	},
-	"geometryStamp": 275,
+	"geometryStamp": 351,
 	"editor": {
 		"activeView": "View 1",
 		"defaultView": "View 1",

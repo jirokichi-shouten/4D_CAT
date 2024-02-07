@@ -1,0 +1,209 @@
+﻿1001	INVALID ARGUMENT
+1002	INVALID INTERNAL STATE
+1003	SQL SERVER IS NOT RUNNING
+1004	Access denied
+1005	FAILED TO LOCK SYNCHRONIZATION PRIMITIVE
+1006	FAILED TO UNLOCK SYNCHRONIZATION PRIMITIVE
+1007	SQL SERVER IS NOT AVAILABLE
+1008	COMPONENT BRIDGE IS NOT AVAILABLE
+1009	REMOTE SQL SERVER IS NOT AVAILABLE
+1010	EXECUTION INTERRUPTED BY USER
+1101	Table '{key1}' does not exist in the database.
+1102	Column '{key1}' does not exist.
+1103	Table '{key1}' is not declared in the FROM clause.
+1104	Column name reference '{key1}' is ambiguous.
+1105	Table alias '{key1}' is the same as table name.
+1106	Duplicate table alias - '{key1}'.
+1107	Duplicate table in the FROM clause - '{key1}'.
+1108	Operation {key1} {key2} {key3} is not type safe.
+1109	Invalid ORDER BY index - {key1}.
+1110	Function {key1} expects one parameter, not {key2}.
+1111	Parameter {key1} of type {key2} in function call {key3} is not implicitly convertible to {key4}.
+1112	Unknown function - {key1}.
+1113	Division by zero.
+1114	Sorting by indexed item in the SELECT list is not allowed - ORDER BY item {key1}.
+1115	DISTINCT NOT ALLOWED
+1116	Nested aggregate functions are not allowed in the aggregate function {key1}.
+1117	Column function is not allowed.
+1118	Cannot mix column and scalar operations.
+1119	Invalid GROUP BY index - {key1}.
+1120	GROUP BY index is not allowed.
+1121	GROUP BY is not allowed with 'SELECT * FROM ...'.
+1122	HAVING is not an aggregate expression.
+1123	Column '{key1}' is not a grouping column and cannot be used in the ORDER BY clause.
+1124	Cannot mix {key1} and {key2} types in the IN predicate.
+1125	Escape sequence '{key1}' in the LIKE predicate is too long. It must be exactly one character.
+1126	Bad escape character - '{key1}'.
+1127	Unknown escape sequence - '{key1}'.
+1128	Column references from more than one query in aggregate function {key1} are not allowed.
+1129	Scalar item in the SELECT list is not allowed when GROUP BY clause is present.
+1130	Sub-query produces more than one column.
+1131	Subquery must return one row at the most but instead it returns {key1}.
+1132	INSERT value count {key1} does not match column count {key2}.
+1133	Duplicate column reference in the INSERT list - '{key1}'.
+1134	Column '{key1}' does not allow NULL values.
+1135	Duplicate column reference in the UPDATE list - '{key1}'.
+1136	Table '{key1}' already exists.
+1137	Duplicate column '{key1}' in the CREATE TABLE command.
+1138	DUPLICATE COLUMN IN COLUMN LIST
+1139	More than one primary key is not allowed.
+1140	Ambiguous foreign key name - '{key1}'.
+1141	Column count {key1} in the child table does not match column count {key2} in the parent table of the foreign key definition.
+1142	Column type mismatch in the foreign key definition. Cannot relate {key1} in child table to {key2} in parent table.
+1143	Failed to find matching column in parent table for '{key1}' column in child table.
+1144	UPDATE and DELETE constraints must be the same.
+1145	FOREIGN KEY DOES NOT EXIST
+1146	Invalid LIMIT value in SELECT command - {key1}.
+1147	Invalid OFFSET value in SELECT command - {key1}.
+1148	Primary key does not exist in table '{key1}'.
+1149	FAILED TO CREATE FOREIGN KEY
+1150	Column '{key1}' is not part of a primary key.
+1151	FIELD IS NOT UPDATEABLE
+1152	FOUND VIEW COLUMN
+1153	Bad data type length '{key1}'.
+1154	EXPECTED EXECUTE IMMEDIATE COMMAND
+1155	INDEX ALREADY EXISTS
+1156	Auto-increment option is not allowed for column '{key1}' of type {key2}.
+1157	SCHEMA ALREADY EXISTS
+1158	SCHEMA DOES NOT EXIST
+1159	Cannot drop system schema
+1160	CHARACTER ENCODING NOT ALLOWED
+1203	FUNCTIONALITY IS NOT IMPLEMENTED
+1204	Failed to create record {key1}.
+1205	Failed to update field '{key1}'.
+1206	Failed to delete record '{key1}'.
+1207	NO MORE JOIN SEEDS POSSIBLE
+1208	FAILED TO CREATE TABLE
+1209	FAILED TO DROP TABLE
+1210	CANT BUILD BTREE FOR ZERO RECORDS
+1211	COMMAND COUNT GREATER THAN ALLOWED
+1212	FAILED TO CREATE DATABASE
+1213	FAILED TO DROP COLUMN
+1214	VALUE IS OUT OF BOUNDS
+1215	FAILED TO STOP SQL_SERVER
+1216	FAILED TO LOCALIZE
+1217	Failed to lock table for reading.
+1218	FAILED TO LOCK TABLE FOR WRITING
+1219	TABLE STRUCTURE STAMP CHANGED
+1220	FAILED TO LOAD RECORD
+1221	FAILED TO LOCK RECORD FOR WRITING
+1222	FAILED TO PUT SQL LOCK ON A TABLE
+1223	FAILED TO RETAIN COOPERATIVE TASK
+1224	FAILED TO LOAD INFILE
+1301	PARSING FAILED
+1401	COMMAND NOT SPECIFIED
+1402	ALREADY LOGGED IN
+1403	SESSION DOES NOT EXIST
+1404	UNKNOWN BIND ENTITY
+1405	INCOMPATIBLE BIND ENTITIES
+1406	REQUEST RESULT NOT AVAILABLE
+1407	BINDING LOAD FAILED
+1408	COULD NOT RECOVER FROM PREVIOUS ERRORS
+1409	NO OPEN STATEMENT
+1410	RESULT EOF
+1411	BOUND VALUE IS NULL
+1412	STATEMENT ALREADY OPENED
+1413	FAILED TO GET PARAMETER VALUE
+1414	INCOMPATIBLE PARAMETER ENTITIES
+1415	Query parameter is either not allowed or was not provided.
+1416	COLUMN REFERENCE PARAMETERS FROM DIFFERENT TABLES
+1417	EMPTY STATEMENT
+1418	FAILED TO UPDATE VARIABLE
+1419	FAILED TO GET TABLE REFERENCE
+1420	FAILED TO GET TABLE CONTEXT
+1421	COLUMNS NOT ALLOWED
+1422	INVALID COMMAND COUNT
+1423	INTO CLAUSE NOT ALLOWED
+1424	EXECUTE IMMEDIATE NOT ALLOWED
+1425	ARRAY NOT ALLOWED IN EXECUTE IMMEDIATE
+1426	COLUMN NOT ALLOWED IN EXECUTE IMMEDIATE
+1427	NESTED BEGIN END SQL NOT ALLOWED
+1428	RESULT IS NOT A SELECTION
+1429	INTO ITEM IS NOT A VARIABLE
+1430	VARIABLE WAS NOT FOUND
+1431	PTR OF PTR NOT ALLOWED
+1432	POINTER OF UNKNOWN TYPE
+1501	SEPARATOR_EXPECTED
+1502	FAILED TO PARSE DAY OF MONTH
+1503	FAILED TO PARSE MONTH
+1504	FAILED TO PARSE YEAR
+1505	FAILED TO PARSE HOUR
+1506	FAILED TO PARSE MINUTE
+1507	FAILED TO PARSE SECOND
+1508	FAILED TO PARSE MILLISECOND
+1509	INVALID AM PM USAGE
+1510	FAILED TO PARSE TIME ZONE
+1511	UNEXPECTED CHARACTER
+1512	Failed to parse timestamp.
+1513	Failed to parse duration.
+1551	FAILED TO PARSE DATE FORMAT
+1601	NULL INPUT STRING
+1602	NON TERMINATED STRING
+1603	NON TERMINATED COMMENT
+1604	INVALID NUMBER
+1605	UNKNOWN START OF TOKEN
+1606	NON TERMINATED NAME/* closing ']' is missing
+1607	NO VALID TOKENS
+1801	Failed to execute SELECT command.
+1802	Failed to execute INSERT command.
+1803	Failed to execute DELETE command.
+1804	Failed to execute UPDATE command.
+1805	Failed to execute CREATE TABLE command.
+1806	Failed to execute DROP TABLE command.
+1807	Failed to execute CREATE DATABASE command.
+1808	Failed to execute ALTER TABLE command.
+1809	Failed to execute CREATE INDEX command.
+1810	Failed to execute DROP INDEX command.
+1811	Failed to execute LOCK TABLE command.
+1812	Failed to execute TRANSACTION command.
+1813	Failed to execute WHERE clause.
+1814	Failed to execute GROUP BY clause.
+1815	Failed to execute HAVING clause.
+1816	Failed to aggregate.
+1817	Failed to execute DISTINCT.
+1818	Failed to execute ORDER BY clause.
+1819	Failed to build DB4D query.
+1820	Failed to calculate comparison predicate.
+1821	Failed to execute subquery.
+1822	Failed to calculate BETWEEN predicate.
+1823	Failed to calculate IN predicate.
+1824	Failed to calculate ALL/ANY predicate.
+1825	Failed to calculate LIKE predicate.
+1826	Failed to calculate EXISTS predicate.
+1827	Failed to calculate NULL predicate.
+1828	Failed to perform arithmetic operation.
+1829	Failed to calculate function call '{key1}'.
+1830	Failed to calculate case expression.
+1831	Failed to calculate function parameter '{key1}'.
+1832	Failed to calculate 4D function call.
+1833	Failed to sort while executing ORDER BY clause.
+1834	Failed to calculate record hash.
+1835	Failed to compare records.
+1836	Failed to calculate INSERT value {key1}.
+1837	DB4D QUERY FAILED
+1838	FAILED TO EXECUTE ALTER SCHEMA COMMAND
+1839	FAILED TO EXECUTE GRANT COMMAND
+2000	CACHEABLE NOT INITIALIZED
+2001	VALUE ALREADY CACHED
+2002	CACHED VALUE NOT FOUND
+2003	CACHE IS FULL
+2004	CACHING IS NOT POSSIBLE
+3000	HEADER NOT FOUND
+3001	UNKNOWN COMMAND
+3002	ALREADY LOGGED IN
+3003	NOT LOGGED IN
+3004	UNKNOWN OUTPUT MODE
+3005	INVALID STATEMENT ID
+3006	UNKNOWN DATA TYPE
+3007	STILL LOGGED IN
+3008	SOCKET READ ERROR
+3009	SOCKET WRITE ERROR
+3010	BASE64 DECODING ERROR
+3011	SESSION TIMEOUT
+3012	FETCH TIMESTAMP ALREADY EXISTS
+3013	BASE64 ENCODING ERROR
+3014	INVALID HEADER TERMINATOR
+3015	INVALID SESSION TICKET
+3016	HEADER TOO LONG
+3017	INVALID AGENT SIGNATURE
+3018	UNEXPECTED HEADER VALUE

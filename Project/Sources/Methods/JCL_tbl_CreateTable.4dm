@@ -62,7 +62,7 @@ For ($i; 2; $numOfLines)
 		If ($retCode=0)
 			//フィールドポインタの配列を作ってわたす
 			DELETE FROM ARRAY:C228($fldAry; 1; Size of array:C274($fldAry))
-			APPEND TO ARRAY:C911($fldAry; $fldPtr)
+			APPEND TO ARRAY:C911(˙; $fldPtr)
 			
 			$indexName:=$aryTableItems{2}+$aryFieldItems{1}+"_index"
 			CREATE INDEX:C966($tblPtr->; $fldAry; 0; $indexName)

@@ -3,8 +3,8 @@
 		"version": "1",
 		"kind": "form"
 	},
-	"windowSizingX": "fixed",
-	"windowSizingY": "fixed",
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
 	"windowMinWidth": 0,
 	"windowMinHeight": 0,
 	"windowMaxWidth": 32767,
@@ -38,7 +38,7 @@
 					"type": "button",
 					"text": "終了",
 					"top": 16,
-					"left": 480,
+					"left": 624,
 					"width": 110,
 					"height": 26,
 					"events": [
@@ -57,7 +57,7 @@
 					"type": "button",
 					"text": "デザインモードへ",
 					"top": 56,
-					"left": 480,
+					"left": 624,
 					"width": 110,
 					"height": 26,
 					"events": [
@@ -76,7 +76,7 @@
 					"type": "button",
 					"text": "fields",
 					"top": 96,
-					"left": 480,
+					"left": 624,
 					"width": 110,
 					"height": 26,
 					"events": [
@@ -87,22 +87,180 @@
 					"shortcutControl": false,
 					"shortcutShift": false,
 					"shortcutAlt": false,
-					"shortcutKey": "[Esc]",
-					"action": "cancel",
+					"shortcutKey": "",
+					"action": "",
 					"class": "JCL_YuGothic12",
 					"method": "ObjectMethods/vA01_btnFields.4dm"
+				},
+				"vA01_btnList": {
+					"type": "button",
+					"text": "レコード一覧",
+					"top": 110,
+					"left": 20,
+					"width": 94,
+					"height": 26,
+					"focusable": false,
+					"method": "ObjectMethods/vA01_btnUS01.4dm",
+					"events": [
+						"onClick"
+					],
+					"action": "",
+					"class": "JCL_YuGothic12",
+					"dataSource": "vA01_btnList"
+				},
+				"vA01_lstT": {
+					"type": "listbox",
+					"left": 144,
+					"top": 110,
+					"width": 362,
+					"height": 330,
+					"events": [
+						"onClick",
+						"onHeaderClick",
+						"onDataChange",
+						"onSelectionChange"
+					],
+					"dataSource": "vA01_lstT",
+					"sizingY": "grow",
+					"method": "ObjectMethods/vA01_lstT.4dm",
+					"columns": [
+						{
+							"header": {
+								"name": "HvA01_lstT_nr",
+								"text": "番号",
+								"dataSource": "HvA01_lstT_nr"
+							},
+							"name": "vA01_lstT_nr",
+							"footer": {
+								"name": "Footer3"
+							},
+							"dataSource": "vA01_lstT_nr",
+							"width": 42
+						},
+						{
+							"header": {
+								"text": "テーブル名",
+								"name": "HvA01_lstT_name",
+								"dataSource": "HvA01_lstT_name"
+							},
+							"name": "vA01_lstT_name",
+							"footer": {
+								"name": "Footer1"
+							},
+							"dataSourceTypeHint": "object",
+							"dataSource": "vA01_lstT_name",
+							"width": 220
+						},
+						{
+							"header": {
+								"name": "HvA01_lstT_numOfRecs",
+								"text": "レコード数",
+								"dataSource": "HvA01_lstT_numOfRecs"
+							},
+							"name": "vA01_lstT_numOfRecs",
+							"footer": {
+								"name": "Footer2"
+							},
+							"dataSource": "vA01_lstT_numOfRecs",
+							"width": 84
+						}
+					]
+				},
+				"vA01_var4D_DataFile": {
+					"type": "input",
+					"top": 449,
+					"left": 20,
+					"width": 730,
+					"height": 17,
+					"dataSource": "vA01_var4D_DataFile",
+					"class": "JCL_YuGothic10",
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"enterable": false,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"sizingY": "move",
+					"stroke": "#008000"
+				},
+				"vA00_varProductName": {
+					"type": "input",
+					"top": 16,
+					"left": 20,
+					"width": 610,
+					"height": 17,
+					"dataSource": "vA00_varProductName",
+					"class": "JCL_YuGothic16",
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"enterable": false,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"sizingY": "fixed"
+				},
+				"vA00_varVersion": {
+					"type": "input",
+					"top": 49,
+					"left": 20,
+					"width": 610,
+					"height": 17,
+					"dataSource": "vA00_varVersion",
+					"class": "JCL_YuGothic12",
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"enterable": false,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"sizingY": "fixed",
+					"textAlign": "automatic"
+				},
+				"vA01_txtNumOfRecs": {
+					"type": "input",
+					"top": 86,
+					"left": 144,
+					"width": 390,
+					"height": 17,
+					"dataSource": "vA01_txtNumOfRecs",
+					"class": "JCL_YuGothic12",
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"enterable": false,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"sizingY": "fixed",
+					"textAlign": "automatic"
 				}
 			}
 		}
 	],
-	"width": 610,
-	"height": 466,
-	"geometryStamp": 34,
+	"geometryStamp": 230,
 	"editor": {
 		"activeView": "View 1",
 		"defaultView": "View 1",
 		"views": {
 			"View 1": {}
 		}
-	}
+	},
+	"width": 754,
+	"height": 466,
+	"method": "method.4dm"
 }

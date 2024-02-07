@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE base SYSTEM "http://www.4d.com/dtd/2007/base.dtd" >
-<base name="JCL4D_v20" uuid="32812744E80C49F29664844F95EF0EA6" collation_locale="ja">
+<base name="JCL4D_v20" uuid="DAA4C825FB044A1FA494F50E1DC454DC" collation_locale="ja">
 	<schema name="DEFAULT_SCHEMA"/>
-	<base_extra __stringCompHash="icu:72.1.0, alternate=search" __keywordBuildingHash="mecab:0.996;sys.dic:102;">
+	<base_extra>
 		<journal_file journal_file_enabled="true"/>
 	</base_extra>
 </base>

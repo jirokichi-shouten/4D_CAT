@@ -72,10 +72,11 @@ End for
 $sql:=Substring:C12($sql; 1; Length:C16($sql)-1)
 $sql:=$sql+");"
 
-//ALERT($sql)
-
+ON ERR CALL:C155("")
+ON ERR CALL:C155("JCL_D02_OnErrCall_SQL_EXECUTE")
 SQL LOGIN:C817(SQL_INTERNAL:K49:11; ""; "")
 SQL EXECUTE:C820($sql)
 SQL LOGOUT:C872
+ON ERR CALL:C155("JCL_OnErrCall")
 
 $0:=$cnt
