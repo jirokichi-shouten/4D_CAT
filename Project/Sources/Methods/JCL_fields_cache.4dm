@@ -54,8 +54,8 @@ If ($fileText#"")
 				
 			End if 
 		Else 
-			//ハイフンじゃなかったらフィールド名の配列に追加
-			$fldName:=$prefix+"-"+$aryItems{1}
+			//ハイフンじゃなかったらフィールド名の配列に追加（連結文字はアンダーバー）
+			$fldName:=$prefix+"_"+$aryItems{1}
 			$label:=$aryItems{6}
 			
 			APPEND TO ARRAY:C911(vJCL_fields_name; $fldName)  //フィールド名

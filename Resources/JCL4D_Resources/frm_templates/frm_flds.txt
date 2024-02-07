@@ -4,7 +4,7 @@
 					"left": [--FIELD_LABEL_LEFT],
 					"width": [--FIELD_LABEL_WIDTH],
 					"height": 16,
-					"class": "JCL_Maryo12",
+					"class": "JCL_YuGothic12",
 					"text": "[--LABEL]"
 				},
 				"v[--FRM_PREFIX]_var[--FIELD]": {
@@ -15,7 +15,7 @@
 					"height": 16,
 					"dataSource": "v[--FRM_PREFIX]_var[--FIELD]",
 					"dataSourceTypeHint": "[--FIELD_DATA_SOURCE_TYPE_HINT]",
-					"class": "JCL_Maryo12",
+					"class": "JCL_YuGothic12",
 					"focusable": true,
 					"borderStyle": "sunken",
 					"enterable": true,

@@ -1,5 +1,5 @@
 //KN01[--PREFIX]01_Display
-//FG v20230103 2024/02/07 18:10:39
+//FG v20230103 2024/02/07 21:00:49
 //Z_KeyNValue 一覧ウインドウ表示
 
 C_LONGINT($wref)

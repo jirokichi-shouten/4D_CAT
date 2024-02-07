@@ -1,5 +1,5 @@
 //PR_Duplicate
-//method_generator 2024/02/07 15:04:10
+//method_generator 2024/02/07 20:09:44
 //PASSWORD_RESETS レコード複製
 //複製
 
@@ -16,7 +16,7 @@ DUPLICATE RECORD([PASSWORD_RESETS])
 $new_PR_id:=Sequence number ([PASSWORD_RESETS])
 [PASSWORD_RESETS]PR_ID:=$new_PR_id
 //[PASSWORD_RESETS]PR_TITLE:=[PASSWORD_RESETS]PR_TITLE+"のコピー"
-[PASSWORD_RESETS]PR_UPDATE_DATEMARK:=JCL_str_Datemark (Current date;Current time)
+//[PASSWORD_RESETS]PR_UPDATE_DATEMARK:=JCL_str_Datemark (Current date;Current time)
 
 SAVE RECORD([PASSWORD_RESETS])
 

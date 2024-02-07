@@ -1,5 +1,5 @@
 //KV_DelAll
-//method_generator 2024/02/07 15:04:10
+//method_generator 2024/02/07 20:09:44
 //Z_KeyValue レコード削除
 
 READ WRITE([Z_KeyValue])

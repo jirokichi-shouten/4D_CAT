@@ -1,5 +1,5 @@
 //US_DelAll
-//method_generator 2024/02/07 16:52:29
+//method_generator 2024/02/07 20:09:44
 //USERS レコード削除
 
 READ WRITE([USERS])

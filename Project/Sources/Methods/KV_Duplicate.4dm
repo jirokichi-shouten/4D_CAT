@@ -1,5 +1,5 @@
 //KV_Duplicate
-//method_generator 2024/02/07 15:04:10
+//method_generator 2024/02/07 20:09:44
 //Z_KeyValue レコード複製
 //複製
 
@@ -16,7 +16,7 @@ DUPLICATE RECORD([Z_KeyValue])
 $new_KV_id:=Sequence number ([Z_KeyValue])
 [Z_KeyValue]KV_ID:=$new_KV_id
 //[Z_KeyValue]KV_TITLE:=[Z_KeyValue]KV_TITLE+"のコピー"
-[Z_KeyValue]KV_UPDATE_DATEMARK:=JCL_str_Datemark (Current date;Current time)
+//[Z_KeyValue]KV_UPDATE_DATEMARK:=JCL_str_Datemark (Current date;Current time)
 
 SAVE RECORD([Z_KeyValue])
 

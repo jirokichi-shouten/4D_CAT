@@ -1,0 +1,288 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"events": [
+		"onLoad",
+		"onPageChange",
+		"onValidate",
+		"onClick",
+		"onDoubleClick",
+		"onOutsideCall",
+		"onBeginDragOver",
+		"onDragOver",
+		"onDrop",
+		"onAfterKeystroke",
+		"onMenuSelect",
+		"onPluginArea",
+		"onAfterEdit",
+		"onTimer",
+		"onBoundVariableChange"
+	],
+	"method": "method.4dm",
+	"windowTitle": "test window title",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {
+								"vPR02_rectTitle": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 0,
+					"width": 987,
+					"height": 55,
+					"fill": "#358D92",
+					"stroke": "#358D92"
+				},
+				"vPR02_varTitle": {
+					"type": "input",
+					"top": 16,
+					"left": 26,
+					"width": 288,
+					"height": 26,
+					"dataSource": "vPR02_varTitle",
+					"stroke": "#B1C4DD",
+					"class": "JCL_Maryo16B",
+					"fontWeight": "bold",
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"enterable": false,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "none",
+					"events": [
+						"onDataChange"
+					]
+				}
+,
+								"vPR02_btnOK": {
+					"type": "button",
+					"top": 16,
+					"left": 873,
+					"width": 94,
+					"height": 26,
+					"dataSource": "vPR02_btnOK",
+					"method": "ObjectMethods/vPR02_btnOK.4dm",
+					"text": "OK",
+					"class": "JCL_Maryo16",
+					"focusable": false,
+					"events": [
+						"onClick"
+					]
+				}
+,
+								"vPR02_btnCancel ": {
+					"type": "button",
+					"top": 16,
+					"left": 759,
+					"width": 94,
+					"height": 26,
+					"dataSource": "vPR02_btnCancel",
+					"action": "cancel",
+					"shortcutKey": "[Esc]",
+					"text": "キャンセル",
+					"class": "JCL_Maryo16",
+					"focusable": false,
+					"events": [
+						"onClick"
+					]
+				}
+,
+								"vPR02_btnDelete": {
+					"type": "button",
+					"top": 16,
+					"left": 645,
+					"width": 94,
+					"height": 26,
+					"dataSource": "vPR02_btnDelete",
+					"text": "削除",
+					"class": "JCL_ButtonTitle26",
+					"focusable": false,
+					"method": "ObjectMethods/vPR02_btnDelete.4dm",
+					"events": [
+						"onClick"
+					]
+				}
+
+			}
+		},
+		{
+			"objects": {
+								"vPR02_lblPR_ID": {
+					"type": "text",
+					"top": 116,
+					"left": 10,
+					"width": 94,
+					"height": 16,
+					"class": "JCL_Maryo12",
+					"text": "ID"
+				},
+				"vPR02_varPR_ID": {
+					"type": "input",
+					"top": 116,
+					"left": 110,
+					"width": 42,
+					"height": 16,
+					"dataSource": "vPR02_varPR_ID",
+					"dataSourceTypeHint": "integer",
+					"class": "JCL_Maryo12",
+					"focusable": true,
+					"borderStyle": "sunken",
+					"enterable": true,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},				"vPR02_lblPR_US_ID": {
+					"type": "text",
+					"top": 142,
+					"left": 10,
+					"width": 94,
+					"height": 16,
+					"class": "JCL_Maryo12",
+					"text": "ユーザID"
+				},
+				"vPR02_varPR_US_ID": {
+					"type": "input",
+					"top": 142,
+					"left": 110,
+					"width": 42,
+					"height": 16,
+					"dataSource": "vPR02_varPR_US_ID",
+					"dataSourceTypeHint": "integer",
+					"class": "JCL_Maryo12",
+					"focusable": true,
+					"borderStyle": "sunken",
+					"enterable": true,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},				"vPR02_lblPR_EMAIL": {
+					"type": "text",
+					"top": 168,
+					"left": 10,
+					"width": 94,
+					"height": 16,
+					"class": "JCL_Maryo12",
+					"text": "メールアドレス"
+				},
+				"vPR02_varPR_EMAIL": {
+					"type": "input",
+					"top": 168,
+					"left": 110,
+					"width": 90,
+					"height": 16,
+					"dataSource": "vPR02_varPR_EMAIL",
+					"dataSourceTypeHint": "text",
+					"class": "JCL_Maryo12",
+					"focusable": true,
+					"borderStyle": "sunken",
+					"enterable": true,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},				"vPR02_lblPR_TOKEN": {
+					"type": "text",
+					"top": 90,
+					"left": 408,
+					"width": 94,
+					"height": 16,
+					"class": "JCL_Maryo12",
+					"text": "トークン"
+				},
+				"vPR02_varPR_TOKEN": {
+					"type": "input",
+					"top": 90,
+					"left": 508,
+					"width": 90,
+					"height": 16,
+					"dataSource": "vPR02_varPR_TOKEN",
+					"dataSourceTypeHint": "text",
+					"class": "JCL_Maryo12",
+					"focusable": true,
+					"borderStyle": "sunken",
+					"enterable": true,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},				"vPR02_lblPR_CREATE_AT": {
+					"type": "text",
+					"top": 116,
+					"left": 408,
+					"width": 94,
+					"height": 16,
+					"class": "JCL_Maryo12",
+					"text": "作成デイトマーク"
+				},
+				"vPR02_varPR_CREATE_AT": {
+					"type": "input",
+					"top": 116,
+					"left": 508,
+					"width": 90,
+					"height": 16,
+					"dataSource": "vPR02_varPR_CREATE_AT",
+					"dataSourceTypeHint": "text",
+					"class": "JCL_Maryo12",
+					"focusable": true,
+					"borderStyle": "sunken",
+					"enterable": true,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},				"vPR02_lblPR_DEL_FLAG": {
+					"type": "text",
+					"top": 142,
+					"left": 408,
+					"width": 94,
+					"height": 16,
+					"class": "JCL_Maryo12",
+					"text": "削除フラグ"
+				},
+				"vPR02_varPR_DEL_FLAG": {
+					"type": "input",
+					"top": 142,
+					"left": 508,
+					"width": 42,
+					"height": 16,
+					"dataSource": "vPR02_varPR_DEL_FLAG",
+					"dataSourceTypeHint": "integer",
+					"class": "JCL_Maryo12",
+					"focusable": true,
+					"borderStyle": "sunken",
+					"enterable": true,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				}
+			}
+		}
+	],
+	"geometryStamp": 105,
+	"width": 987,
+	"height": 644
+}

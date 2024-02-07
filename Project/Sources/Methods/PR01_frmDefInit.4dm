@@ -1,5 +1,5 @@
 //PR01_frmDefInit
-//FG v202103 2024/02/07 17:28:37
+//FG v202103 2024/02/07 20:50:34
 //PASSWORD_RESETS プロセス変数宣言・初期化
 
 C_TEXT(vPR01_varNumOfRecs)

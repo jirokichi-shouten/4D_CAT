@@ -1,0 +1,6 @@
+//[--FRM_PREFIX]_InitValues
+//FG v202402 [--DATE]
+//[--TABLE] プロセス変数初期化
+//DBにレコード作成しないで、初期値をプロセス変数に設定
+
+v[--FRM_PREFIX]_var[--FIELD]:=[--INITVALUE]

@@ -13,6 +13,6 @@
 					"left": 20,
 					"width": 192,
 					"height": 26,
-					"class": "JCL_Maryo16B",
+					"class": "JCL_YuGothic16",
 					"text": "[--FRM_TITLE]"
 				}

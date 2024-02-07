@@ -5,7 +5,7 @@
 					"width": 110,
 					"height": 17,
 					"dataSource": "v[--FRM_PREFIX]_varNumOfRecs",
-					"class": "JCL_Meiryo12",
+					"class": "JCL_YuGothic12",
 					"focusable": false,
 					"fill": "transparent",
 					"borderStyle": "none",

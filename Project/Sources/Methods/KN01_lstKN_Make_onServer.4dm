@@ -1,6 +1,6 @@
 //%attributes = {"executedOnServer":true}
 //KN01_lstKN_Make_onServer
-//FG v202209 2024/02/07 18:10:39
+//FG v202209 2024/02/07 21:00:49
 //[Z_KeyNValue] リストボックス用オブジェクト配列を作成 //サーバ上で実行
 
 C_OBJECT($1;$objSearch)

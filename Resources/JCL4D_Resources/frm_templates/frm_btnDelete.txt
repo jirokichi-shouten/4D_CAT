@@ -6,7 +6,7 @@
 					"height": 26,
 					"dataSource": "v[--FRM_PREFIX]_btnDelete",
 					"text": "削除",
-					"class": "JCL_ButtonTitle26",
+					"class": "JCL_YuGothic12",
 					"focusable": false,
 					"method": "ObjectMethods/v[--FRM_PREFIX]_btnDelete.4dm",
 					"events": [

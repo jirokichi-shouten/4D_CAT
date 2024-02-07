@@ -4,7 +4,7 @@
 	"width": [--FIELD_WIDTH],
 	"enterable": false,
 	"truncateMode": "none",
-	"class": "JCL_Meiryo12",
+	"class": "JCL_YuGothic12",
 	"events": [
 		"onClick",
 		"onDataChange"
@@ -13,12 +13,12 @@
 		"name": "v[--FRM_PREFIX]_lhd[--FIELD]",
 		"text": "[--LABEL]",
 		"dataSource": "v[--FRM_PREFIX]_lhd[--FIELD]",
-		"class": "JCL_Meiryo10"
+		"class": "JCL_YuGothic10"
 	},
 	"footer": {
 		"name": "v[--FRM_PREFIX]_lft[--FIELD]",
 		"dataSource": "v[--FRM_PREFIX]_lft[--FIELD]",
 		"timeFormat": "hh_mm_ss",
-		"class": "JCL_Meiryo12"
+		"class": "JCL_YuGothic12"
 	}
 }

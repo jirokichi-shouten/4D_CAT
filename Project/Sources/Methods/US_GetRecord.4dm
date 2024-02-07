@@ -1,5 +1,5 @@
 //US_GetRecord
-//method_generator 2024/02/07 16:52:29
+//method_generator 2024/02/07 20:09:44
 //USERS レコード取得、IDでクエリーしてオブジェクト型で返す
 
 C_LONGINT($1;$US_id)

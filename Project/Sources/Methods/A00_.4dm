@@ -3,6 +3,11 @@
 //20240207 ike wat
 //コミットコメントはここでタイプしてからGitHub Desktopに貼ると便利
 
+//20240207 hisa ike wat
+//OKで保存、に変更。フォーム用テンプレート修正
+//add, mod, delなど修正
+//フォントを游ゴシックに統一
+
 //20240207 hisa wat
 //個別メソッドジェネレータ、JCL_prj_FormGenerator02作成。
 //メソッドジェネレータ後にRELOAD PROJECTするとメソッドを認識させやすい

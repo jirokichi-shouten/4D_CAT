@@ -8,7 +8,7 @@
 					"action": "cancel",
 					"shortcutKey": "[Esc]",
 					"text": "キャンセル",
-					"class": "JCL_Maryo16",
+					"class": "JCL_YuGothic12",
 					"focusable": false,
 					"events": [
 						"onClick"

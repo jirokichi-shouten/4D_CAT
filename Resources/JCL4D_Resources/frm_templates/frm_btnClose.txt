@@ -9,7 +9,7 @@
 					"shortcutKey": "w",
 					"shortcutAccel": true,
 					"text": "X",
-					"class": "JCL_Maryo16",
+					"class": "JCL_YuGothic12",
 					"events": [
 						"onClick"
 					]

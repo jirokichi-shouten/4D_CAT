@@ -1,5 +1,5 @@
 //PR_GetRecord
-//method_generator 2024/02/07 15:04:10
+//method_generator 2024/02/07 20:09:44
 //PASSWORD_RESETS レコード取得、IDでクエリーしてオブジェクト型で返す
 
 C_LONGINT($1;$PR_id)

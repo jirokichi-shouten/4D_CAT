@@ -1,5 +1,5 @@
 //KV01_frmOnLoad
-//FG v202103 2024/02/07 17:31:34
+//FG v202103 2024/02/07 21:01:46
 //Z_KeyValue フォームオンロード
 
 KV01_frmDefInit 

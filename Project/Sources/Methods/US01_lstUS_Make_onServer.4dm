@@ -1,6 +1,6 @@
 //%attributes = {"executedOnServer":true}
 //US01_lstUS_Make_onServer
-//FG v202209 2024/02/07 17:24:49
+//FG v202209 2024/02/07 20:51:08
 //[USERS] リストボックス用オブジェクト配列を作成 //サーバ上で実行
 
 C_OBJECT($1;$objSearch)

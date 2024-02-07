@@ -1,6 +1,6 @@
 //%attributes = {"executedOnServer":true}
 //PR01_lstPR_Make_onServer
-//FG v202209 2024/02/07 17:28:37
+//FG v202209 2024/02/07 20:50:34
 //[PASSWORD_RESETS] リストボックス用オブジェクト配列を作成 //サーバ上で実行
 
 C_OBJECT($1;$objSearch)

@@ -33,7 +33,7 @@ If ($tblName#"")
 		
 	Else 
 		//なければ作る
-		JCL_prj_FormGenerator02($tblName)
+		JCL_prj_FormGeneratorV2($tblName)
 		RELOAD PROJECT:C1739  //20240207 4djapan
 		
 		//メッセージ

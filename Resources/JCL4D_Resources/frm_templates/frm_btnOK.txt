@@ -5,9 +5,9 @@
 					"width": 94,
 					"height": 26,
 					"dataSource": "v[--FRM_PREFIX]_btnOK",
-					"action": "accept",
+					"method": "ObjectMethods/v[--FRM_PREFIX]_btnOK.4dm",
 					"text": "OK",
-					"class": "JCL_Maryo16",
+					"class": "JCL_YuGothic12",
 					"focusable": false,
 					"events": [
 						"onClick"

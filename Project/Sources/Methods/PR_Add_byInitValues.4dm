@@ -1,5 +1,5 @@
 //PR_Add_byInitValues
-//method_generator 2024/02/07 15:04:10
+//method_generator 2024/02/07 20:09:44
 //PASSWORD_RESETS レコード追加、初期値代入
 
 C_LONGINT($0;$PR_id)

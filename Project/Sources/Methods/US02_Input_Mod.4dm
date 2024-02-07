@@ -1,31 +1,23 @@
 //US02_Input_Mod
-//FG v202103 2024/02/07 17:24:49
+//FG v202402 2024/02/07 20:51:08
 //USERS レコード編集フォーム
 
 C_LONGINT($1;$US_id)
 $US_id:=$1
-C_LONGINT($0;$display_ok)//システム変数OKを保持
+C_LONGINT($0;$dlg_ok)//システム変数OKを保持
 
 //モードを渡す、フォームの［削除］ボタンを非表示にするためだったり．．
 US02_DefInit 
-US02_varMode_Set ("mod")
+US02_varMode_set ("mod")
+US02_varUS_ID_set ($US_id)
 
-READ WRITE([USERS])
+READ ONLY([USERS])
 QUERY([USERS];[USERS]US_ID=$US_id)
 US02_LoadValues 
-$display_ok:=US02_Display ($US_id)//OK変数の値を保持
-If ($display_ok=1)
-
-//更新日をＤＢに保存
-READ WRITE([USERS])
-QUERY([USERS];[USERS]US_ID=$US_id)
-US02_SaveValues 
-[USERS]US_UPDATE_DATEMARK:=JCL_str_Datemark (Current date;Current time)
-SAVE RECORD([USERS])
+$dlg_ok:=US02_Display ($US_id)//OK変数の値を保持
+If ($dlg_ok=1)
+	//保存はOKボタン
 
 End if 
 
-UNLOAD RECORD([USERS])
-READ ONLY([USERS])
-
-$0:=$display_ok
+$0:=$dlg_ok

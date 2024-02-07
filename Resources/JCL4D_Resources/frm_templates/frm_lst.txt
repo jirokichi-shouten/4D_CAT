@@ -11,7 +11,7 @@
 	"rowHeight": "20px",
 	"rowHeightAutoMin": "20px",
 	"rowHeightAutoMax": "20px",
-	"class": "JCL_Meiryo12",
+	"class": "JCL_YuGothic12",
 	"method": "ObjectMethods/v[--FRM_PREFIX]_lst[--TBL_PREFIX].4dm",
 	"events": [
 		"onClick",

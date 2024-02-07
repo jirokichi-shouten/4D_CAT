@@ -15,7 +15,7 @@
 					"height": 26,
 					"dataSource": "v[--FRM_PREFIX]_varTitle",
 					"stroke": "#B1C4DD",
-					"class": "JCL_Maryo16B",
+					"class": "JCL_YuGothic16",
 					"fontWeight": "bold",
 					"focusable": false,
 					"fill": "transparent",

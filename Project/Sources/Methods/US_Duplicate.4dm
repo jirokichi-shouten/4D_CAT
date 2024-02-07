@@ -1,5 +1,5 @@
 //US_Duplicate
-//method_generator 2024/02/07 16:52:29
+//method_generator 2024/02/07 20:09:44
 //USERS レコード複製
 //複製
 
@@ -16,7 +16,7 @@ DUPLICATE RECORD([USERS])
 $new_US_id:=Sequence number ([USERS])
 [USERS]US_ID:=$new_US_id
 //[USERS]US_TITLE:=[USERS]US_TITLE+"のコピー"
-[USERS]US_UPDATE_DATEMARK:=JCL_str_Datemark (Current date;Current time)
+//[USERS]US_UPDATE_DATEMARK:=JCL_str_Datemark (Current date;Current time)
 
 SAVE RECORD([USERS])
 

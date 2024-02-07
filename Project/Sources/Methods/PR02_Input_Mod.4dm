@@ -1,31 +1,23 @@
 //PR02_Input_Mod
-//FG v202103 2024/02/07 17:28:37
+//FG v202402 2024/02/07 20:50:34
 //PASSWORD_RESETS レコード編集フォーム
 
 C_LONGINT($1;$PR_id)
 $PR_id:=$1
-C_LONGINT($0;$display_ok)//システム変数OKを保持
+C_LONGINT($0;$dlg_ok)//システム変数OKを保持
 
 //モードを渡す、フォームの［削除］ボタンを非表示にするためだったり．．
 PR02_DefInit 
-PR02_varMode_Set ("mod")
+PR02_varMode_set ("mod")
+PR02_varPR_ID_set ($PR_id)
 
-READ WRITE([PASSWORD_RESETS])
+READ ONLY([PASSWORD_RESETS])
 QUERY([PASSWORD_RESETS];[PASSWORD_RESETS]PR_ID=$PR_id)
 PR02_LoadValues 
-$display_ok:=PR02_Display ($PR_id)//OK変数の値を保持
-If ($display_ok=1)
-
-//更新日をＤＢに保存
-READ WRITE([PASSWORD_RESETS])
-QUERY([PASSWORD_RESETS];[PASSWORD_RESETS]PR_ID=$PR_id)
-PR02_SaveValues 
-[PASSWORD_RESETS]PR_UPDATE_DATEMARK:=JCL_str_Datemark (Current date;Current time)
-SAVE RECORD([PASSWORD_RESETS])
+$dlg_ok:=PR02_Display ($PR_id)//OK変数の値を保持
+If ($dlg_ok=1)
+	//保存はOKボタン
 
 End if 
 
-UNLOAD RECORD([PASSWORD_RESETS])
-READ ONLY([PASSWORD_RESETS])
-
-$0:=$display_ok
+$0:=$dlg_ok

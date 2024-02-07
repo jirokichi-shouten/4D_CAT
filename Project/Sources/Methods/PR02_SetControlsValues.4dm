@@ -1,5 +1,5 @@
 //PR02_SetControlsValues
-//FG v202103 2024/02/07 17:28:37
+//FG v202103 2024/02/07 20:50:34
 //PASSWORD_RESETS フォーム上のオブジェクト制御
 
 C_TEXT($mode)

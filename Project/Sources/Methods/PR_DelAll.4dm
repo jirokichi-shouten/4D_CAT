@@ -1,5 +1,5 @@
 //PR_DelAll
-//method_generator 2024/02/07 15:04:10
+//method_generator 2024/02/07 20:09:44
 //PASSWORD_RESETS レコード削除
 
 READ WRITE([PASSWORD_RESETS])
