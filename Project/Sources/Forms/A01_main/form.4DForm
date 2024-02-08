@@ -134,6 +134,7 @@
 					"dataSource": "vA01_lstT",
 					"sizingY": "grow",
 					"method": "ObjectMethods/vA01_lstT.4dm",
+					"fill": "automatic",
 					"columns": [
 						{
 							"header": {
@@ -191,6 +192,21 @@
 							"dataSource": "vA01_lstT_prefix",
 							"width": 42,
 							"textAlign": "center"
+						},
+						{
+							"header": {
+								"name": "HvA01_lstT_Color",
+								"text": "色",
+								"dataSource": "HvA01_lstT_Color"
+							},
+							"name": "vA01_lstT_Color",
+							"footer": {
+								"name": "Footer15"
+							},
+							"dataSource": "vA01_lstT_Color",
+							"width": 68,
+							"textAlign": "center",
+							"class": "JCL_YuGothic12"
 						},
 						{
 							"header": {
@@ -702,7 +718,7 @@
 			}
 		}
 	],
-	"geometryStamp": 533,
+	"geometryStamp": 538,
 	"editor": {
 		"activeView": "View 1",
 		"defaultView": "View 1",

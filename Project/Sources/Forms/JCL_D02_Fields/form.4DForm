@@ -520,7 +520,7 @@
 							"stroke": "#000000",
 							"fill": "#FFFFFF",
 							"alternateFill": "automatic",
-							"textAlign": "left",
+							"textAlign": "center",
 							"verticalAlign": "automatic",
 							"fontFamily": "Meiryo",
 							"fontSize": 12,
@@ -912,7 +912,7 @@
 		"version": "1",
 		"kind": "form"
 	},
-	"geometryStamp": 361,
+	"geometryStamp": 363,
 	"editor": {
 		"activeView": "View 1",
 		"defaultView": "View 1",

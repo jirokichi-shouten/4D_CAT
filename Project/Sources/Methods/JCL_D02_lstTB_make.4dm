@@ -50,7 +50,7 @@ If ($block#"")
 	
 	APPEND TO ARRAY:C911(vJCL_D02_lstTB_Block; $block)  // フィールド情報
 	
-	If ($status="temporary")
+	If ($status#"temporary")
 		APPEND TO ARRAY:C911(vJCL_D20_lstTB_BakColor; JCL_num_GetRGB(255; 255; 255))  // 背景色
 		APPEND TO ARRAY:C911(vJCL_D20_lstTB_FontColor; JCL_num_GetRGB(255; 0; 0))  // フォントカラー
 	Else 

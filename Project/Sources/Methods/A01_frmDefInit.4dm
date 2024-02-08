@@ -20,6 +20,7 @@ ARRAY TEXT:C222(vA01_lstT_name; 0)
 ARRAY TEXT:C222(vA01_lstT_label; 0)
 ARRAY TEXT:C222(vA01_lstT_prefix; 0)
 ARRAY LONGINT:C221(vA01_lstT_numOfRecs; 0)
+ARRAY LONGINT:C221(vA01_lstT_Color; 0)
 
 C_TEXT:C284(vA01_txtNumOfTables)
 
@@ -27,6 +28,7 @@ C_TEXT:C284(vA01_varTableName)
 
 //フィールドリストボックス
 ARRAY BOOLEAN:C223(vA01_lstFL; 0)  //リストボックス自身
+ARRAY LONGINT:C221(vA01_lstFL_Nr; 0)
 ARRAY TEXT:C222(vA01_lstFL_NAME; 0)
 ARRAY TEXT:C222(vA01_lstFL_LABEL; 0)
 ARRAY TEXT:C222(vA01_lstFL_DATA_TYPE; 0)
