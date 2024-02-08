@@ -135,6 +135,7 @@
 					"sizingY": "grow",
 					"method": "ObjectMethods/vA01_lstT.4dm",
 					"fill": "automatic",
+					"selectionMode": "single",
 					"columns": [
 						{
 							"header": {
@@ -148,7 +149,8 @@
 							},
 							"dataSource": "vA01_lstT_nr",
 							"width": 42,
-							"textAlign": "center"
+							"textAlign": "center",
+							"enterable": false
 						},
 						{
 							"header": {
@@ -162,7 +164,8 @@
 							},
 							"dataSourceTypeHint": "object",
 							"dataSource": "vA01_lstT_name",
-							"width": 110
+							"width": 110,
+							"enterable": false
 						},
 						{
 							"header": {
@@ -176,7 +179,8 @@
 							},
 							"dataSourceTypeHint": "object",
 							"dataSource": "vA01_lstT_label",
-							"width": 90
+							"width": 90,
+							"enterable": false
 						},
 						{
 							"header": {
@@ -191,7 +195,8 @@
 							"dataSourceTypeHint": "object",
 							"dataSource": "vA01_lstT_prefix",
 							"width": 42,
-							"textAlign": "center"
+							"textAlign": "center",
+							"enterable": false
 						},
 						{
 							"header": {
@@ -206,7 +211,8 @@
 							"dataSource": "vA01_lstT_Color",
 							"width": 68,
 							"textAlign": "center",
-							"class": "JCL_YuGothic12"
+							"class": "JCL_YuGothic12",
+							"enterable": false
 						},
 						{
 							"header": {
@@ -219,7 +225,8 @@
 								"name": "Footer2"
 							},
 							"dataSource": "vA01_lstT_numOfRecs",
-							"width": 68
+							"width": 68,
+							"enterable": false
 						}
 					]
 				},
