@@ -10,7 +10,12 @@
 		<field name="KN_LONG_VALUE" uuid="F146705CDD2C49DE8262A3042E656E1E" type="4" not_null="true" id="5"/>
 		<field name="KN_SORT_ORDER" uuid="B3F5DABB2E1546A39539F2DDDF0AFB83" type="4" not_null="true" id="6"/>
 		<field name="KN_DEL_FLAG" uuid="A7C1231718D4439BB596F5E7802C6E5D" type="4" not_null="true" id="7"/>
-		<table_extra trashed="true"/>
+		<table_extra trashed="true">
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="40" top="40" width="120" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
 	</table>
 	<table name="(Z_KeyValue)" uuid="09F72442E1B2403096A3AA51EB43DED0" id="2" leave_tag_on_delete="true" hide_in_REST="true" prevent_journaling="true">
 		<field name="KV_ID" uuid="984495EAC93F47D0B5D0DDDF6917F6C6" type="4" not_null="true" id="1"/>
@@ -18,7 +23,12 @@
 		<field name="KV_VALUE" uuid="A3E5177DAB2C43C0994E9860875B7100" type="10" not_null="true" id="3"/>
 		<field name="KV_LONG_VALUE" uuid="DD25645AB89548DB80BEB5F3F78BDB7E" type="4" not_null="true" id="4"/>
 		<field name="KV_DEL_FLAG" uuid="6F67C24024E64F38A07908C824FF1A5D" type="4" not_null="true" id="5"/>
-		<table_extra trashed="true"/>
+		<table_extra trashed="true">
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="240" top="40" width="120" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
 	</table>
 	<table name="(USERS)" uuid="BF30AD00DE0949079CD639D7468D2FDF" id="3" leave_tag_on_delete="true" hide_in_REST="true" prevent_journaling="true">
 		<field name="US_ID" uuid="A75957812D7049A389E454045060F980" type="4" not_null="true" id="1"/>
@@ -30,7 +40,12 @@
 		<field name="US_CREATE_AT" uuid="24C600A39ADF44CF816F7DADF7EB9C53" type="10" limiting_length="20" not_null="true" id="7"/>
 		<field name="US_UPDATE_AT" uuid="910CC6090BF54B9EA031073D5F21D394" type="10" limiting_length="20" not_null="true" id="8"/>
 		<field name="US_DEL_FLAG" uuid="9AB3C10489174C34B544D6BE82795B70" type="4" not_null="true" id="9"/>
-		<table_extra trashed="true"/>
+		<table_extra trashed="true">
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="440" top="40" width="120" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
 	</table>
 	<table name="(PASSWORD_RESETS)" uuid="7BE7CF7854064A1C9CE2D1CF6FF8695D" id="4" leave_tag_on_delete="true" hide_in_REST="true" prevent_journaling="true">
 		<field name="PR_ID" uuid="4D21E0B9BECF481A803CCF6363CDAB8A" type="4" not_null="true" id="1"/>
@@ -39,7 +54,12 @@
 		<field name="PR_TOKEN" uuid="126A3A0774BB4A1D93D4734139C24F26" type="10" limiting_length="255" not_null="true" id="4"/>
 		<field name="PR_CREATE_AT" uuid="8F435EE6C5644ABEA4A0C5FDEAB86370" type="10" limiting_length="20" not_null="true" id="5"/>
 		<field name="PR_DEL_FLAG" uuid="99930DFB16764210AEFA043207909108" type="4" not_null="true" id="6"/>
-		<table_extra trashed="true"/>
+		<table_extra trashed="true">
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="640" top="40" width="120" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
 	</table>
 	<table name="(USERS_1)" uuid="BD0ADE64A8704540B1DEA6DD2638A5BE" id="5" leave_tag_on_delete="true" hide_in_REST="true" prevent_journaling="true">
 		<field name="US_ID" uuid="08A3CBBB9E3746A1A82B0A4257A9BAD2" type="4" not_null="true" id="1"/>
@@ -51,7 +71,12 @@
 		<field name="US_CREATE_AT" uuid="2C83EC7A99EA4BBD90D5C30FA8ABD89C" type="10" limiting_length="20" not_null="true" id="7"/>
 		<field name="US_UPDATE_AT" uuid="2CC655858C62473399E4560BC2016FC0" type="10" limiting_length="20" not_null="true" id="8"/>
 		<field name="US_DEL_FLAG" uuid="7A9A6155F5B54C68B94B749787213B82" type="4" not_null="true" id="9"/>
-		<table_extra trashed="true"/>
+		<table_extra trashed="true">
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="40" top="287" width="120" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
 	</table>
 	<table name="Z_KeyNValue" uuid="2A562A9BA0194B8EBDAEA20AF6A7FABA" id="6" leave_tag_on_delete="true" prevent_journaling="true">
 		<field name="KN_ID" uuid="989BA1E6AD4D4BAEA2F20DD9FB596EF6" type="4" not_null="true" id="1"/>
@@ -61,6 +86,12 @@
 		<field name="KN_LONG_VALUE" uuid="8CDFCD70389D47DC9AF0F655DD1F1F25" type="4" not_null="true" id="5"/>
 		<field name="KN_SORT_ORDER" uuid="1C3AC5DC96344A20ACB7CBD5E405DA8C" type="4" not_null="true" id="6"/>
 		<field name="KN_DEL_FLAG" uuid="BA0426749FD24119A98F11CA0329D3F9" type="4" not_null="true" id="7"/>
+		<table_extra>
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="240" top="287" width="120" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
 	</table>
 	<table name="Z_KeyValue" uuid="732DF331A0744DF19CFCF507E23F4782" id="7" leave_tag_on_delete="true" prevent_journaling="true">
 		<field name="KV_ID" uuid="2C1FA9050A3741FA8A1C9581184802B8" type="4" not_null="true" id="1"/>
@@ -68,6 +99,12 @@
 		<field name="KV_VALUE" uuid="10BF8941137E4CF4B1FD86EB0463C3F5" type="10" not_null="true" id="3"/>
 		<field name="KV_LONG_VALUE" uuid="65BBDAFA2A59426BB52415C4EC84510F" type="4" not_null="true" id="4"/>
 		<field name="KV_DEL_FLAG" uuid="ABC38A6283A14DDD9C00AB8047533228" type="4" not_null="true" id="5"/>
+		<table_extra>
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="440" top="287" width="120" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
 	</table>
 	<table name="USERS" uuid="DA8716E9B8334DF9AD048DC21599835F" id="8" leave_tag_on_delete="true" prevent_journaling="true">
 		<field name="US_ID" uuid="3F8AD99ED8764D17AA8948F03942197B" type="4" not_null="true" id="1"/>
@@ -79,6 +116,12 @@
 		<field name="US_CREATE_AT" uuid="90A7E62662734E8BB5ED121EA7197555" type="10" limiting_length="20" not_null="true" id="7"/>
 		<field name="US_UPDATE_AT" uuid="F60313DA9F984222BD174443358124A4" type="10" limiting_length="20" not_null="true" id="8"/>
 		<field name="US_DEL_FLAG" uuid="B652F991433649638499574D23965F65" type="4" not_null="true" id="9"/>
+		<table_extra>
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="640" top="287" width="120" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
 	</table>
 	<table name="PASSWORD_RESETS" uuid="685305E818E649759ACAACD9C9DA32EE" id="9" leave_tag_on_delete="true" prevent_journaling="true">
 		<field name="PR_ID" uuid="C60AE7EFE43E49A2814B2883C26BC7D5" type="4" not_null="true" id="1"/>
@@ -87,6 +130,12 @@
 		<field name="PR_TOKEN" uuid="A0AE52299BA8427684F2AD7EDCB3D14B" type="10" limiting_length="255" not_null="true" id="4"/>
 		<field name="PR_CREATE_AT" uuid="BCA635BC474A4394AF970F2803706671" type="10" limiting_length="20" not_null="true" id="5"/>
 		<field name="PR_DEL_FLAG" uuid="8CEE7772F05E4BA2A0EC20DFF34DFE04" type="4" not_null="true" id="6"/>
+		<table_extra>
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="40" top="534" width="120" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
 	</table>
 	<base_extra>
 		<journal_file journal_file_enabled="true"/>

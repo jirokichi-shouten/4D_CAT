@@ -12,6 +12,8 @@ ARRAY TEXT:C222(vJCL_fields_tblName; 0)
 ARRAY TEXT:C222(vJCL_fields_tblLabel; 0)
 ARRAY TEXT:C222(vJCL_fields_name; 0)
 ARRAY TEXT:C222(vJCL_fields_label; 0)
+ARRAY TEXT:C222(vJCL_fields_comment; 0)
+ARRAY TEXT:C222(vJCL_fields_remark; 0)
 C_LONGINT:C283($numOfItems)
 ARRAY TEXT:C222($aryLines; 0)
 ARRAY TEXT:C222($aryItems; 0)
@@ -60,6 +62,8 @@ If ($fileText#"")
 			
 			APPEND TO ARRAY:C911(vJCL_fields_name; $fldName)  //フィールド名
 			APPEND TO ARRAY:C911(vJCL_fields_label; $label)  //フィールドラベル
+			APPEND TO ARRAY:C911(vJCL_fields_comment; $aryItems{7})  //説明
+			APPEND TO ARRAY:C911(vJCL_fields_remark; $aryItems{8})  //備考
 			
 		End if 
 	End for 

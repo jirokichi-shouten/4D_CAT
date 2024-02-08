@@ -106,7 +106,7 @@
 					"type": "button",
 					"text": "レコード一覧",
 					"top": 77,
-					"left": 185,
+					"left": 285,
 					"width": 94,
 					"height": 26,
 					"focusable": false,
@@ -269,13 +269,13 @@
 					"sizingY": "fixed",
 					"textAlign": "automatic"
 				},
-				"vA01_txtNumOfRecs": {
+				"vA01_txtNumOfTables": {
 					"type": "input",
 					"top": 86,
 					"left": 20,
 					"width": 170,
 					"height": 17,
-					"dataSource": "vA01_txtNumOfRecs",
+					"dataSource": "vA01_txtNumOfTables",
 					"class": "JCL_YuGothic12",
 					"focusable": false,
 					"fill": "transparent",
@@ -321,6 +321,46 @@
 					],
 					"class": "JCL_YuGothic12",
 					"columns": [
+						{
+							"name": "vA01_lstFL_Nr",
+							"dataSource": "vA01_lstFL_Nr",
+							"dataSourceTypeHint": "number",
+							"width": 48,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"enterable": false,
+							"stroke": "#000000",
+							"fill": "#FFFFFF",
+							"alternateFill": "automatic",
+							"textAlign": "center",
+							"verticalAlign": "automatic",
+							"fontFamily": "Meiryo",
+							"fontSize": 12,
+							"events": [
+								"onClick",
+								"onDataChange"
+							],
+							"header": {
+								"name": "HvA01_lstFL_Nr",
+								"text": "番号",
+								"dataSource": "HvA01_lstFL_Nr",
+								"stroke": "#000000",
+								"textAlign": "automatic",
+								"verticalAlign": "automatic",
+								"fontFamily": "Meiryo",
+								"fontSize": 12
+							},
+							"footer": {
+								"name": "Footer14",
+								"timeFormat": "hh_mm_ss",
+								"stroke": "#000000",
+								"fill": "#FFFFFF",
+								"textAlign": "automatic",
+								"verticalAlign": "automatic",
+								"fontFamily": "Meiryo",
+								"fontSize": 12
+							}
+						},
 						{
 							"name": "vA01_lstFL_NAME",
 							"dataSource": "vA01_lstFL_NAME",
@@ -442,7 +482,7 @@
 						{
 							"name": "vA01_lstFL_INDEX",
 							"dataSource": "vA01_lstFL_INDEX",
-							"dataSourceTypeHint": "number",
+							"dataSourceTypeHint": "boolean",
 							"width": 48,
 							"minWidth": 10,
 							"maxWidth": 32000,
@@ -482,7 +522,7 @@
 						{
 							"name": "vA01_lstFL_UNIQUE",
 							"dataSource": "vA01_lstFL_UNIQUE",
-							"dataSourceTypeHint": "number",
+							"dataSourceTypeHint": "boolean",
 							"width": 48,
 							"minWidth": 10,
 							"maxWidth": 32000,
@@ -642,7 +682,7 @@
 					"type": "input",
 					"top": 86,
 					"left": 400,
-					"width": 170,
+					"width": 550,
 					"height": 17,
 					"dataSource": "vA01_varTableName",
 					"class": "JCL_YuGothic12",
@@ -662,7 +702,7 @@
 			}
 		}
 	],
-	"geometryStamp": 452,
+	"geometryStamp": 533,
 	"editor": {
 		"activeView": "View 1",
 		"defaultView": "View 1",
