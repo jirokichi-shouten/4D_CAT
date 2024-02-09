@@ -1,5 +1,5 @@
-//US01[--PREFIX]01_Display
-//FG v20230103 2024/02/07 20:51:08
+//US01_Display
+//FG v202402 2024/02/09 18:06:20
 //USERS 一覧ウインドウ表示
 
 C_LONGINT($wref)
@@ -8,7 +8,7 @@ C_TEXT($title)
 C_TEXT($frmName)
 $frmName:="US01_List"
 
-$wref:=Open form window([USERS];$frmName;Movable form dialog box;Horizontally Centered;Vertically Centered;*)
+$wref:=Open form window([USERS];$frmName;Plain form dialog box;Horizontally Centered;Vertically Centered;*)
 
 $title:=$frmName
 SET WINDOW TITLE($title; $wref)

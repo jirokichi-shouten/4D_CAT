@@ -1,5 +1,5 @@
 //KV01_frmDefInit
-//FG v202103 2024/02/07 21:01:46
+//FG v202103 2024/02/09 18:05:58
 //Z_KeyValue プロセス変数宣言・初期化
 
 C_TEXT(vKV01_varNumOfRecs)

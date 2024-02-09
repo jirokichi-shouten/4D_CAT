@@ -13,7 +13,8 @@ $[--TBL_PREFIX]_id:=[--TBL_PREFIX]_Add_byInitValues
 [--FRM_PREFIX]_SaveValues
 
 Else 
-v[--TBL_PREFIX]_id:=[--FRM_PREFIX]_var[--TBL_PREFIX]_ID_get
+$[--TBL_PREFIX]_id:=[--FRM_PREFIX]_var[--TBL_PREFIX]_ID_get
+QUERY([[--TABLE]];[[--TABLE]][--TBL_PREFIX]_ID=$[--TBL_PREFIX]_id)
 [--FRM_PREFIX]_SaveValues
 //[[--TABLE]][--TBL_PREFIX]_UPDATE_DATEMARK:=JCL_str_Datemark (Current date;Current time)
 

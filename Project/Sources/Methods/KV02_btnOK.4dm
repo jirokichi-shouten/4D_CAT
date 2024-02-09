@@ -1,5 +1,5 @@
 //KV02_btnOK
-//FG v202402 2024/02/07 21:01:46
+//FG v202402 2024/02/09 18:05:58
 //Z_KeyValue 保存
 
 C_TEXT($mode)
@@ -13,7 +13,8 @@ $KV_id:=KV_Add_byInitValues
 KV02_SaveValues
 
 Else 
-vKV_id:=KV02_varKV_ID_get
+$KV_id:=KV02_varKV_ID_get
+QUERY([Z_KeyValue];[Z_KeyValue]KV_ID=$KV_id)
 KV02_SaveValues
 //[Z_KeyValue]KV_UPDATE_DATEMARK:=JCL_str_Datemark (Current date;Current time)
 

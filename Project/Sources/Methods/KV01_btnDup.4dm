@@ -1,5 +1,5 @@
 //KV01_btnDup 
-//FG v202103 2024/02/07 21:01:46
+//FG v202103 2024/02/09 18:05:58
 //Z_KeyValue 複製
 
 //C_LONGINT($KV_id;$new_KV_id)

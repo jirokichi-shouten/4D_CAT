@@ -1,6 +1,6 @@
 //%attributes = {"executedOnServer":true}
 //KV01_lstKV_Make_aryObj_onServer
-//FG v202209 2024/02/07 21:01:46
+//FG v202209 2024/02/09 18:05:58
 //[Z_KeyValue] 一覧表に必要な値をオブジェクト配列に作成　//サーバ上で実行
 //カレントセレクションが前提
 

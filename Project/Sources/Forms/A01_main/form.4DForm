@@ -82,32 +82,12 @@
 					"action": "cancel",
 					"class": "JCL_YuGothic12"
 				},
-				"vA01_btnFields": {
-					"type": "button",
-					"text": "テーブル追加",
-					"top": 16,
-					"left": 892,
-					"width": 110,
-					"height": 26,
-					"events": [
-						"onClick"
-					],
-					"dataSource": "vA01_btnFields",
-					"shortcutAccel": false,
-					"shortcutControl": false,
-					"shortcutShift": false,
-					"shortcutAlt": false,
-					"shortcutKey": "",
-					"action": "",
-					"class": "JCL_YuGothic12",
-					"method": "ObjectMethods/vA01_btnFields.4dm"
-				},
 				"vA01_btnList": {
 					"type": "button",
 					"text": "レコード一覧",
 					"top": 77,
-					"left": 285,
-					"width": 94,
+					"left": 272,
+					"width": 110,
 					"height": 26,
 					"focusable": false,
 					"method": "ObjectMethods/vA01_btnUS01.4dm",
@@ -136,6 +116,7 @@
 					"method": "ObjectMethods/vA01_lstT.4dm",
 					"fill": "automatic",
 					"selectionMode": "single",
+					"class": "JCL_YuGothic12",
 					"columns": [
 						{
 							"header": {
@@ -352,7 +333,7 @@
 							"minWidth": 10,
 							"maxWidth": 32000,
 							"enterable": false,
-							"stroke": "#000000",
+							"stroke": "automatic",
 							"fill": "#FFFFFF",
 							"alternateFill": "automatic",
 							"textAlign": "center",
@@ -367,11 +348,12 @@
 								"name": "HvA01_lstFL_Nr",
 								"text": "番号",
 								"dataSource": "HvA01_lstFL_Nr",
-								"stroke": "#000000",
+								"stroke": "automatic",
 								"textAlign": "automatic",
 								"verticalAlign": "automatic",
 								"fontFamily": "Meiryo",
-								"fontSize": 12
+								"fontSize": 12,
+								"class": "JCL_YuGothic10"
 							},
 							"footer": {
 								"name": "Footer14",
@@ -382,7 +364,8 @@
 								"verticalAlign": "automatic",
 								"fontFamily": "Meiryo",
 								"fontSize": 12
-							}
+							},
+							"class": "JCL_YuGothic12"
 						},
 						{
 							"name": "vA01_lstFL_NAME",
@@ -391,7 +374,7 @@
 							"minWidth": 10,
 							"maxWidth": 32000,
 							"enterable": false,
-							"stroke": "#000000",
+							"stroke": "automatic",
 							"fill": "#FFFFFF",
 							"alternateFill": "automatic",
 							"textAlign": "automatic",
@@ -421,7 +404,8 @@
 								"verticalAlign": "automatic",
 								"fontFamily": "Meiryo",
 								"fontSize": 12
-							}
+							},
+							"class": "JCL_YuGothic12"
 						},
 						{
 							"name": "vA01_lstFL_DATA_TYPE",
@@ -430,7 +414,7 @@
 							"minWidth": 10,
 							"maxWidth": 32000,
 							"enterable": false,
-							"stroke": "#000000",
+							"stroke": "automatic",
 							"fill": "#FFFFFF",
 							"alternateFill": "automatic",
 							"textAlign": "automatic",
@@ -470,7 +454,7 @@
 							"minWidth": 10,
 							"maxWidth": 32000,
 							"enterable": false,
-							"stroke": "#000000",
+							"stroke": "automatic",
 							"fill": "#FFFFFF",
 							"alternateFill": "automatic",
 							"textAlign": "center",
@@ -510,7 +494,7 @@
 							"minWidth": 10,
 							"maxWidth": 32000,
 							"enterable": false,
-							"stroke": "#000000",
+							"stroke": "automatic",
 							"fill": "#FFFFFF",
 							"alternateFill": "automatic",
 							"textAlign": "center",
@@ -550,7 +534,7 @@
 							"minWidth": 10,
 							"maxWidth": 32000,
 							"enterable": false,
-							"stroke": "#000000",
+							"stroke": "automatic",
 							"fill": "#FFFFFF",
 							"alternateFill": "automatic",
 							"textAlign": "center",
@@ -721,11 +705,31 @@
 					],
 					"sizingY": "fixed",
 					"textAlign": "automatic"
+				},
+				"vA01_btnFields": {
+					"type": "button",
+					"text": "テーブル追加",
+					"top": 16,
+					"left": 272,
+					"width": 110,
+					"height": 26,
+					"events": [
+						"onClick"
+					],
+					"dataSource": "vA01_btnFields",
+					"shortcutAccel": false,
+					"shortcutControl": false,
+					"shortcutShift": false,
+					"shortcutAlt": false,
+					"shortcutKey": "",
+					"action": "",
+					"class": "JCL_YuGothic12",
+					"method": "ObjectMethods/vA01_btnFields.4dm"
 				}
 			}
 		}
 	],
-	"geometryStamp": 538,
+	"geometryStamp": 608,
 	"editor": {
 		"activeView": "View 1",
 		"defaultView": "View 1",

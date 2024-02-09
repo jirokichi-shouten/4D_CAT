@@ -1,6 +1,6 @@
 //KV01_DeleteSelectedItems
 //KV01_DeleteNSelected
-//FG v202103 2024/02/07 21:01:46
+//FG v202103 2024/02/09 18:05:58
 //Z_KeyValue リストボックスの選択行を複数削除
 
 C_LONGINT($0;$selCnt)

@@ -1,5 +1,5 @@
 //US01_frmDefInit
-//FG v202103 2024/02/07 20:51:08
+//FG v202103 2024/02/09 18:06:20
 //USERS プロセス変数宣言・初期化
 
 C_TEXT(vUS01_varNumOfRecs)

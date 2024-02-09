@@ -1,6 +1,6 @@
 //US01_DeleteSelectedItems
 //US01_DeleteNSelected
-//FG v202103 2024/02/07 20:51:08
+//FG v202103 2024/02/09 18:06:20
 //USERS リストボックスの選択行を複数削除
 
 C_LONGINT($0;$selCnt)

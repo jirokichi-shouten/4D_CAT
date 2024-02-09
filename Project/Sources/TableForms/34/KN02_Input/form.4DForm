@@ -1,0 +1,315 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"events": [
+		"onLoad",
+		"onPageChange",
+		"onValidate",
+		"onClick",
+		"onDoubleClick",
+		"onOutsideCall",
+		"onBeginDragOver",
+		"onDragOver",
+		"onDrop",
+		"onAfterKeystroke",
+		"onMenuSelect",
+		"onPluginArea",
+		"onAfterEdit",
+		"onTimer",
+		"onBoundVariableChange"
+	],
+	"method": "method.4dm",
+	"windowTitle": "test window title",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {
+								"vKN02_rectTitle": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 0,
+					"width": 987,
+					"height": 55,
+					"fill": "#697A52",
+					"stroke": "#697A52"
+				},
+				"vKN02_varTitle": {
+					"type": "input",
+					"top": 16,
+					"left": 26,
+					"width": 288,
+					"height": 26,
+					"dataSource": "vKN02_varTitle",
+					"stroke": "#B1C4DD",
+					"class": "JCL_YuGothic16",
+					"fontWeight": "bold",
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"enterable": false,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "none",
+					"events": [
+						"onDataChange"
+					]
+				}
+,
+								"vKN02_btnOK": {
+					"type": "button",
+					"top": 16,
+					"left": 873,
+					"width": 94,
+					"height": 26,
+					"dataSource": "vKN02_btnOK",
+					"method": "ObjectMethods/vKN02_btnOK.4dm",
+					"text": "OK",
+					"class": "JCL_YuGothic12",
+					"focusable": false,
+					"events": [
+						"onClick"
+					]
+				}
+,
+								"vKN02_btnCancel ": {
+					"type": "button",
+					"top": 16,
+					"left": 759,
+					"width": 94,
+					"height": 26,
+					"dataSource": "vKN02_btnCancel",
+					"action": "cancel",
+					"shortcutKey": "[Esc]",
+					"text": "キャンセル",
+					"class": "JCL_YuGothic12",
+					"focusable": false,
+					"events": [
+						"onClick"
+					]
+				}
+,
+								"vKN02_btnDelete": {
+					"type": "button",
+					"top": 16,
+					"left": 645,
+					"width": 94,
+					"height": 26,
+					"dataSource": "vKN02_btnDelete",
+					"text": "削除",
+					"class": "JCL_YuGothic12",
+					"focusable": false,
+					"method": "ObjectMethods/vKN02_btnDelete.4dm",
+					"events": [
+						"onClick"
+					]
+				}
+
+			}
+		},
+		{
+			"objects": {
+								"vKN02_lblKN_ID": {
+					"type": "text",
+					"top": 116,
+					"left": 10,
+					"width": 94,
+					"height": 16,
+					"class": "JCL_YuGothic12",
+					"text": "ID"
+				},
+				"vKN02_varKN_ID": {
+					"type": "input",
+					"top": 116,
+					"left": 110,
+					"width": 42,
+					"height": 16,
+					"dataSource": "vKN02_varKN_ID",
+					"dataSourceTypeHint": "integer",
+					"class": "JCL_YuGothic12",
+					"focusable": true,
+					"borderStyle": "sunken",
+					"enterable": true,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},				"vKN02_lblKN_KEY": {
+					"type": "text",
+					"top": 142,
+					"left": 10,
+					"width": 94,
+					"height": 16,
+					"class": "JCL_YuGothic12",
+					"text": "キー文字列"
+				},
+				"vKN02_varKN_KEY": {
+					"type": "input",
+					"top": 142,
+					"left": 110,
+					"width": 90,
+					"height": 16,
+					"dataSource": "vKN02_varKN_KEY",
+					"dataSourceTypeHint": "text",
+					"class": "JCL_YuGothic12",
+					"focusable": true,
+					"borderStyle": "sunken",
+					"enterable": true,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},				"vKN02_lblKN_CODE": {
+					"type": "text",
+					"top": 168,
+					"left": 10,
+					"width": 94,
+					"height": 16,
+					"class": "JCL_YuGothic12",
+					"text": "コード文字列"
+				},
+				"vKN02_varKN_CODE": {
+					"type": "input",
+					"top": 168,
+					"left": 110,
+					"width": 90,
+					"height": 16,
+					"dataSource": "vKN02_varKN_CODE",
+					"dataSourceTypeHint": "text",
+					"class": "JCL_YuGothic12",
+					"focusable": true,
+					"borderStyle": "sunken",
+					"enterable": true,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},				"vKN02_lblKN_VALUE": {
+					"type": "text",
+					"top": 90,
+					"left": 408,
+					"width": 94,
+					"height": 16,
+					"class": "JCL_YuGothic12",
+					"text": "バリュー文字列"
+				},
+				"vKN02_varKN_VALUE": {
+					"type": "input",
+					"top": 90,
+					"left": 508,
+					"width": 68,
+					"height": 16,
+					"dataSource": "vKN02_varKN_VALUE",
+					"dataSourceTypeHint": "text",
+					"class": "JCL_YuGothic12",
+					"focusable": true,
+					"borderStyle": "sunken",
+					"enterable": true,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},				"vKN02_lblKN_LONG_VALUE": {
+					"type": "text",
+					"top": 116,
+					"left": 408,
+					"width": 94,
+					"height": 16,
+					"class": "JCL_YuGothic12",
+					"text": "バリュー整数値"
+				},
+				"vKN02_varKN_LONG_VALUE": {
+					"type": "input",
+					"top": 116,
+					"left": 508,
+					"width": 42,
+					"height": 16,
+					"dataSource": "vKN02_varKN_LONG_VALUE",
+					"dataSourceTypeHint": "integer",
+					"class": "JCL_YuGothic12",
+					"focusable": true,
+					"borderStyle": "sunken",
+					"enterable": true,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},				"vKN02_lblKN_SORT_ORDER": {
+					"type": "text",
+					"top": 142,
+					"left": 408,
+					"width": 94,
+					"height": 16,
+					"class": "JCL_YuGothic12",
+					"text": "ソート順"
+				},
+				"vKN02_varKN_SORT_ORDER": {
+					"type": "input",
+					"top": 142,
+					"left": 508,
+					"width": 42,
+					"height": 16,
+					"dataSource": "vKN02_varKN_SORT_ORDER",
+					"dataSourceTypeHint": "integer",
+					"class": "JCL_YuGothic12",
+					"focusable": true,
+					"borderStyle": "sunken",
+					"enterable": true,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				},				"vKN02_lblKN_DEL_FLAG": {
+					"type": "text",
+					"top": 168,
+					"left": 408,
+					"width": 94,
+					"height": 16,
+					"class": "JCL_YuGothic12",
+					"text": "削除フラグ"
+				},
+				"vKN02_varKN_DEL_FLAG": {
+					"type": "input",
+					"top": 168,
+					"left": 508,
+					"width": 42,
+					"height": 16,
+					"dataSource": "vKN02_varKN_DEL_FLAG",
+					"dataSourceTypeHint": "integer",
+					"class": "JCL_YuGothic12",
+					"focusable": true,
+					"borderStyle": "sunken",
+					"enterable": true,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				}
+			}
+		}
+	],
+	"geometryStamp": 105,
+	"width": 987,
+	"height": 644
+}

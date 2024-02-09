@@ -1,5 +1,5 @@
 //KV01_lstKV
-//FG v202103 2024/02/07 21:01:46
+//FG v202103 2024/02/09 18:05:58
 //Z_KeyValue リストボックス
 
 C_LONGINT($frmEvnt)

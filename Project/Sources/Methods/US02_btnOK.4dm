@@ -1,5 +1,5 @@
 //US02_btnOK
-//FG v202402 2024/02/07 20:51:08
+//FG v202402 2024/02/09 18:06:20
 //USERS 保存
 
 C_TEXT($mode)
@@ -13,7 +13,8 @@ $US_id:=US_Add_byInitValues
 US02_SaveValues
 
 Else 
-vUS_id:=US02_varUS_ID_get
+$US_id:=US02_varUS_ID_get
+QUERY([USERS];[USERS]US_ID=$US_id)
 US02_SaveValues
 //[USERS]US_UPDATE_DATEMARK:=JCL_str_Datemark (Current date;Current time)
 

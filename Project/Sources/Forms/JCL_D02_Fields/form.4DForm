@@ -61,7 +61,7 @@
 					"width": 303,
 					"height": 23,
 					"class": "JCL_YuGothic16",
-					"text": "fields admin"
+					"text": "テーブル作成"
 				},
 				"vJCL_D02_btnClose": {
 					"type": "button",
@@ -904,6 +904,16 @@
 					"events": [
 						"onClick"
 					]
+				},
+				"vJCL_D02_txtTitle1": {
+					"type": "text",
+					"top": 20,
+					"left": 230,
+					"width": 723,
+					"height": 20,
+					"class": "JCL_YuGothic12",
+					"text": "[fields読込]でfieldsフォーマットのファイルを選択。結果を確認後、[テーブル作成]をクリック",
+					"stroke": "#8b4513"
 				}
 			}
 		}
@@ -912,7 +922,7 @@
 		"version": "1",
 		"kind": "form"
 	},
-	"geometryStamp": 363,
+	"geometryStamp": 380,
 	"editor": {
 		"activeView": "View 1",
 		"defaultView": "View 1",

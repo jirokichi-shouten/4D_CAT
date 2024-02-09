@@ -1,0 +1,302 @@
+{
+	"destination": "detailScreen",
+	"width": 1042,
+	"height": 576,
+	"windowMinHeight": 178,
+	"events": [
+		"onLoad",
+		"onValidate",
+		"onClick",
+		"onHeader",
+		"onDoubleClick",
+		"onDrop",
+		"onDataChange",
+		"onAfterKeystroke",
+		"onAfterEdit",
+		"onBeginDragOver",
+		"onPageChange"
+	],
+	"method": "method.4dm",
+	"pages": [
+		null,
+		{
+			"objects": {
+								"vKV01_rectTitle": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 0,
+					"width": 1042,
+					"height": 55,
+					"fill": "#97A68E",
+					"stroke": "#97A68E"
+				},
+				"vKV01_txtTitle": {
+					"type": "text",
+					"top": 16,
+					"left": 20,
+					"width": 192,
+					"height": 26,
+					"class": "JCL_YuGothic16",
+					"text": "キーバリュー一覧"
+				}
+,
+								"vKV01_btnAdd": {
+					"type": "pictureButton",
+					"top": 64,
+					"left": 20,
+					"width": 26,
+					"height": 26,
+					"dataSource": "vKV01_btnAdd",
+					"class": "JCL_YuGothic12",
+					"rowCount": 4,
+					"picture": "/RESOURCES/JCL4D_Resources/pictures/plus_rectangle.png",
+					"switchBackWhenReleased": true,
+					"method": "ObjectMethods/vKV01_btnAdd.4dm",
+					"events": [
+						"onClick"
+					]
+				}
+,
+								"vKV01_btnMod": {
+					"type": "pictureButton",
+					"top": 64,
+					"left": 68,
+					"width": 26,
+					"height": 26,
+					"dataSource": "vKV01_btnMod",
+					"class": "JCL_YuGothic12",
+					"rowCount": 4,
+					"picture": "/RESOURCES/JCL4D_Resources/pictures/square_and_pencil_w.png",
+					"switchBackWhenReleased": true,
+					"method": "ObjectMethods/vKV01_btnMod.4dm",
+					"events": [
+						"onClick"
+					]
+				}
+,
+								"vKV01_btnDel": {
+					"type": "pictureButton",
+					"top": 64,
+					"left": 162,
+					"width": 26,
+					"height": 26,
+					"dataSource": "vKV01_btnDel",
+					"rowCount": 4,
+					"picture": "/RESOURCES/JCL4D_Resources/pictures/minus_rectangle.png",
+					"switchBackWhenReleased": true,
+				"method": "ObjectMethods/vKV01_btnDel.4dm",
+					"events": [
+						"onClick"
+					]
+				}
+,
+								"vKV01_btnClose": {
+					"type": "button",
+					"top": 10,
+					"left": 980,
+					"width": 42,
+					"height": 26,
+					"dataSource": "vKV01_btnClose",
+					"action": "cancel",
+					"shortcutKey": "w",
+					"shortcutAccel": true,
+					"text": "X",
+					"class": "JCL_YuGothic12",
+					"events": [
+						"onClick"
+					]
+				}
+,
+								"vKV01_btnExport": {
+					"type": "pictureButton",
+					"top": 64,
+					"left": 880,
+					"width": 26,
+					"height": 26,
+					"dataSource": "vKV01_btnExport",
+					"rowCount": 4,
+					"picture": "/RESOURCES/JCL4D_Resources/pictures/square_and_arrow_down.png",
+					"switchBackWhenReleased": true,
+					"method": "ObjectMethods/vKV01_btnExport.4dm",
+					"events": [
+						"onClick"
+					]
+				}
+,
+								"vKV01_varNumOfRecs": {
+					"type": "input",
+					"top": 73,
+					"left": 914,
+					"width": 110,
+					"height": 17,
+					"dataSource": "vKV01_varNumOfRecs",
+					"class": "JCL_YuGothic12",
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"enterable": false,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				}
+,
+				"vKV01_lstKV": {
+	"type": "listbox",
+	"top": 94,
+	"left": 20,
+	"width": 1002,
+	"height": 472,
+	"sizingX": "grow",
+	"sizingY": "grow",
+	"resizingMode": "legacy",
+	"dataSource": "vKV01_lstKV",
+	"rowHeight": "20px",
+	"rowHeightAutoMin": "20px",
+	"rowHeightAutoMax": "20px",
+	"class": "JCL_YuGothic12",
+	"method": "ObjectMethods/vKV01_lstKV.4dm",
+	"events": [
+		"onClick",
+		"onDoubleClick",
+		"onDataChange",
+		"onSelectionChange",
+		"onHeaderClick"
+	],
+	"columns": [
+	{
+	"name": "vKV01_lstKV_ID",
+	"dataSource": "vKV01_lstKV_ID",
+	"width": 42,
+	"enterable": false,
+	"truncateMode": "none",
+	"class": "JCL_YuGothic12",
+	"events": [
+		"onClick",
+		"onDataChange"
+	],
+	"header": {
+		"name": "vKV01_lhdKV_ID",
+		"text": "ID",
+		"dataSource": "vKV01_lhdKV_ID",
+		"class": "JCL_YuGothic10"
+	},
+	"footer": {
+		"name": "vKV01_lftKV_ID",
+		"dataSource": "vKV01_lftKV_ID",
+		"timeFormat": "hh_mm_ss",
+		"class": "JCL_YuGothic12"
+	}
+}
+,{
+	"name": "vKV01_lstKV_KEY",
+	"dataSource": "vKV01_lstKV_KEY",
+	"width": 90,
+	"enterable": false,
+	"truncateMode": "none",
+	"class": "JCL_YuGothic12",
+	"events": [
+		"onClick",
+		"onDataChange"
+	],
+	"header": {
+		"name": "vKV01_lhdKV_KEY",
+		"text": "キー文字列",
+		"dataSource": "vKV01_lhdKV_KEY",
+		"class": "JCL_YuGothic10"
+	},
+	"footer": {
+		"name": "vKV01_lftKV_KEY",
+		"dataSource": "vKV01_lftKV_KEY",
+		"timeFormat": "hh_mm_ss",
+		"class": "JCL_YuGothic12"
+	}
+}
+,{
+	"name": "vKV01_lstKV_VALUE",
+	"dataSource": "vKV01_lstKV_VALUE",
+	"width": 68,
+	"enterable": false,
+	"truncateMode": "none",
+	"class": "JCL_YuGothic12",
+	"events": [
+		"onClick",
+		"onDataChange"
+	],
+	"header": {
+		"name": "vKV01_lhdKV_VALUE",
+		"text": "バリュー文字列",
+		"dataSource": "vKV01_lhdKV_VALUE",
+		"class": "JCL_YuGothic10"
+	},
+	"footer": {
+		"name": "vKV01_lftKV_VALUE",
+		"dataSource": "vKV01_lftKV_VALUE",
+		"timeFormat": "hh_mm_ss",
+		"class": "JCL_YuGothic12"
+	}
+}
+,{
+	"name": "vKV01_lstKV_LONG_VALUE",
+	"dataSource": "vKV01_lstKV_LONG_VALUE",
+	"width": 42,
+	"enterable": false,
+	"truncateMode": "none",
+	"class": "JCL_YuGothic12",
+	"events": [
+		"onClick",
+		"onDataChange"
+	],
+	"header": {
+		"name": "vKV01_lhdKV_LONG_VALUE",
+		"text": "バリュー整数値",
+		"dataSource": "vKV01_lhdKV_LONG_VALUE",
+		"class": "JCL_YuGothic10"
+	},
+	"footer": {
+		"name": "vKV01_lftKV_LONG_VALUE",
+		"dataSource": "vKV01_lftKV_LONG_VALUE",
+		"timeFormat": "hh_mm_ss",
+		"class": "JCL_YuGothic12"
+	}
+}
+,{
+	"name": "vKV01_lstKV_DEL_FLAG",
+	"dataSource": "vKV01_lstKV_DEL_FLAG",
+	"width": 42,
+	"enterable": false,
+	"truncateMode": "none",
+	"class": "JCL_YuGothic12",
+	"events": [
+		"onClick",
+		"onDataChange"
+	],
+	"header": {
+		"name": "vKV01_lhdKV_DEL_FLAG",
+		"text": "削除フラグ",
+		"dataSource": "vKV01_lhdKV_DEL_FLAG",
+		"class": "JCL_YuGothic10"
+	},
+	"footer": {
+		"name": "vKV01_lftKV_DEL_FLAG",
+		"dataSource": "vKV01_lftKV_DEL_FLAG",
+		"timeFormat": "hh_mm_ss",
+		"class": "JCL_YuGothic12"
+	}
+}
+
+	]
+}
+
+				
+			}
+		}
+	],
+	"geometryStamp": 2,
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	}
+}

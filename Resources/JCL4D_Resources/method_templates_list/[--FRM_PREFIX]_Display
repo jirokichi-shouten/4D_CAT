@@ -1,5 +1,5 @@
-//[--FRM_PREFIX][--PREFIX]01_Display
-//FG v20230103 [--DATE]
+//[--FRM_PREFIX]_Display
+//FG v202402 [--DATE]
 //[--TABLE] 一覧ウインドウ表示
 
 C_LONGINT($wref)
@@ -8,7 +8,7 @@ C_TEXT($title)
 C_TEXT($frmName)
 $frmName:="[--FRM_PREFIX]_List"
 
-$wref:=Open form window([[--TABLE]];$frmName;Movable form dialog box;Horizontally Centered;Vertically Centered;*)
+$wref:=Open form window([[--TABLE]];$frmName;Plain form dialog box;Horizontally Centered;Vertically Centered;*)
 
 $title:=$frmName
 SET WINDOW TITLE($title; $wref)

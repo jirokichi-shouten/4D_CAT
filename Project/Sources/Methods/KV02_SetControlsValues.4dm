@@ -1,5 +1,5 @@
 //KV02_SetControlsValues
-//FG v202103 2024/02/07 21:01:46
+//FG v202103 2024/02/09 18:05:58
 //Z_KeyValue フォーム上のオブジェクト制御
 
 C_TEXT($mode)
