@@ -45,6 +45,10 @@ End for
 
 $sizeOfAry:=Size of array:C274(vA01_lstT_Color)
 For ($i; 1; $sizeOfAry)
+	//色を取得
+	$color:=JCL_tbl_GetFormColor(vA01_lstT_name{$i})
+	vA01_lstT_Color:=$color  //色を更新
+	
 	//リストボックスに適用
 	$color:=vA01_lstT_Color{$i}
 	If ($color#0)

@@ -85,9 +85,9 @@
 				"vA01_btnList": {
 					"type": "button",
 					"text": "レコード一覧",
-					"top": 77,
-					"left": 272,
-					"width": 110,
+					"top": 68,
+					"left": 252,
+					"width": 90,
 					"height": 26,
 					"focusable": false,
 					"method": "ObjectMethods/vA01_btnUS01.4dm",
@@ -102,7 +102,7 @@
 					"type": "listbox",
 					"left": 10,
 					"top": 110,
-					"width": 372,
+					"width": 432,
 					"height": 322,
 					"events": [
 						"onClick",
@@ -297,8 +297,8 @@
 				"vA01_lstFL": {
 					"type": "listbox",
 					"top": 110,
-					"left": 390,
-					"width": 754,
+					"left": 450,
+					"width": 694,
 					"height": 322,
 					"sizingX": "grow",
 					"sizingY": "grow",
@@ -688,7 +688,7 @@
 				"vA01_varTableName": {
 					"type": "input",
 					"top": 86,
-					"left": 400,
+					"left": 460,
 					"width": 550,
 					"height": 17,
 					"dataSource": "vA01_varTableName",
@@ -710,8 +710,8 @@
 					"type": "button",
 					"text": "テーブル追加",
 					"top": 16,
-					"left": 272,
-					"width": 110,
+					"left": 252,
+					"width": 90,
 					"height": 26,
 					"events": [
 						"onClick"
@@ -725,11 +725,43 @@
 					"action": "",
 					"class": "JCL_YuGothic12",
 					"method": "ObjectMethods/vA01_btnFields.4dm"
+				},
+				"vA01_btnList1": {
+					"type": "button",
+					"text": "レコード一覧JSON",
+					"top": 68,
+					"left": 152,
+					"width": 90,
+					"height": 26,
+					"focusable": false,
+					"method": "ObjectMethods/vA01_btnUS01.4dm",
+					"events": [
+						"onClick"
+					],
+					"action": "",
+					"class": "JCL_YuGothic12",
+					"dataSource": "vA01_btnList"
+				},
+				"vA01_btnDelete": {
+					"type": "button",
+					"text": "テーブル削除",
+					"top": 68,
+					"left": 352,
+					"width": 90,
+					"height": 26,
+					"focusable": false,
+					"method": "ObjectMethods/vA01_btnDelete.4dm",
+					"events": [
+						"onClick"
+					],
+					"action": "",
+					"class": "JCL_YuGothic12",
+					"dataSource": "vA01_btnDelete"
 				}
 			}
 		}
 	],
-	"geometryStamp": 608,
+	"geometryStamp": 668,
 	"editor": {
 		"activeView": "View 1",
 		"defaultView": "View 1",

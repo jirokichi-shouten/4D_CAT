@@ -1,4 +1,6 @@
 //%attributes = {}
+//JCL_prj_FormGeneratorV3
+//20240210 wat
 //JCL_prj_FormGeneratorV2
 //20240207 hisa wat
 //フォームを作る//フォームジェネレータ02、一覧用リストボックスのフォーム「xx01_List」を作る

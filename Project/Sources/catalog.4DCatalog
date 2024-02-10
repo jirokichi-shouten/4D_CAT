@@ -475,53 +475,9 @@
 		<primary_key field_name="PR_ID" field_uuid="299BA3AAE27142B19CE463DEA0DCD77C"/>
 		<table_extra trashed="true"/>
 	</table>
-	<table name="Z_KeyNValue" uuid="BC21FD6DEC9D487891EE7A94C65C11EA" id="34" leave_tag_on_delete="true" prevent_journaling="true">
-		<field name="KN_ID" uuid="4003D91A8C7542AFA91A4334F135D15D" type="4" unique="true" not_null="true" id="1"/>
-		<field name="KN_KEY" uuid="BB3069D054E6412F838A0FBFEB4F4C39" type="10" limiting_length="80" not_null="true" id="2"/>
-		<field name="KN_CODE" uuid="5C66CF9FF99A4B1287D717A52E83FA93" type="10" limiting_length="80" not_null="true" id="3"/>
-		<field name="KN_VALUE" uuid="0568240668C64C32BB2C75457B360EB9" type="10" not_null="true" id="4"/>
-		<field name="KN_LONG_VALUE" uuid="4C8422D6387E4D4FBADE4BF1288CBFD0" type="4" not_null="true" id="5"/>
-		<field name="KN_SORT_ORDER" uuid="2049984076B7427CB641671CD16EA8A6" type="4" not_null="true" id="6"/>
-		<field name="KN_DEL_FLAG" uuid="54570DB25CC549E5B5A6518952C4766D" type="4" not_null="true" id="7"/>
-		<primary_key field_name="KN_ID" field_uuid="4003D91A8C7542AFA91A4334F135D15D"/>
-	</table>
-	<table name="Z_KeyValue" uuid="F938077F32544239831C988417F86DD5" id="35" leave_tag_on_delete="true" prevent_journaling="true">
-		<field name="KV_ID" uuid="170742E01D9041C9A34378AA042B00A2" type="4" unique="true" not_null="true" id="1"/>
-		<field name="KV_KEY" uuid="12FCC0FE23CA4FDB8DD4F057CE845248" type="10" limiting_length="80" unique="true" not_null="true" id="2"/>
-		<field name="KV_VALUE" uuid="C2B4FF74DC5841BE8FAADFAFF62354FB" type="10" unique="true" not_null="true" id="3"/>
-		<field name="KV_LONG_VALUE" uuid="AEB52E6DFECC4952B31C0F048C91DF18" type="4" not_null="true" id="4"/>
-		<field name="KV_DEL_FLAG" uuid="B0F7E9C61EF444B4823FB156958BBE92" type="4" not_null="true" id="5"/>
-		<primary_key field_name="KV_ID" field_uuid="170742E01D9041C9A34378AA042B00A2"/>
-	</table>
-	<table name="USERS" uuid="3A09E092AF1846F59EB59EBBE6B526C4" id="36" leave_tag_on_delete="true" prevent_journaling="true">
-		<field name="US_ID" uuid="E0C629B9F6BF4DAB89A1549EE149180D" type="4" unique="true" not_null="true" id="1"/>
-		<field name="US_NAME" uuid="D0E29C16094A4DEA8315B199A8907FD4" type="10" limiting_length="80" not_null="true" id="2"/>
-		<field name="US_EMAIL" uuid="A9CC27395A074E719EAA55A0B3B5FBBD" type="10" limiting_length="255" not_null="true" id="3"/>
-		<field name="US_EMAIL_VERIFIED_AT" uuid="96D5C37E13C646799F1F1A0CDCCA54F5" type="10" limiting_length="20" not_null="true" id="4"/>
-		<field name="US_PASSWORD" uuid="B36B6AF7F45E4C30B796954E04561CE5" type="10" limiting_length="255" not_null="true" id="5"/>
-		<field name="US_REMEMBER_TOKEN" uuid="9D50E858CE5C455AB1FF138DBF73956B" type="10" limiting_length="255" not_null="true" id="6"/>
-		<field name="US_CREATE_AT" uuid="FD4B62A14532477390A67105E4A93C01" type="10" limiting_length="20" not_null="true" id="7"/>
-		<field name="US_UPDATE_AT" uuid="0A69297ACB84457FB9FCBF9718697EE9" type="10" limiting_length="20" not_null="true" id="8"/>
-		<field name="US_DEL_FLAG" uuid="1A78F94DF5B947F4A935AB0818E6DD16" type="4" not_null="true" id="9"/>
-		<primary_key field_name="US_ID" field_uuid="E0C629B9F6BF4DAB89A1549EE149180D"/>
-	</table>
-	<table name="PASSWORD_RESETS" uuid="1D2DF5B550C94D1AAF3CF9B9C88F87BA" id="37" leave_tag_on_delete="true" prevent_journaling="true">
-		<field name="PR_ID" uuid="B139963D2D764EB78DBBEB40E237CEEB" type="4" unique="true" not_null="true" id="1"/>
-		<field name="PR_US_ID" uuid="E6D0AA80F9FF4D52A12B473F88551A3A" type="4" not_null="true" id="2"/>
-		<field name="PR_EMAIL" uuid="F2CEB70F7380479F9E67A863A1AB3D6C" type="10" limiting_length="255" not_null="true" id="3"/>
-		<field name="PR_TOKEN" uuid="D80F31FF856B4957B61F9444A4835927" type="10" limiting_length="255" not_null="true" id="4"/>
-		<field name="PR_CREATE_AT" uuid="62DB4E4C12854FCA936E2A00DD906DD8" type="10" limiting_length="20" not_null="true" id="5"/>
-		<field name="PR_DEL_FLAG" uuid="08D0678FBEC54C3BBAF46A016CEB42C3" type="4" not_null="true" id="6"/>
-		<primary_key field_name="PR_ID" field_uuid="B139963D2D764EB78DBBEB40E237CEEB"/>
-	</table>
 	<index kind="regular" name="US_EMAIL_index" uuid="02652FEBCDB94AEBAE9036DA9E9E8C0F" type="7">
 		<field_ref uuid="F53CCC70DDC04EA4831B3081E4EB08DB" name="US_EMAIL">
 			<table_ref uuid="361D3DF777084EDC8130FF09686C8166" name="(USERS_8)"/>
-		</field_ref>
-	</index>
-	<index kind="regular" unique_keys="true" uuid="084D899113B54188BE2FFB3A342A1694" type="1">
-		<field_ref uuid="4003D91A8C7542AFA91A4334F135D15D" name="KN_ID">
-			<table_ref uuid="BC21FD6DEC9D487891EE7A94C65C11EA" name="Z_KeyNValue"/>
 		</field_ref>
 	</index>
 	<index kind="regular" unique_keys="true" uuid="0E3125D0FED144C2BE579DBD887DE634" type="1">
@@ -544,11 +500,6 @@
 			<table_ref uuid="9EDCA8AEFD4047169AFF7CF8921D68BC" name="(Z_KeyNValue_7)"/>
 		</field_ref>
 	</index>
-	<index kind="regular" unique_keys="true" uuid="1D574B46F30D446CB05C299138DEF760" type="1">
-		<field_ref uuid="B139963D2D764EB78DBBEB40E237CEEB" name="PR_ID">
-			<table_ref uuid="1D2DF5B550C94D1AAF3CF9B9C88F87BA" name="PASSWORD_RESETS"/>
-		</field_ref>
-	</index>
 	<index kind="regular" name="US_DEL_FLAG_index" uuid="1F2CAB8ECC284A008600336D97C7DE5D" type="7">
 		<field_ref uuid="7A022A1855E24666865CB17AF217B877" name="US_DEL_FLAG">
 			<table_ref uuid="361D3DF777084EDC8130FF09686C8166" name="(USERS_8)"/>
@@ -562,11 +513,6 @@
 	<index kind="regular" unique_keys="true" uuid="21DE91A74F884AC29E24204EAD6EDF40" type="1">
 		<field_ref uuid="8406E95D9836424C8C2C031995AC453A" name="US_ID">
 			<table_ref uuid="A2C1F0EA348C49D28BE43A37BDA9985E" name="(USERS_7)"/>
-		</field_ref>
-	</index>
-	<index kind="regular" unique_keys="true" uuid="221D774BA93A4F209FD40686F16238C3" type="1">
-		<field_ref uuid="170742E01D9041C9A34378AA042B00A2" name="KV_ID">
-			<table_ref uuid="F938077F32544239831C988417F86DD5" name="Z_KeyValue"/>
 		</field_ref>
 	</index>
 	<index kind="regular" name="KV_DEL_FLAG_index" uuid="2745A1A67A764B559E7E67DB665B545E" type="7">
@@ -592,16 +538,6 @@
 	<index kind="regular" unique_keys="true" uuid="30585B24E82E435BAD71E06EC7009914" type="1">
 		<field_ref uuid="9218CA3E357D4FDB920BE4F70B1DE2CF" name="PR_ID">
 			<table_ref uuid="9E914C7D687D47118B7C27EDD6C6AF86" name="(PASSWORD_RESETS_4)"/>
-		</field_ref>
-	</index>
-	<index kind="regular" name="US_EMAIL_index" uuid="30F61BAF7E96409FB5E095B56A37A329" type="7">
-		<field_ref uuid="A9CC27395A074E719EAA55A0B3B5FBBD" name="US_EMAIL">
-			<table_ref uuid="3A09E092AF1846F59EB59EBBE6B526C4" name="USERS"/>
-		</field_ref>
-	</index>
-	<index kind="regular" unique_keys="true" uuid="32C3827A4EB74872A167AC6AE69D8DD1" type="1">
-		<field_ref uuid="E0C629B9F6BF4DAB89A1549EE149180D" name="US_ID">
-			<table_ref uuid="3A09E092AF1846F59EB59EBBE6B526C4" name="USERS"/>
 		</field_ref>
 	</index>
 	<index kind="regular" name="PR_EMAIL_index" uuid="32F7961CF2FD4BDA9B352A035CDF15C0" type="7">
@@ -639,11 +575,6 @@
 			<table_ref uuid="2BD357F32FA54DE8BF5A8A9F15D54D23" name="(Z_KeyNValue_4)"/>
 		</field_ref>
 	</index>
-	<index kind="regular" name="KN_SORT_ORDER_index" uuid="4DF33AE77A4F4FBB8CC34E2CC369F7F6" type="7">
-		<field_ref uuid="2049984076B7427CB641671CD16EA8A6" name="KN_SORT_ORDER">
-			<table_ref uuid="BC21FD6DEC9D487891EE7A94C65C11EA" name="Z_KeyNValue"/>
-		</field_ref>
-	</index>
 	<index kind="regular" unique_keys="true" uuid="4E90B7C04992479C8BAA6E52038A1F51" type="1">
 		<field_ref uuid="991B6A73D8694C5A98837654CD930DCD" name="KV_KEY">
 			<table_ref uuid="38E1065AF1E44DF395FE2D9D2EC404CC" name="(Z_KeyValue_7)"/>
@@ -662,11 +593,6 @@
 	<index kind="regular" name="PR_US_ID_index" uuid="5C51694352C5405380D324E575FE3EEE" type="7">
 		<field_ref uuid="F55EF567D5AC4F98ABD1A5E09E4BD9AD" name="PR_US_ID">
 			<table_ref uuid="3D2FF782FCDD450ABC1102BA4ADF4115" name="(PASSWORD_RESETS_6)"/>
-		</field_ref>
-	</index>
-	<index kind="regular" name="KV_DEL_FLAG_index" uuid="5E9BA39E9C264D3E9BBD5B997EFC52A2" type="7">
-		<field_ref uuid="B0F7E9C61EF444B4823FB156958BBE92" name="KV_DEL_FLAG">
-			<table_ref uuid="F938077F32544239831C988417F86DD5" name="Z_KeyValue"/>
 		</field_ref>
 	</index>
 	<index kind="regular" name="KN_SORT_ORDER_index" uuid="5F6CF896F62D4F6597A213E1DD09C158" type="7">
@@ -704,29 +630,14 @@
 			<table_ref uuid="FE90BB2F2F074C478F2990ED79A5817A" name="(Z_KeyValue_6)"/>
 		</field_ref>
 	</index>
-	<index kind="regular" name="US_DEL_FLAG_index" uuid="7FF79D803AFD4D158996FCB94DDEFEF6" type="7">
-		<field_ref uuid="1A78F94DF5B947F4A935AB0818E6DD16" name="US_DEL_FLAG">
-			<table_ref uuid="3A09E092AF1846F59EB59EBBE6B526C4" name="USERS"/>
-		</field_ref>
-	</index>
 	<index kind="regular" name="KN_KEY_index" uuid="842932B5C12F4D01BD5AD627CB3015EE" type="7">
 		<field_ref uuid="EBA9181373B746009ACC8B38FB9B9F0C" name="KN_KEY">
 			<table_ref uuid="FA4F0C942C4A43E7BE37FB80827ABCED" name="(Z_KeyNValue_6)"/>
 		</field_ref>
 	</index>
-	<index kind="regular" name="KN_CODE_index" uuid="8C41A07533A84203AD0C3C3BC3BD4E45" type="7">
-		<field_ref uuid="5C66CF9FF99A4B1287D717A52E83FA93" name="KN_CODE">
-			<table_ref uuid="BC21FD6DEC9D487891EE7A94C65C11EA" name="Z_KeyNValue"/>
-		</field_ref>
-	</index>
 	<index kind="regular" unique_keys="true" uuid="9668788AB0D94A21856C3C4FCAAB3B47" type="1">
 		<field_ref uuid="C6496F2115F24E9D891F64DAF2475727" name="KV_VALUE">
 			<table_ref uuid="9692B49F652D417D99AD7525A70F367E" name="(Z_KeyValue_5)"/>
-		</field_ref>
-	</index>
-	<index kind="regular" name="KN_KEY_index" uuid="9CDE4ACABE314C04A3393D942F4C738C" type="7">
-		<field_ref uuid="BB3069D054E6412F838A0FBFEB4F4C39" name="KN_KEY">
-			<table_ref uuid="BC21FD6DEC9D487891EE7A94C65C11EA" name="Z_KeyNValue"/>
 		</field_ref>
 	</index>
 	<index kind="regular" unique_keys="true" uuid="A298F3D1CA45487387440F63350302FB" type="1">
@@ -754,11 +665,6 @@
 			<table_ref uuid="9EDCA8AEFD4047169AFF7CF8921D68BC" name="(Z_KeyNValue_7)"/>
 		</field_ref>
 	</index>
-	<index kind="regular" unique_keys="true" uuid="B29AA03C63A84025B19134CBAD84ABB5" type="1">
-		<field_ref uuid="C2B4FF74DC5841BE8FAADFAFF62354FB" name="KV_VALUE">
-			<table_ref uuid="F938077F32544239831C988417F86DD5" name="Z_KeyValue"/>
-		</field_ref>
-	</index>
 	<index kind="regular" unique_keys="true" uuid="B31D8F6413D74BAEA1C9CB118D85C40D" type="1">
 		<field_ref uuid="299BA3AAE27142B19CE463DEA0DCD77C" name="PR_ID">
 			<table_ref uuid="3EF0457E12DF4DC0BEE40AEE20F66E81" name="(PASSWORD_RESETS_7)"/>
@@ -782,21 +688,6 @@
 	<index kind="regular" unique_keys="true" uuid="C4933E5683A94D33B5FC3EAD0DB81C43" type="1">
 		<field_ref uuid="4F1247C38EF74A6FAD1D4BC510BFF591" name="KV_VALUE">
 			<table_ref uuid="7B07191E18DA4F948A96B9E354A3C350" name="(Z_KeyValue_4)"/>
-		</field_ref>
-	</index>
-	<index kind="regular" name="PR_EMAIL_index" uuid="C96612EA8B5641C582EA2FB1E78755D5" type="7">
-		<field_ref uuid="F2CEB70F7380479F9E67A863A1AB3D6C" name="PR_EMAIL">
-			<table_ref uuid="1D2DF5B550C94D1AAF3CF9B9C88F87BA" name="PASSWORD_RESETS"/>
-		</field_ref>
-	</index>
-	<index kind="regular" unique_keys="true" uuid="CFD3E3A4ABE74B4698FCF985B86166F0" type="1">
-		<field_ref uuid="12FCC0FE23CA4FDB8DD4F057CE845248" name="KV_KEY">
-			<table_ref uuid="F938077F32544239831C988417F86DD5" name="Z_KeyValue"/>
-		</field_ref>
-	</index>
-	<index kind="regular" name="PR_US_ID_index" uuid="D7F4D89BF1454027BF5EFC58D5285DE0" type="7">
-		<field_ref uuid="E6D0AA80F9FF4D52A12B473F88551A3A" name="PR_US_ID">
-			<table_ref uuid="1D2DF5B550C94D1AAF3CF9B9C88F87BA" name="PASSWORD_RESETS"/>
 		</field_ref>
 	</index>
 	<index kind="regular" name="KN_KEY_index" uuid="DB7D0DC8176A43ED8B9F9E762FB1B561" type="7">
@@ -829,11 +720,6 @@
 			<table_ref uuid="9EDCA8AEFD4047169AFF7CF8921D68BC" name="(Z_KeyNValue_7)"/>
 		</field_ref>
 	</index>
-	<index kind="regular" name="KN_DEL_FLAG_index" uuid="F204BC5DBDDE452881203EB887748E52" type="7">
-		<field_ref uuid="54570DB25CC549E5B5A6518952C4766D" name="KN_DEL_FLAG">
-			<table_ref uuid="BC21FD6DEC9D487891EE7A94C65C11EA" name="Z_KeyNValue"/>
-		</field_ref>
-	</index>
 	<index kind="regular" unique_keys="true" uuid="F55288F4019049CA83F4687C21AB8939" type="1">
 		<field_ref uuid="83A167CF11B94D32B02DE5A8A1CD5569" name="PR_ID">
 			<table_ref uuid="C2770194A9234EE0954C2E7670309CFA" name="(PASSWORD_RESETS_5)"/>
@@ -842,11 +728,6 @@
 	<index kind="regular" unique_keys="true" uuid="F7DEA3BF1F694E1FA9F78F4E83A1C45C" type="1">
 		<field_ref uuid="C12E56D7BDA64FB49D352832732BB62B" name="KN_ID">
 			<table_ref uuid="7C5E5A75F64445E89C88CAE2E8DD1393" name="(Z_KeyNValue_3)"/>
-		</field_ref>
-	</index>
-	<index kind="regular" name="PR_DEL_FLAG_index" uuid="FACD774821044B74BCD42E1FF4B00E45" type="7">
-		<field_ref uuid="08D0678FBEC54C3BBAF46A016CEB42C3" name="PR_DEL_FLAG">
-			<table_ref uuid="1D2DF5B550C94D1AAF3CF9B9C88F87BA" name="PASSWORD_RESETS"/>
 		</field_ref>
 	</index>
 	<index kind="regular" name="KN_CODE_index" uuid="FB50672F5D364041B0AA66CEDD3614B1" type="7">

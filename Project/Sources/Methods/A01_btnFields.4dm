@@ -3,4 +3,10 @@
 //20240121 yabe wat
 //fields表示
 
-JCL_D02_fields
+C_LONGINT:C283($dlgOk)
+
+$dlgOk:=JCL_D02_fields
+If ($dlgOk=1)
+	
+	
+End if 
