@@ -726,22 +726,6 @@
 					"class": "JCL_YuGothic12",
 					"method": "ObjectMethods/vA01_btnFields.4dm"
 				},
-				"vA01_btnList1": {
-					"type": "button",
-					"text": "レコード一覧JSON",
-					"top": 68,
-					"left": 152,
-					"width": 90,
-					"height": 26,
-					"focusable": false,
-					"method": "ObjectMethods/vA01_btnUS01.4dm",
-					"events": [
-						"onClick"
-					],
-					"action": "",
-					"class": "JCL_YuGothic12",
-					"dataSource": "vA01_btnList"
-				},
 				"vA01_btnDelete": {
 					"type": "button",
 					"text": "テーブル削除",
@@ -757,11 +741,27 @@
 					"action": "",
 					"class": "JCL_YuGothic12",
 					"dataSource": "vA01_btnDelete"
+				},
+				"vA01_btnFom": {
+					"type": "button",
+					"text": "フォーム作成",
+					"top": 68,
+					"left": 152,
+					"width": 90,
+					"height": 26,
+					"focusable": false,
+					"method": "ObjectMethods/vA01_btnFom.4dm",
+					"events": [
+						"onClick"
+					],
+					"action": "",
+					"class": "JCL_YuGothic12",
+					"dataSource": "vA01_btnFom"
 				}
 			}
 		}
 	],
-	"geometryStamp": 668,
+	"geometryStamp": 686,
 	"editor": {
 		"activeView": "View 1",
 		"defaultView": "View 1",

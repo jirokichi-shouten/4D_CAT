@@ -29,9 +29,19 @@ If ($tblNr>0)
 	
 	//色を付ける
 	$color:=JCL_lst_Selected_Long(->vA01_lstT; ->vA01_lstT_Color)
+	If ($color=0)
+		$color:=0x00FFFFFF
+	End if 
 	OBJECT SET RGB COLORS:C628(*; "vA01_varTableName"; 0; $color)
 	
 	
 	A01_SetControlsValues
+	
+Else 
+	//選択行なし状態
+	$color:=0x00FFFFFF
+	OBJECT SET RGB COLORS:C628(*; "vA01_varTableName"; 0; $color)
+	
+	vA01_varTableName:=""
 	
 End if 

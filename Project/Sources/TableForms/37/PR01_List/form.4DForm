@@ -1,0 +1,326 @@
+{
+	"destination": "detailScreen",
+	"width": 1042,
+	"height": 576,
+	"windowMinHeight": 178,
+	"events": [
+		"onLoad",
+		"onValidate",
+		"onClick",
+		"onHeader",
+		"onDoubleClick",
+		"onDrop",
+		"onDataChange",
+		"onAfterKeystroke",
+		"onAfterEdit",
+		"onBeginDragOver",
+		"onPageChange"
+	],
+	"method": "method.4dm",
+	"pages": [
+		null,
+		{
+			"objects": {
+								"vPR01_rectTitle": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 0,
+					"width": 1042,
+					"height": 55,
+					"fill": "#BE11B9",
+					"stroke": "#BE11B9"
+				},
+				"vPR01_txtTitle": {
+					"type": "text",
+					"top": 16,
+					"left": 20,
+					"width": 192,
+					"height": 26,
+					"class": "JCL_YuGothic16",
+					"text": "パスワードリセット一覧"
+				}
+,
+								"vPR01_btnAdd": {
+					"type": "pictureButton",
+					"top": 64,
+					"left": 20,
+					"width": 26,
+					"height": 26,
+					"dataSource": "vPR01_btnAdd",
+					"class": "JCL_YuGothic12",
+					"rowCount": 4,
+					"picture": "/RESOURCES/JCL4D_Resources/pictures/plus_rectangle.png",
+					"switchBackWhenReleased": true,
+					"method": "ObjectMethods/vPR01_btnAdd.4dm",
+					"events": [
+						"onClick"
+					]
+				}
+,
+								"vPR01_btnMod": {
+					"type": "pictureButton",
+					"top": 64,
+					"left": 68,
+					"width": 26,
+					"height": 26,
+					"dataSource": "vPR01_btnMod",
+					"class": "JCL_YuGothic12",
+					"rowCount": 4,
+					"picture": "/RESOURCES/JCL4D_Resources/pictures/square_and_pencil_w.png",
+					"switchBackWhenReleased": true,
+					"method": "ObjectMethods/vPR01_btnMod.4dm",
+					"events": [
+						"onClick"
+					]
+				}
+,
+								"vPR01_btnDel": {
+					"type": "pictureButton",
+					"top": 64,
+					"left": 162,
+					"width": 26,
+					"height": 26,
+					"dataSource": "vPR01_btnDel",
+					"rowCount": 4,
+					"picture": "/RESOURCES/JCL4D_Resources/pictures/minus_rectangle.png",
+					"switchBackWhenReleased": true,
+				"method": "ObjectMethods/vPR01_btnDel.4dm",
+					"events": [
+						"onClick"
+					]
+				}
+,
+								"vPR01_btnClose": {
+					"type": "button",
+					"top": 10,
+					"left": 980,
+					"width": 42,
+					"height": 26,
+					"dataSource": "vPR01_btnClose",
+					"action": "cancel",
+					"shortcutKey": "w",
+					"shortcutAccel": true,
+					"text": "X",
+					"class": "JCL_YuGothic12",
+					"events": [
+						"onClick"
+					]
+				}
+,
+								"vPR01_btnExport": {
+					"type": "pictureButton",
+					"top": 64,
+					"left": 880,
+					"width": 26,
+					"height": 26,
+					"dataSource": "vPR01_btnExport",
+					"rowCount": 4,
+					"picture": "/RESOURCES/JCL4D_Resources/pictures/square_and_arrow_down.png",
+					"switchBackWhenReleased": true,
+					"method": "ObjectMethods/vPR01_btnExport.4dm",
+					"events": [
+						"onClick"
+					]
+				}
+,
+								"vPR01_varNumOfRecs": {
+					"type": "input",
+					"top": 73,
+					"left": 914,
+					"width": 110,
+					"height": 17,
+					"dataSource": "vPR01_varNumOfRecs",
+					"class": "JCL_YuGothic12",
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"enterable": false,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
+				}
+,
+				"vPR01_lstPR": {
+	"type": "listbox",
+	"top": 94,
+	"left": 20,
+	"width": 1002,
+	"height": 472,
+	"sizingX": "grow",
+	"sizingY": "grow",
+	"resizingMode": "legacy",
+	"dataSource": "vPR01_lstPR",
+	"rowHeight": "20px",
+	"rowHeightAutoMin": "20px",
+	"rowHeightAutoMax": "20px",
+	"class": "JCL_YuGothic12",
+	"method": "ObjectMethods/vPR01_lstPR.4dm",
+	"events": [
+		"onClick",
+		"onDoubleClick",
+		"onDataChange",
+		"onSelectionChange",
+		"onHeaderClick"
+	],
+	"columns": [
+	{
+	"name": "vPR01_lstPR_ID",
+	"dataSource": "vPR01_lstPR_ID",
+	"width": 42,
+	"enterable": false,
+	"truncateMode": "none",
+	"class": "JCL_YuGothic12",
+	"events": [
+		"onClick",
+		"onDataChange"
+	],
+	"header": {
+		"name": "vPR01_lhdPR_ID",
+		"text": "ID",
+		"dataSource": "vPR01_lhdPR_ID",
+		"class": "JCL_YuGothic10"
+	},
+	"footer": {
+		"name": "vPR01_lftPR_ID",
+		"dataSource": "vPR01_lftPR_ID",
+		"timeFormat": "hh_mm_ss",
+		"class": "JCL_YuGothic12"
+	}
+}
+,{
+	"name": "vPR01_lstPR_US_ID",
+	"dataSource": "vPR01_lstPR_US_ID",
+	"width": 42,
+	"enterable": false,
+	"truncateMode": "none",
+	"class": "JCL_YuGothic12",
+	"events": [
+		"onClick",
+		"onDataChange"
+	],
+	"header": {
+		"name": "vPR01_lhdPR_US_ID",
+		"text": "ユーザID",
+		"dataSource": "vPR01_lhdPR_US_ID",
+		"class": "JCL_YuGothic10"
+	},
+	"footer": {
+		"name": "vPR01_lftPR_US_ID",
+		"dataSource": "vPR01_lftPR_US_ID",
+		"timeFormat": "hh_mm_ss",
+		"class": "JCL_YuGothic12"
+	}
+}
+,{
+	"name": "vPR01_lstPR_EMAIL",
+	"dataSource": "vPR01_lstPR_EMAIL",
+	"width": 90,
+	"enterable": false,
+	"truncateMode": "none",
+	"class": "JCL_YuGothic12",
+	"events": [
+		"onClick",
+		"onDataChange"
+	],
+	"header": {
+		"name": "vPR01_lhdPR_EMAIL",
+		"text": "メールアドレス",
+		"dataSource": "vPR01_lhdPR_EMAIL",
+		"class": "JCL_YuGothic10"
+	},
+	"footer": {
+		"name": "vPR01_lftPR_EMAIL",
+		"dataSource": "vPR01_lftPR_EMAIL",
+		"timeFormat": "hh_mm_ss",
+		"class": "JCL_YuGothic12"
+	}
+}
+,{
+	"name": "vPR01_lstPR_TOKEN",
+	"dataSource": "vPR01_lstPR_TOKEN",
+	"width": 90,
+	"enterable": false,
+	"truncateMode": "none",
+	"class": "JCL_YuGothic12",
+	"events": [
+		"onClick",
+		"onDataChange"
+	],
+	"header": {
+		"name": "vPR01_lhdPR_TOKEN",
+		"text": "トークン",
+		"dataSource": "vPR01_lhdPR_TOKEN",
+		"class": "JCL_YuGothic10"
+	},
+	"footer": {
+		"name": "vPR01_lftPR_TOKEN",
+		"dataSource": "vPR01_lftPR_TOKEN",
+		"timeFormat": "hh_mm_ss",
+		"class": "JCL_YuGothic12"
+	}
+}
+,{
+	"name": "vPR01_lstPR_CREATE_AT",
+	"dataSource": "vPR01_lstPR_CREATE_AT",
+	"width": 90,
+	"enterable": false,
+	"truncateMode": "none",
+	"class": "JCL_YuGothic12",
+	"events": [
+		"onClick",
+		"onDataChange"
+	],
+	"header": {
+		"name": "vPR01_lhdPR_CREATE_AT",
+		"text": "作成デイトマーク",
+		"dataSource": "vPR01_lhdPR_CREATE_AT",
+		"class": "JCL_YuGothic10"
+	},
+	"footer": {
+		"name": "vPR01_lftPR_CREATE_AT",
+		"dataSource": "vPR01_lftPR_CREATE_AT",
+		"timeFormat": "hh_mm_ss",
+		"class": "JCL_YuGothic12"
+	}
+}
+,{
+	"name": "vPR01_lstPR_DEL_FLAG",
+	"dataSource": "vPR01_lstPR_DEL_FLAG",
+	"width": 42,
+	"enterable": false,
+	"truncateMode": "none",
+	"class": "JCL_YuGothic12",
+	"events": [
+		"onClick",
+		"onDataChange"
+	],
+	"header": {
+		"name": "vPR01_lhdPR_DEL_FLAG",
+		"text": "削除フラグ",
+		"dataSource": "vPR01_lhdPR_DEL_FLAG",
+		"class": "JCL_YuGothic10"
+	},
+	"footer": {
+		"name": "vPR01_lftPR_DEL_FLAG",
+		"dataSource": "vPR01_lftPR_DEL_FLAG",
+		"timeFormat": "hh_mm_ss",
+		"class": "JCL_YuGothic12"
+	}
+}
+
+	]
+}
+
+				
+			}
+		}
+	],
+	"geometryStamp": 2,
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	}
+}

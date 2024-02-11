@@ -1,0 +1,7 @@
+//PR02_varPR_ID_set
+//FG v202402 2024/02/11 21:27:48
+//PASSWORD_RESETS モード変数の値を取得
+
+C_LONGINT($1)
+
+vPR02_varPR_ID:=$1

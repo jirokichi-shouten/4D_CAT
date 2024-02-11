@@ -1,0 +1,25 @@
+//US_Add_byInitValues
+//method_generator 2024/02/11 21:23:27
+//USERS レコード追加、初期値代入
+
+C_LONGINT($0;$US_id)
+
+//新規レコード作成
+$US_id:=Sequence number ([USERS])
+CREATE RECORD([USERS])
+
+[USERS]US_ID:=0
+[USERS]US_NAME:=""
+[USERS]US_EMAIL:=""
+[USERS]US_EMAIL_VERIFIED_AT:=""
+[USERS]US_PASSWORD:=""
+[USERS]US_REMEMBER_TOKEN:=""
+[USERS]US_CREATE_AT:=""
+[USERS]US_UPDATE_AT:=""
+[USERS]US_DEL_FLAG:=0
+
+[USERS]US_ID:=$US_id
+
+SAVE RECORD([USERS])
+
+$0:=$US_id

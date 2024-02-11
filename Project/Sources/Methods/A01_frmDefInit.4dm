@@ -9,6 +9,7 @@ $fullpath:=Path to object:C1547(Structure file:C489)
 C_TEXT:C284(vA00_varProductName; vA00_varVersion)
 vA00_varProductName:=$fullpath.name
 vA00_varVersion:="0.9(1) 20240204"
+vA00_varVersion:="0.9(2) 20240211"
 
 C_TEXT:C284(vA01_var4D_DataFile)
 vA01_var4D_DataFile:="データファイル："+Data file:C490
