@@ -193,7 +193,9 @@
 							"width": 68,
 							"textAlign": "center",
 							"class": "JCL_YuGothic12",
-							"enterable": false
+							"enterable": false,
+							"dataSourceTypeHint": "integer",
+							"numberFormat": "&$"
 						},
 						{
 							"header": {

@@ -38,23 +38,25 @@ For ($i; 1; $numOfTables)
 		APPEND TO ARRAY:C911(vA01_lstT_numOfRecs; $numOfRecs)  //レコード数
 		
 		$color:=JCL_tbl_GetFormColor($table_name)
+		If ($color=0)
+			$color:=0x00FFFFFF  //白
+		End if 
 		APPEND TO ARRAY:C911(vA01_lstT_Color; $color)  //色
+		$sizeOfAry:=Size of array:C274(vA01_lstT_Color)
+		LISTBOX SET ROW COLOR:C1270(*; "vA01_lstT_Color"; $sizeOfAry; $color; lk background color:K53:25)
 		
 	End if 
 End for 
 
-$sizeOfAry:=Size of array:C274(vA01_lstT_Color)
-For ($i; 1; $sizeOfAry)
-	//色を取得
-	$color:=JCL_tbl_GetFormColor(vA01_lstT_name{$i})
-	vA01_lstT_Color:=$color  //色を更新
-	
-	//リストボックスに適用
-	$color:=vA01_lstT_Color{$i}
-	If ($color#0)
-		//ゼロは白なのでスキップ、実行すると黒になるため
-		LISTBOX SET ROW COLOR:C1270(*; "vA01_lstT_Color"; $i; $color; lk background color:K53:25)
-		
-	End if 
-	
-End for 
+//$sizeOfAry:=Size of array(vA01_lstT_Color)
+//For ($i; 1; $sizeOfAry)
+////色を取得
+////リストボックスに適用
+//$color:=vA01_lstT_Color{$i}
+//If ($color#0)
+////ゼロは白なのでスキップ、実行すると黒になるため
+//LISTBOX SET ROW COLOR(*; "vA01_lstT_Color"; $i; $color; lk background color)
+
+//End if 
+
+//End for 
