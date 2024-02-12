@@ -15,16 +15,14 @@ ARRAY TEXT:C222($aryFieldIndex; 0)
 
 C_TEXT:C284($prefix; $frmName; $tblName)
 C_LONGINT:C283($pos)
-C_OBJECT:C1216($objFrm)
-$objFrm:=New object:C1471
 
-//テーブル名と色
-$objFrm.tblName:=$tblName
-$objFrm.color_text:=JCL_utl_ColorRandom
-
-//ダイアログ情報
-$tblName:=$objFrm.tblName  //テーブル名
 If ($tblName#"")
+	//テーブル名と色
+	C_OBJECT:C1216($objParam)
+	$objParam:=New object:C1471
+	$objParam.tbl_name:=$tblName
+	$objParam.color_text:=JCL_utl_ColorRandom
+	
 	//テーブルからプリフィックスを取得、
 	JCL_tbl_Fields_withAttr($tblName; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength; ->$aryFieldIndex)
 	$sizeOfAry:=Size of array:C274($aryFieldName)
@@ -33,26 +31,26 @@ If ($tblName#"")
 	End if 
 	C_LONGINT:C283($pos)
 	$pos:=Position:C15("_"; $aryFieldName{1})
-	$objFrm.tbl_prefix:=Substring:C12($aryFieldName{1}; 1; $pos-1)  //テーブル名のプリフィックス
+	$objParam.tbl_prefix:=Substring:C12($aryFieldName{1}; 1; $pos-1)  //テーブル名のプリフィックス
 	
 	//01フォーム作成
-	$objFrm.frmName:=$objFrm.tbl_prefix+"01_List"  //フォーム名
-	$objFrm.prefix:=$objFrm.tbl_prefix+"01"  //フォーム名のプリフィックス
-	JCL_prj_FG_tblFrm01($objFrm; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength)
+	$objParam.frm_name:=$objParam.tbl_prefix+"01_List"  //フォーム名
+	$objParam.frm_prefix:=$objParam.tbl_prefix+"01"  //フォーム名のプリフィックス
+	JCL_prj_FG_tblFrm01V3($objParam; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength)
 	//フォームメソッドを作成
-	JCL_prj_FG_tblFrmMethod($objFrm)
+	JCL_prj_FG_tblFrmMethod($objParam)
 	//メソッド群をテンプレートから作成
-	$objFrm.method_templates:="method_templates_list"
-	JCL_prj_FG_methods($objFrm; ->$aryFieldName; ->$aryFieldType)
+	$objParam.method_templates:="method_templates_list"
+	JCL_prj_FG_methods($objParam; ->$aryFieldName; ->$aryFieldType)
 	
 	//02フォーム作成 20210602
-	$objFrm.frmName:=$objFrm.tbl_prefix+"02_Input"  //フォーム名
-	$objFrm.prefix:=$objFrm.tbl_prefix+"02"  //フォーム名のプリフィックス
-	$objFrm.method_templates:="method_templates_form"
-	JCL_prj_FG_tblFrm02($objFrm; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength)
+	$objParam.frm_name:=$objParam.tbl_prefix+"02_Input"  //フォーム名
+	$objParam.frm_prefix:=$objParam.tbl_prefix+"02"  //フォーム名のプリフィックス
+	$objParam.method_templates:="method_templates_form"
+	JCL_prj_FG_tblFrm02($objParam; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength)
 	//フォームメソッドを作成
-	JCL_prj_FG_tblFrmMethod($objFrm)
+	JCL_prj_FG_tblFrmMethod($objParam)
 	//メソッド群をテンプレートから作成
-	JCL_prj_FG_methods($objFrm; ->$aryFieldName; ->$aryFieldType)
+	JCL_prj_FG_methods($objParam; ->$aryFieldName; ->$aryFieldType)
 	
 End if 
