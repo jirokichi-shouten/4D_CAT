@@ -1,10 +1,8 @@
 //%attributes = {}
 //JCL_prj_FG_tblFrm01V3
-//20240211 wat
 //JCL_prj_FG_tblFrm01
-//20210330 ike wat
+//20240211 yabe wat
 //テーブルフォーム作成
-//20210608 wat 引数をオブジェクト型に変更
 
 C_OBJECT:C1216($1; $objParam)
 $objParam:=$1
@@ -24,8 +22,7 @@ $file:=New object:C1471
 C_OBJECT:C1216($objFrm)
 $objFrm:=New object:C1471
 
-
-//ファイルの内容を読み込んで　解析
+//テンプレートファイルの内容を読み込んで　解析
 $file:=File:C1566("/RESOURCES/JCL4D_Resources/frm_templates/frm01_v3.txt")
 $text:=$file.getText()
 $objFrm:=JSON Parse:C1218($text)
@@ -161,10 +158,11 @@ $objFrm.pages[1].objects[$new_obj_name].events:=New collection:C1472("onClick")
 JCL_prj_FG_tblObjMethod($objParam; "_btnExport")
 
 //リストボックス用の文字列を作成、リストボックス部を置き換え
+$new_obj_name:="v"+$objParam.frm_prefix+"_lst"+$objParam.tbl_prefix
 $objFrm.pages[1].objects[$new_obj_name]:=New object:C1471
 $objFrm.pages[1].objects[$new_obj_name].type:="listbox"
-$objFrm.pages[1].objects[$new_obj_name].name:="v"+$objParam.frm_prefix+"_lst"+$objParam.tbl_prefix
-$objFrm.pages[1].objects[$new_obj_name].datasource:=$objFrm.pages[1].objects[$new_obj_name].name
+$objFrm.pages[1].objects[$new_obj_name].name:=$new_obj_name
+$objFrm.pages[1].objects[$new_obj_name].datasource:=$new_obj_name
 $objFrm.pages[1].objects[$new_obj_name].top:=94
 $objFrm.pages[1].objects[$new_obj_name].left:=20
 $objFrm.pages[1].objects[$new_obj_name].width:=1002
@@ -180,8 +178,12 @@ $objFrm.pages[1].objects[$new_obj_name].method:="ObjectMethods/"+$new_obj_name+"
 $objFrm.pages[1].objects[$new_obj_name].events:=New collection:C1472("onClick"; "onDoubleClick"; \
 "onDataChange"; "onSelectionChange"; "onHeaderClick")
 $objFrm.pages[1].objects[$new_obj_name].columns:=New collection:C1472
+//オブジェクトメソッドを作成
+JCL_prj_FG_tblObjMethod($objParam; "_lst"+$objParam.tbl_prefix)
 
 //リストボックス、フィールド（列）
+C_LONGINT:C283($i; $sizeOfAry)
+C_OBJECT:C1216($objCol; $col_header; $col_footer)
 $sizeOfAry:=Size of array:C274($aryFieldNamePtr->)
 For ($i; 1; $sizeOfAry)
 	$objCol:=New object:C1471
@@ -211,8 +213,6 @@ For ($i; 1; $sizeOfAry)
 	$objFrm.pages[1].objects[$new_obj_name].columns.push($objCol)
 	
 End for 
-//オブジェクトメソッドを作成
-JCL_prj_FG_tblObjMethod($objParam; "_lst"+$objParam.tbl_prefix)
 
 
 C_LONGINT:C283($tblNr)

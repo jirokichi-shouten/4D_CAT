@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE base SYSTEM "http://www.4d.com/dtd/2007/base.dtd" >
-<base name="JCL4D_v20" uuid="ABFCC5D800CC4CA3999087FE2ED6543D" collation_locale="ja">
-	<schema name="DEFAULT_SCHEMA"/>
-</base>
