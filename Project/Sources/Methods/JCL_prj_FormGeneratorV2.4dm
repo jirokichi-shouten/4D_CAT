@@ -17,11 +17,11 @@ C_OBJECT:C1216($objFrm)
 $objFrm:=New object:C1471
 
 //テーブル名と色
-$objFrm.tblName:=$tblName
+$objFrm.tbl_name:=$tblName
 $objFrm.color_text:=JCL_utl_ColorRandom
 
 //ダイアログ情報
-$tblName:=$objFrm.tblName  //テーブル名
+$tblName:=$objFrm.tbl_name  //テーブル名
 If ($tblName#"")
 	//テーブルからプリフィックスを取得、
 	JCL_tbl_Fields_withAttr($tblName; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength; ->$aryFieldIndex)
@@ -34,8 +34,8 @@ If ($tblName#"")
 	$objFrm.tbl_prefix:=Substring:C12($aryFieldName{1}; 1; $pos-1)  //テーブル名のプリフィックス
 	
 	//01フォーム作成
-	$objFrm.frmName:=$objFrm.tbl_prefix+"01_List"  //フォーム名
-	$objFrm.prefix:=$objFrm.tbl_prefix+"01"  //フォーム名のプリフィックス
+	$objFrm.frm_name:=$objFrm.tbl_prefix+"01_List"  //フォーム名
+	$objFrm.frm_prefix:=$objFrm.tbl_prefix+"01"  //フォーム名のプリフィックス
 	JCL_prj_FG_tblFrm01($objFrm; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength)
 	//フォームメソッドを作成
 	JCL_prj_FG_tblFrmMethod($objFrm)
@@ -44,8 +44,8 @@ If ($tblName#"")
 	JCL_prj_FG_methods($objFrm; ->$aryFieldName; ->$aryFieldType)
 	
 	//02フォーム作成 20210602
-	$objFrm.frmName:=$objFrm.tbl_prefix+"02_Input"  //フォーム名
-	$objFrm.prefix:=$objFrm.tbl_prefix+"02"  //フォーム名のプリフィックス
+	$objFrm.frm_name:=$objFrm.tbl_prefix+"02_Input"  //フォーム名
+	$objFrm.frm_prefix:=$objFrm.tbl_prefix+"02"  //フォーム名のプリフィックス
 	$objFrm.method_templates:="method_templates_form"
 	JCL_prj_FG_tblFrm02($objFrm; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength)
 	//フォームメソッドを作成

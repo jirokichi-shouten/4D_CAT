@@ -77,7 +77,7 @@ JCL_prj_FG_tblObjMethod($objParam; "_btnOK")  //オブジェクトメソッド�
 $new_obj_name:="v"+$objParam.frm_prefix+"_btnCancel"
 $objFrm.pages[1].objects[$new_obj_name]:=New object:C1471
 $objFrm.pages[1].objects[$new_obj_name].type:="button"
-$objFrm.pages[1].objects[$new_obj_name].top:=10
+$objFrm.pages[1].objects[$new_obj_name].top:=16
 $objFrm.pages[1].objects[$new_obj_name].left:=759
 $objFrm.pages[1].objects[$new_obj_name].width:=94
 $objFrm.pages[1].objects[$new_obj_name].height:=26

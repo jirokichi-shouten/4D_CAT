@@ -16,7 +16,7 @@ JCL_D01_DefInit
 $dlgOk:=JCL_D01_Display
 If ($dlgOk=1)
 	//フォームのサイズを返す
-	$objFrm.tblName:=vJCL_D01_objFrm.tblName
+	$objFrm.tbl_name:=vJCL_D01_objFrm.tbl_name
 	//$objFrm.width:=vJCL_D01_objFrm.width
 	//$objFrm.height:=vJCL_D01_objFrm.height
 	$objFrm.color_text:=vJCL_D01_objFrm.color_text

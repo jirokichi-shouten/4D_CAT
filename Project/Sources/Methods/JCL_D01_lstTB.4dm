@@ -16,7 +16,7 @@ Case of
 			
 		End if 
 		
-		vJCL_D01_objFrm.tblName:=$tblName
+		vJCL_D01_objFrm.tbl_name:=$tblName
 		
 		
 End case 

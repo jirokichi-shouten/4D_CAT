@@ -17,6 +17,6 @@ JCL_str_LastNumber($bangou; $objBangou)
 $new_num:=1+Num:C11($objBangou.last_numbers)
 
 //文字列に変換、プリフィックスも考慮
-$new_bangou:=$objBangou.prefix+String:C10($new_num)
+$new_bangou:=$objBangou.frm_prefix+String:C10($new_num)
 
 $0:=$new_bangou

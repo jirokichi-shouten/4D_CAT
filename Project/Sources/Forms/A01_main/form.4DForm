@@ -84,10 +84,10 @@
 				},
 				"vA01_btnList": {
 					"type": "button",
-					"text": "レコード一覧",
+					"text": "一覧V2",
 					"top": 68,
 					"left": 252,
-					"width": 90,
+					"width": 70,
 					"height": 26,
 					"focusable": false,
 					"method": "ObjectMethods/vA01_btnUS01.4dm",
@@ -763,7 +763,7 @@
 			}
 		}
 	],
-	"geometryStamp": 686,
+	"geometryStamp": 689,
 	"editor": {
 		"activeView": "View 1",
 		"defaultView": "View 1",

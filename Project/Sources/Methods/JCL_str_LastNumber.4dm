@@ -15,7 +15,7 @@ $buf:=""
 C_LONGINT:C283($len; $i)
 
 //初期値
-$objBangou.prefix:=""
+$objBangou.frm_prefix:=""
 $objBangou.last_numbers:=""
 $objBangou.pos:=0
 
@@ -36,7 +36,7 @@ For ($i; $len; 1; -1)
 		$prefix:=Substring:C12($bangou; 1; $i)
 		
 		//返すオブジェクト変数に代入
-		$objBangou.prefix:=$prefix
+		$objBangou.frm_prefix:=$prefix
 		$objBangou.last_numbers:=$buf
 		$objBangou.pos:=$i
 		

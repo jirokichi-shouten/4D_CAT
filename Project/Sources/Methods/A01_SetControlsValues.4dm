@@ -15,3 +15,4 @@ vA01_varTableName:=$tblName+"(フィールド数："+String:C10($sizeOfAry; "#,#
 //vA01_varNumOfFields:="(フィールド数："+String($sizeOfAry; "#,###,##0")+")"
 
 JCL_btn_SetEnable_byListSelect(->vA01_lstT; ->vA01_btnList)
+JCL_btn_SetEnable_byListSelect(->vA01_lstT; ->vA01_btnFom)
