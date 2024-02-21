@@ -1,7 +1,7 @@
 //%attributes = {}
 //JCL_prj_FormGeneratorV2
 //20240207 hisa wat
-//フォームを作る//フォームジェネレータ02、一覧用リストボックスのフォーム「xx01_List」を作る
+//フォームを作る//フォームジェネレータ01、一覧用リストボックスのフォーム「xx01_List」を作る
 
 C_TEXT:C284($1; $tblName)  //テーブル名
 $tblName:=$1

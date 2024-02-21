@@ -36,7 +36,8 @@ If ($tblName#"")
 	//01フォーム作成
 	$objParam.frm_name:=$objParam.tbl_prefix+"01_List"  //フォーム名
 	$objParam.frm_prefix:=$objParam.tbl_prefix+"01"  //フォーム名のプリフィックス
-	JCL_prj_FG_tblFrm01V3($objParam; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength)
+	//JCL_prj_FG_tblFrm01V3($objParam; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength)
+	JCL_prj_FG_tblFrm01V4($objParam; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength)
 	//フォームメソッドを作成
 	JCL_prj_FG_tblFrmMethod($objParam)
 	//メソッド群をテンプレートから作成

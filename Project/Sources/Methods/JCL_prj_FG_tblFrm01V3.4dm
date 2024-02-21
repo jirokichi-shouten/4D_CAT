@@ -1,8 +1,7 @@
 //%attributes = {}
 //JCL_prj_FG_tblFrm01V3
-//JCL_prj_FG_tblFrm01
 //20240211 yabe wat
-//テーブルフォーム作成
+//テーブルフォーム作成 JSONとオブジェクト記法を使う方法
 
 C_OBJECT:C1216($1; $objParam)
 $objParam:=$1
@@ -12,12 +11,8 @@ C_POINTER:C301($3; $aryFieldTypePtr)
 $aryFieldTypePtr:=$3
 C_POINTER:C301($4; $aryFieldLengthPtr)
 $aryFieldLengthPtr:=$4
-C_TEXT:C284($folderPath; $filePath)
-C_TEXT:C284($body)
-C_TEXT:C284($title_body; $btn_body)
-C_TEXT:C284($lst_body)
 
-C_OBJECT:C1216($file2)
+C_OBJECT:C1216($file)
 $file:=New object:C1471
 C_OBJECT:C1216($objFrm)
 $objFrm:=New object:C1471
@@ -122,7 +117,7 @@ $objFrm.pages[1].objects[$new_obj_name].events:=New collection:C1472("onClick")
 JCL_prj_FG_tblObjMethod($objParam; "_btnDel")
 
 //フォームのCloseボタン
-$new_obj_name:="v"+$objParam.frm_prefix+"_btnClose"
+$new_obj_name_btnClose:="v"+$objParam.frm_prefix+"_btnClose"
 $objFrm.pages[1].objects[$new_obj_name]:=New object:C1471
 $objFrm.pages[1].objects[$new_obj_name].type:="button"
 $objFrm.pages[1].objects[$new_obj_name].dataSource:=$new_obj_name
