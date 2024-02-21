@@ -1,6 +1,6 @@
 //%attributes = {"executedOnServer":true}
 //[--FRM_PREFIX]_lst[--TBL_PREFIX]_Make_onServer
-//FG v202209 [--DATE]
+//FG v202402 [--DATE]
 //[[--TABLE]] リストボックス用オブジェクト配列を作成 //サーバ上で実行
 
 C_OBJECT($1;$objSearch)
@@ -10,10 +10,40 @@ $outAryObjPtr:=$2
 C_LONGINT($0)
 C_LONGINT($i; $numOfRecs)
 C_OBJECT($obj[--TBL_PREFIX])
+C_TEXT($likeWord)
+C_LONGINT($i; $cnt)
+ARRAY POINTER($aryFldPtr; 0)
+C_POINTER($fldPtr)
+C_TEXT($current_set; $set_byWord; $branch_set)
+$current_set:="current_set"
+$set_byWord:="set_byWord"
+$branch_set:="branch_set"
 
+//最初に削除フラグでセットを作る
 READ ONLY([[--TABLE]])
-QUERY([[--TABLE]]; [[--TABLE]][--TBL_PREFIX]_DEL_FLAG=$objSearch.del_flag;*)
-QUERY([[--TABLE]])
+QUERY([[--TABLE]]; [[--TABLE]][--TBL_PREFIX]_DEL_FLAG=$objSearch.del_flag)
+CREATE SET([[--TABLE]]; $current_set)
+
+//キーワードによる複数フィールドに対してのクエリ
+If ($objSearch.keyword#"")
+	CREATE EMPTY SET([[--TABLE]]; $branch_set)
+	$cnt:=JCL_tbl_aryStrFieldPtr_make("[--TABLE]"; ->$aryFldPtr)
+	For ($i; 1; $cnt)
+		$likeWord:="@"+$objSearch.keyword+"@"
+		$fldPtr:=$aryFldPtr{$i}
+		QUERY([[--TABLE]]; $fldPtr->=$likeWord)
+		CREATE SET([[--TABLE]]; $set_byWord)
+		
+		//セットを結合
+		UNION($branch_set; $set_byWord; $branch_set)
+
+	End for 
+	
+	//削除フラグのセットと結合
+	INTERSECTION($current_set; $branch_set; $current_set)
+	
+End if 
+USE SET($current_set)
 
 //DBデータを取得してオブジェクト配列に追加
 $numOfRecs:=[--FRM_PREFIX]_lst[--TBL_PREFIX]_Make_aryObj_onServer($outAryObjPtr)

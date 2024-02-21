@@ -39,10 +39,10 @@ If ($tblName#"")
 	//JCL_prj_FG_tblFrm01V3($objParam; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength)
 	JCL_prj_FG_tblFrm01V4($objParam; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength)
 	//フォームメソッドを作成
-	JCL_prj_FG_tblFrmMethod($objParam)
+	//JCL_prj_FG_tblFrmMethod($objParam)
 	//メソッド群をテンプレートから作成
 	$objParam.method_templates:="method_templates_list"
-	JCL_prj_FG_methods($objParam; ->$aryFieldName; ->$aryFieldType)
+	//JCL_prj_FG_methods($objParam; ->$aryFieldName; ->$aryFieldType)
 	
 	//02フォーム作成 20210602
 	$objParam.frm_name:=$objParam.tbl_prefix+"02_Input"  //フォーム名

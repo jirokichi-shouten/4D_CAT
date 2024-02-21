@@ -868,7 +868,8 @@
 					"dropping": "custom",
 					"events": [
 						"onDataChange"
-					]
+					],
+					"textAlign": "right"
 				},
 				"vJCL_D02_varTableName": {
 					"type": "input",

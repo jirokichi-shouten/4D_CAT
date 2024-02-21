@@ -4,8 +4,6 @@
 //選択行が変わった
 
 C_LONGINT:C283($tblNr)
-C_LONGINT:C283($color)
-$color:=0x00FFFFFF
 
 //テーブル名
 $tblNr:=JCL_lst_Selected_Long(->vA01_lstT; ->vA01_lstT_nr)
@@ -28,6 +26,7 @@ If ($tblNr>0)
 	A01_lstFL_make($tblNr)
 	
 	//色を付ける
+	C_LONGINT:C283($color)
 	$color:=JCL_lst_Selected_Long(->vA01_lstT; ->vA01_lstT_Color)
 	If ($color=0)
 		$color:=0x00FFFFFF

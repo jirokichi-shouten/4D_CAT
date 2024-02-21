@@ -7,7 +7,9 @@ C_TEXT:C284($tblName)
 C_TEXT:C284($methodName)
 C_TEXT:C284($tbl_prefix)
 C_LONGINT:C283($pos)
+C_LONGINT:C283($nr)
 
+$nr:=JCL_lst_Selected_Long(->vA01_lstT; ->vA01_lstT_nr)
 $tblName:=JCL_lst_Selected_Str(->vA01_lstT; ->vA01_lstT_name)
 If ($tblName#"")
 	
@@ -43,5 +45,19 @@ If ($tblName#"")
 		
 		
 	End if 
+	
+	A01_lstT_make
+	
+	JCL_lst_SetSelect_byLong(->vA01_lstT; ->vA01_lstT_nr; $nr)
+	
+	//フィールド一覧の色を更新
+	C_LONGINT:C283($color)
+	$color:=JCL_lst_Selected_Long(->vA01_lstT; ->vA01_lstT_Color)
+	If ($color=0)
+		$color:=0x00FFFFFF
+	End if 
+	OBJECT SET RGB COLORS:C628(*; "vA01_varTableName"; 0; $color)
+	
+	A01_SetControlsValues
 	
 End if 
