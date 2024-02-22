@@ -36,22 +36,24 @@ If ($tblName#"")
 	//01フォーム作成
 	$objParam.frm_name:=$objParam.tbl_prefix+"01_List"  //フォーム名
 	$objParam.frm_prefix:=$objParam.tbl_prefix+"01"  //フォーム名のプリフィックス
+	$objParam.form_templates:="frm01_v3.txt"
+	$objParam.method_templates:="method_templates_list"
 	//JCL_prj_FG_tblFrm01V3($objParam; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength)
 	JCL_prj_FG_tblFrm01V4($objParam; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength)
 	//フォームメソッドを作成
 	//JCL_prj_FG_tblFrmMethod($objParam)
 	//メソッド群をテンプレートから作成
-	$objParam.method_templates:="method_templates_list"
 	//JCL_prj_FG_methods($objParam; ->$aryFieldName; ->$aryFieldType)
 	
 	//02フォーム作成 20210602
 	$objParam.frm_name:=$objParam.tbl_prefix+"02_Input"  //フォーム名
 	$objParam.frm_prefix:=$objParam.tbl_prefix+"02"  //フォーム名のプリフィックス
 	$objParam.method_templates:="method_templates_form"
-	JCL_prj_FG_tblFrm02V3($objParam; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength)
+	//JCL_prj_FG_tblFrm02V3($objParam; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength)
+	JCL_prj_FG_tblFrm02V4($objParam; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength)
 	//フォームメソッドを作成
-	JCL_prj_FG_tblFrmMethod($objParam)
+	//JCL_prj_FG_tblFrmMethod($objParam)
 	//メソッド群をテンプレートから作成
-	JCL_prj_FG_methods($objParam; ->$aryFieldName; ->$aryFieldType)
+	//JCL_prj_FG_methods($objParam; ->$aryFieldName; ->$aryFieldType)
 	
 End if 

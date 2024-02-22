@@ -32,6 +32,7 @@ $frm01.addLabel($objParam; 16; 20; 192; 26)
 //フォームの件数文字列
 $objParam.name:=$objParam.frm_prefix+"_varNumOfRecs"
 $objParam.textAlign:="right"
+$objParam.css_class:="JCL_YuGothic12"
 $frm01.addVarText($objParam; 80; 880; 110; 17)
 
 //検索用 ラベルとキーワードフィールド、ボタン
@@ -82,11 +83,8 @@ $objParam.name:=$objParam.frm_prefix+"_lst"+$objParam.tbl_prefix
 $frm01.addListbox($objParam; 110; 20; 1002; 440; $aryFieldNamePtr; $aryFieldTypePtr; $aryFieldLengthPtr)
 $frm01.saveObjMethod($objParam; $objParam.name)
 
-//メソッド
-$frm01.saveMethods($objParam; $aryFieldNamePtr; $aryFieldTypePtr)
-
-
 //最終的に.4DFormに保存
 $frm01.saveForm($objParam)
 
-
+//関連プロジェクトメソッド、テンプレートフォルダのテンプレートから生成
+$frm01.saveMethods($objParam; $aryFieldNamePtr; $aryFieldTypePtr)

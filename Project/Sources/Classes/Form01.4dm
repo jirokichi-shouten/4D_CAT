@@ -10,7 +10,7 @@ Class constructor
 	$objFrm:=New object:C1471
 	
 	//リソースフォルダから、テンプレートファイルの内容を読み込んで　解析
-	$text:=File:C1566("/RESOURCES/JCL4D_Resources/frm_templates/frm01_v3.txt").getText()
+	$text:=File:C1566("/RESOURCES/JCL4D_Resources/frm_templates/"+$objParam.form_templates).getText()
 	$objFrm:=JSON Parse:C1218($text)
 	This:C1470.objForm:=$objFrm
 	
@@ -117,7 +117,7 @@ Function addVarText($objParam; $top; $left; $width; $height)
 	$objFrm.pages[1].objects[$new_name].left:=$left
 	$objFrm.pages[1].objects[$new_name].width:=$width
 	$objFrm.pages[1].objects[$new_name].height:=$height
-	$objFrm.pages[1].objects[$new_name].class:="JCL_YuGothic12"
+	$objFrm.pages[1].objects[$new_name].class:=$objParam.css_class
 	$objFrm.pages[1].objects[$new_name].fill:="transparent"
 	$objFrm.pages[1].objects[$new_name].borderStyle:="none"
 	$objFrm.pages[1].objects[$new_name].enterable:=False:C215
@@ -164,6 +164,25 @@ Function addButton($objParam; $top; $left; $width; $height)
 	$objFrm.pages[1].objects[$new_name].class:="JCL_YuGothic12"
 	$objFrm.pages[1].objects[$new_name].action:=$objParam.action
 	$objFrm.pages[1].objects[$new_name].shortcutKey:=$objParam.shortcutKey
+	$objFrm.pages[1].objects[$new_name].shortcutAccel:=True:C214
+	$objFrm.pages[1].objects[$new_name].text:=$objParam.text
+	$objFrm.pages[1].objects[$new_name].events:=New collection:C1472("onClick")
+	
+Function addMethodButton($objParam; $top; $left; $width; $height)
+	//ボタン
+	C_OBJECT:C1216($objFrm)
+	$objFrm:=This:C1470.objForm
+	C_TEXT:C284($new_name)
+	$new_name:="v"+$objParam.name
+	$objFrm.pages[1].objects[$new_name]:=New object:C1471
+	$objFrm.pages[1].objects[$new_name].type:="button"
+	$objFrm.pages[1].objects[$new_name].dataSource:=$new_name
+	$objFrm.pages[1].objects[$new_name].top:=$top
+	$objFrm.pages[1].objects[$new_name].left:=$left
+	$objFrm.pages[1].objects[$new_name].width:=$width
+	$objFrm.pages[1].objects[$new_name].height:=$height
+	$objFrm.pages[1].objects[$new_name].class:="JCL_YuGothic12"
+	$objFrm.pages[1].objects[$new_name].method:="ObjectMethods/"+$new_name+".4dm"
 	$objFrm.pages[1].objects[$new_name].shortcutAccel:=True:C214
 	$objFrm.pages[1].objects[$new_name].text:=$objParam.text
 	$objFrm.pages[1].objects[$new_name].events:=New collection:C1472("onClick")
@@ -237,7 +256,7 @@ Function saveMethods($objParam; $aryFieldNamePtr; $aryFieldTypePtr)
 	$folder:=New object:C1471
 	C_COLLECTION:C1488($files)
 	$files:=New collection:C1472
-	$folder:=Folder:C1567("/RESOURCES/JCL4D_Resources/method_templates_list")
+	$folder:=Folder:C1567("/RESOURCES/JCL4D_Resources/"+$objParam.method_templates)
 	$files:=$folder.files(fk ignore invisible:K87:22)
 	
 	C_LONGINT:C283($i; $sizeOfAry)
