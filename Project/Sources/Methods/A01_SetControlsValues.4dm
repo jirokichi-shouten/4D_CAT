@@ -16,3 +16,4 @@ vA01_varTableName:=$tblName+"(フィールド数："+String:C10($sizeOfAry; "#,#
 
 JCL_btn_SetEnable_byListSelect(->vA01_lstT; ->vA01_btnList)
 JCL_btn_SetEnable_byListSelect(->vA01_lstT; ->vA01_btnFom)
+JCL_btn_SetEnable_byListSelect(->vA01_lstT; ->vA01_btnDelete)
