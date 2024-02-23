@@ -15,9 +15,9 @@ C_POINTER:C301($4; $aryFieldLengthPtr)
 $aryFieldLengthPtr:=$4
 
 //クラスインスタンス作成＆コンストラクター実行
+//フォームメソッド
 $frm01:=cs:C1710.Form01.new($objParam)
 
-//フォームメソッド
 $frm01.saveFrmMethod($objParam)
 
 //タイトル文字とタイトルバック（色付き） 

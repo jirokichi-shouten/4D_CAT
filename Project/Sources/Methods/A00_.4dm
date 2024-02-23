@@ -3,6 +3,10 @@
 //20240207 ike wat
 //コミットコメントはここでタイプしてからGitHub Desktopに貼ると便利
 
+//20240223 yabe wat
+//全テーブル削除を追加
+//レコード削除メソッドxx02_btnDeleteのテンプレートを修正。xx02_btnDelは削除
+
 //20240222 wat
 //Form01クラスで、02_Inputを生成、OK。
 

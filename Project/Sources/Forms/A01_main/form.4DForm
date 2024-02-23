@@ -85,9 +85,9 @@
 				"vA01_btnList": {
 					"type": "button",
 					"text": "一覧V2",
-					"top": 68,
-					"left": 252,
-					"width": 70,
+					"top": 0,
+					"left": 391,
+					"width": 90,
 					"height": 26,
 					"focusable": false,
 					"method": "ObjectMethods/vA01_btnUS01.4dm",
@@ -759,11 +759,27 @@
 					"action": "",
 					"class": "JCL_YuGothic12",
 					"dataSource": "vA01_btnFom"
+				},
+				"vA01_btnAllDel": {
+					"type": "button",
+					"text": "全テーブル削除",
+					"top": 68,
+					"left": 252,
+					"width": 90,
+					"height": 26,
+					"focusable": false,
+					"method": "ObjectMethods/vA01_btnAllDel.4dm",
+					"events": [
+						"onClick"
+					],
+					"action": "",
+					"class": "JCL_YuGothic10",
+					"dataSource": "vA01_btnAllDel"
 				}
 			}
 		}
 	],
-	"geometryStamp": 689,
+	"geometryStamp": 696,
 	"editor": {
 		"activeView": "View 1",
 		"defaultView": "View 1",
