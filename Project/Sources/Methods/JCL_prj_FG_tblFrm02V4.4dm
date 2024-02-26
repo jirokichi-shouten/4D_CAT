@@ -81,14 +81,14 @@ End for
 //外部キーを他テーブルに見つけたら、リストボックスを自動生成
 C_OBJECT:C1216($foreignParam)
 $foreignParam:=New object:C1471
-C_TEXT:C284($tblName; $prefix)
+C_TEXT:C284($tblName; $tbl_prefix)
 ARRAY LONGINT:C221($aryTblNr; 0)
 ARRAY TEXT:C222($aryForeignKeys; 0)
 ARRAY TEXT:C222($aryFieldIndex; 0)
 $cnt:=zz_tbl_FindForeignKey($objParam.tbl_name; ->$aryTblNr; ->$aryForeignKeys)
 For ($i; 1; $cnt)
 	$tblName:=Table name:C256($aryTblNr{$i})
-	$prefix:=JCL_tbl_GetPrefix_fromStructure($tblName)
+	$tbl_prefix:=JCL_tbl_GetPrefix_fromStructure($tblName)  //テーブルプリフィックス
 	ARRAY TEXT:C222($aryFieldName; 0)  //フィールド名の配列
 	ARRAY TEXT:C222($aryFieldType; 0)  //フィールドタイプの配列
 	ARRAY TEXT:C222($aryFieldLength; 0)  //文字長さの配列
@@ -96,16 +96,18 @@ For ($i; 1; $cnt)
 	
 	//リストボックス
 	$offset:=20*$i
-	$objParam.name:=$objParam.frm_prefix+"_lst"+$prefix
+	$objParam.name:=$objParam.frm_prefix+"_lst"+$tbl_prefix
 	$frm01.addListbox($objParam; 200+$offset; $offset; 1002; 304; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength)
 	$frm01.saveObjMethod($objParam; $objParam.name)
 	
 	//関連プロジェクトメソッド、テンプレートフォルダのテンプレートから生成
-	$foreignParam.name:=$objParam.frm_prefix+"_lst"+$prefix
+	$foreignParam.name:=$objParam.frm_prefix+"_lst"+$tbl_prefix
 	$frm01.saveObjMethod($objParam; $foreignParam.name)
 	
 	$foreignParam.tbl_name:=$tblName
-	$foreignParam.method_templates:="method_templates_list"
+	$foreignParam.frm_prefix:=$objParam.frm_prefix
+	$foreignParam.tbl_prefix:=$tbl_prefix
+	$foreignParam.method_templates:="method_templates_list02"
 	$frm01.saveMethods($foreignParam; $inAryFldNamePtr; $inAryFldTypePtr)
 	
 End for 
