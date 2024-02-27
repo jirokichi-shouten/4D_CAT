@@ -1,5 +1,5 @@
 //[--FRM_PREFIX]_SetControlsValues
-//FG v202103 [--DATE]
+//FG list02 v202402 [--DATE]
 //[--TABLE] フォームオブジェクトを制御
 
 //リストボックスの選択行が１つの時に編集ボタンはイネイブル
@@ -9,4 +9,4 @@ JCL_btn_SetEnable_byListSelect (->v[--FRM_PREFIX]_lst[--TBL_PREFIX];->v[--FRM_PR
 JCL_btn_SetEnable_byNSelect (->v[--FRM_PREFIX]_lst[--TBL_PREFIX];->v[--FRM_PREFIX]_btnDel)
 
   //件数表示
-v[--FRM_PREFIX]_varNumOfRecs:=String(Size of array(v[--FRM_PREFIX]_lst[--TBL_PREFIX]_ID);"#,###,###,##0")+"件"
+v[--FRM_PREFIX]_varNumOf[--TBL_PREFIX]Recs:=String(Size of array(v[--FRM_PREFIX]_lst[--TBL_PREFIX]_ID);"#,###,###,##0")+"件"

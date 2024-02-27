@@ -1,5 +1,5 @@
-//[--FRM_PREFIX]_btnDup 
-//FG v202103 [--DATE]
+//[--FRM_PREFIX]_btn[--TBL_PREFIX]Dup 
+//FG list02 v202402 [--DATE]
 //[--TABLE] 複製
 
 //C_LONGINT($[--TBL_PREFIX]_id;$new_[--TBL_PREFIX]_id)

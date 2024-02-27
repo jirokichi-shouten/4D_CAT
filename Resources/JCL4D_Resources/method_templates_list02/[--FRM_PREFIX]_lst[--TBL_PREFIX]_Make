@@ -1,5 +1,5 @@
 //[--FRM_PREFIX]_lst[--TBL_PREFIX]_Make
-//FG v202402 [--DATE]
+//FG list02 v202402 [--DATE]
 //[--TABLE] リストボックス配列作成
 
 C_LONGINT($i; $cnt)
@@ -7,7 +7,6 @@ ARRAY OBJECT($aryObj; 0)
 C_OBJECT($objSearch)
 $objSearch:=New object
 $objSearch.del_flag:=0 
-$objSearch.keyword:=v[--FRM_PREFIX]_varKeyword
 
   //サーバ上でクエリー実行、結果をオブジェクトの配列で取得
 $cnt:=[--FRM_PREFIX]_lst[--TBL_PREFIX]_Make_onServer($objSearch; ->$aryObj)

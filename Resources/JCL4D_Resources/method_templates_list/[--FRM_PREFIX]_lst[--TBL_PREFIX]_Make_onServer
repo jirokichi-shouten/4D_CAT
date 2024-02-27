@@ -9,7 +9,6 @@ C_POINTER($2; $outAryObjPtr)  //オブジェクト型配列のポインタ
 $outAryObjPtr:=$2
 C_LONGINT($0)
 C_LONGINT($i; $numOfRecs)
-C_OBJECT($obj[--TBL_PREFIX])
 C_TEXT($likeWord)
 C_LONGINT($i; $cnt)
 ARRAY POINTER($aryFldPtr; 0)

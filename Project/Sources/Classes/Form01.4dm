@@ -233,12 +233,11 @@ Function saveMethods($objParam : Object; $aryFieldNamePtr : Pointer; $aryFieldTy
 	$folder:=New object:C1471
 	C_COLLECTION:C1488($files)
 	$files:=New collection:C1472
+	C_LONGINT:C283($i)
+	
+	//リソースフォルダのテンプレートファイルを取得
 	$folder:=Folder:C1567("/RESOURCES/JCL4D_Resources/"+$objParam.method_templates)
 	$files:=$folder.files(fk ignore invisible:K87:22)
-	
-	C_LONGINT:C283($i; $sizeOfAry)
-	C_OBJECT:C1216($objCol; $col_header; $col_footer)
-	$sizeOfAry:=Size of array:C274($aryFieldNamePtr->)
 	For ($i; 1; $files.length)
 		//ファイル名を取得して//メソッド名生成
 		$templateFileName:=$files[$i-1].name
@@ -258,7 +257,52 @@ Function saveMethods($objParam : Object; $aryFieldNamePtr : Pointer; $aryFieldTy
 		
 	End for 
 	
-Function addInput($objParam : Object; $top : Integer; $left : Integer; $width : Integer; $height : Integer)
+Function saveRelatedMethods($objParam : Object; $aryFieldNamePtr : Pointer; $aryFieldTypePtr : Pointer)
+	//JCLのテンプレートから、メソッド群を生成
+	C_TEXT:C284($body; $methodName; $templateFileName)
+	C_OBJECT:C1216($file)
+	$file:=New object:C1471
+	C_OBJECT:C1216($folder)
+	$folder:=New object:C1471
+	C_COLLECTION:C1488($files)
+	$files:=New collection:C1472
+	C_LONGINT:C283($i; $k)
+	
+	//リソースフォルダのテンプレートファイルを取得
+	$folder:=Folder:C1567("/RESOURCES/JCL4D_Resources/"+$objParam.method_templates)
+	$files:=$folder.files(fk ignore invisible:K87:22)
+	
+	For ($i; 1; $files.length)
+		//ファイル名を取得して//メソッド名生成
+		$templateFileName:=$files[$i-1].name
+		$methodName:=$templateFileName
+		$methodName:=Replace string:C233($methodName; "[--TABLE]"; $objParam.tbl_name)
+		$methodName:=Replace string:C233($methodName; "[--FRM_PREFIX]"; $objParam.frm_prefix)
+		$methodName:=Replace string:C233($methodName; "[--TBL_PREFIX]"; $objParam.tbl_prefix)
+		
+		//テンプレートの中身を取得
+		$body:=$files[$i-1].getText()
+		$body:=JCL_prj_fg_method_replaceTags($objParam; $body; $aryFieldNamePtr; $aryFieldTypePtr)
+		
+		//ファイルに書き出す
+		$file:=File:C1566("/SOURCES/Methods/"+$methodName+".4dm")
+		If ($file.exists=True:C214)
+			//メソッドファイルがあれば中身に連結
+			$old_body:=$file.getText()
+			$body:=$old_body+Char:C90(Carriage return:K15:38)+$body
+			
+		Else 
+			//なければ作成
+			$bool:=$file.create()
+			
+		End if 
+		$file.setText($body)
+		
+	End for 
+	
+	
+Function addInput($objParam : Object; $top : Integer; $left : Integer; $width : Integer; $height : Integer; \
+$enterable : Boolean)
 	//フォームの件数文字列
 	C_TEXT:C284($new_name)
 	$new_name:="v"+$objParam.name
@@ -272,7 +316,7 @@ Function addInput($objParam : Object; $top : Integer; $left : Integer; $width : 
 	This:C1470.objForm.pages[1].objects[$new_name].class:="JCL_YuGothic12"
 	This:C1470.objForm.pages[1].objects[$new_name].borderStyle:="sunken"
 	This:C1470.objForm.pages[1].objects[$new_name].focusable:=True:C214
-	This:C1470.objForm.pages[1].objects[$new_name].enterable:=True:C214
+	This:C1470.objForm.pages[1].objects[$new_name].enterable:=$enterable
 	This:C1470.objForm.pages[1].objects[$new_name].dropping:="custom"
 	This:C1470.objForm.pages[1].objects[$new_name].events:=New collection:C1472("onDataChange")
 	

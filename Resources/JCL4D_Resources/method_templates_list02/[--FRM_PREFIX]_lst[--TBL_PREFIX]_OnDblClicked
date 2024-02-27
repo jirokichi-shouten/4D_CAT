@@ -1,5 +1,5 @@
 //[--FRM_PREFIX]_lst[--TBL_PREFIX]_OnDblClicked
-//FG v202103 [--DATE]
+//FG list02 v202402 [--DATE]
 //[--TABLE] リストオブジェクトがダブルクリックされた
 
-[--FRM_PREFIX]_btnMod
+[--FRM_PREFIX]_btn[--TBL_PREFIX]Mod

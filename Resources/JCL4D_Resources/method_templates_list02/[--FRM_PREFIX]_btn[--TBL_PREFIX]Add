@@ -1,5 +1,5 @@
-//[--FRM_PREFIX]_btnAdd
-//FG v202103 [--DATE]
+//[--FRM_PREFIX]_btn[--TBL_PREFIX]Add
+//FG list02 v202402 [--DATE]
 //[--TABLE] 入力フォームを新規モードで表示
 
 C_LONGINT($[--TBL_PREFIX]_id)

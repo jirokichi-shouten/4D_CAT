@@ -1,5 +1,5 @@
-//[--FRM_PREFIX]_btnMod
-//FG v202103 [--DATE]
+//[--FRM_PREFIX]_btn[--TBL_PREFIX]Mod
+//FG list02 v202402 [--DATE]
 //[--TABLE] リストボックスの選択行を編集 入力フォームを編集モードで表示
 
 C_LONGINT($[--TBL_PREFIX]_id)

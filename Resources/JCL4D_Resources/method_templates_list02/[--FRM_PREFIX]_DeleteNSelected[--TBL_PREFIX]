@@ -1,6 +1,5 @@
-//[--FRM_PREFIX]_DeleteSelectedItems
-//[--FRM_PREFIX]_DeleteNSelected
-//FG v202103 [--DATE]
+//[--FRM_PREFIX]_DeleteNSelected[--TBL_PREFIX]
+//FG list02 v202402 [--DATE]
 //[--TABLE] リストボックスの選択行を複数削除
 
 C_LONGINT($0;$selCnt)

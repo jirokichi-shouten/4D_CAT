@@ -18,6 +18,9 @@ $frm01:=cs:C1710.Form01.new($objParam)
 //フォームメソッド
 $frm01.saveFrmMethod($objParam)
 
+//関連プロジェクトメソッド、テンプレートフォルダのテンプレートから生成
+$frm01.saveMethods($objParam; $inAryFldNamePtr; $inAryFldTypePtr)
+
 //タイトル文字とタイトルバック（色付き） 
 $objParam.name:=$objParam.frm_prefix+"_rectTitle"
 $frm01.addRect($objParam; 0; 0; 987; 55)
@@ -78,7 +81,8 @@ For ($i; 1; $sizeOfAry)
 	
 End for 
 
-//外部キーを他テーブルに見つけたら、リストボックスを自動生成
+//外部キーを他テーブルに見つけたら、リストボックス付きの０３を自動生成
+C_LONGINT:C283($offset)
 C_OBJECT:C1216($foreignParam)
 $foreignParam:=New object:C1471
 C_TEXT:C284($tblName; $tbl_prefix)
@@ -94,10 +98,36 @@ For ($i; 1; $cnt)
 	ARRAY TEXT:C222($aryFieldLength; 0)  //文字長さの配列
 	JCL_tbl_Fields_withAttr($tblName; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength; ->$aryFieldIndex)
 	
-	//リストボックス
+	//関連テーブルが複数ある場合、リストボックスとボタンたちをオフセットしていく
 	$offset:=20*$i
+	
+	//フォームのAddボタン
+	$objParam.name:=$objParam.frm_prefix+"_btn"+$tbl_prefix+"Add"
+	$objParam.picture:="/RESOURCES/JCL4D_Resources/pictures/plus_rectangle.png"
+	$frm01.addPictureButton($objParam; 198+$offset; $offset)
+	$frm01.saveObjMethod($objParam; $objParam.name)
+	
+	//フォームのModボタン
+	$objParam.name:=$objParam.frm_prefix+"_btn"+$tbl_prefix+"Mod"
+	$objParam.picture:="/RESOURCES/JCL4D_Resources/pictures/square_and_pencil_w.png"
+	$frm01.addPictureButton($objParam; 198+$offset; $offset+48)
+	$frm01.saveObjMethod($objParam; $objParam.name)
+	
+	//フォームのDelボタン
+	$objParam.name:=$objParam.frm_prefix+"_btn"+$tbl_prefix+"Del"
+	$objParam.picture:="/RESOURCES/JCL4D_Resources/pictures/minus_rectangle.png"
+	$frm01.addPictureButton($objParam; 198+$offset; $offset+142)
+	$frm01.saveObjMethod($objParam; $objParam.name)
+	
+	//フォームのCopyボタン
+	$objParam.name:=$objParam.frm_prefix+"_btn"+$tbl_prefix+"Copy"
+	$objParam.text:="コピー"
+	$frm01.addMethodButton($objParam; 198+$offset; $offset+188; 80; 26)
+	$frm01.saveObjMethod($objParam; $objParam.name)
+	
+	//リストボックス
 	$objParam.name:=$objParam.frm_prefix+"_lst"+$tbl_prefix
-	$frm01.addListbox($objParam; 200+$offset; $offset; 1002; 304; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength)
+	$frm01.addListbox($objParam; 246+$offset; $offset; 1002; 304; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength)
 	$frm01.saveObjMethod($objParam; $objParam.name)
 	
 	//関連プロジェクトメソッド、テンプレートフォルダのテンプレートから生成
@@ -108,12 +138,9 @@ For ($i; 1; $cnt)
 	$foreignParam.frm_prefix:=$objParam.frm_prefix
 	$foreignParam.tbl_prefix:=$tbl_prefix
 	$foreignParam.method_templates:="method_templates_list02"
-	$frm01.saveMethods($foreignParam; $inAryFldNamePtr; $inAryFldTypePtr)
+	$frm01.saveRelatedMethods($foreignParam; ->$aryFieldName; ->$aryFieldType)
 	
 End for 
 
 //最終的に.4DFormに保存
 $frm01.saveForm($objParam)
-
-//関連プロジェクトメソッド、テンプレートフォルダのテンプレートから生成
-$frm01.saveMethods($objParam; $inAryFldNamePtr; $inAryFldTypePtr)

@@ -1,5 +1,5 @@
 //[--FRM_PREFIX]_lst[--TBL_PREFIX]
-//FG v202103 [--DATE]
+//FG list02 v202402 [--DATE]
 //[--TABLE] リストボックス
 
 C_LONGINT($frmEvnt)
