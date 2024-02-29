@@ -168,7 +168,7 @@ Function addMethodButton($objParam : Object; $top : Integer; $left : Integer; $w
 	This:C1470.objForm.pages[1].objects[$new_name].events:=New collection:C1472("onClick")
 	
 Function addListbox($objParam : Object; $top : Integer; $left : Integer; $width : Integer; $height : Integer; \
-$aryFieldNamePtr : Pointer; $aryFieldTypePtr : Pointer; $aryFieldLengthPtr : Pointer)
+$aryFieldNamePtr : Pointer; $aryFieldTypePtr : Pointer; $aryFieldLengthPtr : Pointer; $foreign : Text)
 	//リストボックス
 	C_TEXT:C284($new_name)
 	$new_name:="v"+$objParam.name
@@ -191,6 +191,12 @@ $aryFieldNamePtr : Pointer; $aryFieldTypePtr : Pointer; $aryFieldLengthPtr : Poi
 		"onDataChange"; "onSelectionChange"; "onHeaderClick")
 	This:C1470.objForm.pages[1].objects[$new_name].columns:=New collection:C1472
 	
+	If ($foreign="foreign")
+		//編集可能なリストボックス
+		This:C1470.objForm.pages[1].objects[$new_name].rowHeightAutoMax:="20px"
+		
+	End if 
+	
 	//リストボックス、フィールド（列）
 	C_LONGINT:C283($i; $sizeOfAry)
 	C_OBJECT:C1216($objCol; $col_header; $col_footer)
@@ -200,7 +206,18 @@ $aryFieldNamePtr : Pointer; $aryFieldTypePtr : Pointer; $aryFieldLengthPtr : Poi
 		$objCol.name:="v"+$objParam.frm_prefix+"_lst"+$aryFieldNamePtr->{$i}
 		$objCol.dataSource:=$objCol.name
 		$objCol.width:=JCL_prj_fg_fldWidth($aryFieldTypePtr->{$i}; $aryFieldLengthPtr->{$i})
-		$objCol.enterable:=False:C215
+		If ($foreign="foreign")
+			//IDフィールド以外は入力可
+			C_TEXT:C284($col_name)
+			$col_name:="v"+$objParam.frm_prefix+"_lst"+$objParam.tbl_prefix+"_ID"
+			If ($objCol.name=$col_name)
+				$objCol.enterable:=False:C215
+			Else 
+				$objCol.enterable:=True:C214
+			End if 
+		Else 
+			$objCol.enterable:=False:C215
+		End if 
 		$objCol.truncateMode:="none"
 		$objCol.class:="JCL_YuGothic12"
 		$objCol.events:=New collection:C1472("onClick"; "onDataChange")

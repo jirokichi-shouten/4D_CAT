@@ -1,0 +1,12 @@
+//[--FRM_PREFIX]_lst[--TBL_PREFIX]_remove
+//FG form03 v202402 [--DATE]
+// リストボックスの選択行を削除
+
+C_LONGINT($1;$index)
+$index:=$1
+
+If ($index>0)
+	  // 配列から一つ要素を削除
+	DELETE FROM ARRAY(v[--FRM_PREFIX]_lst[--FIELD];$index;1)
+
+End if 

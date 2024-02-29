@@ -12,7 +12,7 @@ $aryObjPtr:=$2
 ARRAY [--DATATYPE](v[--FRM_PREFIX]_lst[--FIELD]; $cnt)
 
 For ($i;1;$cnt)
-	//サーバ上でゲットした内容をリストボックスに代入、ここで転送が起こる
+	//サーバ上でゲットした内容をリストボックスに代入、ここで転送が完了する
 	v[--FRM_PREFIX]_lst[--FIELD]{$i}:=$aryObjPtr->{$i}.[--FIELD]
 	
 End for 

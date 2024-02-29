@@ -1,0 +1,17 @@
+//[--FRM_PREFIX]_btn[--TBL_PREFIX]Remove
+//FG form03 v202402 [--DATE]
+// リストボックスの選択行を削除
+
+C_LONGINT($index)
+
+$index:=JCL_lst_Selected_firstRow (->v[--FRM_PREFIX]_lst[--TBL_PREFIX])
+If ($index>0)
+	  // 配列から一つ要素を削除
+	  [--FRM_PREFIX]_lst[--TBL_PREFIX]_remove($index)
+
+End if
+
+//選択状態をなしにする
+JCL_lst_Deselect (->v[--FRM_PREFIX]_lst[--TBL_PREFIX])
+
+[--FRM_PREFIX]_SetControlsValues 

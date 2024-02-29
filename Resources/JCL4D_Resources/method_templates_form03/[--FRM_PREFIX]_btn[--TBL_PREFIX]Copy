@@ -1,5 +1,5 @@
 //[--FRM_PREFIX]_btn[--TBL_PREFIX]Copy
-//FG list02 v202402 [--DATE]
+//FG form03 v202402 [--DATE]
 //リストボックスの一覧をコピーバッファに転送、タブ区切り
 
 JCL_lst_Copy (->v[--FRM_PREFIX]_lst[--TBL_PREFIX])

@@ -1,6 +1,6 @@
 //%attributes = {"executedOnServer":true}
 //[--FRM_PREFIX]_lst[--TBL_PREFIX]_Make_onServer
-//FG list02 v202402 [--DATE]
+//FG form03 v202402 [--DATE]
 //[[--TABLE]] リストボックス用オブジェクト配列を作成 //サーバ上で実行
 
 C_OBJECT($1;$objSearch)

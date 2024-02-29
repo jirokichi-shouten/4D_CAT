@@ -23,7 +23,7 @@ $frm01.saveMethods($objParam; $inAryFldNamePtr; $inAryFldTypePtr)
 
 //タイトル文字とタイトルバック（色付き） 
 $objParam.name:=$objParam.frm_prefix+"_rectTitle"
-$frm01.addRect($objParam; 0; 0; 987; 55)
+$frm01.addRect($objParam; 0; 0; 1042; 55)
 
 $objParam.name:=$objParam.frm_prefix+"_varTitle"
 $objParam.textAlign:="left"
@@ -33,7 +33,7 @@ $frm01.addVarText($objParam; 16; 26; 288; 26)
 //フォームのOKボタン
 $objParam.name:=$objParam.frm_prefix+"_btnOK"
 $objParam.text:="OK"
-$frm01.addMethodButton($objParam; 16; 873; 94; 26)
+$frm01.addMethodButton($objParam; 16; 928; 94; 26)
 $frm01.saveObjMethod($objParam; $objParam.name)
 
 //フォームのCancelボタン
@@ -41,12 +41,12 @@ $objParam.name:=$objParam.frm_prefix+"_btnCancel"
 $objParam.text:="キャンセル"
 $objParam.action:="cancel"
 $objParam.shortcutKey:="[Esc]"
-$frm01.addButton($objParam; 16; 759; 94; 26)
+$frm01.addButton($objParam; 16; 814; 94; 26)
 
 //フォームのDeleteボタン
 $objParam.name:=$objParam.frm_prefix+"_btnDelete"
 $objParam.text:="削除"
-$frm01.addMethodButton($objParam; 16; 645; 94; 26)
+$frm01.addMethodButton($objParam; 16; 700; 94; 26)
 $frm01.saveObjMethod($objParam; $objParam.name)
 
 //フィールド用の文字列を作成、複数フィールドを作成

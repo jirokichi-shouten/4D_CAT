@@ -1,5 +1,5 @@
 //[--FRM_PREFIX]_lst[--TBL_PREFIX]_Make
-//FG list02 v202402 [--DATE]
+//FG form03 v202402 [--DATE]
 //[--TABLE] リストボックス配列作成
 
 C_LONGINT($i; $cnt)

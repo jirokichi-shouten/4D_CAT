@@ -1,0 +1,7 @@
+//[--FRM_PREFIX]_lst[--TBL_PREFIX]_append
+//FG form03 v202402 [--DATE]
+// リストボックスに行を追加
+
+// 配列に１行追加
+APPEND TO ARRAY(v[--FRM_PREFIX]_lst[--TBL_PREFIX];True)  //リストボックス自身
+APPEND TO ARRAY (v[--FRM_PREFIX]_lst[--FIELD];[--INITVALUE])

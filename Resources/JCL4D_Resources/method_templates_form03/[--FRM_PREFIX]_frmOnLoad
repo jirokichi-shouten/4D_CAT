@@ -1,5 +1,5 @@
 //[--FRM_PREFIX]_frmOnLoad([--TBL_PREFIX])
-//FG list02 v202402 [--DATE]
+//FG form03 v202402 [--DATE]
 //[--TABLE] フォームオンロード
 
 [--FRM_PREFIX]_frmDefInit 

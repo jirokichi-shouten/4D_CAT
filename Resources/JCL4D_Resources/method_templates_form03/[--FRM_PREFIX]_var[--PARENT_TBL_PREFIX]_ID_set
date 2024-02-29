@@ -1,5 +1,5 @@
 //[--FRM_PREFIX]_var[--PARENT_TBL_PREFIX]_ID_set
-//FG list02 v202402 [--DATE]
+//FG form03 v202402 [--DATE]
 
 c_longint($1)
 

@@ -24,7 +24,7 @@ $frm01.saveMethods($objParam; $inAryFldNamePtr; $inAryFldTypePtr)
 
 //タイトル文字とタイトルバック（色付き） 
 $objParam.name:=$objParam.frm_prefix+"_rectTitle"
-$frm01.addRect($objParam; 0; 0; 987; 55)
+$frm01.addRect($objParam; 0; 0; 1042; 55)
 
 $objParam.name:=$objParam.frm_prefix+"_varTitle"
 $objParam.textAlign:="left"
@@ -34,7 +34,7 @@ $frm01.addVarText($objParam; 16; 26; 288; 26)
 //フォームのOKボタン
 $objParam.name:=$objParam.frm_prefix+"_btnOK"
 $objParam.text:="OK"
-$frm01.addMethodButton($objParam; 16; 873; 94; 26)
+$frm01.addMethodButton($objParam; 16; 928; 94; 26)
 $frm01.saveObjMethod($objParam; $objParam.name)
 
 //フォームのCancelボタン
@@ -42,12 +42,12 @@ $objParam.name:=$objParam.frm_prefix+"_btnCancel"
 $objParam.text:="キャンセル"
 $objParam.action:="cancel"
 $objParam.shortcutKey:="[Esc]"
-$frm01.addButton($objParam; 16; 759; 94; 26)
+$frm01.addButton($objParam; 16; 814; 94; 26)
 
 //フォームのDeleteボタン
 $objParam.name:=$objParam.frm_prefix+"_btnDelete"
 $objParam.text:="削除"
-$frm01.addMethodButton($objParam; 16; 645; 94; 26)
+$frm01.addMethodButton($objParam; 16; 700; 94; 26)
 $frm01.saveObjMethod($objParam; $objParam.name)
 
 //フィールド用の文字列を作成、複数フィールドを作成
@@ -110,33 +110,27 @@ For ($i; 1; $cnt)
 	//関連テーブルが複数ある場合、リストボックスとボタンたちをオフセットしていく
 	$offset:=20*$i
 	
-	//フォームのAddボタン
-	$objParam.name:=$objParam.frm_prefix+"_btn"+$tbl_prefix+"Add"
+	//フォームのAppendボタン
+	$objParam.name:=$objParam.frm_prefix+"_btn"+$tbl_prefix+"Append"
 	$objParam.picture:="/RESOURCES/JCL4D_Resources/pictures/plus_rectangle.png"
-	$frm01.addPictureButton($objParam; 198+$offset; $offset)
+	$frm01.addPictureButton($objParam; 200+$offset; $offset)
 	$frm01.saveObjMethod($objParam; $objParam.name)
 	
-	//フォームのModボタン
-	$objParam.name:=$objParam.frm_prefix+"_btn"+$tbl_prefix+"Mod"
-	$objParam.picture:="/RESOURCES/JCL4D_Resources/pictures/square_and_pencil_w.png"
-	$frm01.addPictureButton($objParam; 198+$offset; $offset+48)
-	$frm01.saveObjMethod($objParam; $objParam.name)
-	
-	//フォームのDelボタン
-	$objParam.name:=$objParam.frm_prefix+"_btn"+$tbl_prefix+"Del"
+	//フォームのRemoveボタン
+	$objParam.name:=$objParam.frm_prefix+"_btn"+$tbl_prefix+"Remove"
 	$objParam.picture:="/RESOURCES/JCL4D_Resources/pictures/minus_rectangle.png"
-	$frm01.addPictureButton($objParam; 198+$offset; $offset+142)
+	$frm01.addPictureButton($objParam; 200+$offset; $offset+142)
 	$frm01.saveObjMethod($objParam; $objParam.name)
 	
 	//フォームのCopyボタン
 	$objParam.name:=$objParam.frm_prefix+"_btn"+$tbl_prefix+"Copy"
 	$objParam.text:="コピー"
-	$frm01.addMethodButton($objParam; 198+$offset; $offset+188; 80; 26)
+	$frm01.addMethodButton($objParam; 200+$offset; $offset+188; 80; 26)
 	$frm01.saveObjMethod($objParam; $objParam.name)
 	
 	//リストボックス
 	$objParam.name:=$objParam.frm_prefix+"_lst"+$tbl_prefix
-	$frm01.addListbox($objParam; 246+$offset; $offset; 1002; 304; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength)
+	$frm01.addListbox($objParam; 236+$offset; $offset; 1002; 288; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength; "foreign")
 	$frm01.saveObjMethod($objParam; $objParam.name)
 	
 	//関連プロジェクトメソッド、テンプレートフォルダのテンプレートから生成
