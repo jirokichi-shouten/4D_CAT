@@ -27,6 +27,9 @@ $method:=Replace string:C233($method; "[--DATE]"; $dateTimeStr)
 $method:=Replace string:C233($method; "[--TABLE]"; $objParam.tbl_name)
 $method:=Replace string:C233($method; "[--TBL_PREFIX]"; $objParam.tbl_prefix)
 $method:=Replace string:C233($method; "[--FRM_PREFIX]"; $objParam.frm_prefix)
+If (OB Is defined:C1231($objParam; "parent_tbl_prefix")=True:C214)
+	$method:=Replace string:C233($method; "[--PARENT_TBL_PREFIX]"; $objParam.parent_tbl_prefix)
+End if 
 
 $len:=Length:C16($method)
 $buf:=""

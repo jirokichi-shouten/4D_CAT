@@ -41,7 +41,7 @@ $objParam.text:="キーワード"
 $objParam.css_class:="JCL_YuGothic12"
 $frm01.addLabel($objParam; 74; 272; 80; 17)
 $objParam.name:=$objParam.frm_prefix+"_varKeyword"
-$frm01.addInput($objParam; 74; 356; 110; 17)
+$frm01.addInput($objParam; 74; 356; 110; 17; True:C214)
 $objParam.name:=$objParam.frm_prefix+"_btnFind"
 $objParam.picture:="/RESOURCES/JCL4D_Resources/pictures/magnifyingglass.png"
 $frm01.addPictureButton($objParam; 68; 466)

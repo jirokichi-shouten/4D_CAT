@@ -1,0 +1,19 @@
+//[--FRM_PREFIX]_lst[--TBL_PREFIX]_Make
+//FG list02 v202402 [--DATE]
+//[--TABLE] リストボックス配列作成
+
+C_LONGINT($i; $cnt)
+ARRAY OBJECT($aryObj; 0)
+C_OBJECT($objSearch)
+$objSearch:=New object
+$objSearch.del_flag:=0 
+$objSearch.[--PARENT_TBL_PREFIX]_id:=[--FRM_PREFIX]_var[--PARENT_TBL_PREFIX]_ID_get
+
+  //サーバ上でクエリー実行、結果をオブジェクトの配列で取得
+$cnt:=[--FRM_PREFIX]_lst[--TBL_PREFIX]_Make_onServer($objSearch; ->$aryObj)
+
+  //オブジェクトの配列からリストボックスの配列に代入
+[--FRM_PREFIX]_lst[--TBL_PREFIX]_Make_asign ($cnt;->$aryObj)
+
+  // ソート順を実行
+JCL_lst_Sort ("v[--FRM_PREFIX]_lst[--TBL_PREFIX]";->v[--FRM_PREFIX]_lst[--TBL_PREFIX]_HeaderNames;->v[--FRM_PREFIX]_lst[--TBL_PREFIX]_SortOrders)

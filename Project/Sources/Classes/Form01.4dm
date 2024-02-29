@@ -279,6 +279,7 @@ Function saveRelatedMethods($objParam : Object; $aryFieldNamePtr : Pointer; $ary
 		$methodName:=Replace string:C233($methodName; "[--TABLE]"; $objParam.tbl_name)
 		$methodName:=Replace string:C233($methodName; "[--FRM_PREFIX]"; $objParam.frm_prefix)
 		$methodName:=Replace string:C233($methodName; "[--TBL_PREFIX]"; $objParam.tbl_prefix)
+		$methodName:=Replace string:C233($methodName; "[--PARENT_TBL_PREFIX]"; $objParam.parent_tbl_prefix)
 		
 		//テンプレートの中身を取得
 		$body:=$files[$i-1].getText()
@@ -314,9 +315,15 @@ $enterable : Boolean)
 	This:C1470.objForm.pages[1].objects[$new_name].width:=$width
 	This:C1470.objForm.pages[1].objects[$new_name].height:=$height
 	This:C1470.objForm.pages[1].objects[$new_name].class:="JCL_YuGothic12"
-	This:C1470.objForm.pages[1].objects[$new_name].borderStyle:="sunken"
 	This:C1470.objForm.pages[1].objects[$new_name].focusable:=True:C214
 	This:C1470.objForm.pages[1].objects[$new_name].enterable:=$enterable
+	If ($enterable=False:C215)
+		//入力不可なら見た目を変える
+		This:C1470.objForm.pages[1].objects[$new_name].borderStyle:="dotted"
+		This:C1470.objForm.pages[1].objects[$new_name].fill:="transparent"
+		This:C1470.objForm.pages[1].objects[$new_name].focusable:=False:C215
+		
+	End if 
 	This:C1470.objForm.pages[1].objects[$new_name].dropping:="custom"
 	This:C1470.objForm.pages[1].objects[$new_name].events:=New collection:C1472("onDataChange")
 	

@@ -1,0 +1,6 @@
+//[--FRM_PREFIX]_var[--PARENT_TBL_PREFIX]_ID_get
+//FG list02 v202402 [--DATE]
+
+c_longint($0)
+
+$0:=v[--FRM_PREFIX]_var[--PARENT_TBL_PREFIX]_ID
