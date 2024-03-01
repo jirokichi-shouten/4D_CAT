@@ -1,0 +1,28 @@
+//[--FRM_PREFIX]_frmSaveValues_[--TBL_PREFIX]Mod
+//FG form03 v202402 [--DATE]
+//OKボタン　フォーム上の関連テーブルのリストボックス配列を保存
+// 配列１行から　既存のレコードを更新
+
+C_LONGINT($1;$nr)
+$nr:=$1
+C_LONGINT($0;$[--TBL_PREFIX]_id)
+C_LONGINT($[--PARENT_TBL_PREFIX]_id)
+$[--PARENT_TBL_PREFIX]_id:=[--FRM_PREFIX]_var[--PARENT_TBL_PREFIX]_ID_get 
+
+//DB保存値と画面表示を比べて、違いがあった時だけ保存する
+C_TEXT($db_record_str;$array_row_str)
+$db_record_str:=[--TBL_PREFIX]_GetRecordStr($[--TBL_PREFIX]_id)
+$array_row_str:=[--FRM_PREFIX]_lst[--TBL_PREFIX]_rowStr($nr)
+If ($db_record_str#$array_row_str)
+	READ WRITE([[--TABLE]])
+	QUERY([[--TABLE]];[[--TABLE]][--TBL_PREFIX]_ID=$br_id)
+
+	[[--TABLE]][--FIELD]:=v[--FRM_PREFIX]_lst[--FIELD]{$nr}
+
+	SAVE RECORD([[--TABLE]])
+	UNLOAD RECORD([[--TABLE]])
+	READ ONLY([[--TABLE]])
+
+End if 
+
+$0:=$[--TBL_PREFIX]_id

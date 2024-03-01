@@ -17,7 +17,7 @@ C_TEXT:C284($tbl_prefix)
 C_LONGINT:C283($len; $h; $k)
 C_LONGINT:C283($pos_row)
 C_TEXT:C284($dateTimeStr)
-C_TEXT:C284($dataType; $initValue)
+C_TEXT:C284($dataType; $initValue; $strValue)
 C_TEXT:C284($chr; $buf; $newBuf)
 //日付時刻文字列を作成
 $dateTimeStr:=String:C10(Current date:C33)+" "+String:C10(Current time:C178)
@@ -54,6 +54,11 @@ For ($h; 1; $len)
 				//初期値を置換
 				$initValue:=JCL_tbl_InitValue($aryFieldTypePtr->{$k})
 				$newBuf:=Replace string:C233($newBuf; "[--INITVALUE]"; $initValue)
+				
+				//文字列型に置換
+				$strValue:=JCL_tbl_StrValue($objParam.tbl_name+$fieldName; $aryFieldTypePtr->{$k})
+				$newBuf:=Replace string:C233($newBuf; "[--STRVALUE]"; $strValue)
+				
 				$newmethod:=$newmethod+$newBuf
 				
 			End for 

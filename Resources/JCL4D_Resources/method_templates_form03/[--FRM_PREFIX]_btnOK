@@ -1,20 +1,18 @@
 //[--FRM_PREFIX]_btnOK
 //FG form03 v202402 [--DATE]
-//[--TABLE] リストボックスに行を追加 親テーブルのIDを自動代入
+//OKボタン　フォーム上の変数を保存
 
-C_LONGINT($[--TBL_PREFIX]_id)
-$[--TBL_PREFIX]_id:=0//IDを初期化
-C_LONGINT($[--PARENT_TBL_PREFIX]_id)
-$[--PARENT_TBL_PREFIX]_id:=[--FRM_PREFIX]_var[--PARENT_TBL_PREFIX]_ID_get
+C_BOOLEAN($check)
 
-//行追加
-[--FRM_PREFIX]_lst[--TBL_PREFIX]_append
-
-//IDフィールドに親テーブルのIDを代入
-$sizeOfAry:=Size of array(v[--FRM_PREFIX]_lst[--TBL_PREFIX]_[--PARENT_TBL_PREFIX]_ID)
-v[--FRM_PREFIX]_lst[--TBL_PREFIX]_[--PARENT_TBL_PREFIX]_ID{$sizeOfAry}:=$[--PARENT_TBL_PREFIX]_id
-
-//追加の行に移動
-EDIT ITEM(v[--FRM_PREFIX]_lst[--TBL_PREFIX]_[--PARENT_TBL_PREFIX]_ID;$sizeOfAry)
-
-[--FRM_PREFIX]_SetControlsValues 
+//$check:=[--FRM_PREFIX]_btnOK_check 
+$check:=True
+If ($check=True)
+	 //[--PARENT_TBL_PREFIX]を保存
+	//[--FRM_PREFIX]_SaveValues 
+	
+	  //[--TBL_PREFIX]を保存
+	[--FRM_PREFIX]_frmSaveValues_[--TBL_PREFIX] 
+	
+	ACCEPT
+	
+End if 

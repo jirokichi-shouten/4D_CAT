@@ -1,0 +1,32 @@
+//[--FRM_PREFIX]_frmSaveValues_[--TBL_PREFIX]Del
+//FG form03 v202402 [--DATE]
+//OKボタン　フォーム上の関連テーブルのリストボックス配列を保存
+// 配列で削除されているジャーナルを　レコードから削除
+
+C_LONGINT($[--PARENT_TBL_PREFIX]_id)
+C_LONGINT($i;$numOfRecs)
+C_LONGINT($index)
+
+$[--PARENT_TBL_PREFIX]_id:=[--FRM_PREFIX]_var[--PARENT_TBL_PREFIX]_ID_get 
+
+  // 保存されているレコードをロード
+READ WRITE([[--TABLE]])
+QUERY([[--TABLE]];[[--TABLE]][--TBL_PREFIX]_DEL_FLAG=0;*)
+QUERY([[--TABLE]];&;[[--TABLE]][--TBL_PREFIX]_[--PARENT_TBL_PREFIX]_ID=$[--PARENT_TBL_PREFIX]_id)
+$numOfRecs:=Records in selection([[--TABLE]])
+For ($i;1;$numOfRecs)
+	GOTO SELECTED RECORD([[--TABLE]];$i)
+	
+	  // オンメモリの配列にあるか？
+	$index:=Find in array(v[--FRM_PREFIX]_lst[--TBL_PREFIX]_ID;[[--TABLE]][--TBL_PREFIX]_ID)
+	If ($index=-1)
+		/ なかった、    // レコードは削除フラグ
+		[[--TABLE]][--TBL_PREFIX]_DEL_FLAG:=3
+		[[--TABLE]][--TBL_PREFIX]_UPDATE_DATEMARK:=$datemark
+		SAVE RECORD([[--TABLE]])
+		
+	End if 
+End for 
+
+UNLOAD RECORD([[--TABLE]])
+READ ONLY([[--TABLE]])

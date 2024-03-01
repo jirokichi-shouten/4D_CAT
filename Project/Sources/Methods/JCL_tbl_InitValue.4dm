@@ -1,12 +1,12 @@
 //%attributes = {"shared":true}
-  //JCL_tbl_InitValue
-  //JCL_tbl_GetInitValue
-  //20130507 wat
-  //メソッド生成時、テンプレートの INITVALUE を得る
+//JCL_tbl_InitValue
+//JCL_tbl_GetInitValue
+//20130507 wat
+//メソッド生成時、テンプレートの INITVALUE を変換
 
-C_TEXT:C284($1;$fieldType)
+C_TEXT:C284($1; $fieldType)
 $fieldType:=$1  //フィールド型
-C_TEXT:C284($0;$initValue)
+C_TEXT:C284($0; $initValue)
 
 $initValue:=""
 Case of 

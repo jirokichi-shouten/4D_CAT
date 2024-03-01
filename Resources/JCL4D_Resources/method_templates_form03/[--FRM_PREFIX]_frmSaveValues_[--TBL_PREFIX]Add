@@ -1,0 +1,20 @@
+//[--FRM_PREFIX]_frmSaveValues_[--TBL_PREFIX]Add
+//FG form03 v202402 [--DATE]
+//OKボタン　フォーム上の関連テーブルのリストボックス配列を保存
+  //配列の１行から　DBにレコード作成
+
+C_LONGINT($1;$nr)
+$nr:=$1
+C_LONGINT($0;$[--TBL_PREFIX]_id)
+C_LONGINT($[--PARENT_TBL_PREFIX]_id)
+$[--PARENT_TBL_PREFIX]_id:=[--FRM_PREFIX]_var[--PARENT_TBL_PREFIX]_ID_get 
+
+READ WRITE([[--TABLE]])
+
+$[--TBL_PREFIX]_id:=[--TBL_PREFIX]_Add_byInitValues 
+[[--TABLE]][--FIELD]:=v[--FRM_PREFIX]_lst[--FIELD]{$nr}
+
+[[--TABLE]][--TBL_PREFIX]_[--PARENT_TBL_PREFIX]_ID:=$[--PARENT_TBL_PREFIX]_id
+SAVE RECORD([[--TABLE]])
+
+$0:=$[--TBL_PREFIX]_id
