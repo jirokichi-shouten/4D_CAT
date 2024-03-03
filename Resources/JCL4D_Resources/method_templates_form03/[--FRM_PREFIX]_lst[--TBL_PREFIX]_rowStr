@@ -1,29 +1,14 @@
 //[--FRM_PREFIX]_lst[--TBL_PREFIX]_rowStr
 //FG form03 v202402 [--DATE]
 //リストボックスの１行を文字列変換、連結して返す
+//タグをプログラムで置き換えて、String(vUS03_lstPR_ID{$nr})のような形を作る
 
 C_LONGINT($1;$nr)
 $nr:=$1
 C_TEXT($0;$retStr)
 $retStr:=""
 
-$retStr:=$retStr+[--STRVALUE] //[--FIELD]
+$retStr:=$retStr+[--STRARRAYNAME] //[--FIELD]
 
-
-$0:=$retStr
-
-
-
-
-/[--TBL_PREFIX] のレコードを文字列に変換、連結して返す
-
-C_LONGINT($1;$[--TBL_PREFIX]_id)
-$[--TBL_PREFIX]_id:=$1
-C_TEXT($0;$retStr)
-$retStr:=""
-
-READ ONLY([[--TABLE]])
-QUERY([[--TABLE]];[[--TABLE]][--TBL_PREFIX]_ID=$[--TBL_PREFIX]_id)
-$retStr:=$retStr+[--STRVALUE] //[--FIELD]
 
 $0:=$retStr

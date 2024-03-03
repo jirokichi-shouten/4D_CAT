@@ -1,6 +1,6 @@
 //[--TBL_PREFIX]_GetRecordStr
 //FG form03 v202402 [--DATE]
-/[--TBL_PREFIX] のレコードを文字列に変換、連結して返す
+//[--TBL_PREFIX] のレコードを文字列に変換、連結して返す
 
 C_LONGINT($1;$[--TBL_PREFIX]_id)
 $[--TBL_PREFIX]_id:=$1
@@ -9,6 +9,6 @@ $retStr:=""
 
 READ ONLY([[--TABLE]])
 QUERY([[--TABLE]];[[--TABLE]][--TBL_PREFIX]_ID=$[--TBL_PREFIX]_id)
-$retStr:=$retStr+[--STRVALUE] //[--FIELD]
+$retStr:=$retStr+[--STRFIELDNAME] //[--FIELD]
 
 $0:=$retStr

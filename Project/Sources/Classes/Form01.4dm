@@ -193,7 +193,9 @@ $aryFieldNamePtr : Pointer; $aryFieldTypePtr : Pointer; $aryFieldLengthPtr : Poi
 	
 	If ($foreign="foreign")
 		//編集可能なリストボックス
-		This:C1470.objForm.pages[1].objects[$new_name].rowHeightAutoMax:="20px"
+		This:C1470.objForm.pages[1].objects[$new_name].singleClickEdit:=True:C214
+		This:C1470.objForm.pages[1].objects[$new_name].events:=New collection:C1472("onClick"; \
+			"onDataChange"; "onSelectionChange"; "onHeaderClick")
 		
 	End if 
 	

@@ -55,9 +55,15 @@ For ($h; 1; $len)
 				$initValue:=JCL_tbl_InitValue($aryFieldTypePtr->{$k})
 				$newBuf:=Replace string:C233($newBuf; "[--INITVALUE]"; $initValue)
 				
-				//文字列型に置換
-				$strValue:=JCL_tbl_StrValue($objParam.tbl_name+$fieldName; $aryFieldTypePtr->{$k})
-				$newBuf:=Replace string:C233($newBuf; "[--STRVALUE]"; $strValue)
+				//文字列型に置換（DBフィールド用）
+				$var_name:="["+$objParam.tbl_name+"]"+$fieldName
+				$strValue:=JCL_tbl_StrValue($var_name; $aryFieldTypePtr->{$k})
+				$newBuf:=Replace string:C233($newBuf; "[--STRFIELDNAME]"; $strValue)
+				
+				//文字列型に置換（配列用）
+				$var_name:="v"+$objParam.frm_prefix+"_lst"+$fieldName+"{$nr}"
+				$strValue:=JCL_tbl_StrValue($var_name; $aryFieldTypePtr->{$k})
+				$newBuf:=Replace string:C233($newBuf; "[--STRARRAYNAME]"; $strValue)
 				
 				$newmethod:=$newmethod+$newBuf
 				

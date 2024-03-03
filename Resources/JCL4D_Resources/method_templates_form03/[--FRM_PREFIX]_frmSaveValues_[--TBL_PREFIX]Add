@@ -14,6 +14,8 @@ READ WRITE([[--TABLE]])
 $[--TBL_PREFIX]_id:=[--TBL_PREFIX]_Add_byInitValues 
 [[--TABLE]][--FIELD]:=v[--FRM_PREFIX]_lst[--FIELD]{$nr}
 
+//[--TBL_PREFIX]_idと[--PARENT_TBL_PREFIX]_idを保存
+[[--TABLE]][--TBL_PREFIX]_ID:=$[--TBL_PREFIX]_id
 [[--TABLE]][--TBL_PREFIX]_[--PARENT_TBL_PREFIX]_ID:=$[--PARENT_TBL_PREFIX]_id
 SAVE RECORD([[--TABLE]])
 

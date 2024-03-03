@@ -6,8 +6,8 @@
 C_LONGINT($1;$nr)
 $nr:=$1
 C_LONGINT($0;$[--TBL_PREFIX]_id)
-C_LONGINT($[--PARENT_TBL_PREFIX]_id)
-$[--PARENT_TBL_PREFIX]_id:=[--FRM_PREFIX]_var[--PARENT_TBL_PREFIX]_ID_get 
+
+$[--TBL_PREFIX]_id:=v[--FRM_PREFIX]_lst[--TBL_PREFIX]_ID{$nr}
 
 //DB保存値と画面表示を比べて、違いがあった時だけ保存する
 C_TEXT($db_record_str;$array_row_str)

@@ -20,9 +20,9 @@ For ($i;1;$numOfRecs)
 	  // オンメモリの配列にあるか？
 	$index:=Find in array(v[--FRM_PREFIX]_lst[--TBL_PREFIX]_ID;[[--TABLE]][--TBL_PREFIX]_ID)
 	If ($index=-1)
-		/ なかった、    // レコードは削除フラグ
+		// なかった、    // レコードは削除フラグ
 		[[--TABLE]][--TBL_PREFIX]_DEL_FLAG:=3
-		[[--TABLE]][--TBL_PREFIX]_UPDATE_DATEMARK:=$datemark
+		//[[--TABLE]][--TBL_PREFIX]_UPDATE_DATEMARK:=$datemark
 		SAVE RECORD([[--TABLE]])
 		
 	End if 
