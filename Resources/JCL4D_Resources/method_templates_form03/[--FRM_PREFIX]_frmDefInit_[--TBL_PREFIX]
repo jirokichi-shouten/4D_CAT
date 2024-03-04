@@ -2,7 +2,6 @@
 //FG form03 v202402 [--DATE]
 //[--TABLE] プロセス変数宣言・初期化
 
-C_TEXT(v[--FRM_PREFIX]_varKeyword)
 C_TEXT(v[--FRM_PREFIX]_varNumOf[--TBL_PREFIX]Recs)
 
 // リストボックス用配列
