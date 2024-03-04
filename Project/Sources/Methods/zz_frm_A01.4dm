@@ -15,7 +15,7 @@ $tblName:="user"
 $file:=File:C1566("/SOURCES/Forms/"+$frmName+"/form.4DForm")
 If ($file.exists)
 	//ファイルの中身を解析
-	$defA01:=JSON Parse:C1218($file.getText())
+	$defA01:=JSON Parse:C1218($file.getText("UTF-8"; Document with LF:K24:22))
 	
 	$top:=110
 	$left:=20

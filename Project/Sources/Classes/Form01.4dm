@@ -211,7 +211,7 @@ $aryFieldNamePtr : Pointer; $aryFieldTypePtr : Pointer; $aryFieldLengthPtr : Poi
 		If ($foreign="foreign")
 			//IDフィールド以外は入力可
 			C_TEXT:C284($col_name)
-			$col_name:="v"+$objParam.frm_prefix+"_lst"+$objParam.tbl_prefix+"_ID"
+			$col_name:="v"+$objParam.name+"_ID"
 			If ($objCol.name=$col_name)
 				$objCol.enterable:=False:C215
 			Else 
@@ -266,7 +266,7 @@ Function saveMethods($objParam : Object; $aryFieldNamePtr : Pointer; $aryFieldTy
 		$methodName:=Replace string:C233($methodName; "[--TBL_PREFIX]"; $objParam.tbl_prefix)
 		
 		//テンプレートの中身を取得
-		$body:=$files[$i-1].getText()
+		$body:=$files[$i-1].getText("UTF-8"; Document with LF:K24:22)
 		$body:=JCL_prj_fg_method_replaceTags($objParam; $body; $aryFieldNamePtr; $aryFieldTypePtr)
 		
 		//ファイルに書き出す

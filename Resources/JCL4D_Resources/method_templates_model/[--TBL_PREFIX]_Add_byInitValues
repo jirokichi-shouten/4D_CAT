@@ -8,10 +8,10 @@ C_LONGINT($0;$[--TBL_PREFIX]_id)
 $[--TBL_PREFIX]_id:=Sequence number ([[--TABLE]])
 CREATE RECORD([[--TABLE]])
 
-//[[--TABLE]][--FIELD]:=[--INITVALUE]
+[[--TABLE]][--FIELD]:=[--INITVALUE]
 
 [[--TABLE]][--TBL_PREFIX]_ID:=$[--TBL_PREFIX]_id
 
-//SAVE RECORD([[--TABLE]])
+SAVE RECORD([[--TABLE]])
 
 $0:=$[--TBL_PREFIX]_id

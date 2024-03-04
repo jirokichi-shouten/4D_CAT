@@ -86,7 +86,7 @@ For ($i; 1; $sizeOfAry)
 		$enterable:=True:C214
 	End if 
 	$objParam.name:=$objParam.frm_prefix+"_var"+$inAryFldNamePtr->{$i}
-	$frm01.addInput($objParam; $objFldPos.top; $objFldPos.left; 110; 17; $enterable; "")
+	$frm01.addInput($objParam; $objFldPos.top; $objFldPos.left; 110; 17; $enterable)
 	
 End for 
 

@@ -82,22 +82,6 @@
 					"action": "cancel",
 					"class": "JCL_YuGothic12"
 				},
-				"vA01_btnList": {
-					"type": "button",
-					"text": "一覧V2",
-					"top": 0,
-					"left": 391,
-					"width": 90,
-					"height": 26,
-					"focusable": false,
-					"method": "ObjectMethods/vA01_btnUS01.4dm",
-					"events": [
-						"onClick"
-					],
-					"action": "",
-					"class": "JCL_YuGothic12",
-					"dataSource": "vA01_btnList"
-				},
 				"vA01_lstT": {
 					"type": "listbox",
 					"left": 10,
@@ -252,7 +236,8 @@
 					"events": [
 						"onDataChange"
 					],
-					"sizingY": "fixed"
+					"sizingY": "fixed",
+					"method": "ObjectMethods/vA00_varProductName.4dm"
 				},
 				"vA00_varVersion": {
 					"type": "input",
@@ -779,7 +764,7 @@
 			}
 		}
 	],
-	"geometryStamp": 696,
+	"geometryStamp": 697,
 	"editor": {
 		"activeView": "View 1",
 		"defaultView": "View 1",

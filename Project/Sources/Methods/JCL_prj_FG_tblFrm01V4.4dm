@@ -80,7 +80,7 @@ $frm01.addButton($objParam; 16; 980; 42; 26)
 
 //リストボックス
 $objParam.name:=$objParam.frm_prefix+"_lst"+$objParam.tbl_prefix
-$frm01.addListbox($objParam; 110; 20; 1002; 440; $aryFieldNamePtr; $aryFieldTypePtr; $aryFieldLengthPtr)
+$frm01.addListbox($objParam; 110; 20; 1002; 440; $aryFieldNamePtr; $aryFieldTypePtr; $aryFieldLengthPtr; "")
 $frm01.saveObjMethod($objParam; $objParam.name)
 
 //最終的に.4DFormに保存

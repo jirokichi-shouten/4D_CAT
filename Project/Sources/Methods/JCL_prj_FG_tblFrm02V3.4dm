@@ -23,7 +23,7 @@ C_TEXT:C284($lst_body)
 
 //ファイルの内容を読み込んで　パース
 $file:=File:C1566("/RESOURCES/JCL4D_Resources/frm_templates/frm02_v3.txt")
-$text:=$file.getText()
+$text:=$file.getText("UTF-8"; Document with LF:K24:22)
 $objFrm:=JSON Parse:C1218($text)
 
 //タイトルバック（色付き）

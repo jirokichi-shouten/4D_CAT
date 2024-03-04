@@ -10,12 +10,10 @@ C_LONGINT($0;$[--TBL_PREFIX]_id)
 $[--TBL_PREFIX]_id:=v[--FRM_PREFIX]_lst[--TBL_PREFIX]_ID{$nr}
 
 //DB保存値と画面表示を比べて、違いがあった時だけ保存する
-C_TEXT($db_record_str;$array_row_str)
-$db_record_str:=[--TBL_PREFIX]_GetRecordStr($[--TBL_PREFIX]_id)
-$array_row_str:=[--FRM_PREFIX]_lst[--TBL_PREFIX]_rowStr($nr)
-If ($db_record_str#$array_row_str)
+$isSame:=[--FRM_PREFIX]_Compare[--TBL_PREFIX]_BeforeAfter($[--TBL_PREFIX]_id;$nr)
+If ($isSame=False)
 	READ WRITE([[--TABLE]])
-	QUERY([[--TABLE]];[[--TABLE]][--TBL_PREFIX]_ID=$br_id)
+	QUERY([[--TABLE]];[[--TABLE]][--TBL_PREFIX]_ID=$[--TBL_PREFIX]_id)
 
 	[[--TABLE]][--FIELD]:=v[--FRM_PREFIX]_lst[--FIELD]{$nr}
 

@@ -1,6 +1,7 @@
 //[--FRM_PREFIX]_SaveValues
-//FG v202103 [--DATE]
+//FG v202403 [--DATE]
 //[--TABLE] プロセス変数の値をレコードに保存
 
-
+IDフィールドへの代入行は手作業でコメントアウトすること_中断をクリック
+//そのためコンパイルエラーを発生させる
 [[--TABLE]][--FIELD]:=v[--FRM_PREFIX]_var[--FIELD]

@@ -7,10 +7,6 @@ C_LONGINT($frmEvnt)
 $frmEvnt:=Form event code
 
 Case of 
-: ($frmEvnt=On Double Clicked)
-
-[--FRM_PREFIX]_lst[--TBL_PREFIX]_OnDblClicked 
-
 : ($frmEvnt=On Selection Change)
 
 [--FRM_PREFIX]_lst[--TBL_PREFIX]_OnSelChange 

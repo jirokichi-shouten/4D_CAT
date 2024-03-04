@@ -1,6 +1,6 @@
 //%attributes = {}
 //JCL_fields_Comment
-//20240308 wat
+//20210308 wat
 //fieldsのテーブルプリフィックス＆フィールド名からコメントを取得
 
 C_TEXT:C284($1; $fldName)

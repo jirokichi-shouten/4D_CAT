@@ -19,7 +19,7 @@ $objFrm:=New object:C1471
 
 //テンプレートファイルの内容を読み込んで　解析
 $file:=File:C1566("/RESOURCES/JCL4D_Resources/frm_templates/frm01_v3.txt")
-$text:=$file.getText()
+$text:=$file.getText("UTF-8"; Document with LF:K24:22)
 $objFrm:=JSON Parse:C1218($text)
 
 //タイトルバック（色付き）
