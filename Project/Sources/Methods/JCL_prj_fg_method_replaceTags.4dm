@@ -59,9 +59,35 @@ For ($h; 1; $len)
 				
 			End for 
 		Else 
-			$newmethod:=$newmethod+$buf
-			
+			$pos_row:=Position:C15("[--FIELD_WO_ID]"; $buf)
+			If ($pos_row#0)
+				For ($k; 1; Size of array:C274($aryFieldNamePtr->))
+					//フィールド名を置換
+					$fieldName:=$aryFieldNamePtr->{$k}  //20130501
+					If (($objParam.tbl_prefix+"_ID")=$fieldName)
+						$newBuf:="//ID列は出力しない"+$chr
+					Else 
+						$newBuf:=Replace string:C233($buf; "[--FIELD_WO_ID]"; $fieldName)
+					End if 
+					
+					//データ型を置換
+					$dataType:=JCL_tbl_DataType($aryFieldTypePtr->{$k})
+					$newBuf:=Replace string:C233($newBuf; "[--DATATYPE]"; $dataType)
+					
+					//初期値を置換
+					$initValue:=JCL_tbl_InitValue($aryFieldTypePtr->{$k})
+					$newBuf:=Replace string:C233($newBuf; "[--INITVALUE]"; $initValue)
+					
+					$newmethod:=$newmethod+$newBuf
+					
+				End for 
+			Else 
+				//[--FIELD]タグも[--FIELD_WO_ID]タグもどちらもなかった場合
+				$newmethod:=$newmethod+$buf
+				
+			End if 
 		End if 
+		
 		
 		$buf:=""
 		

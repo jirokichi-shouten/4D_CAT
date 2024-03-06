@@ -2,6 +2,5 @@
 //FG v202403 [--DATE]
 //[--TABLE] プロセス変数の値をレコードに保存
 
-IDフィールドへの代入行は手作業でコメントアウトすること_中断をクリック
-//そのためコンパイルエラーを発生させる
-[[--TABLE]][--FIELD]:=v[--FRM_PREFIX]_var[--FIELD]
+//IDフィールドへの代入行は生成しない
+[[--TABLE]][--FIELD_WO_ID]:=v[--FRM_PREFIX]_var[--FIELD_WO_ID]

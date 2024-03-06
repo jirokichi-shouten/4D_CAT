@@ -30,21 +30,19 @@ If ($tblName#"")
 	//メソッド実行
 	$methodName:=$tbl_prefix+"01_List"
 	$cnt:=JCL_method_isExist($methodName)
-	If ($cnt=1)
-		EXECUTE METHOD:C1007($methodName)
-		
-	Else 
+	If ($cnt=0)
 		//なければ作る
 		JCL_prj_FormGeneratorV3($tblName)
 		RELOAD PROJECT:C1739  //20240207 4djapan
 		
 		//メッセージ
-		$msg:="メソッド「"+$methodName+"」がありませんでした。"+Char:C90(Carriage return:K15:38)
-		$msg:=$msg+"作成しましたので、もう一度ダブルクリックしてください。"
+		$msg:="メソッド「"+$methodName+"」を作成しました。"
 		ALERT:C41($msg)
 		
 		
 	End if 
+	
+	EXECUTE METHOD:C1007($methodName)
 	
 	A01_lstT_make
 	
