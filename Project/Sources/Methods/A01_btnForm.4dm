@@ -25,8 +25,6 @@ If ($tblName#"")
 	$pos:=Position:C15("_"; $aryFieldName{1})
 	$tbl_prefix:=Substring:C12($aryFieldName{1}; 1; $pos-1)  //フィールド名のプリフィックス
 	
-	//$tbl_prefix:=JCL_tbl_Prefix(->$aryFieldName)
-	
 	//メソッド実行
 	$methodName:=$tbl_prefix+"01_List"
 	$cnt:=JCL_method_isExist($methodName)

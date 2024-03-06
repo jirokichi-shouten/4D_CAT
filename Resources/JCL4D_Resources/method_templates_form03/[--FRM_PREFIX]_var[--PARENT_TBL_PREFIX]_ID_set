@@ -1,6 +1,0 @@
-//[--FRM_PREFIX]_var[--PARENT_TBL_PREFIX]_ID_set
-//FG form03 v202402 [--DATE]
-
-c_longint($1)
-
-v[--FRM_PREFIX]_var[--PARENT_TBL_PREFIX]_ID:=$1

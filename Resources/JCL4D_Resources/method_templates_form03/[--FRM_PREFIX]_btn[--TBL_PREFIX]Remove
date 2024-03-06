@@ -2,16 +2,28 @@
 //FG form03 v202402 [--DATE]
 // リストボックスの選択行を削除
 
-C_LONGINT($index)
+C_LONGINT($sizeOfAry; $j)
+ARRAY LONGINT($ary[--TBL_PREFIX]_ID; 0)
+C_LONGINT($selCnt; $index)
+C_LONGINT($pr_id)
 
-$index:=JCL_lst_Selected_firstRow (->v[--FRM_PREFIX]_lst[--TBL_PREFIX])
-If ($index>0)
-	  // 配列から一つ要素を削除
-	  [--FRM_PREFIX]_lst[--TBL_PREFIX]_remove($index)
-
-End if
-
-//選択状態をなしにする
-JCL_lst_Deselect (->v[--FRM_PREFIX]_lst[--TBL_PREFIX])
-
-[--FRM_PREFIX]_SetControlsValues 
+$selCnt:=JCL_lst_SelectedValues(->vUS03_lst[--TBL_PREFIX]; ->v[--FRM_PREFIX]_lst[--TBL_PREFIX]_ID; ->$ary[--TBL_PREFIX]_ID)
+if ($selCnt>0)
+	$sizeOfAry:=Size of array(vUS03_lstPR_ID)
+	For ($j; $sizeOfAry; 1; -1)
+		$pr_id:=v[--FRM_PREFIX]_lst[--TBL_PREFIX]_ID{$j}
+		
+		$index:=Find in array($ary[--TBL_PREFIX]_ID; $[--TBL_PREFIX]_id)
+		If ($index>0)
+			// 配列から一つ要素を削除
+	  [--FRM_PREFIX]_lst[--TBL_PREFIX]_remove($j)
+			
+		End if 
+	End for 
+	
+	//選択状態をなしにする
+	JCL_lst_Deselect (->v[--FRM_PREFIX]_lst[--TBL_PREFIX])
+	
+	[--FRM_PREFIX]_SetControlsValues 
+	
+End if 

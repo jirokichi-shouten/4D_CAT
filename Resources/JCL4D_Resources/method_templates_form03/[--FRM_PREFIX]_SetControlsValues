@@ -9,12 +9,10 @@ C_TEXT($mode)
 $mode:=[--FRM_PREFIX]_varMode_Get 
 If ($mode="add")
 
-v[--FRM_PREFIX]_varTitle:="[--TABLE] 入力"
-//JCL_btn_SetVisible (->v[--FRM_PREFIX]_btnDelete;False)
+JCL_btn_SetVisible (->v[--FRM_PREFIX]_btnDelete;False)
 
 Else 
 
-v[--FRM_PREFIX]_varTitle:="[--TABLE] 編集"
 JCL_btn_SetVisible (->v[--FRM_PREFIX]_btnDelete;True)
 
 End if 

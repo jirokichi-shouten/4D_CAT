@@ -25,10 +25,10 @@ $frm01.saveMethods($objParam; $inAryFldNamePtr; $inAryFldTypePtr)
 $objParam.name:=$objParam.frm_prefix+"_rectTitle"
 $frm01.addRect($objParam; 0; 0; 1042; 55)
 
-$objParam.name:=$objParam.frm_prefix+"_varTitle"
-$objParam.textAlign:="left"
+$objParam.name:=$objParam.frm_prefix+"_txtTitle"
+$objParam.text:=JCL_fields_cache_TableLabel($objParam.tbl_name)+"編集"
 $objParam.css_class:="JCL_YuGothic16"
-$frm01.addVarText($objParam; 16; 26; 288; 26)
+$frm01.addLabel($objParam; 16; 26; 288; 26)
 
 //フォームのOKボタン
 $objParam.name:=$objParam.frm_prefix+"_btnOK"

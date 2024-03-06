@@ -3,14 +3,17 @@
 //OKボタン　フォーム上の変数を保存
 
 C_BOOLEAN($check)
+C_LONGINT($[--PARENT_TBL_PREFIX]_id)
 
 //$check:=[--FRM_PREFIX]_btnOK_check 
 $check:=True
 If ($check=True)
 	 //[--PARENT_TBL_PREFIX]を保存
-	//[--FRM_PREFIX]_SaveValues 
+	$[--PARENT_TBL_PREFIX]_id:=[--FRM_PREFIX]_var[--PARENT_TBL_PREFIX]_ID_get
+	[--FRM_PREFIX]_SaveValues($[--PARENT_TBL_PREFIX]_id)
 	
-	  //[--TBL_PREFIX]を保存
+	//form03用
+	  //配列要素を保存
 	[--FRM_PREFIX]_frmSaveValues_[--TBL_PREFIX] 
 	
 	ACCEPT

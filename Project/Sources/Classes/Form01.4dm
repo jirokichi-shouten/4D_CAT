@@ -11,9 +11,8 @@ Class constructor
 	
 	//リソースフォルダから、テンプレートファイルの内容を読み込んで　解析
 	$text:=File:C1566("/RESOURCES/JCL4D_Resources/frm_templates/"+$objParam.form_templates).getText()
-	//This.objForm:=JSON Parse($text)
-	//This.objForm:=This.objForm
 	This:C1470.objForm:=JSON Parse:C1218($text)
+	
 	
 Function saveForm($objParam : Object)
 	//プロジェクトのソースフォルダに保存
@@ -28,6 +27,7 @@ Function saveForm($objParam : Object)
 	
 	//ファイルに書き出す
 	$file.setText(JSON Stringify:C1217(This:C1470.objForm; *))
+	
 	
 Function saveObjMethod($objParam : Object; $objName : Text)
 	//プロジェクトのソースフォルダに保存
@@ -46,6 +46,7 @@ Function saveObjMethod($objParam : Object; $objName : Text)
 	
 	//ファイルに書き出す
 	$file.setText($body)
+	
 	
 Function saveFrmMethod($objParam : Object)
 	//プロジェクトのソースフォルダに保存
@@ -66,6 +67,7 @@ Function saveFrmMethod($objParam : Object)
 	//ファイルに書き出す
 	$file.setText($body)
 	
+	
 Function addRect($objParam : Object; $top : Integer; $left : Integer; $width : Integer; $height : Integer)
 	//タイトルバック（色付き）
 	C_TEXT:C284($new_name)
@@ -79,6 +81,7 @@ Function addRect($objParam : Object; $top : Integer; $left : Integer; $width : I
 	This:C1470.objForm.pages[1].objects[$new_name].fill:=$objParam.color_text
 	This:C1470.objForm.pages[1].objects[$new_name].stroke:=$objParam.color_text
 	
+	
 Function addLabel($objParam : Object; $top : Integer; $left : Integer; $width : Integer; $height : Integer)
 	//フォームのタイトル文字列
 	C_TEXT:C284($new_name)
@@ -91,6 +94,7 @@ Function addLabel($objParam : Object; $top : Integer; $left : Integer; $width : 
 	This:C1470.objForm.pages[1].objects[$new_name].height:=$height
 	This:C1470.objForm.pages[1].objects[$new_name].class:=$objParam.css_class
 	This:C1470.objForm.pages[1].objects[$new_name].text:=$objParam.text
+	
 	
 Function addVarText($objParam : Object; $top : Integer; $left : Integer; $width : Integer; $height : Integer)
 	//フォームの件数文字列
@@ -113,6 +117,7 @@ Function addVarText($objParam : Object; $top : Integer; $left : Integer; $width 
 	This:C1470.objForm.pages[1].objects[$new_name].dropping:="custom"
 	This:C1470.objForm.pages[1].objects[$new_name].events:=New collection:C1472("onDataChange")
 	
+	
 Function addPictureButton($objParam : Object; $top : Integer; $left)
 	//ピクチャーボタン
 	C_TEXT:C284($new_name)
@@ -132,6 +137,7 @@ Function addPictureButton($objParam : Object; $top : Integer; $left)
 	This:C1470.objForm.pages[1].objects[$new_name].method:="ObjectMethods/"+$new_name+".4dm"
 	This:C1470.objForm.pages[1].objects[$new_name].events:=New collection:C1472("onClick")
 	
+	
 Function addButton($objParam : Object; $top : Integer; $left : Integer; $width : Integer; $height : Integer)
 	//ボタン
 	C_TEXT:C284($new_name)
@@ -150,6 +156,7 @@ Function addButton($objParam : Object; $top : Integer; $left : Integer; $width :
 	This:C1470.objForm.pages[1].objects[$new_name].text:=$objParam.text
 	This:C1470.objForm.pages[1].objects[$new_name].events:=New collection:C1472("onClick")
 	
+	
 Function addMethodButton($objParam : Object; $top : Integer; $left : Integer; $width : Integer; $height : Integer)
 	//メソッド付きボタン
 	C_TEXT:C284($new_name)
@@ -166,6 +173,7 @@ Function addMethodButton($objParam : Object; $top : Integer; $left : Integer; $w
 	This:C1470.objForm.pages[1].objects[$new_name].shortcutAccel:=True:C214
 	This:C1470.objForm.pages[1].objects[$new_name].text:=$objParam.text
 	This:C1470.objForm.pages[1].objects[$new_name].events:=New collection:C1472("onClick")
+	
 	
 Function addListbox($objParam : Object; $top : Integer; $left : Integer; $width : Integer; $height : Integer; \
 $aryFieldNamePtr : Pointer; $aryFieldTypePtr : Pointer; $aryFieldLengthPtr : Pointer; $foreign : Text)
@@ -243,6 +251,7 @@ $aryFieldNamePtr : Pointer; $aryFieldTypePtr : Pointer; $aryFieldLengthPtr : Poi
 		
 	End for 
 	
+	
 Function saveMethods($objParam : Object; $aryFieldNamePtr : Pointer; $aryFieldTypePtr : Pointer)
 	//JCLのテンプレートから、メソッド群を生成
 	C_TEXT:C284($body; $methodName; $templateFileName)
@@ -272,50 +281,6 @@ Function saveMethods($objParam : Object; $aryFieldNamePtr : Pointer; $aryFieldTy
 		//ファイルに書き出す
 		$file:=File:C1566("/SOURCES/Methods/"+$methodName+".4dm")
 		$bool:=$file.create()
-		$file.setText($body)
-		
-	End for 
-	
-Function saveRelatedMethods($objParam : Object; $aryFieldNamePtr : Pointer; $aryFieldTypePtr : Pointer)
-	//JCLのテンプレートから、メソッド群を生成
-	C_TEXT:C284($body; $methodName; $templateFileName)
-	C_OBJECT:C1216($file)
-	$file:=New object:C1471
-	C_OBJECT:C1216($folder)
-	$folder:=New object:C1471
-	C_COLLECTION:C1488($files)
-	$files:=New collection:C1472
-	C_LONGINT:C283($i; $k)
-	
-	//リソースフォルダのテンプレートファイルを取得
-	$folder:=Folder:C1567("/RESOURCES/JCL4D_Resources/"+$objParam.method_templates)
-	$files:=$folder.files(fk ignore invisible:K87:22)
-	
-	For ($i; 1; $files.length)
-		//ファイル名を取得して//メソッド名生成
-		$templateFileName:=$files[$i-1].name
-		$methodName:=$templateFileName
-		$methodName:=Replace string:C233($methodName; "[--TABLE]"; $objParam.tbl_name)
-		$methodName:=Replace string:C233($methodName; "[--FRM_PREFIX]"; $objParam.frm_prefix)
-		$methodName:=Replace string:C233($methodName; "[--TBL_PREFIX]"; $objParam.tbl_prefix)
-		$methodName:=Replace string:C233($methodName; "[--PARENT_TBL_PREFIX]"; $objParam.parent_tbl_prefix)
-		
-		//テンプレートの中身を取得
-		$body:=$files[$i-1].getText()
-		$body:=JCL_prj_fg_method_replaceTags($objParam; $body; $aryFieldNamePtr; $aryFieldTypePtr)
-		
-		//ファイルに書き出す
-		$file:=File:C1566("/SOURCES/Methods/"+$methodName+".4dm")
-		If ($file.exists=True:C214)
-			//メソッドファイルがあれば中身に連結
-			$old_body:=$file.getText()
-			$body:=$old_body+Char:C90(Carriage return:K15:38)+$body
-			
-		Else 
-			//なければ作成
-			$bool:=$file.create()
-			
-		End if 
 		$file.setText($body)
 		
 	End for 

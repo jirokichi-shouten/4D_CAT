@@ -30,6 +30,9 @@ $method:=Replace string:C233($method; "[--FRM_PREFIX]"; $objParam.frm_prefix)
 If (OB Is defined:C1231($objParam; "parent_tbl_prefix")=True:C214)
 	$method:=Replace string:C233($method; "[--PARENT_TBL_PREFIX]"; $objParam.parent_tbl_prefix)
 End if 
+If (OB Is defined:C1231($objParam; "parent_tbl_name")=True:C214)
+	$method:=Replace string:C233($method; "[--PARENT_TBL_NAME]"; $objParam.parent_tbl_name)
+End if 
 
 $len:=Length:C16($method)
 $buf:=""
@@ -65,7 +68,7 @@ For ($h; 1; $len)
 					//フィールド名を置換
 					$fieldName:=$aryFieldNamePtr->{$k}  //20130501
 					If (($objParam.tbl_prefix+"_ID")=$fieldName)
-						$newBuf:="//ID列は出力しない"+$chr
+						$newBuf:="//ID（"+$fieldName+"）は出力しない"+$chr
 					Else 
 						$newBuf:=Replace string:C233($buf; "[--FIELD_WO_ID]"; $fieldName)
 					End if 

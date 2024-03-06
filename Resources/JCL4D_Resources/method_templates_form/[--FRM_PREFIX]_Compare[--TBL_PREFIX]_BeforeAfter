@@ -1,0 +1,19 @@
+//[--FRM_PREFIX]_Compare[--TBL_PREFIX]_BeforeAfter
+//FG form03 v202402 [--DATE]
+//[--TBL_PREFIX] のレコードと配列のデータを比較。
+
+C_LONGINT($1;$[--TBL_PREFIX]_id)
+$[--TBL_PREFIX]_id:=$1
+C_BOOLEAN($0;$isSame)
+$isSame:=True
+
+READ ONLY([[--TABLE]])
+QUERY([[--TABLE]];[[--TABLE]][--TBL_PREFIX]_ID=$[--TBL_PREFIX]_id)
+
+If (\
+	([[--TABLE]][--FIELD]#v[--FRM_PREFIX]_var[--FIELD]) ||\
+	(True=True))
+	$isSame:=False
+End if
+
+$0:=$isSame

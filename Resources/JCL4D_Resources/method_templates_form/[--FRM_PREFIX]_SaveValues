@@ -2,5 +2,22 @@
 //FG v202403 [--DATE]
 //[--TABLE] プロセス変数の値をレコードに保存
 
-//IDフィールドへの代入行は生成しない
+C_LONGINT($1;$[--TBL_PREFIX]_id)
+$[--TBL_PREFIX]_id:=$1
+
+//DB保存値と画面表示を比べて、違いがあった時だけ保存する
+$isSame:=[--FRM_PREFIX]_Compare[--TBL_PREFIX]_BeforeAfter($[--TBL_PREFIX]_id)
+If ($isSame=False)
+	READ WRITE([[--TABLE]])
+	QUERY([[--TABLE]];[[--TABLE]][--TBL_PREFIX]_ID=$[--TBL_PREFIX]_id)
+
+	[[--TABLE]][--FIELD_WO_ID]:=v[--FRM_PREFIX]_var[--FIELD_WO_ID]
+
+	SAVE RECORD([[--TABLE]])
+	UNLOAD RECORD([[--TABLE]])
+	READ ONLY([[--TABLE]])
+
+End if 
+
+//IDを除く各フィールドへの代入
 [[--TABLE]][--FIELD_WO_ID]:=v[--FRM_PREFIX]_var[--FIELD_WO_ID]

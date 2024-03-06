@@ -10,12 +10,12 @@ READ WRITE([[--TABLE]])
 $mode:=[--FRM_PREFIX]_varMode_Get 
 If ($mode="add")
 $[--TBL_PREFIX]_id:=[--TBL_PREFIX]_Add_byInitValues
-[--FRM_PREFIX]_SaveValues
+[--FRM_PREFIX]_SaveValues($[--TBL_PREFIX]_id)
 
 Else 
 $[--TBL_PREFIX]_id:=[--FRM_PREFIX]_var[--TBL_PREFIX]_ID_get
 QUERY([[--TABLE]];[[--TABLE]][--TBL_PREFIX]_ID=$[--TBL_PREFIX]_id)
-[--FRM_PREFIX]_SaveValues
+[--FRM_PREFIX]_SaveValues($[--TBL_PREFIX]_id)
 //[[--TABLE]][--TBL_PREFIX]_UPDATE_DATEMARK:=JCL_str_Datemark (Current date;Current time)
 
 End if 
