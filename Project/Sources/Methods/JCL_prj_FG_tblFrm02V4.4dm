@@ -13,7 +13,7 @@ C_POINTER:C301($4; $inAryFldLengthPtr)
 $inAryFldLengthPtr:=$4
 
 //クラスインスタンス作成＆コンストラクター実行
-$frm01:=cs:C1710.Form01.new($objParam)
+$frm01:=cs:C1710.catForm.new($objParam)
 
 //フォームメソッド
 $frm01.saveFrmMethod($objParam)

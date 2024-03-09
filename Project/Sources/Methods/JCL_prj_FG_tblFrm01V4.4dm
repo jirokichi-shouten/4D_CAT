@@ -16,7 +16,7 @@ $aryFieldLengthPtr:=$4
 
 //クラスインスタンス作成＆コンストラクター実行
 //フォームメソッド
-$frm01:=cs:C1710.Form01.new($objParam)
+$frm01:=cs:C1710.catForm.new($objParam)
 
 $frm01.saveFrmMethod($objParam)
 
@@ -43,6 +43,7 @@ $frm01.addLabel($objParam; 74; 272; 80; 17)
 $objParam.name:=$objParam.frm_prefix+"_varKeyword"
 $frm01.addInput($objParam; 74; 356; 110; 17; True:C214)
 $objParam.name:=$objParam.frm_prefix+"_btnFind"
+$objParam.shortcutKey:="[Return]"
 $objParam.picture:="/RESOURCES/JCL4D_Resources/pictures/magnifyingglass.png"
 $frm01.addPictureButton($objParam; 68; 466)
 $frm01.saveObjMethod($objParam; $objParam.name)

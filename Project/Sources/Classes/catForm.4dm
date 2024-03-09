@@ -1,4 +1,4 @@
-//Form01
+//catForm
 //20240215 wat
 //フォームを作成するクラス
 
@@ -134,6 +134,7 @@ Function addPictureButton($objParam : Object; $top : Integer; $left)
 	This:C1470.objForm.pages[1].objects[$new_name].picture:=$objParam.picture
 	This:C1470.objForm.pages[1].objects[$new_name].switchBackWhenReleased:=True:C214
 	This:C1470.objForm.pages[1].objects[$new_name].useLastFrameAsDisabled:=True:C214
+	This:C1470.objForm.pages[1].objects[$new_name].shortcutKey:=$objParam.shortcutKey
 	This:C1470.objForm.pages[1].objects[$new_name].method:="ObjectMethods/"+$new_name+".4dm"
 	This:C1470.objForm.pages[1].objects[$new_name].events:=New collection:C1472("onClick")
 	

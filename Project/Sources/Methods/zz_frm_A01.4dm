@@ -23,7 +23,8 @@ If ($file.exists)
 	For ($i; 1; 10)
 		//ボタンを追加
 		$btnName:="BTN"+String:C10($i; "000")
-		$defA01.pages[0].objects[$btnName]:={}
+		//$defA01.pages[0].objects[$btnName]:={}  //v19は通らない
+		$defA01.pages[0].objects[$btnName]:=New object:C1471
 		$defA01.pages[0].objects[$btnName].type:="button"
 		$defA01.pages[0].objects[$btnName].text:=$btnName
 		$defA01.pages[0].objects[$btnName].top:=$top+($i*42)
@@ -32,7 +33,8 @@ If ($file.exists)
 		$defA01.pages[0].objects[$btnName].height:=26
 		$defA01.pages[0].objects[$btnName].focusable:=False:C215
 		$defA01.pages[0].objects[$btnName].method:="ObjectMethods/vA01_btn"+$frmPrefix+".4dm"
-		$defA01.pages[0].objects[$btnName].events:=["onClick"]
+		//$defA01.pages[0].objects[$btnName].events:=["onClick"] //v19は通らない
+		$defA01.pages[0].objects[$btnName].events:=New collection:C1472("onClick")
 		$defA01.pages[0].objects[$btnName].action:=""
 		$defA01.pages[0].objects[$btnName].class:="JCL_YuGothic12"
 		
