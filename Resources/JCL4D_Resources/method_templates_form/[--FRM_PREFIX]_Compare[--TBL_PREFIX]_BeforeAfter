@@ -11,7 +11,7 @@ READ ONLY([[--TABLE]])
 QUERY([[--TABLE]];[[--TABLE]][--TBL_PREFIX]_ID=$[--TBL_PREFIX]_id)
 
 If (\
-	([[--TABLE]][--FIELD]#v[--FRM_PREFIX]_var[--FIELD]) ||\
+	([[--TABLE]][--FIELD]#v[--FRM_PREFIX]_var[--FIELD]) |\
 	(True=True))
 	$isSame:=False
 End if
