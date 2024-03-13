@@ -4,13 +4,14 @@
 //sql実行時のエラーハンドリング: all local or process variables must be declared
 
 C_TEXT:C284($msg)
+$msg:=""
 C_LONGINT:C283($i; $sizeOfAry)
 ARRAY LONGINT:C221($aryCords; 0)
 ARRAY TEXT:C222($aryComp; 0)
 ARRAY TEXT:C222($aryText; 0)
 C_TEXT:C284($errorText)
 
-$msg:=$msg+vSQL+Char:C90(Tab:K15:37)
+//$msg:=$msg+vSQL+Char(Tab)
 
 GET LAST ERROR STACK:C1015($aryCords; $aryComp; $aryText)
 $sizeOfAry:=Size of array:C274($aryCords)

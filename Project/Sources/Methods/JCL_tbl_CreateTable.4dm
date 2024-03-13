@@ -41,9 +41,11 @@ End for
 //最後のカンマのあとにプライマリーキーを追加して括弧とセミコロンを追加
 $sql:=$sql+" PRIMARY KEY("+$prefix+"_ID));"
 
+JCL_err_OnErrCall_sql($sql)
 SQL LOGIN:C817(SQL_INTERNAL:K49:11; ""; "")
 SQL EXECUTE:C820($sql)
 SQL LOGOUT:C872
+JCL_err_OnErrCall_stop
 
 //インデックス作成 4Dコマンドで作成
 ARRAY POINTER:C280($fldAry; 0)
