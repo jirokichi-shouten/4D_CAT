@@ -2,7 +2,7 @@
 	"destination": "detailScreen",
 	"windowMinWidth": 712,
 	"windowMinHeight": 178,
-	"width": 1152,
+	"width": 1220,
 	"height": 610,
 	"markerHeader": 15,
 	"markerBody": 200,
@@ -47,8 +47,8 @@
 				"Rectangle1": {
 					"type": "rectangle",
 					"top": 40,
-					"left": 0,
-					"width": 1152,
+					"left": 10,
+					"width": 1200,
 					"height": 8,
 					"sizingX": "grow",
 					"stroke": "#FFFFFF",
@@ -66,7 +66,7 @@
 				"vJCL_D02_btnClose": {
 					"type": "button",
 					"top": 10,
-					"left": 1090,
+					"left": 1158,
 					"width": 42,
 					"height": 26,
 					"sizingX": "move",
@@ -87,8 +87,8 @@
 				"vJCL_D02_lstFL": {
 					"type": "listbox",
 					"top": 94,
-					"left": 390,
-					"width": 754,
+					"left": 452,
+					"width": 758,
 					"height": 356,
 					"sizingX": "grow",
 					"sizingY": "grow",
@@ -482,7 +482,7 @@
 					"type": "listbox",
 					"top": 94,
 					"left": 6,
-					"width": 378,
+					"width": 440,
 					"height": 356,
 					"sizingY": "grow",
 					"resizingMode": "legacy",
@@ -549,12 +549,13 @@
 								"fontFamily": "Meiryo",
 								"fontSize": 12
 							},
-							"class": "JCL_YuGothic12"
+							"class": "JCL_YuGothic12",
+							"visibility": "hidden"
 						},
 						{
 							"name": "vJCL_D02_lstTB_error",
 							"dataSource": "vJCL_D02_lstTB_error",
-							"width": 42,
+							"width": 55,
 							"minWidth": 10,
 							"maxWidth": 32000,
 							"enterable": false,
@@ -798,6 +799,48 @@
 							"class": "JCL_YuGothic12"
 						},
 						{
+							"name": "vJCL_D02_lstTB_REMARK",
+							"dataSource": "vJCL_D02_lstTB_REMARK",
+							"width": 90,
+							"minWidth": 10,
+							"maxWidth": 32000,
+							"enterable": false,
+							"stroke": "#000000",
+							"fill": "#FFFFFF",
+							"alternateFill": "automatic",
+							"textAlign": "automatic",
+							"verticalAlign": "automatic",
+							"fontFamily": "Meiryo",
+							"fontSize": 12,
+							"events": [
+								"onClick",
+								"onDataChange"
+							],
+							"header": {
+								"name": "HvJCL_D02_lstTB_REMARK",
+								"text": "備考",
+								"dataSource": "HvJCL_D02_lstTB_REMARK",
+								"stroke": "#000000",
+								"textAlign": "automatic",
+								"verticalAlign": "automatic",
+								"fontFamily": "Meiryo",
+								"fontSize": 12,
+								"class": "JCL_YuGothic12"
+							},
+							"footer": {
+								"name": "Footer17",
+								"timeFormat": "hh_mm_ss",
+								"stroke": "#000000",
+								"fill": "#FFFFFF",
+								"textAlign": "automatic",
+								"verticalAlign": "automatic",
+								"fontFamily": "Meiryo",
+								"fontSize": 12
+							},
+							"class": "JCL_YuGothic12",
+							"visibility": "hidden"
+						},
+						{
 							"name": "vJCL_D02_lstTB_Block",
 							"dataSource": "vJCL_D02_lstTB_Block",
 							"width": 90,
@@ -854,7 +897,7 @@
 				"vJCL_D02_varNumOfFields": {
 					"type": "input",
 					"top": 68,
-					"left": 848,
+					"left": 1024,
 					"width": 179,
 					"height": 18,
 					"dataSource": "vJCL_D02_varNumOfFields",
@@ -874,7 +917,7 @@
 				"vJCL_D02_varTableName": {
 					"type": "input",
 					"top": 68,
-					"left": 390,
+					"left": 452,
 					"width": 179,
 					"height": 18,
 					"dataSource": "vJCL_D02_varTableName",
@@ -909,12 +952,31 @@
 				"vJCL_D02_txtTitle1": {
 					"type": "text",
 					"top": 20,
-					"left": 230,
-					"width": 723,
+					"left": 178,
+					"width": 903,
 					"height": 20,
 					"class": "JCL_YuGothic12",
-					"text": "[fields読込]でfieldsフォーマットのファイルを選択。結果を確認後、[テーブル作成]をクリック",
+					"text": "[fields読込]でfieldsフォーマットのファイルを選択。結果を確認後、[テーブル作成]をクリック。ノーエラーのテーブルだけが作成される。",
 					"stroke": "#8b4513"
+				},
+				"vJCL_D02_varErrorMessage": {
+					"type": "input",
+					"top": 68,
+					"left": 652,
+					"width": 179,
+					"height": 18,
+					"dataSource": "vJCL_D02_varErrorMessage",
+					"class": "JCL_YuGothic12",
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"enterable": false,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					]
 				}
 			}
 		}
@@ -923,7 +985,7 @@
 		"version": "1",
 		"kind": "form"
 	},
-	"geometryStamp": 380,
+	"geometryStamp": 495,
 	"editor": {
 		"activeView": "View 1",
 		"defaultView": "View 1",

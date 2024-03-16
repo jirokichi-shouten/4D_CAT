@@ -1,2 +1,2 @@
-JCL_D02_lstTB
+vD02.lstTB()
 

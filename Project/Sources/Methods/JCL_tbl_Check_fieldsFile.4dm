@@ -35,7 +35,15 @@ Else
 			//テーブル情報取得
 			$numOfItems:=JCL_str_Extract($arylines{1}; Char:C90(Tab:K15:37); ->$aryTableItems)
 			If ($numOfItems>2)
+				//テーブル名に予約語が使われていないかチェック
+				//$found_reserved:=JCL_tbl_FindSQLReserved($aryTableItems{1})
+				//If ($found_reserved=True)
+				////テーブル名がSQL予約語
+				//$msg:="テーブル名を変更してください"+Char(Carriage return)
+				//$msg:=$msg+"テーブル名「"+$aryTableItems{1}+"」にSQL予約語が使われています。"
+				//ALERT($msg)
 				
+				//End if 
 			Else 
 				//ブロックに配列要素が３個以上なかった
 				$msg:="フォーマットエラー"+Char:C90(Carriage return:K15:38)

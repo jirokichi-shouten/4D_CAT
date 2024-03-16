@@ -38,7 +38,7 @@
 					"type": "rectangle",
 					"top": 0,
 					"left": 0,
-					"width": 1152,
+					"width": 1220,
 					"height": 55,
 					"sizingX": "grow",
 					"stroke": "#FFFFFF",
@@ -48,7 +48,7 @@
 					"type": "button",
 					"text": "終了",
 					"top": 16,
-					"left": 1022,
+					"left": 1090,
 					"width": 110,
 					"height": 26,
 					"events": [
@@ -67,7 +67,7 @@
 					"type": "button",
 					"text": "デザインモードへ",
 					"top": 58,
-					"left": 1022,
+					"left": 1090,
 					"width": 110,
 					"height": 26,
 					"events": [
@@ -86,7 +86,7 @@
 					"type": "listbox",
 					"left": 10,
 					"top": 110,
-					"width": 432,
+					"width": 478,
 					"height": 322,
 					"events": [
 						"onClick",
@@ -159,7 +159,7 @@
 							},
 							"dataSourceTypeHint": "object",
 							"dataSource": "vA01_lstT_prefix",
-							"width": 42,
+							"width": 55,
 							"textAlign": "center",
 							"enterable": false
 						},
@@ -284,8 +284,8 @@
 				"vA01_lstFL": {
 					"type": "listbox",
 					"top": 110,
-					"left": 450,
-					"width": 694,
+					"left": 498,
+					"width": 712,
 					"height": 322,
 					"sizingX": "grow",
 					"sizingY": "grow",
@@ -303,7 +303,6 @@
 					"fontFamily": "Meiryo",
 					"fontSize": 12,
 					"borderStyle": "solid",
-					"method": "ObjectMethods/vA01_lstFL.4dm",
 					"events": [
 						"onClick",
 						"onDoubleClick",
@@ -675,7 +674,7 @@
 				"vA01_varTableName": {
 					"type": "input",
 					"top": 86,
-					"left": 460,
+					"left": 500,
 					"width": 550,
 					"height": 17,
 					"dataSource": "vA01_varTableName",
@@ -764,7 +763,7 @@
 			}
 		}
 	],
-	"geometryStamp": 697,
+	"geometryStamp": 760,
 	"editor": {
 		"activeView": "View 1",
 		"defaultView": "View 1",
@@ -772,7 +771,7 @@
 			"View 1": {}
 		}
 	},
-	"width": 1152,
+	"width": 1220,
 	"height": 466,
 	"method": "method.4dm"
 }

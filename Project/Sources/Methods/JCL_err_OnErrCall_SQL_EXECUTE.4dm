@@ -12,6 +12,7 @@ ARRAY TEXT:C222($aryText; 0)
 C_TEXT:C284($errorText)
 
 //$msg:=$msg+vSQL+Char(Tab)
+vJCL_ERROR:=1  //メッセージング
 
 GET LAST ERROR STACK:C1015($aryCords; $aryComp; $aryText)
 $sizeOfAry:=Size of array:C274($aryCords)

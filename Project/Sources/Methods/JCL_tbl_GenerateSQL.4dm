@@ -22,7 +22,7 @@ If ($dlg_ok=1)
 	$fileText:=Convert to text:C1012($fileBlob; "UTF-8")
 	
 	//テーブル名の配列を得る
-	$numOfTables:=JCL_tbl_Check_fieldsFile($fileText; ->$aryTableName; ->$aryStartLineNr; ->$aryPrefix; ->$aryFormsFlag)
+	$numOfTables:=JCL_tbl_Names_fromFile($fileText; ->$aryTableName; ->$aryStartLineNr; ->$aryPrefix; ->$aryFormsFlag)
 	For ($i; 1; $numOfTables)
 		
 		//テーブルを作成

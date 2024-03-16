@@ -55,6 +55,12 @@ If ($sizeOfAry>0)
 					
 				End if 
 			End for 
+			
+			//ラベルファイルを削除
+			C_OBJECT:C1216($jcl_tg)
+			$jcl_tg:=cs:C1710.JCL_tg.new()
+			$jcl_tg.deleteLabelFile($tblName)
+			
 		End for 
 		
 		
