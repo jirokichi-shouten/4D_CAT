@@ -129,8 +129,8 @@ Function lstTB_make($block : Text)
 	C_TEXT:C284($status)
 	$status:="temporary"
 	$error:="なし"
-	C_OBJECT:C1216($jcl_tg)
-	$jcl_tg:=cs:C1710.JCL_tg.new()
+	C_OBJECT:C1216($jcl_fieds)
+	$jcl_fieds:=cs:C1710.JCL_tg.new()
 	
 	If ($block#"")
 		$block:=JCL_str_ReplaceReturn($block)  //改行コードをLFに統一
@@ -148,7 +148,7 @@ Function lstTB_make($block : Text)
 					APPEND TO ARRAY:C911(vJCL_D02_lstTB_error; "作成済み")  //エラー文字
 					
 				Else 
-					If ($jcl_tg.fields_check_sql_reserved($tbl_name)=True:C214)
+					If ($jcl_fieds.check_sql_reserved($tbl_name)=True:C214)
 						APPEND TO ARRAY:C911(vJCL_D02_lstTB_error; "SQL予約語")  //エラー文字
 						
 					Else 
@@ -202,6 +202,8 @@ Function btnTable()
 	C_TEXT:C284($msg)
 	C_OBJECT:C1216($jcl_tg)
 	$jcl_tg:=cs:C1710.JCL_tg.new()
+	C_OBJECT:C1216($jcl_fields)
+	$jcl_fields:=cs:C1710.JCL_fields.new()
 	
 	//テーブルリストをループして
 	$sizeOfAry:=Size of array:C274(vJCL_D02_lstTB_error)
@@ -222,7 +224,7 @@ Function btnTable()
 				$jcl_tg.createMethod($block)
 				
 				//ラベルファイルを作成
-				$jcl_tg.createLabelFile($block)
+				$jcl_fields.createLabelFile($block)
 				
 				$cnt:=$cnt+1
 				
@@ -339,8 +341,8 @@ Function btnImport()
 	C_TEXT:C284($fileText)
 	C_LONGINT:C283($errFlag)
 	C_LONGINT:C283($i; $numOfTables)
-	C_OBJECT:C1216($jcl_tg)
-	$jcl_tg:=cs:C1710.JCL_tg.new()
+	C_OBJECT:C1216($jcl_fields)
+	$jcl_fields:=cs:C1710.JCL_fieldsg.new()
 	
 	//定義ファイル（fieldsフォーマット）を選択
 	$dlg_ok:=JCL_file_SelectFileDlg(->$fileBlob)
@@ -351,12 +353,12 @@ Function btnImport()
 		$fileText:=Replace string:C233($fileText; "　"; " ")  //全角文字を置き換える
 		$fileText:=Replace string:C233($fileText; "＿"; "_")  //全角文字を置き換える
 		
-		$errFlag:=$jcl_tg.fieldsCheck($fileText)
+		$errFlag:=$jcl_fields.check_format($fileText)
 		If ($errFlag=0)
 			//配列を削除
 			This:C1470.lstTB_removeAll()
 			
-			$numOfTables:=$jcl_tg.blocks_extract($fileText; ->$aryBlock)
+			$numOfTables:=$jcl_fields.blocks_extract($fileText; ->$aryBlock)
 			For ($i; 1; $numOfTables)
 				//テーブルリストボックス用配列を作成
 				This:C1470.lstTB_make($aryBlock{$i})

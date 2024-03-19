@@ -88,7 +88,7 @@
 					"type": "listbox",
 					"top": 94,
 					"left": 452,
-					"width": 758,
+					"width": 762,
 					"height": 356,
 					"sizingX": "grow",
 					"sizingY": "grow",
@@ -555,7 +555,7 @@
 						{
 							"name": "vJCL_D02_lstTB_error",
 							"dataSource": "vJCL_D02_lstTB_error",
-							"width": 55,
+							"width": 68,
 							"minWidth": 10,
 							"maxWidth": 32000,
 							"enterable": false,
@@ -985,7 +985,7 @@
 		"version": "1",
 		"kind": "form"
 	},
-	"geometryStamp": 495,
+	"geometryStamp": 507,
 	"editor": {
 		"activeView": "View 1",
 		"defaultView": "View 1",

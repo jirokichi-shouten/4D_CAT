@@ -9,6 +9,11 @@ C_LONGINT:C283($numOfRecs)
 C_LONGINT:C283($numOfTables; $i; $sizeOfAry)
 C_LONGINT:C283($color)
 
+//ラベルキャッシュ作成
+C_OBJECT:C1216($jcl_fields)
+$jcl_fields:=cs:C1710.JCL_fields.new()
+$jcl_fields.cache_make()
+
 //配列初期化
 DELETE FROM ARRAY:C228(vA01_lstT; 1; Size of array:C274(vA01_lstT))
 DELETE FROM ARRAY:C228(vA01_lstT_nr; 1; Size of array:C274(vA01_lstT_nr))
@@ -26,7 +31,7 @@ For ($i; 1; $numOfTables)
 		$table_name:=Table name:C256($i)
 		APPEND TO ARRAY:C911(vA01_lstT_name; $table_name)  //テーブル名
 		
-		$label:=JCL_fields_cache_TableLabel($table_name)
+		$label:=$jcl_fields.cache_TableLabel_get($table_name)
 		APPEND TO ARRAY:C911(vA01_lstT_label; $label)  //テーブルラベル
 		
 		$tbl_prefix:=JCL_tbl_GetPrefix_fromStructure($table_name)
@@ -47,16 +52,3 @@ For ($i; 1; $numOfTables)
 		
 	End if 
 End for 
-
-//$sizeOfAry:=Size of array(vA01_lstT_Color)
-//For ($i; 1; $sizeOfAry)
-////色を取得
-////リストボックスに適用
-//$color:=vA01_lstT_Color{$i}
-//If ($color#0)
-////ゼロは白なのでスキップ、実行すると黒になるため
-//LISTBOX SET ROW COLOR(*; "vA01_lstT_Color"; $i; $color; lk background color)
-
-//End if 
-
-//End for 

@@ -52,9 +52,9 @@ If ($tblName#"")
 		End for 
 		
 		//ラベルファイルを削除
-		C_OBJECT:C1216($jcl_tg)
-		$jcl_tg:=cs:C1710.JCL_tg.new()
-		$jcl_tg.deleteLabelFile($tblName)
+		C_OBJECT:C1216($jcl_fields)
+		$jcl_fields:=cs:C1710.JCL_fields.new()
+		$jcl_fields.deleteLabelFile($tblName)
 		
 		//テーブル一覧を作成
 		JCL_lst_Deselect(->vA01_lstT)
