@@ -13,6 +13,10 @@ C_POINTER:C301($3; $aryFieldTypePtr)
 $aryFieldTypePtr:=$3
 C_POINTER:C301($4; $aryFieldLengthPtr)
 $aryFieldLengthPtr:=$4
+//ラベルキャッシュ作成
+C_OBJECT:C1216($jcl_fields)
+$jcl_fields:=cs:C1710.JCL_fields.new()
+//$jcl_fields.cache_make()
 
 //クラスインスタンス作成＆コンストラクター実行
 //フォームメソッド
@@ -25,7 +29,7 @@ $objParam.name:=$objParam.frm_prefix+"_rectTitle"
 $frm01.addRect($objParam; 0; 0; 1042; 55)
 
 $objParam.name:=$objParam.frm_prefix+"_txtTitle"
-$objParam.text:=JCL_fields_cache_TableLabel($objParam.tbl_name)+"一覧"
+$objParam.text:=$jcl_fields.cache_TableLabel_get($objParam.tbl_name)+"一覧"
 $objParam.css_class:="JCL_YuGothic16"
 $frm01.addLabel($objParam; 16; 20; 192; 26)
 

@@ -209,6 +209,9 @@ $aryFieldNamePtr : Pointer; $aryFieldTypePtr : Pointer; $aryFieldLengthPtr : Poi
 	End if 
 	
 	//リストボックス、フィールド（列）
+	C_OBJECT:C1216($jcl_fields)
+	$jcl_fields:=cs:C1710.JCL_fields.new()
+	
 	C_LONGINT:C283($i; $sizeOfAry)
 	C_OBJECT:C1216($objCol; $col_header; $col_footer)
 	$sizeOfAry:=Size of array:C274($aryFieldNamePtr->)
@@ -216,7 +219,8 @@ $aryFieldNamePtr : Pointer; $aryFieldTypePtr : Pointer; $aryFieldLengthPtr : Poi
 		$objCol:=New object:C1471
 		$objCol.name:="v"+$objParam.frm_prefix+"_lst"+$aryFieldNamePtr->{$i}
 		$objCol.dataSource:=$objCol.name
-		$objCol.width:=JCL_prj_fg_fldWidth($aryFieldTypePtr->{$i}; $aryFieldLengthPtr->{$i})
+		//$objCol.width:=JCL_prj_fg_fldWidth($aryFieldTypePtr->{$i}; $aryFieldLengthPtr->{$i})
+		$objCol.width:=This:C1470.fldWidth($aryFieldTypePtr->{$i}; $aryFieldLengthPtr->{$i})
 		If ($foreign="foreign")
 			//IDフィールド以外は入力可
 			C_TEXT:C284($col_name)
@@ -236,7 +240,8 @@ $aryFieldNamePtr : Pointer; $aryFieldTypePtr : Pointer; $aryFieldLengthPtr : Poi
 		$col_header:=New object:C1471
 		$col_header.name:="v"+$objParam.frm_prefix+"_lhd"+$aryFieldNamePtr->{$i}
 		$col_header.dataSource:=$col_header.name
-		$label:=JCL_fields_Label($aryFieldNamePtr->{$i})
+		//$label:=JCL_fields_Label($aryFieldNamePtr->{$i})
+		$label:=$jcl_fields.cache_FieldLabel_get($aryFieldNamePtr->{$i})
 		$col_header.text:=$label
 		$col_header.class:="JCL_YuGothic10"
 		$objCol.header:=$col_header
@@ -251,6 +256,59 @@ $aryFieldNamePtr : Pointer; $aryFieldTypePtr : Pointer; $aryFieldLengthPtr : Poi
 		This:C1470.objForm.pages[1].objects[$new_name].columns.push($objCol)
 		
 	End for 
+	
+Function fldWidth()
+	//JCL_prj_fg_fldWidth
+	//20210210 ike wat
+	//フィールド長さを返す
+	//20240207 hisa ike wat 文字は９０
+	//20240327 wat クラス化
+	
+	C_TEXT:C284($1; $type)
+	$type:=$1
+	C_TEXT:C284($2; $length)
+	$length:=$2
+	C_TEXT:C284($0; $fldWidth)
+	$fldWidth:=""
+	C_LONGINT:C283($w)
+	
+	Case of 
+		: ($type="Is Alpha Field")
+			//$w:=Num($length)
+			$w:=90  //20240207
+			
+		: ($type="Is Text")
+			$w:=68
+			
+		: ($type="Is Real")
+			$w:=90
+			
+		: ($type="Is Integer")
+			$w:=42
+			
+		: ($type="Is LongInt")
+			$w:=42
+			
+		: ($type="Is Date")
+			$w:=90
+			
+		: ($type="Is Time")
+			$w:=90
+			
+		: ($type="Is Boolean")
+			$w:=42
+		: ($type="Is Picture")
+			$w:=90
+			
+		: ($type="Is Subtable")
+			$w:=10
+			
+		: ($type="Is BLOB")
+			$w:=10
+	End case 
+	
+	$fldWidth:=String:C10($w)
+	$0:=$fldWidth
 	
 	
 Function saveMethods($objParam : Object; $aryFieldNamePtr : Pointer; $aryFieldTypePtr : Pointer)
@@ -277,7 +335,8 @@ Function saveMethods($objParam : Object; $aryFieldNamePtr : Pointer; $aryFieldTy
 		
 		//テンプレートの中身を取得
 		$body:=$files[$i-1].getText("UTF-8"; Document with LF:K24:22)
-		$body:=JCL_prj_fg_method_replaceTags($objParam; $body; $aryFieldNamePtr; $aryFieldTypePtr)
+		//$body:=JCL_prj_fg_method_replaceTags($objParam; $body; $aryFieldNamePtr; $aryFieldTypePtr)
+		$body:=This:C1470.method_replaceTags($objParam; $body; $aryFieldNamePtr; $aryFieldTypePtr)
 		
 		//ファイルに書き出す
 		$file:=File:C1566("/SOURCES/Methods/"+$methodName+".4dm")
@@ -285,6 +344,109 @@ Function saveMethods($objParam : Object; $aryFieldNamePtr : Pointer; $aryFieldTy
 		$file.setText($body)
 		
 	End for 
+	
+Function method_replaceTags()
+	//JCL_prj_fg_method_replaceTags
+	//20240221 wat
+	//テンプレートメソッドのテキスト、タグを置き換える
+	//20240327 wat クラス化
+	
+	C_OBJECT:C1216($1; $objParam)
+	$objParam:=$1
+	C_TEXT:C284($2; $method)
+	$method:=$2  //読み込んだファイルの中身
+	C_POINTER:C301($3; $aryFieldNamePtr)
+	$aryFieldNamePtr:=$3
+	C_POINTER:C301($4; $aryFieldTypePtr)
+	$aryFieldTypePtr:=$4
+	C_TEXT:C284($0; $newmethod)
+	$newmethod:=""
+	C_TEXT:C284($tbl_prefix)
+	C_LONGINT:C283($len; $h; $k)
+	C_LONGINT:C283($pos_row)
+	C_TEXT:C284($dateTimeStr)
+	C_TEXT:C284($dataType; $initValue; $strValue)
+	C_TEXT:C284($chr; $buf; $newBuf)
+	//日付時刻文字列を作成
+	$dateTimeStr:=String:C10(Current date:C33)+" "+String:C10(Current time:C178)
+	
+	//メソッド生成
+	$method:=Replace string:C233($method; "[--DATE]"; $dateTimeStr)
+	$method:=Replace string:C233($method; "[--TABLE]"; $objParam.tbl_name)
+	$method:=Replace string:C233($method; "[--TBL_PREFIX]"; $objParam.tbl_prefix)
+	$method:=Replace string:C233($method; "[--FRM_PREFIX]"; $objParam.frm_prefix)
+	If (OB Is defined:C1231($objParam; "parent_tbl_prefix")=True:C214)
+		$method:=Replace string:C233($method; "[--PARENT_TBL_PREFIX]"; $objParam.parent_tbl_prefix)
+	End if 
+	If (OB Is defined:C1231($objParam; "parent_tbl_name")=True:C214)
+		$method:=Replace string:C233($method; "[--PARENT_TBL_NAME]"; $objParam.parent_tbl_name)
+	End if 
+	
+	$len:=Length:C16($method)
+	$buf:=""
+	$newmethod:=""
+	For ($h; 1; $len)
+		$chr:=Substring:C12($method; $h; 1)
+		$buf:=$buf+$chr
+		
+		If (JCL_str_IsCharRetrurn($chr))  //add_ikeda 20221227
+			
+			$pos_row:=Position:C15("[--FIELD]"; $buf)
+			If ($pos_row#0)
+				For ($k; 1; Size of array:C274($aryFieldNamePtr->))
+					//フィールド名を置換
+					$fieldName:=$aryFieldNamePtr->{$k}  //20130501
+					$newBuf:=Replace string:C233($buf; "[--FIELD]"; $fieldName)
+					
+					//データ型を置換
+					$dataType:=JCL_tbl_DataType($aryFieldTypePtr->{$k})
+					$newBuf:=Replace string:C233($newBuf; "[--DATATYPE]"; $dataType)
+					
+					//初期値を置換
+					$initValue:=JCL_tbl_InitValue($aryFieldTypePtr->{$k})
+					$newBuf:=Replace string:C233($newBuf; "[--INITVALUE]"; $initValue)
+					
+					$newmethod:=$newmethod+$newBuf
+					
+				End for 
+			Else 
+				$pos_row:=Position:C15("[--FIELD_WO_ID]"; $buf)
+				If ($pos_row#0)
+					For ($k; 1; Size of array:C274($aryFieldNamePtr->))
+						//フィールド名を置換
+						$fieldName:=$aryFieldNamePtr->{$k}  //20130501
+						If (($objParam.tbl_prefix+"_ID")=$fieldName)
+							$newBuf:="//ID（"+$fieldName+"）は出力しない"+$chr
+						Else 
+							$newBuf:=Replace string:C233($buf; "[--FIELD_WO_ID]"; $fieldName)
+						End if 
+						
+						//データ型を置換
+						$dataType:=JCL_tbl_DataType($aryFieldTypePtr->{$k})
+						$newBuf:=Replace string:C233($newBuf; "[--DATATYPE]"; $dataType)
+						
+						//初期値を置換
+						$initValue:=JCL_tbl_InitValue($aryFieldTypePtr->{$k})
+						$newBuf:=Replace string:C233($newBuf; "[--INITVALUE]"; $initValue)
+						
+						$newmethod:=$newmethod+$newBuf
+						
+					End for 
+				Else 
+					//[--FIELD]タグも[--FIELD_WO_ID]タグもどちらもなかった場合
+					$newmethod:=$newmethod+$buf
+					
+				End if 
+			End if 
+			
+			
+			$buf:=""
+			
+		End if 
+	End for 
+	
+	$0:=$newmethod
+	
 	
 	
 Function addInput($objParam : Object; $top : Integer; $left : Integer; $width : Integer; $height : Integer; \

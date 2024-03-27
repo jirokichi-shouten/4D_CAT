@@ -129,8 +129,8 @@ Function lstTB_make($block : Text)
 	C_TEXT:C284($status)
 	$status:="temporary"
 	$error:="なし"
-	C_OBJECT:C1216($jcl_fieds)
-	$jcl_fieds:=cs:C1710.JCL_tg.new()
+	C_OBJECT:C1216($jcl_fields)
+	$jcl_fields:=cs:C1710.JCL_fields.new()
 	
 	If ($block#"")
 		$block:=JCL_str_ReplaceReturn($block)  //改行コードをLFに統一
@@ -148,7 +148,7 @@ Function lstTB_make($block : Text)
 					APPEND TO ARRAY:C911(vJCL_D02_lstTB_error; "作成済み")  //エラー文字
 					
 				Else 
-					If ($jcl_fieds.check_sql_reserved($tbl_name)=True:C214)
+					If ($jcl_fields.check_sql_reserved($tbl_name)=True:C214)
 						APPEND TO ARRAY:C911(vJCL_D02_lstTB_error; "SQL予約語")  //エラー文字
 						
 					Else 
@@ -342,7 +342,7 @@ Function btnImport()
 	C_LONGINT:C283($errFlag)
 	C_LONGINT:C283($i; $numOfTables)
 	C_OBJECT:C1216($jcl_fields)
-	$jcl_fields:=cs:C1710.JCL_fieldsg.new()
+	$jcl_fields:=cs:C1710.JCL_fields.new()
 	
 	//定義ファイル（fieldsフォーマット）を選択
 	$dlg_ok:=JCL_file_SelectFileDlg(->$fileBlob)

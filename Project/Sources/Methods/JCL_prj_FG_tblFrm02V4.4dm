@@ -13,7 +13,11 @@ C_POINTER:C301($4; $inAryFldLengthPtr)
 $inAryFldLengthPtr:=$4
 
 //クラスインスタンス作成＆コンストラクター実行
+C_OBJECT:C1216($frm01)
 $frm01:=cs:C1710.catForm.new($objParam)
+C_OBJECT:C1216($jcl_fields)
+$jcl_fields:=cs:C1710.JCL_fields.new()
+$jcl_fields.cache_make()
 
 //フォームメソッド
 $frm01.saveFrmMethod($objParam)
@@ -26,7 +30,7 @@ $objParam.name:=$objParam.frm_prefix+"_rectTitle"
 $frm01.addRect($objParam; 0; 0; 1042; 55)
 
 $objParam.name:=$objParam.frm_prefix+"_txtTitle"
-$objParam.text:=JCL_fields_cache_TableLabel($objParam.tbl_name)+"編集"
+$objParam.text:=$jcl_fields.cache_TableLabel_get($objParam.tbl_name)+"編集"
 $objParam.css_class:="JCL_YuGothic16"
 $frm01.addLabel($objParam; 16; 26; 288; 26)
 
@@ -63,7 +67,7 @@ $sizeOfAry:=Size of array:C274($inAryFldNamePtr->)
 For ($i; 1; $sizeOfAry)
 	//フィールドラベルを取得
 	$fld_name:=$inAryFldNamePtr->{$i}
-	$label:=JCL_fields_Label($fld_name)
+	$label:=$jcl_fields.cache_FieldLabel_get($fld_name)
 	If ($label="")
 		//ラベルが取得できなかったらフィールド名を使う
 		$label:=$fld_name

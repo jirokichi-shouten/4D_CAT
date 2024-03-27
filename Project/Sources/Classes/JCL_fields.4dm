@@ -277,7 +277,7 @@ Function cache_TableLabel_get($inputTblName : Text) : Text
 		$label:=vJCL_fields_tblLabel{$index}
 		
 	Else 
-		$label:="unkown"
+		$label:="ClassUnknown"
 		
 	End if 
 	

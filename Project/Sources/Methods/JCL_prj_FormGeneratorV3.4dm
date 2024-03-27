@@ -25,7 +25,11 @@ If ($tblName#"")
 	JCL_tbl_Fields_withAttr($tblName; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength; ->$aryFieldIndex)
 	$sizeOfAry:=Size of array:C274($aryFieldName)
 	If ($sizeOfAry>0)
-		JCL_fields_cache
+		//JCL_fields_cache
+		C_OBJECT:C1216($jcl_fields)
+		$jcl_fields:=cs:C1710.JCL_fields.new()
+		$jcl_fields.cache_make()
+		
 	End if 
 	C_LONGINT:C283($pos)
 	$pos:=Position:C15("_"; $aryFieldName{1})
