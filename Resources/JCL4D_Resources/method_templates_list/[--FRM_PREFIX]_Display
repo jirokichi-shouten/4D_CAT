@@ -8,7 +8,7 @@ C_TEXT($title)
 C_TEXT($frmName)
 $frmName:="[--FRM_PREFIX]_List"
 
-$wref:=Open form window([[--TABLE]];$frmName;Plain form dialog box;Horizontally Centered;Vertically Centered;*)
+$wref:=Open form window([[--TABLE]];$frmName;Plain form window;Horizontally Centered;Vertically Centered;*)
 
 $title:=$frmName
 SET WINDOW TITLE($title; $wref)

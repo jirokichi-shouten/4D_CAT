@@ -30,7 +30,7 @@ If ($tblName#"")
 	$cnt:=JCL_method_isExist($methodName)
 	If ($cnt=0)
 		//なければ作る
-		JCL_prj_FormGeneratorV3($tblName)
+		JCL_prj_FormGeneratorV4($tblName)
 		RELOAD PROJECT:C1739  //20240207 4djapan
 		
 		//メッセージ

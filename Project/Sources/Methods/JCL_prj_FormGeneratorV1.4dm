@@ -31,25 +31,25 @@ If ($dlg_ok=1)
 		$pos:=Position:C15("_"; $aryFieldName{1})
 		$objFrm.tbl_prefix:=Substring:C12($aryFieldName{1}; 1; $pos-1)  //テーブル名のプリフィックス
 		
-		//01フォーム作成
-		$objFrm.frm_name:=$objFrm.tbl_prefix+"01_List"  //フォーム名
-		$objFrm.frm_prefix:=$objFrm.tbl_prefix+"01"  //フォーム名のプリフィックス
-		JCL_prj_FG_tblFrm01($objFrm; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength)
-		//フォームメソッドを作成
-		JCL_prj_FG_tblFrmMethod($objFrm)
-		//メソッド群をテンプレートから作成
-		$objFrm.method_templates:="method_templates_list"
-		JCL_prj_FG_methods($objFrm; ->$aryFieldName; ->$aryFieldType)
+		////01フォーム作成
+		//$objFrm.frm_name:=$objFrm.tbl_prefix+"01_List"  //フォーム名
+		//$objFrm.frm_prefix:=$objFrm.tbl_prefix+"01"  //フォーム名のプリフィックス
+		//JCL_prj_FG_tblFrm01($objFrm; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength)
+		////フォームメソッドを作成
+		//JCL_prj_FG_tblFrmMethod($objFrm)
+		////メソッド群をテンプレートから作成
+		//$objFrm.method_templates:="method_templates_list"
+		//JCL_prj_FG_methods($objFrm; ->$aryFieldName; ->$aryFieldType)
 		
-		//02フォーム作成 20210602
-		$objFrm.frm_name:=$objFrm.tbl_prefix+"02_Input"  //フォーム名
-		$objFrm.frm_prefix:=$objFrm.tbl_prefix+"02"  //フォーム名のプリフィックス
-		$objFrm.method_templates:="method_templates_form"
-		JCL_prj_FG_tblFrm02($objFrm; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength)
-		//フォームメソッドを作成
-		JCL_prj_FG_tblFrmMethod($objFrm)
-		//メソッド群をテンプレートから作成
-		JCL_prj_FG_methods($objFrm; ->$aryFieldName; ->$aryFieldType)
+		////02フォーム作成 20210602
+		//$objFrm.frm_name:=$objFrm.tbl_prefix+"02_Input"  //フォーム名
+		//$objFrm.frm_prefix:=$objFrm.tbl_prefix+"02"  //フォーム名のプリフィックス
+		//$objFrm.method_templates:="method_templates_form"
+		//JCL_prj_FG_tblFrm02($objFrm; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength)
+		////フォームメソッドを作成
+		//JCL_prj_FG_tblFrmMethod($objFrm)
+		////メソッド群をテンプレートから作成
+		//JCL_prj_FG_methods($objFrm; ->$aryFieldName; ->$aryFieldType)
 		
 		ALERT:C41("end")
 	Else 

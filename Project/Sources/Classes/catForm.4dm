@@ -221,6 +221,7 @@ $aryFieldNamePtr : Pointer; $aryFieldTypePtr : Pointer; $aryFieldLengthPtr : Poi
 		$objCol.dataSource:=$objCol.name
 		//$objCol.width:=JCL_prj_fg_fldWidth($aryFieldTypePtr->{$i}; $aryFieldLengthPtr->{$i})
 		$objCol.width:=This:C1470.fldWidth($aryFieldTypePtr->{$i}; $aryFieldLengthPtr->{$i})
+		//$objCol.width:=30
 		If ($foreign="foreign")
 			//IDフィールド以外は入力可
 			C_TEXT:C284($col_name)
@@ -268,14 +269,18 @@ Function fldWidth()
 	$type:=$1
 	C_TEXT:C284($2; $length)
 	$length:=$2
-	C_TEXT:C284($0; $fldWidth)
-	$fldWidth:=""
-	C_LONGINT:C283($w)
+	C_LONGINT:C283($0; $w)
+	$w:=10
 	
 	Case of 
 		: ($type="Is Alpha Field")
-			//$w:=Num($length)
-			$w:=90  //20240207
+			If ($w<80)
+				$w:=55  //20240327
+				
+			Else 
+				$w:=90  //20240207
+				
+			End if 
 			
 		: ($type="Is Text")
 			$w:=68
@@ -301,14 +306,13 @@ Function fldWidth()
 			$w:=90
 			
 		: ($type="Is Subtable")
-			$w:=10
+			$w:=20
 			
 		: ($type="Is BLOB")
-			$w:=10
+			$w:=20
 	End case 
 	
-	$fldWidth:=String:C10($w)
-	$0:=$fldWidth
+	$0:=$w
 	
 	
 Function saveMethods($objParam : Object; $aryFieldNamePtr : Pointer; $aryFieldTypePtr : Pointer)

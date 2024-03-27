@@ -1,7 +1,8 @@
 //%attributes = {}
-//JCL_prj_FormGeneratorV3
+//JCL_prj_FormGeneratorV4
 //20240210 wat
 //フォームを作る//フォームジェネレータ02、一覧用リストボックスのフォーム「xx01_List」を作る
+//20240327 ike wat rename
 
 C_TEXT:C284($1; $tblName)  //テーブル名
 $tblName:=$1
@@ -40,23 +41,13 @@ If ($tblName#"")
 	$objParam.frm_prefix:=$objParam.tbl_prefix+"01"  //フォーム名のプリフィックス
 	$objParam.form_templates:="frm01_v3.txt"
 	$objParam.method_templates:="method_templates_list"
-	//JCL_prj_FG_tblFrm01V3($objParam; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength)
 	JCL_prj_FG_tblFrm01V4($objParam; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength)
-	//フォームメソッドを作成
-	//JCL_prj_FG_tblFrmMethod($objParam)
-	//メソッド群をテンプレートから作成
-	//JCL_prj_FG_methods($objParam; ->$aryFieldName; ->$aryFieldType)
 	
 	//02フォーム作成
 	$objParam.frm_name:=$objParam.tbl_prefix+"02_Input"  //フォーム名
 	$objParam.frm_prefix:=$objParam.tbl_prefix+"02"  //フォーム名のプリフィックス
 	$objParam.method_templates:="method_templates_form"
-	//JCL_prj_FG_tblFrm02V3($objParam; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength)
 	JCL_prj_FG_tblFrm02V4($objParam; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength)
-	//フォームメソッドを作成
-	//JCL_prj_FG_tblFrmMethod($objParam)
-	//メソッド群をテンプレートから作成
-	//JCL_prj_FG_methods($objParam; ->$aryFieldName; ->$aryFieldType)
 	
 	//03フォーム作成
 	$objParam.frm_name:=$objParam.tbl_prefix+"03_Input"  //フォーム名

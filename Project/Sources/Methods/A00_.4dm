@@ -3,9 +3,16 @@
 //20240207 ike wat
 //コミットコメントはここでタイプしてからGitHub Desktopに貼ると便利
 
+//20240327 ike wat
+//テーブルタイトルはラベルが適用された。
+//フィールドラベルは適用された。
+
 //20240319 wat
-//fieldsクラス化。
+//fieldsクラス化。JCL_tgクラスとJCL_fieldsクラスで構成する。
 //fieldsのラベルファイルは「fields_labels」フォルダに複数ファイルで保存
+//D02をクラス化
+//JCL_TBLの一部をJCL_tgクラス（jcl table generatorの略）として実装
+//fieldsとfields_labelsもJCL_tgクラスに記述する。
 
 //20230314 wat
 //メイン画面で［テーブル追加］クリック時にfieldsファイルを読み込む動作を廃止。

@@ -22,6 +22,7 @@ $jcl_fields:=cs:C1710.JCL_fields.new()
 //フォームメソッド
 $frm01:=cs:C1710.catForm.new($objParam)
 
+//フォームメソッドを作成
 $frm01.saveFrmMethod($objParam)
 
 //タイトル文字とタイトルバック（色付き） 
