@@ -52,7 +52,7 @@ Function createTable($inBlockText : Text)
 	SQL LOGOUT:C872
 	$error:=JCL_err_OnErrCall_stop
 	
-	return $error
+	$0:=$error
 	
 	
 Function createIndex($inBlockText : Text)
@@ -102,7 +102,6 @@ Function createIndex($inBlockText : Text)
 		End if 
 	End for 
 	
-	return 
 	
 Function createMethod($inBlockText : Text)
 	//JCL_tbl_Create_method
@@ -142,5 +141,4 @@ Function createMethod($inBlockText : Text)
 		
 	End for 
 	
-	return 
 	

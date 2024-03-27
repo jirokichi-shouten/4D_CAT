@@ -35,7 +35,7 @@ Function createLabelFile($inBlockText : Text)
 	//$file:=File("/RESOURCES/JCL4D_Resources/fields_labels/"+$file_name).create()
 	$file.setText($inBlockText)
 	
-	return $error
+	$0:=$error
 	
 Function deleteLabelFile($tblName : Text)
 	//リソースフォルダのラベルファイルを削除
@@ -52,7 +52,7 @@ Function deleteLabelFile($tblName : Text)
 	$file:=New object:C1471
 	$file:=File:C1566("/RESOURCES/JCL4D_Resources/fields_labels/"+$file_name).delete()
 	
-	return $error
+	$0:=$error
 	
 Function blocks_extract($inFileText : Text; $outAryBlokPtr : Pointer) : Integer
 	//JCL_tbl_Blocks_fromFile
@@ -91,7 +91,7 @@ Function blocks_extract($inFileText : Text; $outAryBlokPtr : Pointer) : Integer
 		End if 
 	End for 
 	
-	return $cnt
+	$0:=$cnt
 	
 Function check_format($block : Text) : Integer
 	//JCL_tbl_Check_fieldsFile
@@ -166,7 +166,7 @@ Function check_format($block : Text) : Integer
 		End for 
 	End if 
 	
-	return $errFlag
+	$0:=$errFlag
 	
 Function check_sql_reserved($tbl_name : Text) : Boolean
 	//20240313 wat
@@ -196,7 +196,7 @@ Function check_sql_reserved($tbl_name : Text) : Boolean
 		End if 
 	End for 
 	
-	return $found_reserved
+	$0:=$found_reserved
 	
 Function cache_make
 	//JCL_fields_cache
@@ -262,7 +262,6 @@ Function cache_make
 		End for 
 	End for 
 	
-	return 
 	
 Function cache_TableLabel_get($inputTblName : Text) : Text
 	//JCL_fields_cache_TableLabel
@@ -281,7 +280,7 @@ Function cache_TableLabel_get($inputTblName : Text) : Text
 		
 	End if 
 	
-	return $label
+	$0:=$label
 	
 Function cache_FieldLabel_get($fldName : Text) : Text
 	//JCL_fields_Label
@@ -297,7 +296,7 @@ Function cache_FieldLabel_get($fldName : Text) : Text
 		
 	End if 
 	
-	return $label
+	$0:=$label
 	
 Function cache_FieldComment_get($fldName : Text) : Text
 	//JCL_fields_Label
@@ -313,7 +312,7 @@ Function cache_FieldComment_get($fldName : Text) : Text
 		
 	End if 
 	
-	return $label
+	$0:=$label
 	
 Function cache_FieldRemark_get($fldName : Text) : Text
 	//JCL_fields_Label
@@ -329,5 +328,5 @@ Function cache_FieldRemark_get($fldName : Text) : Text
 		
 	End if 
 	
-	return $label
+	$0:=$label
 	

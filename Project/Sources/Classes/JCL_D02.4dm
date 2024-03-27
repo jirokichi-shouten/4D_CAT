@@ -186,7 +186,6 @@ Function lstTB_make($block : Text)
 		
 	End if 
 	
-	return 
 	
 Function btnTable()
 	//JCL_D02_btnTable
@@ -241,13 +240,12 @@ Function btnTable()
 	
 	This:C1470.setControlsValues()
 	
-	return 
-	
+	//return
 	
 Function lstFL()
 	//JCL_D02_lstFL
 	//20240116 wat
-	return 
+	//return 
 	
 	
 Function lstFL_make($fieldBlock : Text)
@@ -304,7 +302,7 @@ Function lstFL_make($fieldBlock : Text)
 		End for 
 	End if 
 	
-	return 
+	//return 
 	
 Function lstTB()
 	//JCL_D02_lstTB
@@ -329,7 +327,7 @@ Function lstTB()
 			
 	End case 
 	
-	return 
+	//return 
 	
 Function btnImport()
 	//JCL_D02_btnImport
@@ -374,7 +372,7 @@ Function btnImport()
 		End if 
 	End if 
 	
-	return 
+	//return 
 	
 Function lstTB_check()
 	//JCL_D02_lstTB_check
@@ -397,7 +395,7 @@ Function lstTB_check()
 		End if 
 	End for 
 	
-	return 
+	//return 
 	
 Function setControlsValues()
 	//JCL_D02_SetControlsValues
