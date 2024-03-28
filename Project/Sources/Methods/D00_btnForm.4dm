@@ -1,5 +1,5 @@
 //%attributes = {}
-//A01_btnForm
+//D00_btnForm
 //20240210 wat
 //テーブル一覧で選択されているテーブルの一覧表ウインドウを表示
 
@@ -9,8 +9,8 @@ C_TEXT:C284($tbl_prefix)
 C_LONGINT:C283($pos)
 C_LONGINT:C283($nr)
 
-$nr:=JCL_lst_Selected_Long(->vA01_lstT; ->vA01_lstT_nr)
-$tblName:=JCL_lst_Selected_Str(->vA01_lstT; ->vA01_lstT_name)
+$nr:=JCL_lst_Selected_Long(->vD00_lstT; ->vD00_lstT_nr)
+$tblName:=JCL_lst_Selected_Str(->vD00_lstT; ->vD00_lstT_name)
 If ($tblName#"")
 	
 	ARRAY TEXT:C222($aryFieldName; 0)  //フィールド名の配列
@@ -42,18 +42,18 @@ If ($tblName#"")
 	
 	EXECUTE METHOD:C1007($methodName)
 	
-	A01_lstT_make
+	D00_lstT_make
 	
-	JCL_lst_SetSelect_byLong(->vA01_lstT; ->vA01_lstT_nr; $nr)
+	JCL_lst_SetSelect_byLong(->vD00_lstT; ->vD00_lstT_nr; $nr)
 	
 	//フィールド一覧の色を更新
 	C_LONGINT:C283($color)
-	$color:=JCL_lst_Selected_Long(->vA01_lstT; ->vA01_lstT_Color)
+	$color:=JCL_lst_Selected_Long(->vD00_lstT; ->vD00_lstT_Color)
 	If ($color=0)
 		$color:=0x00FFFFFF
 	End if 
-	OBJECT SET RGB COLORS:C628(*; "vA01_varTableName"; 0; $color)
+	OBJECT SET RGB COLORS:C628(*; "vD00_varTableName"; 0; $color)
 	
-	A01_SetControlsValues
+	D00_SetControlsValues
 	
 End if 

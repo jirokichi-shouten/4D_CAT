@@ -1,7 +1,7 @@
 //%attributes = {}
-//A01_main
-//20240110 jirokichi
-// メインメソッド
+//JCL_D00_Generator
+//20240328 Jirokichi
+//ジェネレータメイン画面
 
 //必要に応じてエラーハンドリング開始
 ON ERR CALL:C155("JCL_err_OnErrCall")
@@ -11,6 +11,5 @@ ON ERR CALL:C155("")
 SET MENU BAR:C67(2)
 
 // メイン画面表示
-A01_DefInit
 
-A01_Display
+D00_Display

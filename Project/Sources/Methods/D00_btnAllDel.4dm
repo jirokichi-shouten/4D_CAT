@@ -1,5 +1,5 @@
 //%attributes = {}
-//A01_btnAllDel
+//D00_btnAllDel
 //20240223 yabe wat
 //すべてのテーブルと関連メソッドを削除
 
@@ -13,7 +13,7 @@ C_COLLECTION:C1488($files)
 C_LONGINT:C283($i)
 
 //テーブルポインタの配列
-$sizeOfAry:=Size of array:C274(vA01_lstT_name)
+$sizeOfAry:=Size of array:C274(vD00_lstT_name)
 If ($sizeOfAry>0)
 	//確認メッセージ
 	$msg:=String:C10($sizeOfAry)+"個のテーブルを削除します。よろしいですか。"
@@ -21,9 +21,9 @@ If ($sizeOfAry>0)
 	If ($dlgOk=1)
 		//テーブル削除
 		For ($k; 1; $sizeOfAry)
-			$tblName:=vA01_lstT_name{$k}
-			$prefix:=vA01_lstT_prefix{$k}
-			$tblNr:=vA01_lstT_nr{$k}
+			$tblName:=vD00_lstT_name{$k}
+			$prefix:=vD00_lstT_prefix{$k}
+			$tblNr:=vD00_lstT_nr{$k}
 			$tblPtr:=Table:C252($tblNr)
 			
 			//レコード全件削除
@@ -65,14 +65,14 @@ If ($sizeOfAry>0)
 		
 		
 		//テーブル一覧を作成
-		JCL_lst_Deselect(->vA01_lstT)
+		JCL_lst_Deselect(->vD00_lstT)
 		RELOAD PROJECT:C1739
-		A01_lstT_make
+		D00_lstT_make
 		
-		A01_SetControlsValues
+		D00_SetControlsValues
 		
 		//フィールド一覧を更新
-		A01_lstT_OnSelChange
+		D00_lstT_OnSelChange
 		
 	End if 
 End if 

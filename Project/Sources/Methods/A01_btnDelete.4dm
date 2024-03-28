@@ -2,7 +2,7 @@
 //A01_btnDelete
 //20240210 wat
 //テーブルと関連メソッドを削除
-//テーブル削除はDrop table, 
+//テーブル削除はDrop table,
 //フォームメソッドは/Sources/Methodsのプリフィックスがテーブルと同じなら削除
 
 C_LONGINT:C283($tblNr)
@@ -59,12 +59,12 @@ If ($tblName#"")
 		//テーブル一覧を作成
 		JCL_lst_Deselect(->vA01_lstT)
 		RELOAD PROJECT:C1739
-		A01_lstT_make
+		D00_lstT_make
 		
-		A01_SetControlsValues
+		D00_SetControlsValues
 		
 		//フィールド一覧を更新
-		A01_lstT_OnSelChange
+		D00_lstT_OnSelChange
 		
 	End if 
 End if 
