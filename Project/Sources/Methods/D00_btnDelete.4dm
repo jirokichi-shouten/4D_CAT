@@ -1,5 +1,5 @@
 //%attributes = {}
-//A01_btnDelete
+//D00_btnDelete
 //20240210 wat
 //テーブルと関連メソッドを削除
 //テーブル削除はDrop table,
@@ -9,9 +9,9 @@ C_LONGINT:C283($tblNr)
 C_TEXT:C284($tblName; $prefix)
 C_LONGINT:C283($dlgOk)
 
-$prefix:=JCL_lst_Selected_Str(->vA01_lstT; ->vA01_lstT_prefix)
-$tblNr:=JCL_lst_Selected_Long(->vA01_lstT; ->vA01_lstT_nr)
-$tblName:=JCL_lst_Selected_Str(->vA01_lstT; ->vA01_lstT_name)
+$prefix:=JCL_lst_Selected_Str(->vD00_lstT; ->vD00_lstT_prefix)
+$tblNr:=JCL_lst_Selected_Long(->vD00_lstT; ->vD00_lstT_nr)
+$tblName:=JCL_lst_Selected_Str(->vD00_lstT; ->vD00_lstT_name)
 If ($tblName#"")
 	//確認メッセージ
 	$msg:="テーブル["+$tblName+"]を削除します。よろしいですか。"
@@ -57,7 +57,7 @@ If ($tblName#"")
 		$jcl_fields.deleteLabelFile($tblName)
 		
 		//テーブル一覧を作成
-		JCL_lst_Deselect(->vA01_lstT)
+		JCL_lst_Deselect(->vD00_lstT)
 		RELOAD PROJECT:C1739
 		D00_lstT_make
 		
