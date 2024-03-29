@@ -7,15 +7,15 @@ Class constructor
 	//20240116 wat
 	//fieldsを表示
 	
-	//C_LONGINT($0; $dlgOk)
+	//usage:
+	//C_LONGINT($dlgOK)
+	//C_OBJECT(vD02)
 	
-	////画面表示
-	//$dlgOk:=JCL_D02_Display
+	//vD02:=cs.JCL_D02.new()
+	//$dlgOk:=vD02.display()
 	//If ($dlgOk=1)
 	
 	//End if 
-	
-	//$0:=$dlgOk
 	
 	
 Function frm()
@@ -30,7 +30,6 @@ Function frm()
 			This:C1470.frmOnLoad()
 			
 	End case 
-	
 	
 Function frmOnLoad()
 	//オンロード
@@ -53,7 +52,6 @@ Function lstTB_removeAll()
 	
 	DELETE FROM ARRAY:C228(vJCL_D20_lstTB_BakColor; 1; Size of array:C274(vJCL_D20_lstTB_BakColor))
 	DELETE FROM ARRAY:C228(vJCL_D20_lstTB_FontColor; 1; Size of array:C274(vJCL_D20_lstTB_FontColor))
-	
 	
 Function frmDefInit()
 	//frmDefInit
@@ -90,7 +88,6 @@ Function frmDefInit()
 	ARRAY TEXT:C222(vJCL_D02_lstTB_Block; 0)
 	ARRAY LONGINT:C221(vJCL_D20_lstTB_BakColor; 0)
 	ARRAY LONGINT:C221(vJCL_D20_lstTB_FontColor; 0)
-	
 	
 Function display()
 	//JCL_D02_Display

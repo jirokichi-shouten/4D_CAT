@@ -1,1 +1,1 @@
-D00_btnDelete
+vD00.btnDelete()

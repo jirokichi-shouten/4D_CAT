@@ -236,8 +236,7 @@
 					"events": [
 						"onDataChange"
 					],
-					"sizingY": "fixed",
-					"method": "ObjectMethods/vD00_varProductName.4dm"
+					"sizingY": "fixed"
 				},
 				"vD00_varVersion": {
 					"type": "input",

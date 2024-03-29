@@ -1,2 +1,2 @@
-D00_btnAllDel
+vD00.btnDelAllTables()
 
