@@ -197,7 +197,7 @@ Function btnTable()
 	$cnt:=0
 	C_TEXT:C284($msg)
 	C_OBJECT:C1216($jcl_tg)
-	$jcl_tg:=cs:C1710.JCL_tg.new()
+	$jcl_tg:=cs:C1710.JCL_tableGenerator.new()
 	C_OBJECT:C1216($jcl_fields)
 	$jcl_fields:=cs:C1710.JCL_fields.new()
 	
@@ -217,7 +217,7 @@ Function btnTable()
 				$jcl_tg.createIndex($block)
 				
 				//モデルメソッド群をテンプレートから作成
-				$jcl_tg.createMethod($block)
+				$jcl_tg.createMethods($block)
 				
 				//ラベルファイルを作成
 				$jcl_fields.createLabelFile($block)

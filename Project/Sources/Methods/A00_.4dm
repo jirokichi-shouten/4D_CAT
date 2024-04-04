@@ -3,6 +3,22 @@
 //20240207 ike wat
 //コミットコメントはここでタイプしてからGitHub Desktopに貼ると便利
 
+//20240404
+//JCL_prj_FormGeneratorをクラス化。JCL_formGenerator
+//JCL_tgクラスをJCL_tableGeneratorに改名
+
+//D00_Generatorをクラス化
+//次の課題はJCL_prj_FG_XXをクラス化。おそらく名前はJCL_fg
+//ボタンメソッドの修正漏れを修正
+//これからJCL_D00をJCL_D02に習ってクラス化する
+//ジェネレータフォーム名をJCL_D00_Generatorに変更
+//関連テーブルの配列行削除（_btnXXRemove）の不具合を修正
+//空白のメイン画面を実装
+//return文はv19でエラーになるので変更　$0:=を使う
+//フィールドの列幅が適用されていなかった不具合を修正
+//クラス化で不要になったJCL_prg_XXメソッドを大量削除。
+//クラス化で不要になったJCL_method_XXメソッドを削除。
+
 //20240327 ike wat
 //テーブルタイトルはラベルが適用された。
 //フィールドラベルは適用された。

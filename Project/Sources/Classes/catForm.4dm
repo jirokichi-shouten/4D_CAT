@@ -219,9 +219,7 @@ $aryFieldNamePtr : Pointer; $aryFieldTypePtr : Pointer; $aryFieldLengthPtr : Poi
 		$objCol:=New object:C1471
 		$objCol.name:="v"+$objParam.frm_prefix+"_lst"+$aryFieldNamePtr->{$i}
 		$objCol.dataSource:=$objCol.name
-		//$objCol.width:=JCL_prj_fg_fldWidth($aryFieldTypePtr->{$i}; $aryFieldLengthPtr->{$i})
 		$objCol.width:=This:C1470.fldWidth($aryFieldTypePtr->{$i}; $aryFieldLengthPtr->{$i})
-		//$objCol.width:=30
 		If ($foreign="foreign")
 			//IDフィールド以外は入力可
 			C_TEXT:C284($col_name)
@@ -241,7 +239,6 @@ $aryFieldNamePtr : Pointer; $aryFieldTypePtr : Pointer; $aryFieldLengthPtr : Poi
 		$col_header:=New object:C1471
 		$col_header.name:="v"+$objParam.frm_prefix+"_lhd"+$aryFieldNamePtr->{$i}
 		$col_header.dataSource:=$col_header.name
-		//$label:=JCL_fields_Label($aryFieldNamePtr->{$i})
 		$label:=$jcl_fields.cache_FieldLabel_get($aryFieldNamePtr->{$i})
 		$col_header.text:=$label
 		$col_header.class:="JCL_YuGothic10"

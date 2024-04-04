@@ -7,6 +7,10 @@ Class constructor
 	//現在DBに登録されているテーブルとフィールドをラベル付きで表示
 	//JCL_D02_fieldsを呼び出して、fieldsを読み込んでテーブル生成、それらにフォームを生成できる
 	
+	//usage:
+	//vD00:=cs.JCL_D00.new()
+	//vD00.display()
+	
 Function display()
 	//D00_Display
 	//20240328 wat
@@ -371,7 +375,9 @@ Function btnForm()
 		$cnt:=JCL_method_isExist($methodName)
 		If ($cnt=0)
 			//なければ作る
-			JCL_prj_FormGeneratorV4($tblName)
+			$form:=cs:C1710.JCL_formGenerator.new()
+			$form.formGenerator($tblName)
+			//JCL_prj_FormGeneratorV4($tblName)
 			RELOAD PROJECT:C1739  //20240207 4djapan
 			
 			//メッセージ
