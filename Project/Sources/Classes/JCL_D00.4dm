@@ -175,8 +175,13 @@ Function setControlsValues()
 	C_TEXT:C284($tblName)
 	$tblName:=JCL_lst_Selected_Str(->vD00_lstT; ->vD00_lstT_name)
 	$sizeOfAry:=Size of array:C274(vD00_lstFL_Nr)
-	vD00_varTableName:=$tblName+"(フィールド数："+String:C10($sizeOfAry; "#,###,##0")+")"
-	//vD00_varNumOfFields:="(フィールド数："+String($sizeOfAry; "#,###,##0")+")"
+	If ($sizeOfAry>0)
+		vD00_varTableName:=$tblName+"(フィールド数："+String:C10($sizeOfAry; "#,###,##0")+")"
+		
+	Else 
+		vD00_varTableName:=""
+		
+	End if 
 	
 	//ボタン制御
 	JCL_btn_SetEnable_byListSelect(->vD00_lstT; ->vD00_btnList)
@@ -268,7 +273,11 @@ Function brnFormColor()
 	$dlgOk:=vD01.start()
 	If ($dlgOk=1)
 		//リスト再作成
+		This:C1470.lstFL_init()
+		
 		This:C1470.lstT_make()
+		
+		This:C1470.setControlsValues()
 		
 	End if 
 	
@@ -421,7 +430,6 @@ Function btnForm()
 		
 	End if 
 	
-	
 Function lstT()
 	//D00_lstT
 	//20240204 wat
@@ -455,22 +463,11 @@ Function lstT_OnSelChange()
 	
 	C_LONGINT:C283($tblNr)
 	
+	//配列初期化
+	This:C1470.lstFL_init()
+	
 	//テーブル名
 	$tblNr:=JCL_lst_Selected_Long(->vD00_lstT; ->vD00_lstT_nr)
-	//配列初期化
-	DELETE FROM ARRAY:C228(vD00_lstFL_Nr; 1; Size of array:C274(vD00_lstFL_Nr))
-	DELETE FROM ARRAY:C228(vD00_lstFL_NAME; 1; Size of array:C274(vD00_lstFL_NAME))
-	DELETE FROM ARRAY:C228(vD00_lstFL_LABEL; 1; Size of array:C274(vD00_lstFL_LABEL))
-	DELETE FROM ARRAY:C228(vD00_lstFL_DATA_TYPE; 1; Size of array:C274(vD00_lstFL_DATA_TYPE))
-	
-	DELETE FROM ARRAY:C228(vD00_lstFL_LENGTH; 1; Size of array:C274(vD00_lstFL_LENGTH))
-	DELETE FROM ARRAY:C228(vD00_lstFL_INDEX; 1; Size of array:C274(vD00_lstFL_INDEX))
-	DELETE FROM ARRAY:C228(vD00_lstFL_UNIQUE; 1; Size of array:C274(vD00_lstFL_UNIQUE))
-	DELETE FROM ARRAY:C228(vD00_lstFL_COMMENT; 1; Size of array:C274(vD00_lstFL_COMMENT))
-	DELETE FROM ARRAY:C228(vD00_lstFL_REMARK; 1; Size of array:C274(vD00_lstFL_REMARK))
-	
-	OBJECT SET RGB COLORS:C628(*; "vD00_varTableName"; 0; Background color none:K23:10)
-	
 	If ($tblNr>0)
 		//フィールド配列作成
 		This:C1470.lstFL_make($tblNr)
@@ -483,16 +480,37 @@ Function lstT_OnSelChange()
 		End if 
 		OBJECT SET RGB COLORS:C628(*; "vD00_varTableName"; 0; $color)
 		
-	Else 
-		//選択行なし状態
-		$color:=0x00FFFFFF
-		OBJECT SET RGB COLORS:C628(*; "vD00_varTableName"; 0; $color)
+		//Else 
+		////選択行なし状態
+		//$color:=0x00FFFFFF
+		//OBJECT SET RGB COLORS(*; "vD00_varTableName"; 0; $color)
 		
-		vD00_varTableName:=""
+		//vD00_varTableName:=""
 		
 	End if 
 	
 	This:C1470.setControlsValues()
+	
+Function lstFL_init()
+	//20240417
+	
+	JCL_lst_Deselect(->vD00_lstFL)
+	
+	//フィールドの配列初期化
+	DELETE FROM ARRAY:C228(vD00_lstFL_Nr; 1; Size of array:C274(vD00_lstFL_Nr))
+	DELETE FROM ARRAY:C228(vD00_lstFL_NAME; 1; Size of array:C274(vD00_lstFL_NAME))
+	DELETE FROM ARRAY:C228(vD00_lstFL_LABEL; 1; Size of array:C274(vD00_lstFL_LABEL))
+	DELETE FROM ARRAY:C228(vD00_lstFL_DATA_TYPE; 1; Size of array:C274(vD00_lstFL_DATA_TYPE))
+	
+	DELETE FROM ARRAY:C228(vD00_lstFL_LENGTH; 1; Size of array:C274(vD00_lstFL_LENGTH))
+	DELETE FROM ARRAY:C228(vD00_lstFL_INDEX; 1; Size of array:C274(vD00_lstFL_INDEX))
+	DELETE FROM ARRAY:C228(vD00_lstFL_UNIQUE; 1; Size of array:C274(vD00_lstFL_UNIQUE))
+	DELETE FROM ARRAY:C228(vD00_lstFL_COMMENT; 1; Size of array:C274(vD00_lstFL_COMMENT))
+	DELETE FROM ARRAY:C228(vD00_lstFL_REMARK; 1; Size of array:C274(vD00_lstFL_REMARK))
+	
+	//選択テーブル情報をクリア
+	OBJECT SET RGB COLORS:C628(*; "vD00_varTableName"; 0; Background color none:K23:10)
+	vD00_varTableName:=""
 	
 Function lstFL_make()
 	//D00_lstFL_make

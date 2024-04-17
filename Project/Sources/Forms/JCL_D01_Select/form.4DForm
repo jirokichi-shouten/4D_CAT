@@ -59,14 +59,18 @@
 					"width": 94,
 					"height": 26,
 					"dataSource": "vJCL_D01_btnApply",
-					"shortcutKey": "[Return]",
+					"shortcutKey": "",
 					"text": "変更",
 					"events": [
 						"onClick"
 					],
 					"class": "JCL_YuGothic14",
-					"action": "accept",
-					"method": "ObjectMethods/vJCL_D01_btnApply.4dm"
+					"action": "",
+					"method": "ObjectMethods/vJCL_D01_btnApply.4dm",
+					"shortcutAccel": false,
+					"shortcutControl": false,
+					"shortcutShift": false,
+					"shortcutAlt": false
 				},
 				"Text": {
 					"type": "text",

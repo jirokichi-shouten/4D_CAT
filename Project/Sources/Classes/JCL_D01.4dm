@@ -337,6 +337,11 @@ Function btnApply()
 	$rec_name:="v"+$tbl_prefix+"03_rectTitle"
 	This:C1470.setTitleRectColor($form_name; $rec_name; $table_name; $color_text)
 	
+	//使用済み色リスト、テーブル一覧
+	JCL_lst_Deselect(->vD01_lstTB)
+	
+	This:C1470.lstTB_make()
+	
 Function setTitleRectColor()
 	//20240416 wat
 	//テーブルフォームのファイルを取得、タイトルレクトの色を変更
