@@ -1,6 +1,5 @@
 //%attributes = {}
-//vJCL_D01_btnColor
-//D01_btnColor
+//JCL_D01_btnReRandom
 //20210607 wat
 //別の色５色
 

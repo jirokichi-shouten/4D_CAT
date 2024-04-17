@@ -1,1 +1,1 @@
-JCL_D01_lstTB
+vD01.lstTB()

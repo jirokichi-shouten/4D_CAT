@@ -1,10 +1,10 @@
 //%attributes = {}
-  //JCL_D01_popGoldennRation_make
-  //D01_popGoldennRation_make
-  //20210607 wat
-  //黄金比選択用ポップアップ
+//JCL_D01_popGoldennRation_make
+//D01_popGoldennRation_make
+//20210607 wat
+//黄金比フォームサイズ選択用ポップアップ
 
-ARRAY TEXT:C222(vJCL_D01_aryGoldenRatio;21)
+ARRAY TEXT:C222(vJCL_D01_aryGoldenRatio; 21)
 vJCL_D01_aryGoldenRatio{1}:="398 x 220"
 vJCL_D01_aryGoldenRatio{2}:="440 x 272"
 vJCL_D01_aryGoldenRatio{3}:="466 x 288"

@@ -3,6 +3,10 @@
 //20240207 ike wat
 //コミットコメントはここでタイプしてからGitHub Desktopに貼ると便利
 
+//20240417
+//JCL_D01_Selectをクラス化。JCL_D01（フォームカラー）とした。
+//D01: すでに生成したフォームの色（フォームカラー）を変更する
+
 //20240404
 //JCL_prj_FormGeneratorをクラス化。JCL_formGenerator
 //JCL_tgクラスをJCL_tableGeneratorに改名

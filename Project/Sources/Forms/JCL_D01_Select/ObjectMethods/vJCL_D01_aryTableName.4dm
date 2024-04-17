@@ -1,1 +1,1 @@
-JCL_D01_popTableName 
+vD01.popTableName()

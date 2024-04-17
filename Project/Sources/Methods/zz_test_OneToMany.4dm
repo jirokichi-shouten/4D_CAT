@@ -7,7 +7,7 @@ ARRAY LONGINT:C221($aryTblNr; 0)
 ARRAY TEXT:C222($aryForeignKeys; 0)
 
 $targetTableName:="USERS"
-$cnt:=zz_tbl_FindForeignKey($targetTableName; ->$aryTblNr; ->$aryForeignKeys)
+$cnt:=JCL_tbl_FindForeignKey($targetTableName; ->$aryTblNr; ->$aryForeignKeys)
 For ($i; 1; $cnt)
 	//フォーム02を作るときに、外部キーを見つけたら　外部テーブルのリストボックスを自動生成
 	

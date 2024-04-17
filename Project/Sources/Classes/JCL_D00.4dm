@@ -10,6 +10,10 @@ Class constructor
 	//usage:
 	//vD00:=cs.JCL_D00.new()
 	//vD00.display()
+	//vD00.display()
+	
+Function start()
+	This:C1470.display()
 	
 Function display()
 	//D00_Display
@@ -253,6 +257,19 @@ Function btnDelAllTables()
 			This:C1470.lstT_OnSelChange()
 			
 		End if 
+	End if 
+	
+Function brnFormColor()
+	//20240415
+	//フォームカラーの色変更ダイアログを表示
+	C_OBJECT:C1216(vD01)
+	
+	vD01:=cs:C1710.JCL_D01.new()
+	$dlgOk:=vD01.start()
+	If ($dlgOk=1)
+		//リスト再作成
+		This:C1470.lstT_make()
+		
 	End if 
 	
 Function btnDelete()

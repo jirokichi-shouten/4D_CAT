@@ -758,11 +758,31 @@
 					"action": "",
 					"class": "JCL_YuGothic10",
 					"dataSource": "vD00_btnAllDel"
+				},
+				"vD00_btnFormColor": {
+					"type": "button",
+					"text": "フォームカラー",
+					"top": 16,
+					"left": 498,
+					"width": 110,
+					"height": 26,
+					"events": [
+						"onClick"
+					],
+					"dataSource": "vD00_btnFormColor",
+					"shortcutAccel": false,
+					"shortcutControl": false,
+					"shortcutShift": false,
+					"shortcutAlt": false,
+					"shortcutKey": "",
+					"action": "",
+					"class": "JCL_YuGothic12",
+					"method": "ObjectMethods/vD00_btnFormColor.4dm"
 				}
 			}
 		}
 	],
-	"geometryStamp": 849,
+	"geometryStamp": 865,
 	"editor": {
 		"activeView": "View 1",
 		"defaultView": "View 1",

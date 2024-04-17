@@ -34,53 +34,44 @@
 		null,
 		{
 			"objects": {
+				"vJCL_D01_rectColor0": {
+					"type": "rectangle",
+					"top": 136,
+					"left": 182,
+					"width": 90,
+					"height": 26,
+					"fill": "#f5deb3",
+					"stroke": "#f5deb3"
+				},
 				"vJCL_D01_rectTitle": {
 					"type": "rectangle",
 					"top": 0,
 					"left": 0,
-					"width": 754,
+					"width": 796,
 					"height": 55,
 					"fill": "#f5deb3",
 					"stroke": "#f5deb3"
 				},
-				"vJCL_D01_btnOK": {
+				"vJCL_D01_btnApply": {
 					"type": "button",
-					"top": 358,
-					"left": 236,
+					"top": 80,
+					"left": 298,
 					"width": 94,
 					"height": 26,
-					"dataSource": "vJCL_D01_btnOK",
+					"dataSource": "vJCL_D01_btnApply",
 					"shortcutKey": "[Return]",
-					"text": "作成",
+					"text": "変更",
 					"events": [
 						"onClick"
 					],
 					"class": "JCL_YuGothic14",
-					"action": "accept"
-				},
-				"vJCL_D01_btnCancel": {
-					"type": "button",
-					"top": 358,
-					"left": 68,
-					"width": 94,
-					"height": 26,
-					"dataSource": "vJCL_D01_btnCancel",
-					"action": "cancel",
-					"text": "キャンセル",
-					"events": [
-						"onClick"
-					],
-					"class": "JCL_YuGothic14",
-					"shortcutAccel": true,
-					"shortcutControl": false,
-					"shortcutShift": false,
-					"shortcutAlt": false,
-					"shortcutKey": "w"
+					"action": "accept",
+					"method": "ObjectMethods/vJCL_D01_btnApply.4dm"
 				},
 				"Text": {
 					"type": "text",
-					"top": 80,
-					"left": 34,
+					"top": 84,
+					"left": 20,
 					"width": 72,
 					"height": 22,
 					"text": "テーブル名",
@@ -88,34 +79,21 @@
 				},
 				"Text1": {
 					"type": "text",
-					"top": 22,
-					"left": 31,
+					"top": 16,
+					"left": 20,
 					"width": 210,
 					"height": 25,
 					"fontFamily": "メイリオ",
 					"fontSize": 20,
-					"text": "JCL_FormGenerator",
+					"text": "フォームカラー",
 					"class": "JCL_YuGothic16"
-				},
-				"vJCL_D01_popGoldenRatio": {
-					"type": "dropdown",
-					"left": 757,
-					"top": 128,
-					"width": 144,
-					"height": 27,
-					"events": [
-						"onDataChange"
-					],
-					"class": "JCL_Meiryo12",
-					"dataSource": "vJCL_D01_aryGoldenRatio",
-					"method": "ObjectMethods/vJCL_D01_popGoldenRatio.4dm"
 				},
 				"vJCL_D01_aryTableName": {
 					"type": "dropdown",
-					"left": 110,
+					"left": 84,
 					"top": 80,
-					"width": 144,
-					"height": 27,
+					"width": 178,
+					"height": 22,
 					"events": [
 						"onDataChange"
 					],
@@ -123,25 +101,25 @@
 					"dataSource": "vJCL_D01_aryTableName",
 					"method": "ObjectMethods/vJCL_D01_aryTableName.4dm"
 				},
-				"vJCL_D01_btnColor": {
+				"vJCL_D01_btnReRandom": {
 					"type": "button",
-					"top": 129,
-					"left": 322,
+					"top": 136,
+					"left": 298,
 					"width": 94,
 					"height": 26,
-					"dataSource": "vJCL_D01_btnColor",
+					"dataSource": "vJCL_D01_btnReRandom",
 					"action": "",
-					"text": "選び直す",
+					"text": "候補再生成",
 					"events": [
 						"onClick"
 					],
 					"class": "JCL_YuGothic14",
-					"method": "ObjectMethods/vJCL_D01_btnColor.4dm"
+					"method": "ObjectMethods/vJCL_D01_btnReRandom.4dm"
 				},
 				"vJCL_D01_btnUseColor0": {
 					"type": "button",
-					"top": 129,
-					"left": 110,
+					"top": 136,
+					"left": 84,
 					"width": 94,
 					"height": 26,
 					"dataSource": "vJCL_D01_btnUseColor0",
@@ -153,21 +131,12 @@
 					"class": "JCL_YuGothic12",
 					"method": "ObjectMethods/vJCL_D01_btnUseColor0.4dm"
 				},
-				"vJCL_D01_rectColor0": {
-					"type": "rectangle",
-					"top": 129,
-					"left": 208,
-					"width": 90,
-					"height": 26,
-					"fill": "#f5deb3",
-					"stroke": "#f5deb3"
-				},
 				"vD01_lstTB": {
 					"type": "listbox",
-					"top": 0,
+					"top": 68,
 					"left": 440,
-					"width": 313,
-					"height": 398,
+					"width": 336,
+					"height": 310,
 					"sizingX": "fixed",
 					"sizingY": "grow",
 					"resizingMode": "legacy",
@@ -213,7 +182,7 @@
 						{
 							"name": "vD01_lstTB_COLOR",
 							"dataSource": "vD01_lstTB_COLOR",
-							"width": 90,
+							"width": 84,
 							"enterable": false,
 							"truncateMode": "none",
 							"class": "JCL_YuGothic12",
@@ -260,8 +229,8 @@
 				},
 				"vJCL_D01_btnUseColor1": {
 					"type": "button",
-					"top": 169,
-					"left": 110,
+					"top": 170,
+					"left": 84,
 					"width": 94,
 					"height": 26,
 					"dataSource": "vJCL_D01_btnUseColor1",
@@ -275,8 +244,8 @@
 				},
 				"vJCL_D01_rectColor1": {
 					"type": "rectangle",
-					"top": 169,
-					"left": 208,
+					"top": 170,
+					"left": 182,
 					"width": 90,
 					"height": 26,
 					"fill": "#f5deb3",
@@ -285,8 +254,8 @@
 				},
 				"vJCL_D01_btnUseColor2": {
 					"type": "button",
-					"top": 209,
-					"left": 110,
+					"top": 204,
+					"left": 84,
 					"width": 94,
 					"height": 26,
 					"dataSource": "vJCL_D01_btnUseColor2",
@@ -300,8 +269,8 @@
 				},
 				"vJCL_D01_rectColor2": {
 					"type": "rectangle",
-					"top": 209,
-					"left": 208,
+					"top": 204,
+					"left": 182,
 					"width": 90,
 					"height": 26,
 					"fill": "#f5deb3",
@@ -309,8 +278,8 @@
 				},
 				"vJCL_D01_btnUseColor3": {
 					"type": "button",
-					"top": 249,
-					"left": 110,
+					"top": 238,
+					"left": 84,
 					"width": 94,
 					"height": 26,
 					"dataSource": "vJCL_D01_btnUseColor3",
@@ -324,8 +293,8 @@
 				},
 				"vJCL_D01_rectColor3": {
 					"type": "rectangle",
-					"top": 249,
-					"left": 208,
+					"top": 238,
+					"left": 182,
 					"width": 90,
 					"height": 26,
 					"fill": "#f5deb3",
@@ -333,8 +302,8 @@
 				},
 				"vJCL_D01_btnUseColor4": {
 					"type": "button",
-					"top": 289,
-					"left": 110,
+					"top": 272,
+					"left": 84,
 					"width": 94,
 					"height": 26,
 					"dataSource": "vJCL_D01_btnUseColor4",
@@ -348,8 +317,8 @@
 				},
 				"vJCL_D01_rectColor4": {
 					"type": "rectangle",
-					"top": 289,
-					"left": 208,
+					"top": 272,
+					"left": 182,
 					"width": 90,
 					"height": 26,
 					"fill": "#f5deb3",
@@ -358,116 +327,197 @@
 				"Text2": {
 					"type": "text",
 					"top": 61,
-					"left": 262,
-					"width": 146,
+					"left": 240,
+					"width": 186,
 					"height": 16,
-					"text": "↑この色でフォームを作成",
+					"text": "↑フォームカラーをこの色に変更",
 					"class": "JCL_YuGothic12"
 				},
 				"vJCL_D01_varColorText0": {
 					"type": "input",
-					"top": 134,
-					"left": 220,
+					"top": 141,
+					"left": 194,
 					"width": 68,
 					"height": 17,
 					"dataSource": "vJCL_D01_varColorText0",
 					"class": "JCL_YuGothic12",
-					"focusable": false,
+					"focusable": true,
 					"fill": "transparent",
 					"borderStyle": "none",
-					"enterable": false,
+					"enterable": true,
 					"contextMenu": "none",
 					"dragging": "none",
 					"dropping": "custom",
 					"events": [
 						"onDataChange"
 					],
-					"sizingY": "fixed"
+					"sizingY": "fixed",
+					"entryFilter": "&\"a-f;A-F;0-9;#\""
 				},
 				"vJCL_D01_varColorText1": {
 					"type": "input",
-					"top": 174,
-					"left": 220,
+					"top": 175,
+					"left": 194,
 					"width": 68,
 					"height": 17,
 					"dataSource": "vJCL_D01_varColorText1",
 					"class": "JCL_Meiryo12",
-					"focusable": false,
+					"focusable": true,
 					"fill": "transparent",
 					"borderStyle": "none",
-					"enterable": false,
+					"enterable": true,
 					"contextMenu": "none",
 					"dragging": "none",
 					"dropping": "custom",
 					"events": [
 						"onDataChange"
 					],
-					"sizingY": "fixed"
+					"sizingY": "fixed",
+					"entryFilter": "&\"a-f;A-F;0-9;#\""
 				},
 				"vJCL_D01_varColorText2": {
 					"type": "input",
-					"top": 214,
-					"left": 220,
+					"top": 209,
+					"left": 194,
 					"width": 68,
 					"height": 17,
 					"dataSource": "vJCL_D01_varColorText2",
 					"class": "JCL_YuGothic12",
-					"focusable": false,
+					"focusable": true,
 					"fill": "transparent",
 					"borderStyle": "none",
-					"enterable": false,
+					"enterable": true,
 					"contextMenu": "none",
 					"dragging": "none",
 					"dropping": "custom",
 					"events": [
 						"onDataChange"
 					],
-					"sizingY": "fixed"
+					"sizingY": "fixed",
+					"entryFilter": "&\"a-f;A-F;0-9;#\""
 				},
 				"vJCL_D01_varColorText3": {
 					"type": "input",
-					"top": 254,
-					"left": 220,
+					"top": 243,
+					"left": 194,
 					"width": 68,
 					"height": 17,
 					"dataSource": "vJCL_D01_varColorText3",
 					"class": "JCL_YuGothic12",
-					"focusable": false,
+					"focusable": true,
 					"fill": "transparent",
 					"borderStyle": "none",
-					"enterable": false,
+					"enterable": true,
 					"contextMenu": "none",
 					"dragging": "none",
 					"dropping": "custom",
 					"events": [
 						"onDataChange"
 					],
-					"sizingY": "fixed"
+					"sizingY": "fixed",
+					"entryFilter": "&\"a-f;A-F;0-9;#\""
 				},
 				"vJCL_D01_varColorText4": {
 					"type": "input",
-					"top": 294,
-					"left": 220,
+					"top": 277,
+					"left": 194,
 					"width": 68,
 					"height": 17,
 					"dataSource": "vJCL_D01_varColorText4",
 					"class": "JCL_YuGothic12",
-					"focusable": false,
+					"focusable": true,
 					"fill": "transparent",
 					"borderStyle": "none",
-					"enterable": false,
+					"enterable": true,
 					"contextMenu": "none",
 					"dragging": "none",
 					"dropping": "custom",
 					"events": [
 						"onDataChange"
 					],
-					"sizingY": "fixed"
+					"sizingY": "fixed",
+					"entryFilter": "&\"a-f;A-F;0-9;#\""
+				},
+				"vJCL_D02_btnClose": {
+					"type": "button",
+					"top": 16,
+					"left": 734,
+					"width": 42,
+					"height": 26,
+					"sizingX": "move",
+					"dataSource": "vJCL_D02_btnClose",
+					"tooltip": {
+						"$ref": "/SOURCES/tips.json#/閉じる"
+					},
+					"action": "accept",
+					"shortcutKey": "w",
+					"shortcutAccel": true,
+					"text": "Ｘ",
+					"class": "JCL_YuGothic12",
+					"focusable": false,
+					"events": [
+						"onClick"
+					]
+				},
+				"vJCL_D01_fldColorText": {
+					"type": "input",
+					"top": 334,
+					"left": 194,
+					"width": 68,
+					"height": 17,
+					"dataSource": "vJCL_D01_fldColorText",
+					"class": "JCL_YuGothic12",
+					"focusable": true,
+					"fill": "automatic",
+					"borderStyle": "sunken",
+					"enterable": true,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"sizingY": "fixed",
+					"entryFilter": "&\"a-f;A-F;0-9;#\"",
+					"method": "ObjectMethods/vJCL_D01_fldColorText.4dm"
+				},
+				"vJCL_D01_btnUseColor5": {
+					"type": "button",
+					"top": 329,
+					"left": 84,
+					"width": 94,
+					"height": 26,
+					"dataSource": "vJCL_D01_btnUseColor4",
+					"action": "",
+					"text": "右の色を使う",
+					"events": [
+						"onClick"
+					],
+					"class": "JCL_YuGothic12",
+					"method": "ObjectMethods/vJCL_D01_btnUseColor5.4dm"
+				},
+				"vJCL_D01_rectColor6": {
+					"type": "rectangle",
+					"top": 329,
+					"left": 298,
+					"width": 90,
+					"height": 26,
+					"fill": "#f5deb3",
+					"stroke": "#f5deb3"
+				},
+				"Text3": {
+					"type": "text",
+					"top": 341,
+					"left": 280,
+					"width": 26,
+					"height": 16,
+					"text": "→",
+					"class": "JCL_YuGothic12"
 				}
 			}
 		}
 	],
-	"geometryStamp": 670,
+	"geometryStamp": 1024,
 	"$4d": {
 		"version": "1",
 		"kind": "form"
@@ -479,6 +529,6 @@
 			"View 1": {}
 		}
 	},
-	"width": 754,
-	"height": 399
+	"width": 796,
+	"height": 398
 }

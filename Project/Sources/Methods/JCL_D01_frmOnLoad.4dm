@@ -16,7 +16,7 @@ $color_txt:=vJCL_D01_objFrm.color_text
 OBJECT SET RGB COLORS:C628(*; "vJCL_D01_rectTitle"; $color_txt; $color_txt)
 
 //別の色５色
-JCL_D01_btnColor
+JCL_D01_btnReRandom
 
 //使用済み色リスト、テーブル一覧
 JCL_D01_lstTB_make

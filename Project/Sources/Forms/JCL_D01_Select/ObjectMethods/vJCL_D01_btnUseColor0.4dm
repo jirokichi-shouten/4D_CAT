@@ -1,2 +1,2 @@
-JCL_D01_btnUseColor
+vD01.btnUseColor()
 

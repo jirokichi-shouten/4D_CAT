@@ -1,0 +1,1 @@
+vD01.btnReRandom()

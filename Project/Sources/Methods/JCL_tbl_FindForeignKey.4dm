@@ -1,5 +1,5 @@
 //%attributes = {}
-//zz_tbl_FindForeignKey
+//JCL_tbl_FindForeignKey
 //20240225 wat
 //外部キーを見つける。xx_yy_IDの形を見つけて、配列でテーブル名を返す。
 //相手のテーブルが存在したら外部キーとみなす
