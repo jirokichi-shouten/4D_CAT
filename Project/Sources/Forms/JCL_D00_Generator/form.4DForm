@@ -262,8 +262,8 @@
 				"vD00_txtNumOfTables": {
 					"type": "input",
 					"top": 86,
-					"left": 20,
-					"width": 170,
+					"left": 10,
+					"width": 150,
 					"height": 17,
 					"dataSource": "vD00_txtNumOfTables",
 					"class": "JCL_YuGothic12",
@@ -673,7 +673,7 @@
 				"vD00_varTableName": {
 					"type": "input",
 					"top": 86,
-					"left": 500,
+					"left": 498,
 					"width": 550,
 					"height": 17,
 					"dataSource": "vD00_varTableName",
@@ -715,8 +715,8 @@
 					"type": "button",
 					"text": "テーブル削除",
 					"top": 68,
-					"left": 352,
-					"width": 90,
+					"left": 314,
+					"width": 84,
 					"height": 26,
 					"focusable": false,
 					"method": "ObjectMethods/vD00_btnDelete.4dm",
@@ -731,8 +731,8 @@
 					"type": "button",
 					"text": "フォーム作成",
 					"top": 68,
-					"left": 152,
-					"width": 90,
+					"left": 134,
+					"width": 84,
 					"height": 26,
 					"focusable": false,
 					"method": "ObjectMethods/vD00_btnFom.4dm",
@@ -747,8 +747,8 @@
 					"type": "button",
 					"text": "全テーブル削除",
 					"top": 68,
-					"left": 252,
-					"width": 90,
+					"left": 404,
+					"width": 84,
 					"height": 26,
 					"focusable": false,
 					"method": "ObjectMethods/vD00_btnAllDel.4dm",
@@ -778,11 +778,27 @@
 					"action": "",
 					"class": "JCL_YuGothic12",
 					"method": "ObjectMethods/vD00_btnFormColor.4dm"
+				},
+				"vD00_btnFomAll": {
+					"type": "button",
+					"text": "全フォーム作成",
+					"top": 68,
+					"left": 224,
+					"width": 84,
+					"height": 26,
+					"focusable": false,
+					"method": "ObjectMethods/vD00_btnFomAll.4dm",
+					"events": [
+						"onClick"
+					],
+					"action": "",
+					"class": "JCL_YuGothic10",
+					"dataSource": "vD00_btnFomAll"
 				}
 			}
 		}
 	],
-	"geometryStamp": 865,
+	"geometryStamp": 976,
 	"editor": {
 		"activeView": "View 1",
 		"defaultView": "View 1",

@@ -382,6 +382,7 @@ Function btnForm()
 	
 	$nr:=JCL_lst_Selected_Long(->vD00_lstT; ->vD00_lstT_nr)
 	$tblName:=JCL_lst_Selected_Str(->vD00_lstT; ->vD00_lstT_name)
+	
 	If ($tblName#"")
 		
 		ARRAY TEXT:C222($aryFieldName; 0)  //フィールド名の配列
@@ -400,11 +401,8 @@ Function btnForm()
 		$methodName:=$tbl_prefix+"01_List"
 		$cnt:=JCL_method_isExist($methodName)
 		If ($cnt=0)
-			//なければ作る
-			$form:=cs:C1710.JCL_formGenerator.new()
-			$form.formGenerator($tblName)
-			//JCL_prj_FormGeneratorV4($tblName)
-			RELOAD PROJECT:C1739  //20240207 4djapan
+			//なければ作る。01がないことでまだ未作成と判断、01だけでなく02と03も作成
+			This:C1470.formGenerateOne($tblName)
 			
 			//メッセージ
 			$msg:="メソッド「"+$methodName+"」を作成しました。"
@@ -427,6 +425,54 @@ Function btnForm()
 		OBJECT SET RGB COLORS:C628(*; "vD00_varTableName"; 0; $color)
 		
 		This:C1470.setControlsValues()
+		
+	End if 
+	
+Function btnFormAll()
+	//20240424 wat
+	//すべてのテーブルについてフォームを生成
+	
+	C_LONGINT:C283($i; $sizeOfAry)
+	
+	$sizeOfAry:=Size of array:C274(vD00_lstT_name)
+	For ($i; 1; $sizeOfAry)
+		$tblName:=vD00_lstT_name{$i}
+		
+		This:C1470.formGenerateOne($tblName)
+		
+	End for 
+	
+	This:C1470.lstT_make()
+	
+	This:C1470.setControlsValues()
+	
+Function formGenerateOne()
+	//20240424 wat refactor
+	//テーブル名を与えて、01メソッドがなければフォーム生成
+	
+	C_TEXT:C284($1; $tblName)
+	$tblName:=$1
+	C_TEXT:C284($methodName)
+	C_TEXT:C284($tbl_prefix)
+	C_LONGINT:C283($pos)
+	ARRAY TEXT:C222($aryFieldName; 0)  //フィールド名の配列
+	ARRAY TEXT:C222($aryFieldType; 0)  //フィールドタイプの配列
+	ARRAY TEXT:C222($aryFieldLength; 0)  //文字長さの配列
+	ARRAY TEXT:C222($aryFieldIndex; 0)
+	C_LONGINT:C283($cnt)
+	
+	//テーブルからプリフィックスを取得、
+	JCL_tbl_Fields_withAttr($tblName; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength; ->$aryFieldIndex)
+	$pos:=Position:C15("_"; $aryFieldName{1})
+	$tbl_prefix:=Substring:C12($aryFieldName{1}; 1; $pos-1)  //フィールド名のプリフィックス
+	//メソッド実行
+	$methodName:=$tbl_prefix+"01_List"
+	$cnt:=JCL_method_isExist($methodName)
+	If ($cnt=0)
+		//なければ作る。01がないことでまだ未作成と判断、01だけでなく02と03も作成
+		$form:=cs:C1710.JCL_formGenerator.new()
+		$form.formGenerator($tblName)
+		RELOAD PROJECT:C1739  //20240207 4djapan recommends
 		
 	End if 
 	
@@ -454,7 +500,6 @@ Function lstT_OnDblClicked()
 	//20240214 wat
 	
 	This:C1470.btnForm()
-	
 	
 Function lstT_OnSelChange()
 	//D00_lstT_OnSelChange
