@@ -219,6 +219,7 @@ $aryFieldNamePtr : Pointer; $aryFieldTypePtr : Pointer; $aryFieldLengthPtr : Poi
 		$objCol:=New object:C1471
 		$objCol.name:="v"+$objParam.frm_prefix+"_lst"+$aryFieldNamePtr->{$i}
 		$objCol.dataSource:=$objCol.name
+		$objCol.dataSourceTypeHint:=This:C1470.columnDataType($aryFieldTypePtr->{$i})  //20240428
 		$objCol.width:=This:C1470.fldWidth($aryFieldTypePtr->{$i}; $aryFieldLengthPtr->{$i})
 		If ($foreign="foreign")
 			//IDフィールド以外は入力可
@@ -448,8 +449,6 @@ Function method_replaceTags()
 	
 	$0:=$newmethod
 	
-	
-	
 Function addInput($objParam : Object; $top : Integer; $left : Integer; $width : Integer; $height : Integer; \
 $enterable : Boolean)
 	//フォームの件数文字列
@@ -474,4 +473,44 @@ $enterable : Boolean)
 	End if 
 	This:C1470.objForm.pages[1].objects[$new_name].dropping:="custom"
 	This:C1470.objForm.pages[1].objects[$new_name].events:=New collection:C1472("onDataChange")
+	
+Function columnDataType()
+	//20240428
+	//列に設定するデータ型(dataSourceTypeHintに指定する）の文字列を返す
+	//https://developer.4d.com/docs/ja/18/FormObjects/propertiesObject/
+	
+	C_TEXT:C284($1; $fieldType)
+	$fieldType:=$1  //フィールド型
+	C_TEXT:C284($0; $dataType)
+	
+	$dataType:=""
+	Case of 
+		: ($fieldType="Is Alpha Field")
+			$dataType:="text"
+			
+		: ($fieldType="Is Text")
+			$dataType:="text"
+			
+		: ($fieldType="Is Real")
+			$dataType:="number"
+			
+		: ($fieldType="Is Integer")
+			$dataType:="integer"
+			
+		: ($fieldType="Is LongInt")
+			$dataType:="integer"
+			
+		: ($fieldType="Is Date")
+			$dataType:="date"
+			
+		: ($fieldType="Is Time")
+			$dataType:="time"
+			
+		: ($fieldType="Is Boolean")
+			$dataType:="boolean"
+			
+	End case 
+	
+	$0:=$dataType
+	
 	

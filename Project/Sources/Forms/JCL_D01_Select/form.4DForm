@@ -181,7 +181,8 @@
 								"timeFormat": "hh_mm_ss",
 								"class": "JCL_Meiryo12"
 							},
-							"textAlign": "center"
+							"textAlign": "center",
+							"dataSourceTypeHint": "integer"
 						},
 						{
 							"name": "vD01_lstTB_COLOR",
@@ -521,7 +522,7 @@
 			}
 		}
 	],
-	"geometryStamp": 1024,
+	"geometryStamp": 1026,
 	"$4d": {
 		"version": "1",
 		"kind": "form"
