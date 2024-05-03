@@ -34,6 +34,27 @@
 		},
 		{
 			"objects": {
+				"vD00_varTableName": {
+					"type": "input",
+					"top": 86,
+					"left": 498,
+					"width": 712,
+					"height": 356,
+					"dataSource": "vD00_varTableName",
+					"class": "JCL_YuGothic12",
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"enterable": false,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"sizingY": "fixed",
+					"textAlign": "automatic"
+				},
 				"Rectangle1": {
 					"type": "rectangle",
 					"top": 0,
@@ -670,27 +691,6 @@
 						}
 					]
 				},
-				"vD00_varTableName": {
-					"type": "input",
-					"top": 86,
-					"left": 498,
-					"width": 550,
-					"height": 17,
-					"dataSource": "vD00_varTableName",
-					"class": "JCL_YuGothic12",
-					"focusable": false,
-					"fill": "transparent",
-					"borderStyle": "none",
-					"enterable": false,
-					"contextMenu": "none",
-					"dragging": "none",
-					"dropping": "custom",
-					"events": [
-						"onDataChange"
-					],
-					"sizingY": "fixed",
-					"textAlign": "automatic"
-				},
 				"vD00_btnFields": {
 					"type": "button",
 					"text": "テーブル追加",
@@ -759,9 +759,9 @@
 					"class": "JCL_YuGothic10",
 					"dataSource": "vD00_btnAllDel"
 				},
-				"vD00_btnFormColor": {
+				"vD00_btnColors": {
 					"type": "button",
-					"text": "フォームカラー",
+					"text": "カラー設定",
 					"top": 16,
 					"left": 498,
 					"width": 110,
@@ -769,7 +769,7 @@
 					"events": [
 						"onClick"
 					],
-					"dataSource": "vD00_btnFormColor",
+					"dataSource": "vD00_btnColors",
 					"shortcutAccel": false,
 					"shortcutControl": false,
 					"shortcutShift": false,
@@ -777,7 +777,7 @@
 					"shortcutKey": "",
 					"action": "",
 					"class": "JCL_YuGothic12",
-					"method": "ObjectMethods/vD00_btnFormColor.4dm"
+					"method": "ObjectMethods/vD00_btnColors.4dm"
 				},
 				"vD00_btnFomAll": {
 					"type": "button",
@@ -794,11 +794,31 @@
 					"action": "",
 					"class": "JCL_YuGothic10",
 					"dataSource": "vD00_btnFomAll"
+				},
+				"vD00_btnFormColor": {
+					"type": "button",
+					"text": "カラー変更",
+					"top": 75,
+					"left": 895,
+					"width": 110,
+					"height": 26,
+					"events": [
+						"onClick"
+					],
+					"dataSource": "vD00_btnFormColor",
+					"shortcutAccel": false,
+					"shortcutControl": false,
+					"shortcutShift": false,
+					"shortcutAlt": false,
+					"shortcutKey": "",
+					"action": "",
+					"class": "JCL_YuGothic12",
+					"method": "ObjectMethods/vD00_btnFormColor.4dm"
 				}
 			}
 		}
 	],
-	"geometryStamp": 976,
+	"geometryStamp": 1027,
 	"editor": {
 		"activeView": "View 1",
 		"defaultView": "View 1",

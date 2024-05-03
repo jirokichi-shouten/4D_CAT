@@ -12,7 +12,6 @@ SET MENU BAR:C67(2)
 
 // ジェネレータメイン画面表示
 //D00_Display
-C_OBJECT:C1216(vD00)
+C_OBJECT:C1216($d00)
 
-vD00:=cs:C1710.JCL_D00.new()
-$dlgOk:=vD00.start()
+$d00:=cs:C1710.JCL_D00.new()

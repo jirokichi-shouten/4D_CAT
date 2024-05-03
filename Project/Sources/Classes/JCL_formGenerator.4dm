@@ -616,3 +616,63 @@ Function aryFieldPtr_make()
 	
 	$0:=$numOfFields
 	
+Function setTitleRectColor()
+	//20240416 wat
+	//テーブルフォームのファイルを取得、タイトルレクトの色を変更
+	
+	C_TEXT:C284($1; $form_name)
+	$form_name:=$1
+	C_TEXT:C284($2; $rec_name)
+	$rec_name:=$2
+	C_TEXT:C284($3; $table_name)
+	$table_name:=$3
+	C_TEXT:C284($4; $color_text)
+	$color_text:=$4
+	C_TEXT:C284($tbl_prefix)
+	C_LONGINT:C283($tblNr)
+	C_OBJECT:C1216($file)
+	C_OBJECT:C1216($frmDef)
+	
+	//プレフィックス
+	$tbl_prefix:=JCL_tbl_GetPrefix_fromStructure($table_name)
+	$tblNr:=JCL_tbl_GetNumber($table_name)
+	
+	//フォームのファイルを取得
+	$file:=File:C1566("/SOURCES/TableForms/"+String:C10($tblNr)+"/"+$form_name+"/form.4DForm")
+	If ($file.exists)
+		$frmDef:=JSON Parse:C1218($file.getText("UTF-8"; Document with LF:K24:22))
+		
+		$frmDef.pages[1].objects[$rec_name].fill:=$color_text
+		$frmDef.pages[1].objects[$rec_name].stroke:=$color_text
+		
+		$file.setText(JSON Stringify:C1217($frmDef; *))
+		
+	End if 
+	
+Function formColor_apply()
+	//20240503
+	//フォームカラーを適用する。
+	
+	C_TEXT:C284($1; $table_name)
+	$table_name:=$1
+	C_TEXT:C284($2; $color_text)
+	$color_text:=$2
+	C_TEXT:C284($tbl_prefix)
+	C_TEXT:C284($form_name)
+	
+	//プレフィックス
+	$tbl_prefix:=JCL_tbl_GetPrefix_fromStructure($table_name)
+	
+	$form_name:=$tbl_prefix+"01_List"
+	$rec_name:="v"+$tbl_prefix+"01_rectTitle"
+	This:C1470.setTitleRectColor($form_name; $rec_name; $table_name; $color_text)
+	
+	$form_name:=$tbl_prefix+"02_Input"
+	$rec_name:="v"+$tbl_prefix+"02_rectTitle"
+	This:C1470.setTitleRectColor($form_name; $rec_name; $table_name; $color_text)
+	
+	$form_name:=$tbl_prefix+"03_Input"
+	$rec_name:="v"+$tbl_prefix+"03_rectTitle"
+	This:C1470.setTitleRectColor($form_name; $rec_name; $table_name; $color_text)
+	
+	

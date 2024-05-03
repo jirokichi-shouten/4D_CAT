@@ -2,17 +2,21 @@
 //20240329 Jirokichi
 //fieldsを読み込んでテーブルを追加するフォームに関連するメソッドをクラス化
 
+Class extends JCL_formGenerator
+
 Class constructor
 	//JCL_D00_Generatorダイアログ
 	//現在DBに登録されているテーブルとフィールドをラベル付きで表示
 	//JCL_D02_fieldsを呼び出して、fieldsを読み込んでテーブル生成、それらにフォームを生成できる
 	
 	//usage:
-	//vD00:=cs.JCL_D00.new()
-	//vD00.display()
-	//vD00.display()
+	//$d00:=cs.JCL_D00.new()
 	
-Function start()
+	Super:C1705()
+	
+	C_OBJECT:C1216(cD00)
+	cD00:=This:C1470  // 20240503 クラス用プロセス変数定義
+	
 	This:C1470.display()
 	
 Function display()
@@ -73,6 +77,7 @@ Function frmDefInit()
 	vD00_varVersion:="0.9(1) 20240204"
 	vD00_varVersion:="0.9(2) 20240211"
 	vD00_varVersion:="1.0(3) 20240304"
+	vD00_varVersion:="1.0(4) 20240503"
 	
 	C_TEXT:C284(vD00_var4D_DataFile)
 	vD00_var4D_DataFile:="データファイル："+Data file:C490
@@ -187,6 +192,7 @@ Function setControlsValues()
 	JCL_btn_SetEnable_byListSelect(->vD00_lstT; ->vD00_btnList)
 	JCL_btn_SetEnable_byListSelect(->vD00_lstT; ->vD00_btnFom)
 	JCL_btn_SetEnable_byListSelect(->vD00_lstT; ->vD00_btnDelete)
+	JCL_btn_SetEnable_byListSelect(->vD00_lstT; ->vD00_btnFormColor)
 	
 Function btnDelAllTables()
 	//D00_btnAllDel
@@ -264,18 +270,58 @@ Function btnDelAllTables()
 		End if 
 	End if 
 	
-Function brnFormColor()
+Function btnColors()
 	//20240415
 	//フォームカラーの色変更ダイアログを表示
-	C_OBJECT:C1216(vD01)
+	C_OBJECT:C1216($d01)
 	
-	vD01:=cs:C1710.JCL_D01.new()
-	$dlgOk:=vD01.start()
-	If ($dlgOk=1)
+	$d01:=cs:C1710.JCL_D01.new()
+	If ($d01.dlg_ok=1)
 		//リスト再作成
 		This:C1470.lstFL_init()
 		
 		This:C1470.lstT_make()
+		
+		This:C1470.setControlsValues()
+		
+	End if 
+	
+Function btnFormColor()
+	//20240503
+	//フォームカラーの色変更、カラーピッカーを表示
+	
+	C_TEXT:C284($tblName)
+	C_LONGINT:C283($color)
+	C_LONGINT:C283($nr)
+	
+	$nr:=JCL_lst_Selected_Long(->vD00_lstT; ->vD00_lstT_nr)
+	$color:=JCL_lst_Selected_Long(->vD00_lstT; ->vD00_lstT_Color)
+	$tblName:=JCL_lst_Selected_Str(->vD00_lstT; ->vD00_lstT_name)
+	
+	//カラーピッカー
+	$new_color:=Select RGB color:C956($color)
+	If ($new_color#0)
+		//色変更
+		$color_text:=Replace string:C233(String:C10($new_color; "&$"); "$"; "")
+		
+		$len:=6-Length:C16($color_text)
+		For ($i; 1; $len)
+			$color_text:="0"+$color_text
+			
+		End for 
+		$color_text:="#"+$color_text
+		
+		//フォームカラーを変更
+		Super:C1706.formColor_apply($tblName; $color_text)
+		
+		//リスト再作成
+		//This.lstFL_init()
+		
+		This:C1470.lstT_make()
+		
+		//行選択
+		JCL_lst_SetSelect_byLong(->vD00_lstT; ->vD00_lstT_nr; $nr)
+		This:C1470.lstT_OnSelChange()
 		
 		This:C1470.setControlsValues()
 		
@@ -524,13 +570,6 @@ Function lstT_OnSelChange()
 			$color:=0x00FFFFFF
 		End if 
 		OBJECT SET RGB COLORS:C628(*; "vD00_varTableName"; 0; $color)
-		
-		//Else 
-		////選択行なし状態
-		//$color:=0x00FFFFFF
-		//OBJECT SET RGB COLORS(*; "vD00_varTableName"; 0; $color)
-		
-		//vD00_varTableName:=""
 		
 	End if 
 	

@@ -2,38 +2,33 @@
 //20240416 wat
 //フォームカラーの色変更ダイアログを表示
 
+Class extends JCL_formGenerator
+
+property tbl_name : Text
+property color_text : Text
+property dlg_ok : Integer
+
 Class constructor
 	//usage:
-	//C_OBJECT(vD01)
-	//vD01:=cs.JCL_D01.new()
-	//$dlgOk:=vD01.start()
+	//C_OBJECT($dlg)
+	//$dlg:=cs.JCL_D01.new()
+	//If ($dlg.dlg_ok=1)
+	////do something
+	//End if 
 	
-Function start()
-	//JCL_prj_FG_Dlg
-	//20220430 wat 色選びにこだわってしまうことがある。その時に効率がいいように５色から選ぶようにした。
+	Super:C1705()
 	
-	C_LONGINT:C283($0; $dlgOk)
+	C_OBJECT:C1216(cD01)
+	cD01:=This:C1470  // 20240503 クラス用プロセス変数定義
 	
-	//プロセス変数
-	This:C1470.defInit()
+	This:C1470.tbl_name:=""
+	This:C1470.color_text:=JCL_utl_ColorRandom
+	This:C1470.dlg_ok:=0
 	
 	//画面表示
 	$dlgOk:=This:C1470.display()
-	If ($dlgOk=1)
-		
-	End if 
 	
-	$0:=$dlgOk
-	
-Function defInit()
-	//JCL_D01_DefInit
-	//20210607 wat
-	//プロセス変数
-	
-	C_OBJECT:C1216(vJCL_D01_objFrm)
-	vJCL_D01_objFrm:=New object:C1471
-	vJCL_D01_objFrm.tbl_name:=""
-	vJCL_D01_objFrm.color_text:=JCL_utl_ColorRandom
+	This:C1470.dlg_ok:=$dlgOk
 	
 Function display()
 	//JCL_D01_Display
@@ -83,7 +78,7 @@ Function frmOnLoad()
 	
 	//色
 	C_TEXT:C284($color_txt)
-	$color_txt:=vJCL_D01_objFrm.color_text
+	$color_txt:=This:C1470.color_text
 	OBJECT SET RGB COLORS:C628(*; "vJCL_D01_rectTitle"; $color_txt; $color_txt)
 	
 	//別の色５色
@@ -219,7 +214,7 @@ Function popTableName()
 	
 	$selStr:=vJCL_D01_aryTableName{vJCL_D01_aryTableName}
 	
-	vJCL_D01_objFrm.tbl_name:=$selStr
+	This:C1470.tbl_name:=$selStr
 	
 Function btnUseColor()
 	//JCL_D01_btnUseColor
@@ -242,7 +237,7 @@ Function btnUseColor()
 	OBJECT SET RGB COLORS:C628(*; "vJCL_D01_rectTitle"; $color_text; $color_text)
 	
 	//呼び出し元に戻すためのプロセス変数に代入
-	vJCL_D01_objFrm.color_text:=$color_text
+	This:C1470.color_text:=$color_text
 	
 Function lstTB()
 	//JCL_D01_lstTB
@@ -262,7 +257,7 @@ Function lstTB()
 				
 			End if 
 			
-			vJCL_D01_objFrm.tbl_name:=$tblName
+			This:C1470.tbl_name:=$tblName
 			
 	End case 
 	
@@ -308,7 +303,7 @@ Function btnUseEditColor()
 	OBJECT SET RGB COLORS:C628(*; "vJCL_D01_rectTitle"; $color_text; $color_text)
 	
 	//呼び出し元に戻すためのプロセス変数に代入
-	vJCL_D01_objFrm.color_text:=$color_text
+	This:C1470.color_text:=$color_text
 	
 Function btnApply()
 	//20240416 wat
@@ -319,59 +314,13 @@ Function btnApply()
 	C_TEXT:C284($tbl_prefix)
 	C_TEXT:C284($form_name)
 	
-	$table_name:=vJCL_D01_objFrm.tbl_name
-	$color_text:=vJCL_D01_objFrm.color_text
+	$table_name:=This:C1470.tbl_name
+	$color_text:=This:C1470.color_text
 	
-	//プレフィックス
-	$tbl_prefix:=JCL_tbl_GetPrefix_fromStructure($table_name)
-	
-	$form_name:=$tbl_prefix+"01_List"
-	$rec_name:="v"+$tbl_prefix+"01_rectTitle"
-	This:C1470.setTitleRectColor($form_name; $rec_name; $table_name; $color_text)
-	
-	$form_name:=$tbl_prefix+"02_Input"
-	$rec_name:="v"+$tbl_prefix+"02_rectTitle"
-	This:C1470.setTitleRectColor($form_name; $rec_name; $table_name; $color_text)
-	
-	$form_name:=$tbl_prefix+"03_Input"
-	$rec_name:="v"+$tbl_prefix+"03_rectTitle"
-	This:C1470.setTitleRectColor($form_name; $rec_name; $table_name; $color_text)
+	This:C1470.formColor_apply($table_name; $color_text)
 	
 	//使用済み色リスト、テーブル一覧
 	JCL_lst_Deselect(->vD01_lstTB)
 	
 	This:C1470.lstTB_make()
-	
-Function setTitleRectColor()
-	//20240416 wat
-	//テーブルフォームのファイルを取得、タイトルレクトの色を変更
-	
-	C_TEXT:C284($1; $form_name)
-	$form_name:=$1
-	C_TEXT:C284($2; $rec_name)
-	$rec_name:=$2
-	C_TEXT:C284($3; $table_name)
-	$table_name:=$3
-	C_TEXT:C284($4; $color_text)
-	$color_text:=$4
-	C_TEXT:C284($tbl_prefix)
-	C_LONGINT:C283($tblNr)
-	C_OBJECT:C1216($file)
-	C_OBJECT:C1216($frmDef)
-	
-	//プレフィックス
-	$tbl_prefix:=JCL_tbl_GetPrefix_fromStructure($table_name)
-	$tblNr:=JCL_tbl_GetNumber($table_name)
-	
-	//フォームのファイルを取得
-	$file:=File:C1566("/SOURCES/TableForms/"+String:C10($tblNr)+"/"+$form_name+"/form.4DForm")
-	If ($file.exists)
-		$frmDef:=JSON Parse:C1218($file.getText("UTF-8"; Document with LF:K24:22))
-		
-		$frmDef.pages[1].objects[$rec_name].fill:=$color_text
-		$frmDef.pages[1].objects[$rec_name].stroke:=$color_text
-		
-		$file.setText(JSON Stringify:C1217($frmDef; *))
-		
-	End if 
 	

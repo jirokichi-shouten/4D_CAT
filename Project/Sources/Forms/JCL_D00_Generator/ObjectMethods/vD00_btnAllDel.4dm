@@ -1,2 +1,2 @@
-vD00.btnDelAllTables()
+cD00.btnDelAllTables()
 
