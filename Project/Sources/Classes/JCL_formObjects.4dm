@@ -2,12 +2,16 @@
 //20240215 wat
 //フォームを作成するクラス
 
+Class extends JCL_tbl
+
 Class constructor
 	C_OBJECT:C1216($1; $objParam)
 	$objParam:=$1
 	C_TEXT:C284($text)
 	//C_OBJECT($objForm)
 	//$objForm:=New object
+	
+	Super:C1705()
 	
 	//リソースフォルダから、テンプレートファイルの内容を読み込んで　解析
 	$text:=File:C1566("/RESOURCES/JCL4D_Resources/frm_templates/"+$objParam.form_templates).getText()
@@ -20,7 +24,7 @@ Function saveForm($objParam : Object)
 	$file:=New object:C1471
 	C_LONGINT:C283($tblNr)
 	C_TEXT:C284($tblNrText)
-	$tblNr:=JCL_tbl_GetNumber($objParam.tbl_name)  //テーブル番号
+	$tblNr:=Super:C1706.getNumber($objParam.tbl_name)  //テーブル番号
 	$tblNrText:=String:C10($tblNr)
 	$file:=File:C1566("/SOURCES/TableForms/"+String:C10($tblNr)+"/"+$objParam.frm_name+"/form.4DForm")
 	$bool:=$file.create()
@@ -35,7 +39,7 @@ Function saveObjMethod($objParam : Object; $objName : Text)
 	$file:=New object:C1471
 	C_LONGINT:C283($tblNr)
 	C_TEXT:C284($tblNrText)
-	$tblNr:=JCL_tbl_GetNumber($objParam.tbl_name)  //テーブル番号
+	$tblNr:=Super:C1706.getNumber($objParam.tbl_name)  //テーブル番号
 	$tblNrText:=String:C10($tblNr)
 	C_TEXT:C284($new_name)
 	$new_name:="v"+$objName+".4dm"
@@ -54,13 +58,13 @@ Function saveFrmMethod($objParam : Object)
 	$file:=New object:C1471
 	C_LONGINT:C283($tblNr)
 	C_TEXT:C284($tblNrText)
-	$tblNr:=JCL_tbl_GetNumber($objParam.tbl_name)  //テーブル番号
+	$tblNr:=Super:C1706.getNumber($objParam.tbl_name)  //テーブル番号
 	$tblNrText:=String:C10($tblNr)
 	$file:=File:C1566("/SOURCES/TableForms/"+String:C10($tblNr)+"/"+$objParam.frm_name+"/method.4dm")
 	$bool:=$file.create()
 	
 	//ファイルの中身はメソッド名だけ //日付時刻文字列を作成
-	$dateTimeStr:=JCL_str_dateTime(Current date:C33; Current time:C178)
+	$dateTimeStr:=Super:C1706.dateTime(Current date:C33; Current time:C178)
 	$body:="//"+$dateTimeStr+Char:C90(Carriage return:K15:38)
 	$body:=$body+$objParam.frm_prefix+"_frm"
 	
@@ -384,15 +388,23 @@ Function method_replaceTags()
 		$method:=Replace string:C233($method; "[--PARENT_TBL_NAME]"; $objParam.parent_tbl_name)
 	End if 
 	
+	//関連テーブル用のメソッド部分（オンロード）を作成
+	C_TEXT:C284($related_method)
+	$related_method:=This:C1470.relatedMethods($objParam)
+	$method:=Replace string:C233($method; "[--RELATED_ONLOAD]"; $related_method)
+	
+	
+	
+	
+	
 	$len:=Length:C16($method)
 	$buf:=""
 	$newmethod:=""
 	For ($h; 1; $len)
 		$chr:=Substring:C12($method; $h; 1)
 		$buf:=$buf+$chr
-		
-		If (JCL_str_IsCharRetrurn($chr))  //add_ikeda 20221227
-			
+		If ($chr=Char:C90(Line feed:K15:40))
+			//１行取り出した
 			$pos_row:=Position:C15("[--FIELD]"; $buf)
 			If ($pos_row#0)
 				For ($k; 1; Size of array:C274($aryFieldNamePtr->))
@@ -401,11 +413,11 @@ Function method_replaceTags()
 					$newBuf:=Replace string:C233($buf; "[--FIELD]"; $fieldName)
 					
 					//データ型を置換
-					$dataType:=JCL_tbl_DataType($aryFieldTypePtr->{$k})
+					$dataType:=Super:C1706.dataType($aryFieldTypePtr->{$k})
 					$newBuf:=Replace string:C233($newBuf; "[--DATATYPE]"; $dataType)
 					
 					//初期値を置換
-					$initValue:=JCL_tbl_InitValue($aryFieldTypePtr->{$k})
+					$initValue:=Super:C1706.initValue($aryFieldTypePtr->{$k})
 					$newBuf:=Replace string:C233($newBuf; "[--INITVALUE]"; $initValue)
 					
 					$newmethod:=$newmethod+$newBuf
@@ -424,11 +436,11 @@ Function method_replaceTags()
 						End if 
 						
 						//データ型を置換
-						$dataType:=JCL_tbl_DataType($aryFieldTypePtr->{$k})
+						$dataType:=Super:C1706.dataType($aryFieldTypePtr->{$k})
 						$newBuf:=Replace string:C233($newBuf; "[--DATATYPE]"; $dataType)
 						
 						//初期値を置換
-						$initValue:=JCL_tbl_InitValue($aryFieldTypePtr->{$k})
+						$initValue:=Super:C1706.initValue($aryFieldTypePtr->{$k})
 						$newBuf:=Replace string:C233($newBuf; "[--INITVALUE]"; $initValue)
 						
 						$newmethod:=$newmethod+$newBuf
@@ -448,6 +460,46 @@ Function method_replaceTags()
 	End for 
 	
 	$0:=$newmethod
+	
+Function relatedMethods()
+	//関連テーブル用のメソッド部分を作成
+	//20240509 
+	
+	C_OBJECT:C1216($1; $objParam)
+	$objParam:=$1
+	C_TEXT:C284($0; $body)
+	$body:=""
+	C_LONGINT:C283($cnt)
+	ARRAY LONGINT:C221($aryTblNr; 0)
+	ARRAY TEXT:C222($aryForeignKeys; 0)
+	
+	$cnt:=Super:C1706.findForeignKey($objParam.tbl_name; ->$aryTblNr; ->$aryForeignKeys)
+	For ($i; 1; $cnt)
+		$tblName:=Table name:C256($aryTblNr{$i})
+		$tbl_prefix:=Super:C1706.getPrefix_fromStructure($tblName)  //テーブルプリフィックス
+		
+		//プロセス変数定義
+		$body:=$body+$objParam.frm_prefix+"_frmDefInit_"+$objParam.tbl_prefix+Char:C90(13)
+		
+		// デフォルトの並び順を指定、配列にプッシュしておく
+		$body:=$body+"  // デフォルトの並び順を指定、配列にプッシュしておく\n"
+		$body:=$body+"JCL_lst_Sort_Append (\"v"+$objParam.frm_prefix+"_lst"+$objParam.tbl_prefix
+		$body:=$body+"\";->v"+$objParam.frm_prefix+"_lst"+$objParam.tbl_prefix+"_HeaderNames"
+		$body:=$body+";->v"+$objParam.frm_prefix+"_lst"+$objParam.tbl_prefix+"_SortOrders;1;2) //降順"+Char:C90(13)
+		
+		$body:=$body+"JCL_lst_Sort_Append (\"v"+$objParam.frm_prefix+"_lst"+$objParam.tbl_prefix
+		$body:=$body+"\";->v"+$objParam.frm_prefix+"_lst"+$objParam.tbl_prefix+"_HeaderNames"
+		$body:=$body+";->v"+$objParam.frm_prefix+"_lst"+$objParam.tbl_prefix+"_SortOrders;2;1) //昇順"+Char:C90(13)
+		
+		//配列作成　[--FRM_PREFIX]_lst[--TBL_PREFIX]_Make 
+		$body:=$body+$objParam.frm_prefix+"_lst"+$objParam.tbl_prefix+Char:C90(13)
+		
+		//[--FRM_PREFIX]_SetControlsValues_[--TBL_PREFIX]
+		$body:=$body+$objParam.frm_prefix+"_SetControlsValues_"+$objParam.tbl_prefix+Char:C90(13)
+		
+	End for 
+	
+	$0:=$body
 	
 Function addInput($objParam : Object; $top : Integer; $left : Integer; $width : Integer; $height : Integer; \
 $enterable : Boolean)

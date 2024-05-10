@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<Preferences4D>
+
+  <BuildApp>
+    <BuildCompiled>False</BuildCompiled>
+    <IncludeAssociatedFolders>True</IncludeAssociatedFolders>
+    <BuildComponent>False</BuildComponent>
+    <BuildApplicationSerialized>True</BuildApplicationSerialized>
+    <RuntimeVL>
+      <LastDataPathLookup>ByAppName</LastDataPathLookup>
+    </RuntimeVL>
+    <SourcesFiles>
+      <RuntimeVL>
+        <RuntimeVLIncludeIt>True</RuntimeVLIncludeIt>
+        <RuntimeVLMacFolder>Macintosh HD:Applications:4D:4D 20.3:4D Volume Desktop.app:</RuntimeVLMacFolder>
+      </RuntimeVL>
+      <CS>
+        <ServerIncludeIt>False</ServerIncludeIt>
+        <ClientMacIncludeIt>False</ClientMacIncludeIt>
+        <ClientWinIncludeIt>False</ClientWinIncludeIt>
+      </CS>
+    </SourcesFiles>
+    <CS>
+      <BuildServerApplication>False</BuildServerApplication>
+      <LastDataPathLookup>ByAppName</LastDataPathLookup>
+      <MacCompiledDatabaseToWinIncludeIt>False</MacCompiledDatabaseToWinIncludeIt>
+      <MacCompiledDatabaseToWin></MacCompiledDatabaseToWin>
+      <ServerEmbedsProjectDirectoryFile>False</ServerEmbedsProjectDirectoryFile>
+      <BuildCSUpgradeable>False</BuildCSUpgradeable>
+      <CurrentVers>1</CurrentVers>
+      <HardLink></HardLink>
+    </CS>
+    <BuildApplicationName>JCL4D_CAT</BuildApplicationName>
+    <BuildMacDestFolder>::JCL4D_CAT_Build:</BuildMacDestFolder>
+    <ArrayExcludedPluginName>
+      <ItemsCount>0</ItemsCount>
+    </ArrayExcludedPluginName>
+    <ArrayExcludedPluginID>
+      <ItemsCount>0</ItemsCount>
+    </ArrayExcludedPluginID>
+    <ArrayExcludedComponentName>
+      <ItemsCount>0</ItemsCount>
+    </ArrayExcludedComponentName>
+    <ArrayExcludedModuleName>
+      <ItemsCount>0</ItemsCount>
+    </ArrayExcludedModuleName>
+    <Licenses>
+      <ArrayLicenseMac>
+        <ItemsCount>1</ItemsCount>
+        <Item1>Macintosh HD:Users:wat:Library:Application Support:4D:Licenses:PNUD200UUC0018PNS7017BC.license4D</Item1>
+      </ArrayLicenseMac>
+    </Licenses>
+    <SignApplication>
+      <MacSignature>True</MacSignature>
+      <MacCertificate>Developer ID Application: Jirokichi and Company (7N7LW3N8XG)</MacCertificate>
+      <AdHocSign>True</AdHocSign>
+    </SignApplication>
+  </BuildApp>
+
+</Preferences4D>

@@ -1,5 +1,5 @@
-//[--FRM_PREFIX]_frmDefInit[--TBL_PREFIX]
-//FG form03 v202402 [--DATE]
+//[--FRM_PREFIX]_frmDefInit_[--TBL_PREFIX]
+//FG form03 v202405 [--DATE]
 //[--TABLE] プロセス変数宣言・初期化
 
 C_TEXT(v[--FRM_PREFIX]_varNumOf[--TBL_PREFIX]Recs)

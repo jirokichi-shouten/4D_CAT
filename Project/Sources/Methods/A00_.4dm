@@ -3,6 +3,12 @@
 //20240207 ike wat
 //コミットコメントはここでタイプしてからGitHub Desktopに貼ると便利
 
+//20240510 hisa wat
+//関連テーブルのリストボックス作成メソッドを修正中。
+//JCL_tblクラス、JCL_strクラスを追加。
+//20240508 hisa ike wat
+//catFormをリネーム、JCL_formObjectsに変更。
+
 //20240503 wat yabe
 //JCL_formGeneratorをD01とD00の親クラスに設定
 //D00に［カラー設定］ボタン追加、カラーピッカーを表示して色設定できるようになった。

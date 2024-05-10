@@ -4,7 +4,10 @@
 //20240316 yabe wat
 //JCLのうちテーブル生成関連のメソッド群をクラス化
 
+Class extends JCL_tbl
+
 Class constructor
+	Super:C1705()
 	
 Function createTable($inBlockText : Text)
 	//fieldsのテキストブロックからSQL文を作成、実行してテーブル作成
@@ -194,9 +197,8 @@ Function createOneMethod()
 	For ($h; 1; $len)
 		$chr:=Substring:C12($method; $h; 1)
 		$row:=$row+$chr
-		
-		If (JCL_str_IsCharRetrurn($chr))  //add_ikeda 20221227
-			
+		If ($chr=Char:C90(Line feed:K15:40))
+			//１行取り出した
 			$pos_row:=Position:C15("[--FIELD]"; $row)
 			If ($pos_row#0)
 				For ($k; 1; Size of array:C274($aryFieldNamePtr->))
@@ -205,11 +207,11 @@ Function createOneMethod()
 					$newRow:=Replace string:C233($row; "[--FIELD]"; $fieldName)
 					
 					//データ型を置換
-					$dataType:=JCL_tbl_DataType($aryFieldTypePtr->{$k})
+					$dataType:=Super:C1706.dataType($aryFieldTypePtr->{$k})
 					$newRow:=Replace string:C233($newRow; "[--DATATYPE]"; $dataType)
 					
 					//初期値を置換
-					$initValue:=JCL_tbl_InitValue($aryFieldTypePtr->{$k})
+					$initValue:=Super:C1706.initValue($aryFieldTypePtr->{$k})
 					$newRow:=Replace string:C233($newRow; "[--INITVALUE]"; $initValue)
 					$newmethod:=$newmethod+$newRow
 					
