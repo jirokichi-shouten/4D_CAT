@@ -9,55 +9,74 @@
 //連続してフォームを生成する機能もあったほうがいい：テーブル名を与えて繰り返すモジュール。D00 btnForm()を修正したい。
 //20240508 catFormをリネーム、JCL_formObjectsに変更。
 
+property jcl : Text
 
 Class constructor
+	//20240512
+	//fieldsキャッシュを作成
+	
+	//ラベルをキャッシュ
+	cs:C1710.JCL_fields.new().cache_make()
+	
 	
 Function colorRandom()
 	//JCL_utl_ColorRandom
 	//20210317 wat
 	//ランダムなカラーを黄金比配分で生成して文字列で返す
 	//$color_txt:="#FF0000"
-	//引数に強度を与える。強度：1 - 8
+	//引数に強度を与える。強度：2 - 8
 	
 	C_LONGINT:C283($1; $intensity)
 	$intensity:=$1
 	C_TEXT:C284($0; $retStr)
 	$retStr:=""
-	C_LONGINT:C283($num; $red; $green; $blue)
-	C_TEXT:C284($tmpStr)
-	ARRAY LONGINT:C221($aryColor; 0)
+	C_LONGINT:C283($red; $green; $blue)
+	C_TEXT:C284($blueStr; $greenStr; $blueStr)
+	ARRAY LONGINT:C221($aryColor; 8)
+	ARRAY LONGINT:C221($aryColor2; 8)
 	
-	APPEND TO ARRAY:C911($aryColor; 255)  //1
-	APPEND TO ARRAY:C911($aryColor; 218)  //2
-	APPEND TO ARRAY:C911($aryColor; 195)  //3
-	APPEND TO ARRAY:C911($aryColor; 158)  //4
-	APPEND TO ARRAY:C911($aryColor; 97)  //5
-	APPEND TO ARRAY:C911($aryColor; 60)  //6
-	APPEND TO ARRAY:C911($aryColor; 37)  //7
-	APPEND TO ARRAY:C911($aryColor; 0)  //8
+	$aryColor{1}:=255
+	$aryColor{2}:=218
+	$aryColor{3}:=195
+	$aryColor{4}:=158
+	$aryColor{5}:=97
+	$aryColor{6}:=60
+	$aryColor{7}:=37
+	$aryColor{8}:=0
 	
-	$red:=$aryColor{Mod:C98(Random:C100; $intensity)}
-	$green:=$aryColor{Mod:C98(Random:C100; $intensity)}
-	$blue:=$aryColor{Mod:C98(Random:C100; $intensity)}
+	For ($i; 1; $intensity)
+		$aryColor2{$i}:=$aryColor{$i}
+	End for 
 	
-	$num:=16*16*$red+16*$green+$blue
-	$num:=16*16*($red+100)+16*($green+100)+$blue+100
-	$tmpStr:=String:C10($num; "&$")
-	If (Length:C16($tmpStr)>7)
-		$tmpStr:=Substring:C12($tmpStr; 3; 8)
-		
-	Else 
-		$tmpStr:=Substring:C12($tmpStr; 2; 7)
-		
+	$red:=$aryColor2{(Mod:C98(Random:C100; $intensity))+1}
+	$green:=$aryColor2{(Mod:C98(Random:C100; $intensity))+1}
+	$blue:=$aryColor2{(Mod:C98(Random:C100; $intensity))+1}
+	
+	//16進数表示
+	$redStr:=String:C10($red; "&$")
+	$greenStr:=String:C10($green; "&$")
+	$blueStr:=String:C10($blue; "&$")
+	
+	//＄を除く
+	$redStr:=Replace string:C233($redStr; "$"; "")
+	$greenStr:=Replace string:C233($greenStr; "$"; "")
+	$blueStr:=Replace string:C233($blueStr; "$"; "")
+	
+	//各色を２桁にする
+	If (Length:C16($redStr)=1)
+		$redStr:="0"+$redStr
 	End if 
-	
-	$retStr:="#"
-	$retStr:=$retStr+Replace string:C233($tmpStr; "$"; "")
+	If (Length:C16($greenStr)=1)
+		$greenStr:="0"+$greenStr
+	End if 
+	If (Length:C16($blueStr)=1)
+		$blueStr:="0"+$blueStr
+	End if 
+	$retStr:="#"+$redStr+$greenStr+$blueStr
 	
 	$0:=$retStr
 	
-	
-Function formGenerator()
+Function generate()
 	//JCL_prj_FormGeneratorV4
 	//20240210 wat
 	//フォームを作る//フォームジェネレータ02、一覧用リストボックスのフォーム「xx01_List」を作る
@@ -79,43 +98,38 @@ Function formGenerator()
 		C_OBJECT:C1216($objParam)
 		$objParam:=New object:C1471
 		$objParam.tbl_name:=$tblName
-		$objParam.color_text:=This:C1470.colorRandom(8)
+		$objParam.color_text:=This:C1470.colorRandom(3)
 		
 		//ストラクチャからフィールド情報を取得
+		cs:C1710.JCL_tbl.new().getFieldsAttributes($tblName; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength; ->$aryFieldIndex)
 		JCL_tbl_Fields_withAttr($tblName; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength; ->$aryFieldIndex)
 		$sizeOfAry:=Size of array:C274($aryFieldName)
 		If ($sizeOfAry>0)
-			//JCL_fields_cache
-			C_OBJECT:C1216($jcl_fields)
-			$jcl_fields:=cs:C1710.JCL_fields.new()
-			$jcl_fields.cache_make()
+			//テーブルからプリフィックスを取得、
+			C_LONGINT:C283($pos)
+			$pos:=Position:C15("_"; $aryFieldName{1})  //１つ目のフィールド名のアンダーバーの前の文字列
+			$objParam.tbl_prefix:=Substring:C12($aryFieldName{1}; 1; $pos-1)  //テーブル名のプリフィックス
+			
+			//01フォーム作成
+			$objParam.frm_name:=$objParam.tbl_prefix+"01_List"  //フォーム名
+			$objParam.frm_prefix:=$objParam.tbl_prefix+"01"  //フォーム名のプリフィックス
+			$objParam.form_templates:="frm01_v3.txt"
+			$objParam.method_templates:="method_templates_list"
+			This:C1470.form01_List($objParam; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength)
+			
+			//02フォーム作成
+			$objParam.frm_name:=$objParam.tbl_prefix+"02_Input"  //フォーム名
+			$objParam.frm_prefix:=$objParam.tbl_prefix+"02"  //フォーム名のプリフィックス
+			$objParam.method_templates:="method_templates_form"
+			This:C1470.form02_Input_add($objParam; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength)
+			
+			//03フォーム作成
+			$objParam.frm_name:=$objParam.tbl_prefix+"03_Input"  //フォーム名
+			$objParam.frm_prefix:=$objParam.tbl_prefix+"03"  //フォーム名のプリフィックス
+			$objParam.method_templates:="method_templates_form"
+			This:C1470.form03_Input_mod($objParam; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength)
 			
 		End if 
-		
-		//テーブルからプリフィックスを取得、
-		C_LONGINT:C283($pos)
-		$pos:=Position:C15("_"; $aryFieldName{1})  //１つ目のフィールド名のアンダーバーの前の文字列
-		$objParam.tbl_prefix:=Substring:C12($aryFieldName{1}; 1; $pos-1)  //テーブル名のプリフィックス
-		
-		//01フォーム作成
-		$objParam.frm_name:=$objParam.tbl_prefix+"01_List"  //フォーム名
-		$objParam.frm_prefix:=$objParam.tbl_prefix+"01"  //フォーム名のプリフィックス
-		$objParam.form_templates:="frm01_v3.txt"
-		$objParam.method_templates:="method_templates_list"
-		This:C1470.form01_List($objParam; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength)
-		
-		//02フォーム作成
-		$objParam.frm_name:=$objParam.tbl_prefix+"02_Input"  //フォーム名
-		$objParam.frm_prefix:=$objParam.tbl_prefix+"02"  //フォーム名のプリフィックス
-		$objParam.method_templates:="method_templates_form"
-		This:C1470.form02_Input_add($objParam; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength)
-		
-		//03フォーム作成
-		$objParam.frm_name:=$objParam.tbl_prefix+"03_Input"  //フォーム名
-		$objParam.frm_prefix:=$objParam.tbl_prefix+"03"  //フォーム名のプリフィックス
-		$objParam.method_templates:="method_templates_form"
-		This:C1470.form03_Input_mod($objParam; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength)
-		
 	End if 
 	
 Function form01_List()
@@ -416,14 +430,14 @@ Function form03_Input_mod()
 	ARRAY LONGINT:C221($aryTblNr; 0)
 	ARRAY TEXT:C222($aryForeignKeys; 0)
 	ARRAY TEXT:C222($aryFieldIndex; 0)
-	$cnt:=$frm.findForeignKey($objParam.tbl_name; ->$aryTblNr; ->$aryForeignKeys)
+	$cnt:=cs:C1710.JCL_tbl.new().findForeignKey($objParam.tbl_name; ->$aryTblNr; ->$aryForeignKeys)
 	For ($i; 1; $cnt)
 		$tblName:=Table name:C256($aryTblNr{$i})
-		$tbl_prefix:=$frm.getPrefix_fromStructure($tblName)  //テーブルプリフィックス
+		$tbl_prefix:=cs:C1710.JCL_tbl.new().getPrefix_fromStructure($tblName)  //テーブルプリフィックス
 		ARRAY TEXT:C222($aryFieldName; 0)  //フィールド名の配列
 		ARRAY TEXT:C222($aryFieldType; 0)  //フィールドタイプの配列
 		ARRAY TEXT:C222($aryFieldLength; 0)  //文字長さの配列
-		JCL_tbl_Fields_withAttr($tblName; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength; ->$aryFieldIndex)
+		cs:C1710.JCL_tbl.new().getFieldsAttributes($tblName; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength; ->$aryFieldIndex)
 		
 		//関連テーブルが複数ある場合、リストボックスとボタンたちをオフセットしていく
 		$offset:=20*$i
@@ -565,4 +579,37 @@ Function formColor_apply()
 	$rec_name:="v"+$tbl_prefix+"03_rectTitle"
 	This:C1470.setTitleRectColor($form_name; $rec_name; $table_name; $color_text)
 	
+Function formColor_get()
+	//JCL_tbl_GetFormColor
+	//20221006 hisa wat
+	//生成したテーブルフォームの色を取得、タイトルのバックにあるレクトから
+	//ex: vFO01_rectTitleのような名前のフォームオブジェクト
+	
+	C_TEXT:C284($1; $table_name)
+	$table_name:=$1
+	C_LONGINT:C283($0; $color)
+	$color:=0
+	C_TEXT:C284($tbl_prefix)
+	C_TEXT:C284($rec_name; $frmPrefix; $form_name)
+	C_LONGINT:C283($tblNr)
+	C_POINTER:C301($tblPtr)
+	
+	//プレフィックス
+	$tbl_prefix:=cs:C1710.JCL_tbl.new().getPrefix_fromStructure($table_name)
+	
+	$rec_name:="v"+$tbl_prefix+"01_rectTitle"
+	$frmPrefix:=$tbl_prefix+"01"
+	$form_name:=$frmPrefix+"_List"
+	$tblNr:=cs:C1710.JCL_tbl.new().getNumber($table_name)
+	$tblPtr:=Table:C252($tblNr)
+	
+	$exist:=JCL_frm_isExist($tblPtr; $form_name)
+	If ($exist=True:C214)
+		FORM LOAD:C1103($tblPtr->; $form_name)
+		OBJECT GET RGB COLORS:C1074(*; $rec_name; $color)
+		FORM UNLOAD:C1299
+		
+	End if 
+	
+	$0:=$color
 	

@@ -2,8 +2,6 @@
 //20240416 wat
 //フォームカラーの色変更ダイアログを表示
 
-Class extends JCL_formGenerator
-
 property tbl_name : Text
 property color_text : Text
 property dlg_ok : Integer
@@ -16,13 +14,11 @@ Class constructor
 	////do something
 	//End if 
 	
-	Super:C1705()
-	
 	C_OBJECT:C1216(cD01)
 	cD01:=This:C1470  // 20240503 クラス用プロセス変数定義
 	
 	This:C1470.tbl_name:=""
-	This:C1470.color_text:=JCL_utl_ColorRandom
+	This:C1470.color_text:=cs:C1710.JCL_formGenerator.new().colorRandom(7)
 	This:C1470.dlg_ok:=0
 	
 	//画面表示
@@ -82,7 +78,7 @@ Function frmOnLoad()
 	OBJECT SET RGB COLORS:C628(*; "vJCL_D01_rectTitle"; $color_txt; $color_txt)
 	
 	//別の色５色
-	This:C1470.randomColors()
+	This:C1470.fiveColors()
 	
 	//使用済み色リスト、テーブル一覧
 	This:C1470.lstTB_make()
@@ -105,6 +101,8 @@ Function frmDefInit()
 	C_TEXT:C284(vJCL_D01_varColorText2)
 	C_TEXT:C284(vJCL_D01_varColorText3)
 	C_TEXT:C284(vJCL_D01_varColorText4)
+	C_TEXT:C284(vJCL_D01_varColorText5)
+	C_TEXT:C284(vJCL_D01_varColorText6)
 	C_TEXT:C284(vJCL_D01_fldColorText)
 	
 	//色リスト
@@ -140,32 +138,40 @@ Function popTableName_make()
 		End if 
 	End for 
 	
-Function randomColors()
+Function fiveColors()
 	//vJCL_D01_btnColor
 	//20210607 wat
 	//別の色５色
 	
 	C_TEXT:C284($color_txt)
 	
-	$color_txt:=JCL_utl_ColorRandom
+	$color_txt:=cs:C1710.JCL_formGenerator.new().colorRandom(8)
 	OBJECT SET RGB COLORS:C628(*; "vJCL_D01_rectColor0"; $color_txt; $color_txt)
 	vJCL_D01_varColorText0:=$color_txt
 	
-	$color_txt:=JCL_utl_ColorRandom
+	$color_txt:=cs:C1710.JCL_formGenerator.new().colorRandom(7)
 	OBJECT SET RGB COLORS:C628(*; "vJCL_D01_rectColor1"; $color_txt; $color_txt)
 	vJCL_D01_varColorText1:=$color_txt
 	
-	$color_txt:=JCL_utl_ColorRandom
+	$color_txt:=cs:C1710.JCL_formGenerator.new().colorRandom(6)
 	OBJECT SET RGB COLORS:C628(*; "vJCL_D01_rectColor2"; $color_txt; $color_txt)
 	vJCL_D01_varColorText2:=$color_txt
 	
-	$color_txt:=JCL_utl_ColorRandom
+	$color_txt:=cs:C1710.JCL_formGenerator.new().colorRandom(5)
 	OBJECT SET RGB COLORS:C628(*; "vJCL_D01_rectColor3"; $color_txt; $color_txt)
 	vJCL_D01_varColorText3:=$color_txt
 	
-	$color_txt:=JCL_utl_ColorRandom
+	$color_txt:=cs:C1710.JCL_formGenerator.new().colorRandom(4)
 	OBJECT SET RGB COLORS:C628(*; "vJCL_D01_rectColor4"; $color_txt; $color_txt)
 	vJCL_D01_varColorText4:=$color_txt
+	
+	$color_txt:=cs:C1710.JCL_formGenerator.new().colorRandom(3)
+	OBJECT SET RGB COLORS:C628(*; "vJCL_D01_rectColor5"; $color_txt; $color_txt)
+	vJCL_D01_varColorText5:=$color_txt
+	
+	$color_txt:=cs:C1710.JCL_formGenerator.new().colorRandom(2)
+	OBJECT SET RGB COLORS:C628(*; "vJCL_D01_rectColor6"; $color_txt; $color_txt)
+	vJCL_D01_varColorText6:=$color_txt
 	
 Function lstTB_make()
 	//JCL_D01_lstTB_make
@@ -179,7 +185,7 @@ Function lstTB_make()
 	C_LONGINT:C283($color)
 	
 	//すべてのテーブル
-	JCL_tbl_Names_fromStructure(->$aryTblNames)
+	cs:C1710.JCL_tbl.new().getNames(->$aryTblNames)
 	
 	COPY ARRAY:C226($aryTblNames; vD01_lstTB_NAME)
 	
@@ -266,7 +272,7 @@ Function btnReRandom()
 	//20210607 wat
 	//別の色５色
 	
-	This:C1470.randomColors()
+	This:C1470.fiveColors()
 	
 Function fldColorText()
 	//20240417 wat
@@ -286,7 +292,7 @@ Function fldColorText()
 			If (($len=7) & ($first_char="#"))
 				//右のレクトに色を適用する
 				$color_txt:=vJCL_D01_fldColorText
-				OBJECT SET RGB COLORS:C628(*; "vJCL_D01_rectColor6"; $color_txt; $color_txt)
+				OBJECT SET RGB COLORS:C628(*; "vJCL_D01_rectColor10"; $color_txt; $color_txt)
 				
 			End if 
 			
@@ -317,7 +323,7 @@ Function btnApply()
 	$table_name:=This:C1470.tbl_name
 	$color_text:=This:C1470.color_text
 	
-	This:C1470.formColor_apply($table_name; $color_text)
+	cs:C1710.JCL_formGenerator.new().formColor_apply($table_name; $color_text)
 	
 	//使用済み色リスト、テーブル一覧
 	JCL_lst_Deselect(->vD01_lstTB)

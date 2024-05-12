@@ -2,16 +2,12 @@
 //20240215 wat
 //フォームを作成するクラス
 
-Class extends JCL_tbl
-
 Class constructor
 	C_OBJECT:C1216($1; $objParam)
 	$objParam:=$1
 	C_TEXT:C284($text)
 	//C_OBJECT($objForm)
 	//$objForm:=New object
-	
-	Super:C1705()
 	
 	//リソースフォルダから、テンプレートファイルの内容を読み込んで　解析
 	$text:=File:C1566("/RESOURCES/JCL4D_Resources/frm_templates/"+$objParam.form_templates).getText()
@@ -24,7 +20,7 @@ Function saveForm($objParam : Object)
 	$file:=New object:C1471
 	C_LONGINT:C283($tblNr)
 	C_TEXT:C284($tblNrText)
-	$tblNr:=Super:C1706.getNumber($objParam.tbl_name)  //テーブル番号
+	$tblNr:=cs:C1710.JCL_tbl.new().getNumber($objParam.tbl_name)  //テーブル番号
 	$tblNrText:=String:C10($tblNr)
 	$file:=File:C1566("/SOURCES/TableForms/"+String:C10($tblNr)+"/"+$objParam.frm_name+"/form.4DForm")
 	$bool:=$file.create()
@@ -39,7 +35,7 @@ Function saveObjMethod($objParam : Object; $objName : Text)
 	$file:=New object:C1471
 	C_LONGINT:C283($tblNr)
 	C_TEXT:C284($tblNrText)
-	$tblNr:=Super:C1706.getNumber($objParam.tbl_name)  //テーブル番号
+	$tblNr:=cs:C1710.JCL_tbl.new().getNumber($objParam.tbl_name)  //テーブル番号
 	$tblNrText:=String:C10($tblNr)
 	C_TEXT:C284($new_name)
 	$new_name:="v"+$objName+".4dm"
@@ -58,13 +54,13 @@ Function saveFrmMethod($objParam : Object)
 	$file:=New object:C1471
 	C_LONGINT:C283($tblNr)
 	C_TEXT:C284($tblNrText)
-	$tblNr:=Super:C1706.getNumber($objParam.tbl_name)  //テーブル番号
+	$tblNr:=cs:C1710.JCL_tbl.new().getNumber($objParam.tbl_name)  //テーブル番号
 	$tblNrText:=String:C10($tblNr)
 	$file:=File:C1566("/SOURCES/TableForms/"+String:C10($tblNr)+"/"+$objParam.frm_name+"/method.4dm")
 	$bool:=$file.create()
 	
 	//ファイルの中身はメソッド名だけ //日付時刻文字列を作成
-	$dateTimeStr:=Super:C1706.dateTime(Current date:C33; Current time:C178)
+	$dateTimeStr:=cs:C1710.JCL_str.new().dateTime(Current date:C33; Current time:C178)
 	$body:="//"+$dateTimeStr+Char:C90(Carriage return:K15:38)
 	$body:=$body+$objParam.frm_prefix+"_frm"
 	
@@ -413,11 +409,11 @@ Function method_replaceTags()
 					$newBuf:=Replace string:C233($buf; "[--FIELD]"; $fieldName)
 					
 					//データ型を置換
-					$dataType:=Super:C1706.dataType($aryFieldTypePtr->{$k})
+					$dataType:=cs:C1710.JCL_tbl.new().dataType($aryFieldTypePtr->{$k})
 					$newBuf:=Replace string:C233($newBuf; "[--DATATYPE]"; $dataType)
 					
 					//初期値を置換
-					$initValue:=Super:C1706.initValue($aryFieldTypePtr->{$k})
+					$initValue:=cs:C1710.JCL_tbl.new().initValue($aryFieldTypePtr->{$k})
 					$newBuf:=Replace string:C233($newBuf; "[--INITVALUE]"; $initValue)
 					
 					$newmethod:=$newmethod+$newBuf
@@ -436,11 +432,11 @@ Function method_replaceTags()
 						End if 
 						
 						//データ型を置換
-						$dataType:=Super:C1706.dataType($aryFieldTypePtr->{$k})
+						$dataType:=cs:C1710.JCL_tbl.new().dataType($aryFieldTypePtr->{$k})
 						$newBuf:=Replace string:C233($newBuf; "[--DATATYPE]"; $dataType)
 						
 						//初期値を置換
-						$initValue:=Super:C1706.initValue($aryFieldTypePtr->{$k})
+						$initValue:=cs:C1710.JCL_tbl.new().initValue($aryFieldTypePtr->{$k})
 						$newBuf:=Replace string:C233($newBuf; "[--INITVALUE]"; $initValue)
 						
 						$newmethod:=$newmethod+$newBuf
@@ -473,10 +469,10 @@ Function relatedMethods()
 	ARRAY LONGINT:C221($aryTblNr; 0)
 	ARRAY TEXT:C222($aryForeignKeys; 0)
 	
-	$cnt:=Super:C1706.findForeignKey($objParam.tbl_name; ->$aryTblNr; ->$aryForeignKeys)
+	$cnt:=cs:C1710.JCL_tbl.new().findForeignKey($objParam.tbl_name; ->$aryTblNr; ->$aryForeignKeys)
 	For ($i; 1; $cnt)
 		$tblName:=Table name:C256($aryTblNr{$i})
-		$tbl_prefix:=Super:C1706.getPrefix_fromStructure($tblName)  //テーブルプリフィックス
+		$tbl_prefix:=cs:C1710.JCL_tbl.new().getPrefix_fromStructure($tblName)  //テーブルプリフィックス
 		
 		//プロセス変数定義
 		$body:=$body+$objParam.frm_prefix+"_frmDefInit_"+$objParam.tbl_prefix+Char:C90(13)
@@ -498,6 +494,7 @@ Function relatedMethods()
 		$body:=$body+$objParam.frm_prefix+"_SetControlsValues_"+$objParam.tbl_prefix+Char:C90(13)
 		
 	End for 
+	ALERT:C41($body)
 	
 	$0:=$body
 	

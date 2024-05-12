@@ -2,8 +2,6 @@
 //20240329 Jirokichi
 //fieldsを読み込んでテーブルを追加するフォームに関連するメソッドをクラス化
 
-Class extends JCL_formGenerator
-
 Class constructor
 	//JCL_D00_Generatorダイアログ
 	//現在DBに登録されているテーブルとフィールドをラベル付きで表示
@@ -11,8 +9,6 @@ Class constructor
 	
 	//usage:
 	//$d00:=cs.JCL_D00.new()
-	
-	Super:C1705()
 	
 	C_OBJECT:C1216(cD00)
 	cD00:=This:C1470  // 20240503 クラス用プロセス変数定義
@@ -147,7 +143,7 @@ Function lstT_make()
 			$label:=$jcl_fields.cache_TableLabel_get($table_name)
 			APPEND TO ARRAY:C911(vD00_lstT_label; $label)  //テーブルラベル
 			
-			$tbl_prefix:=JCL_tbl_GetPrefix_fromStructure($table_name)
+			$tbl_prefix:=cs:C1710.JCL_tbl.new().getPrefix_fromStructure($table_name)
 			APPEND TO ARRAY:C911(vD00_lstT_prefix; $tbl_prefix)  //プレフィックス
 			
 			$tblPtr:=Table:C252($i)
@@ -155,7 +151,7 @@ Function lstT_make()
 			$numOfRecs:=Records in selection:C76($tblPtr->)
 			APPEND TO ARRAY:C911(vD00_lstT_numOfRecs; $numOfRecs)  //レコード数
 			
-			$color:=JCL_tbl_GetFormColor($table_name)
+			$color:=cs:C1710.JCL_formGenerator.new().formColor_get($table_name)
 			If ($color=0)
 				$color:=0x00FFFFFF  //白
 			End if 
@@ -312,7 +308,7 @@ Function btnFormColor()
 		$color_text:="#"+$color_text
 		
 		//フォームカラーを変更
-		Super:C1706.formColor_apply($tblName; $color_text)
+		cs:C1710.JCL_formGenerator.new().formColor_apply($tblName; $color_text)
 		
 		//リスト再作成
 		//This.lstFL_init()
@@ -420,28 +416,18 @@ Function btnForm()
 	//20240210 wat
 	//テーブル一覧で選択されているテーブルの一覧表ウインドウを表示
 	
-	C_TEXT:C284($tblName)
-	C_TEXT:C284($methodName)
-	C_TEXT:C284($tbl_prefix)
-	C_LONGINT:C283($pos)
 	C_LONGINT:C283($nr)
+	C_TEXT:C284($tblName)
+	C_TEXT:C284($tbl_prefix)
+	C_TEXT:C284($methodName)
+	C_TEXT:C284($msg)
 	
 	$nr:=JCL_lst_Selected_Long(->vD00_lstT; ->vD00_lstT_nr)
 	$tblName:=JCL_lst_Selected_Str(->vD00_lstT; ->vD00_lstT_name)
 	
 	If ($tblName#"")
-		
-		ARRAY TEXT:C222($aryFieldName; 0)  //フィールド名の配列
-		ARRAY TEXT:C222($aryFieldType; 0)  //フィールドタイプの配列
-		ARRAY TEXT:C222($aryFieldLength; 0)  //文字長さの配列
-		ARRAY TEXT:C222($aryFieldIndex; 0)
-		C_TEXT:C284($fblName)
-		
-		C_TEXT:C284($tbl_prefix)
 		//テーブルからプリフィックスを取得、
-		JCL_tbl_Fields_withAttr($tblName; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength; ->$aryFieldIndex)
-		$pos:=Position:C15("_"; $aryFieldName{1})
-		$tbl_prefix:=Substring:C12($aryFieldName{1}; 1; $pos-1)  //フィールド名のプリフィックス
+		$tbl_prefix:=cs:C1710.JCL_tbl.new().getPrefix_fromStructure($tblName)
 		
 		//メソッド実行
 		$methodName:=$tbl_prefix+"01_List"
@@ -500,24 +486,18 @@ Function formGenerateOne()
 	$tblName:=$1
 	C_TEXT:C284($methodName)
 	C_TEXT:C284($tbl_prefix)
-	C_LONGINT:C283($pos)
-	ARRAY TEXT:C222($aryFieldName; 0)  //フィールド名の配列
-	ARRAY TEXT:C222($aryFieldType; 0)  //フィールドタイプの配列
-	ARRAY TEXT:C222($aryFieldLength; 0)  //文字長さの配列
-	ARRAY TEXT:C222($aryFieldIndex; 0)
 	C_LONGINT:C283($cnt)
 	
 	//テーブルからプリフィックスを取得、
-	JCL_tbl_Fields_withAttr($tblName; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength; ->$aryFieldIndex)
-	$pos:=Position:C15("_"; $aryFieldName{1})
-	$tbl_prefix:=Substring:C12($aryFieldName{1}; 1; $pos-1)  //フィールド名のプリフィックス
+	$tbl_prefix:=cs:C1710.JCL_tbl.new().getPrefix_fromStructure($tblName)
+	
 	//メソッド実行
 	$methodName:=$tbl_prefix+"01_List"
 	$cnt:=JCL_method_isExist($methodName)
 	If ($cnt=0)
 		//なければ作る。01がないことでまだ未作成と判断、01だけでなく02と03も作成
-		$form:=cs:C1710.JCL_formGenerator.new()
-		$form.formGenerator($tblName)
+		cs:C1710.JCL_formGenerator.new().generate($tblName)
+		
 		RELOAD PROJECT:C1739  //20240207 4djapan recommends
 		
 	End if 
@@ -577,6 +557,7 @@ Function lstT_OnSelChange()
 	
 Function lstFL_init()
 	//20240417
+	//フィールド一覧をクリアする
 	
 	JCL_lst_Deselect(->vD00_lstFL)
 	

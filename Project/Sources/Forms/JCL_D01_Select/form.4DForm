@@ -36,7 +36,7 @@
 			"objects": {
 				"vJCL_D01_rectColor0": {
 					"type": "rectangle",
-					"top": 136,
+					"top": 116,
 					"left": 182,
 					"width": 90,
 					"height": 26,
@@ -107,7 +107,7 @@
 				},
 				"vJCL_D01_btnReRandom": {
 					"type": "button",
-					"top": 136,
+					"top": 116,
 					"left": 298,
 					"width": 94,
 					"height": 26,
@@ -122,7 +122,7 @@
 				},
 				"vJCL_D01_btnUseColor0": {
 					"type": "button",
-					"top": 136,
+					"top": 116,
 					"left": 84,
 					"width": 94,
 					"height": 26,
@@ -234,7 +234,7 @@
 				},
 				"vJCL_D01_btnUseColor1": {
 					"type": "button",
-					"top": 170,
+					"top": 150,
 					"left": 84,
 					"width": 94,
 					"height": 26,
@@ -249,7 +249,7 @@
 				},
 				"vJCL_D01_rectColor1": {
 					"type": "rectangle",
-					"top": 170,
+					"top": 150,
 					"left": 182,
 					"width": 90,
 					"height": 26,
@@ -259,7 +259,7 @@
 				},
 				"vJCL_D01_btnUseColor2": {
 					"type": "button",
-					"top": 204,
+					"top": 184,
 					"left": 84,
 					"width": 94,
 					"height": 26,
@@ -274,7 +274,7 @@
 				},
 				"vJCL_D01_rectColor2": {
 					"type": "rectangle",
-					"top": 204,
+					"top": 184,
 					"left": 182,
 					"width": 90,
 					"height": 26,
@@ -283,7 +283,7 @@
 				},
 				"vJCL_D01_btnUseColor3": {
 					"type": "button",
-					"top": 238,
+					"top": 218,
 					"left": 84,
 					"width": 94,
 					"height": 26,
@@ -298,7 +298,7 @@
 				},
 				"vJCL_D01_rectColor3": {
 					"type": "rectangle",
-					"top": 238,
+					"top": 218,
 					"left": 182,
 					"width": 90,
 					"height": 26,
@@ -307,7 +307,7 @@
 				},
 				"vJCL_D01_btnUseColor4": {
 					"type": "button",
-					"top": 272,
+					"top": 252,
 					"left": 84,
 					"width": 94,
 					"height": 26,
@@ -322,7 +322,7 @@
 				},
 				"vJCL_D01_rectColor4": {
 					"type": "rectangle",
-					"top": 272,
+					"top": 252,
 					"left": 182,
 					"width": 90,
 					"height": 26,
@@ -340,7 +340,7 @@
 				},
 				"vJCL_D01_varColorText0": {
 					"type": "input",
-					"top": 141,
+					"top": 121,
 					"left": 194,
 					"width": 68,
 					"height": 17,
@@ -361,7 +361,7 @@
 				},
 				"vJCL_D01_varColorText1": {
 					"type": "input",
-					"top": 175,
+					"top": 155,
 					"left": 194,
 					"width": 68,
 					"height": 17,
@@ -382,7 +382,7 @@
 				},
 				"vJCL_D01_varColorText2": {
 					"type": "input",
-					"top": 209,
+					"top": 189,
 					"left": 194,
 					"width": 68,
 					"height": 17,
@@ -403,7 +403,7 @@
 				},
 				"vJCL_D01_varColorText3": {
 					"type": "input",
-					"top": 243,
+					"top": 223,
 					"left": 194,
 					"width": 68,
 					"height": 17,
@@ -424,7 +424,7 @@
 				},
 				"vJCL_D01_varColorText4": {
 					"type": "input",
-					"top": 277,
+					"top": 257,
 					"left": 194,
 					"width": 68,
 					"height": 17,
@@ -466,7 +466,7 @@
 				},
 				"vJCL_D01_fldColorText": {
 					"type": "input",
-					"top": 334,
+					"top": 364,
 					"left": 194,
 					"width": 68,
 					"height": 17,
@@ -486,24 +486,24 @@
 					"entryFilter": "&\"a-f;A-F;0-9;#\"",
 					"method": "ObjectMethods/vJCL_D01_fldColorText.4dm"
 				},
-				"vJCL_D01_btnUseColor5": {
+				"vJCL_D01_btnUseColor10": {
 					"type": "button",
-					"top": 329,
+					"top": 359,
 					"left": 84,
 					"width": 94,
 					"height": 26,
-					"dataSource": "vJCL_D01_btnUseColor4",
+					"dataSource": "vJCL_D01_btnUseColor10",
 					"action": "",
 					"text": "右の色を使う",
 					"events": [
 						"onClick"
 					],
 					"class": "JCL_YuGothic12",
-					"method": "ObjectMethods/vJCL_D01_btnUseColor5.4dm"
+					"method": "ObjectMethods/vJCL_D01_btnUseColor10.4dm"
 				},
-				"vJCL_D01_rectColor6": {
+				"vJCL_D01_rectColor10": {
 					"type": "rectangle",
-					"top": 329,
+					"top": 359,
 					"left": 298,
 					"width": 90,
 					"height": 26,
@@ -512,17 +512,107 @@
 				},
 				"Text3": {
 					"type": "text",
-					"top": 341,
+					"top": 371,
 					"left": 280,
 					"width": 26,
 					"height": 16,
 					"text": "→",
 					"class": "JCL_YuGothic12"
+				},
+				"vJCL_D01_btnUseColor5": {
+					"type": "button",
+					"top": 286,
+					"left": 84,
+					"width": 94,
+					"height": 26,
+					"dataSource": "vJCL_D01_btnUseColor5",
+					"action": "",
+					"text": "この色を使う",
+					"events": [
+						"onClick"
+					],
+					"class": "JCL_YuGothic12",
+					"method": "ObjectMethods/vJCL_D01_btnUseColor5.4dm"
+				},
+				"vJCL_D01_rectColor5": {
+					"type": "rectangle",
+					"top": 286,
+					"left": 182,
+					"width": 90,
+					"height": 26,
+					"fill": "#f5deb3",
+					"stroke": "#f5deb3"
+				},
+				"vJCL_D01_varColorText5": {
+					"type": "input",
+					"top": 291,
+					"left": 194,
+					"width": 68,
+					"height": 17,
+					"dataSource": "vJCL_D01_varColorText5",
+					"class": "JCL_YuGothic12",
+					"focusable": true,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"enterable": true,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"sizingY": "fixed",
+					"entryFilter": "&\"a-f;A-F;0-9;#\""
+				},
+				"vJCL_D01_btnUseColor6": {
+					"type": "button",
+					"top": 320,
+					"left": 84,
+					"width": 94,
+					"height": 26,
+					"dataSource": "vJCL_D01_btnUseColor6",
+					"action": "",
+					"text": "この色を使う",
+					"events": [
+						"onClick"
+					],
+					"class": "JCL_YuGothic12",
+					"method": "ObjectMethods/vJCL_D01_btnUseColor6.4dm"
+				},
+				"vJCL_D01_rectColor6": {
+					"type": "rectangle",
+					"top": 320,
+					"left": 182,
+					"width": 90,
+					"height": 26,
+					"fill": "#f5deb3",
+					"stroke": "#f5deb3"
+				},
+				"vJCL_D01_varColorText6": {
+					"type": "input",
+					"top": 325,
+					"left": 194,
+					"width": 68,
+					"height": 17,
+					"dataSource": "vJCL_D01_varColorText6",
+					"class": "JCL_YuGothic12",
+					"focusable": true,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"enterable": true,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"sizingY": "fixed",
+					"entryFilter": "&\"a-f;A-F;0-9;#\""
 				}
 			}
 		}
 	],
-	"geometryStamp": 1026,
+	"geometryStamp": 1063,
 	"$4d": {
 		"version": "1",
 		"kind": "form"
