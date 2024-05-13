@@ -386,13 +386,10 @@ Function method_replaceTags()
 	
 	//関連テーブル用のメソッド部分（オンロード）を作成
 	C_TEXT:C284($related_method)
-	$related_method:=This:C1470.relatedMethods($objParam)
-	$method:=Replace string:C233($method; "[--RELATED_ONLOAD]"; $related_method)
+	$related_method:=This:C1470.relatedMethods_frmOnLoad($objParam)
+	$method:=Replace string:C233($method; "[--RELATED_FRMONLOAD]"; $related_method)
 	
-	
-	
-	
-	
+	//繰り返しタグを置き換え
 	$len:=Length:C16($method)
 	$buf:=""
 	$newmethod:=""
@@ -457,7 +454,7 @@ Function method_replaceTags()
 	
 	$0:=$newmethod
 	
-Function relatedMethods()
+Function relatedMethods_frmOnLoad()
 	//関連テーブル用のメソッド部分を作成
 	//20240509 
 	
@@ -469,32 +466,34 @@ Function relatedMethods()
 	ARRAY LONGINT:C221($aryTblNr; 0)
 	ARRAY TEXT:C222($aryForeignKeys; 0)
 	
-	$cnt:=cs:C1710.JCL_tbl.new().findForeignKey($objParam.tbl_name; ->$aryTblNr; ->$aryForeignKeys)
+	$cnt:=cs:C1710.JCL_tbl.new().findForeignKey($objParam.parent_tbl_name; ->$aryTblNr; ->$aryForeignKeys)
 	For ($i; 1; $cnt)
 		$tblName:=Table name:C256($aryTblNr{$i})
 		$tbl_prefix:=cs:C1710.JCL_tbl.new().getPrefix_fromStructure($tblName)  //テーブルプリフィックス
 		
 		//プロセス変数定義
+		$body:=$body+"//"+$tblName
 		$body:=$body+$objParam.frm_prefix+"_frmDefInit_"+$objParam.tbl_prefix+Char:C90(13)
 		
 		// デフォルトの並び順を指定、配列にプッシュしておく
 		$body:=$body+"  // デフォルトの並び順を指定、配列にプッシュしておく\n"
-		$body:=$body+"JCL_lst_Sort_Append (\"v"+$objParam.frm_prefix+"_lst"+$objParam.tbl_prefix
-		$body:=$body+"\";->v"+$objParam.frm_prefix+"_lst"+$objParam.tbl_prefix+"_HeaderNames"
-		$body:=$body+";->v"+$objParam.frm_prefix+"_lst"+$objParam.tbl_prefix+"_SortOrders;1;2) //降順"+Char:C90(13)
+		$body:=$body+"JCL_lst_Sort_Append (\"v"+$objParam.frm_prefix+"_lst"+$tbl_prefix
+		$body:=$body+"\";->v"+$objParam.frm_prefix+"_lst"+$tbl_prefix+"_HeaderNames"
+		$body:=$body+";->v"+$objParam.frm_prefix+"_lst"+$tbl_prefix+"_SortOrders;1;2) //降順"+Char:C90(13)
 		
-		$body:=$body+"JCL_lst_Sort_Append (\"v"+$objParam.frm_prefix+"_lst"+$objParam.tbl_prefix
-		$body:=$body+"\";->v"+$objParam.frm_prefix+"_lst"+$objParam.tbl_prefix+"_HeaderNames"
-		$body:=$body+";->v"+$objParam.frm_prefix+"_lst"+$objParam.tbl_prefix+"_SortOrders;2;1) //昇順"+Char:C90(13)
+		$body:=$body+"JCL_lst_Sort_Append (\"v"+$objParam.frm_prefix+"_lst"+$tbl_prefix
+		$body:=$body+"\";->v"+$objParam.frm_prefix+"_lst"+$tbl_prefix+"_HeaderNames"
+		$body:=$body+";->v"+$objParam.frm_prefix+"_lst"+$tbl_prefix+"_SortOrders;2;1) //昇順"+Char:C90(13)
 		
 		//配列作成　[--FRM_PREFIX]_lst[--TBL_PREFIX]_Make 
-		$body:=$body+$objParam.frm_prefix+"_lst"+$objParam.tbl_prefix+Char:C90(13)
+		$body:=$body+$objParam.frm_prefix+"_lst"+$tbl_prefix+Char:C90(13)
 		
 		//[--FRM_PREFIX]_SetControlsValues_[--TBL_PREFIX]
-		$body:=$body+$objParam.frm_prefix+"_SetControlsValues_"+$objParam.tbl_prefix+Char:C90(13)
+		$body:=$body+$objParam.frm_prefix+"_SetControlsValues_"+$tbl_prefix+Char:C90(13)
+		$body:=$body+Char:C90(13)
 		
 	End for 
-	ALERT:C41($body)
+	//ALERT($body)
 	
 	$0:=$body
 	

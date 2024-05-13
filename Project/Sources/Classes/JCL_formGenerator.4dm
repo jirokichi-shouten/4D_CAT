@@ -15,7 +15,7 @@ Class constructor
 	//20240512
 	//fieldsキャッシュを作成
 	
-	//ラベルをキャッシュ
+	//ラベルキャッシュ作成
 	cs:C1710.JCL_fields.new().cache_make()
 	
 	
@@ -147,10 +147,6 @@ Function form01_List()
 	$aryFieldTypePtr:=$3
 	C_POINTER:C301($4; $aryFieldLengthPtr)
 	$aryFieldLengthPtr:=$4
-	//ラベルキャッシュ作成
-	C_OBJECT:C1216($jcl_fields)
-	$jcl_fields:=cs:C1710.JCL_fields.new()
-	//$jcl_fields.cache_make()
 	
 	//クラスインスタンス作成＆コンストラクター実行
 	//フォームメソッド
@@ -164,7 +160,7 @@ Function form01_List()
 	$frm.addRect($objParam; 0; 0; 1042; 55)
 	
 	$objParam.name:=$objParam.frm_prefix+"_txtTitle"
-	$objParam.text:=$jcl_fields.cache_TableLabel_get($objParam.tbl_name)+"一覧"
+	$objParam.text:=cs:C1710.JCL_fields.new().cache_TableLabel_get($objParam.tbl_name)+"一覧"
 	$objParam.css_class:="JCL_YuGothic16"
 	$frm.addLabel($objParam; 16; 20; 192; 26)
 	
@@ -246,9 +242,6 @@ Function form02_Input_add()
 	//クラスインスタンス作成＆コンストラクター実行
 	C_OBJECT:C1216($frm)
 	$frm:=cs:C1710.JCL_formObjects.new($objParam)
-	C_OBJECT:C1216($jcl_fields)
-	$jcl_fields:=cs:C1710.JCL_fields.new()
-	$jcl_fields.cache_make()
 	
 	//フォームメソッド
 	$frm.saveFrmMethod($objParam)
@@ -261,7 +254,7 @@ Function form02_Input_add()
 	$frm.addRect($objParam; 0; 0; 1042; 55)
 	
 	$objParam.name:=$objParam.frm_prefix+"_txtTitle"
-	$objParam.text:=$jcl_fields.cache_TableLabel_get($objParam.tbl_name)+"編集"
+	$objParam.text:=cs:C1710.JCL_fields.new().cache_TableLabel_get($objParam.tbl_name)+"編集"
 	$objParam.css_class:="JCL_YuGothic16"
 	$frm.addLabel($objParam; 16; 26; 288; 26)
 	
@@ -298,7 +291,7 @@ Function form02_Input_add()
 	For ($i; 1; $sizeOfAry)
 		//フィールドラベルを取得
 		$fld_name:=$inAryFldNamePtr->{$i}
-		$label:=$jcl_fields.cache_FieldLabel_get($fld_name)
+		$label:=cs:C1710.JCL_fields.new().cache_FieldLabel_get($fld_name)
 		If ($label="")
 			//ラベルが取得できなかったらフィールド名を使う
 			$label:=$fld_name
@@ -358,7 +351,7 @@ Function form03_Input_mod()
 	$frm.addRect($objParam; 0; 0; 1042; 55)
 	
 	$objParam.name:=$objParam.frm_prefix+"_txtTitle"
-	$objParam.text:=JCL_fields_cache_TableLabel($objParam.tbl_name)+"編集"
+	$objParam.text:=cs:C1710.JCL_fields.new().cache_TableLabel_get($objParam.tbl_name)+"編集"
 	$objParam.css_class:="JCL_YuGothic16"
 	$frm.addLabel($objParam; 16; 26; 288; 26)
 	
@@ -587,8 +580,8 @@ Function formColor_get()
 	
 	C_TEXT:C284($1; $table_name)
 	$table_name:=$1
-	C_LONGINT:C283($0; $color)
-	$color:=0
+	C_TEXT:C284($0; $colorText)
+	$colorText:=""
 	C_TEXT:C284($tbl_prefix)
 	C_TEXT:C284($rec_name; $frmPrefix; $form_name)
 	C_LONGINT:C283($tblNr)
@@ -606,10 +599,10 @@ Function formColor_get()
 	$exist:=JCL_frm_isExist($tblPtr; $form_name)
 	If ($exist=True:C214)
 		FORM LOAD:C1103($tblPtr->; $form_name)
-		OBJECT GET RGB COLORS:C1074(*; $rec_name; $color)
+		OBJECT GET RGB COLORS:C1074(*; $rec_name; $colorText)
 		FORM UNLOAD:C1299
 		
 	End if 
 	
-	$0:=$color
+	$0:=$colorText
 	

@@ -85,7 +85,7 @@ Function frmDefInit()
 	ARRAY TEXT:C222(vD00_lstT_label; 0)
 	ARRAY TEXT:C222(vD00_lstT_prefix; 0)
 	ARRAY LONGINT:C221(vD00_lstT_numOfRecs; 0)
-	ARRAY LONGINT:C221(vD00_lstT_Color; 0)
+	ARRAY TEXT:C222(vD00_lstT_Color; 0)
 	
 	C_TEXT:C284(vD00_txtNumOfTables)
 	
@@ -116,7 +116,7 @@ Function lstT_make()
 	C_TEXT:C284($table_name; $label; $tbl_prefix)
 	C_LONGINT:C283($numOfRecs)
 	C_LONGINT:C283($numOfTables; $i; $sizeOfAry)
-	C_LONGINT:C283($color)
+	C_TEXT:C284($colorText)
 	
 	//ラベルキャッシュ作成
 	C_OBJECT:C1216($jcl_fields)
@@ -151,13 +151,13 @@ Function lstT_make()
 			$numOfRecs:=Records in selection:C76($tblPtr->)
 			APPEND TO ARRAY:C911(vD00_lstT_numOfRecs; $numOfRecs)  //レコード数
 			
-			$color:=cs:C1710.JCL_formGenerator.new().formColor_get($table_name)
-			If ($color=0)
-				$color:=0x00FFFFFF  //白
+			$colorText:=cs:C1710.JCL_formGenerator.new().formColor_get($table_name)
+			If ($colorText="")
+				$colorText:="#FFFFFF"  //白
 			End if 
-			APPEND TO ARRAY:C911(vD00_lstT_Color; $color)  //色
+			APPEND TO ARRAY:C911(vD00_lstT_Color; $colorText)  //色
 			$sizeOfAry:=Size of array:C274(vD00_lstT_Color)
-			LISTBOX SET ROW COLOR:C1270(*; "vD00_lstT_Color"; $sizeOfAry; $color; lk background color:K53:25)
+			LISTBOX SET ROW COLOR:C1270(*; "vD00_lstT_Color"; $sizeOfAry; $colorText; lk background color:K53:25)
 			
 		End if 
 	End for 
@@ -287,28 +287,30 @@ Function btnFormColor()
 	//フォームカラーの色変更、カラーピッカーを表示
 	
 	C_TEXT:C284($tblName)
-	C_LONGINT:C283($color)
+	C_TEXT:C284($colorTex)
+	C_LONGINT:C283($new_color)
 	C_LONGINT:C283($nr)
+	C_TEXT:C284($new_text)
 	
 	$nr:=JCL_lst_Selected_Long(->vD00_lstT; ->vD00_lstT_nr)
-	$color:=JCL_lst_Selected_Long(->vD00_lstT; ->vD00_lstT_Color)
+	$colorText:=JCL_lst_Selected_Str(->vD00_lstT; ->vD00_lstT_Color)
 	$tblName:=JCL_lst_Selected_Str(->vD00_lstT; ->vD00_lstT_name)
 	
 	//カラーピッカー
-	$new_color:=Select RGB color:C956($color)
+	$new_color:=Select RGB color:C956($colorText)
 	If ($new_color#0)
 		//色変更
-		$color_text:=Replace string:C233(String:C10($new_color; "&$"); "$"; "")
+		$new_text:=Replace string:C233(String:C10($new_color; "&$"); "$"; "")
 		
-		$len:=6-Length:C16($color_text)
+		$len:=6-Length:C16($new_text)
 		For ($i; 1; $len)
-			$color_text:="0"+$color_text
+			$new_text:="0"+$new_text
 			
 		End for 
-		$color_text:="#"+$color_text
+		$new_text:="#"+$new_text
 		
 		//フォームカラーを変更
-		cs:C1710.JCL_formGenerator.new().formColor_apply($tblName; $color_text)
+		cs:C1710.JCL_formGenerator.new().formColor_apply($tblName; $new_text)
 		
 		//リスト再作成
 		//This.lstFL_init()
@@ -449,12 +451,12 @@ Function btnForm()
 		JCL_lst_SetSelect_byLong(->vD00_lstT; ->vD00_lstT_nr; $nr)
 		
 		//フィールド一覧の色を更新
-		C_LONGINT:C283($color)
-		$color:=JCL_lst_Selected_Long(->vD00_lstT; ->vD00_lstT_Color)
-		If ($color=0)
-			$color:=0x00FFFFFF
+		C_TEXT:C284($colorText)
+		$colorText:=JCL_lst_Selected_Str(->vD00_lstT; ->vD00_lstT_Color)
+		If ($colorText="")
+			$colorText:="#FFFFFF"
 		End if 
-		OBJECT SET RGB COLORS:C628(*; "vD00_varTableName"; 0; $color)
+		OBJECT SET RGB COLORS:C628(*; "vD00_varTableName"; 0; $colorText)
 		
 		This:C1470.setControlsValues()
 		
@@ -544,12 +546,12 @@ Function lstT_OnSelChange()
 		This:C1470.lstFL_make($tblNr)
 		
 		//色を付ける
-		C_LONGINT:C283($color)
-		$color:=JCL_lst_Selected_Long(->vD00_lstT; ->vD00_lstT_Color)
-		If ($color=0)
-			$color:=0x00FFFFFF
+		C_TEXT:C284($colorText)
+		$colorText:=JCL_lst_Selected_Str(->vD00_lstT; ->vD00_lstT_Color)
+		If ($colorText="")
+			$colorText:="#FFFFFF"
 		End if 
-		OBJECT SET RGB COLORS:C628(*; "vD00_varTableName"; 0; $color)
+		OBJECT SET RGB COLORS:C628(*; "vD00_varTableName"; 0; $colorText)
 		
 	End if 
 	

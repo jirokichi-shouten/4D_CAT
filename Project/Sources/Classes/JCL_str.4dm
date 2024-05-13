@@ -31,4 +31,3 @@ Function dateTime()
 	
 	$0:=$dateTimeStr
 	
-	

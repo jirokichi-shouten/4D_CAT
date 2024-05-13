@@ -7,5 +7,4 @@
 [--FRM_PREFIX]_SetControlsValues
 
 //関連テーブル
-[--RELATED_ONLOAD]
-RELATED_ONLOAD
+[--RELATED_FRMONLOAD]

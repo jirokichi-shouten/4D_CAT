@@ -199,7 +199,7 @@
 							"textAlign": "center",
 							"class": "JCL_YuGothic12",
 							"enterable": false,
-							"dataSourceTypeHint": "integer",
+							"dataSourceTypeHint": "text",
 							"numberFormat": "&$"
 						},
 						{

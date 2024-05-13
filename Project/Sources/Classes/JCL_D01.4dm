@@ -108,7 +108,7 @@ Function frmDefInit()
 	//色リスト
 	ARRAY BOOLEAN:C223(vD01_lstTB; 0)
 	ARRAY LONGINT:C221(vD01_lstTB_Nr; 0)
-	ARRAY LONGINT:C221(vD01_lstTB_COLOR; 0)
+	ARRAY TEXT:C222(vD01_lstTB_COLOR; 0)
 	ARRAY TEXT:C222(vD01_lstTB_NAME; 0)
 	
 Function popTableName_make()
@@ -183,6 +183,7 @@ Function lstTB_make()
 	ARRAY TEXT:C222($aryTblNames; 0)
 	C_LONGINT:C283($sizeOfAry; $i)
 	C_LONGINT:C283($color)
+	C_TEXT:C284($colorText)
 	
 	//すべてのテーブル
 	cs:C1710.JCL_tbl.new().getNames(->$aryTblNames)
@@ -191,7 +192,7 @@ Function lstTB_make()
 	
 	$sizeOfAry:=Size of array:C274(vD01_lstTB_NAME)
 	ARRAY LONGINT:C221(vD01_lstTB_Nr; $sizeOfAry)
-	ARRAY LONGINT:C221(vD01_lstTB_COLOR; $sizeOfAry)
+	ARRAY TEXT:C222(vD01_lstTB_COLOR; $sizeOfAry)
 	For ($i; 1; $sizeOfAry)
 		//配列を追加
 		vD01_lstTB_Nr{$i}:=$i
@@ -199,18 +200,20 @@ Function lstTB_make()
 		$table_name:=vD01_lstTB_NAME{$i}
 		
 		//生成したテーブルフォームの色を取得、タイトルのバックにあるレクトから
-		$color:=JCL_tbl_GetFormColor($table_name)
+		$colorText:=cs:C1710.JCL_formGenerator.new().formColor_get($table_name)
 		
 		//リストボックスに適用
-		If ($color#0)
+		If ($colorText#"#000000")
 			//ゼロは白なのでスキップ、実行すると黒になるため
-			LISTBOX SET ROW COLOR:C1270(*; "vD01_lstTB_COLOR"; $i; $color; lk background color:K53:25)
+			LISTBOX SET ROW COLOR:C1270(*; "vD01_lstTB_COLOR"; $i; $colorText; lk background color:K53:25)
 			
 		End if 
 		
-		vD01_lstTB_COLOR{$i}:=$color
+		//色を整数から１６進数の文字列に変換する
+		vD01_lstTB_COLOR{$i}:=$colorText
 		
 	End for 
+	
 	
 Function popTableName()
 	//20210607 wat
