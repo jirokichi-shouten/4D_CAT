@@ -135,7 +135,7 @@
 					"class": "JCL_YuGothic12",
 					"method": "ObjectMethods/vJCL_D01_btnUseColor0.4dm"
 				},
-				"vD01_lstTB": {
+				"vJCL_D01_lstTB": {
 					"type": "listbox",
 					"top": 68,
 					"left": 440,
@@ -144,7 +144,7 @@
 					"sizingX": "fixed",
 					"sizingY": "grow",
 					"resizingMode": "legacy",
-					"dataSource": "vD01_lstTB",
+					"dataSource": "vJCL_D01_lstTB",
 					"rowHeight": "20px",
 					"rowHeightAutoMin": "20px",
 					"rowHeightAutoMax": "20px",
@@ -156,14 +156,14 @@
 						"onSelectionChange",
 						"onHeaderClick"
 					],
-					"method": "ObjectMethods/vD01_lstTB.4dm",
+					"method": "ObjectMethods/vJCL_D01_lstTB.4dm",
 					"showFooters": false,
 					"selectionMode": "single",
 					"singleClickEdit": true,
 					"columns": [
 						{
-							"name": "vD01_lstTB_Nr",
-							"dataSource": "vD01_lstTB_Nr",
+							"name": "vJCL_D01_lstTB_Nr",
+							"dataSource": "vJCL_D01_lstTB_Nr",
 							"width": 42,
 							"enterable": false,
 							"truncateMode": "none",
@@ -173,9 +173,9 @@
 								"onDataChange"
 							],
 							"header": {
-								"name": "HvD01_lstTB_Nr",
+								"name": "HvJCL_D01_lstTB_Nr",
 								"text": "No",
-								"dataSource": "HvD01_lstTB_Nr",
+								"dataSource": "HvJCL_D01_lstTB_Nr",
 								"class": "JCL_Meiryo10"
 							},
 							"footer": {
@@ -187,8 +187,8 @@
 							"dataSourceTypeHint": "integer"
 						},
 						{
-							"name": "vD01_lstTB_COLOR",
-							"dataSource": "vD01_lstTB_COLOR",
+							"name": "vJCL_D01_lstTB_COLOR",
+							"dataSource": "vJCL_D01_lstTB_COLOR",
 							"width": 84,
 							"enterable": true,
 							"truncateMode": "none",
@@ -198,9 +198,9 @@
 								"onDataChange"
 							],
 							"header": {
-								"name": "HvD01_lstTB_COLOR",
+								"name": "HvJCL_D01_lstTB_COLOR",
 								"text": "色",
-								"dataSource": "HvD01_lstTB_COLOR",
+								"dataSource": "HvJCL_D01_lstTB_COLOR",
 								"class": "JCL_Meiryo10"
 							},
 							"footer": {
@@ -211,8 +211,8 @@
 							"textAlign": "center"
 						},
 						{
-							"name": "vD01_lstTB_NAME",
-							"dataSource": "vD01_lstTB_NAME",
+							"name": "vJCL_D01_lstTB_NAME",
+							"dataSource": "vJCL_D01_lstTB_NAME",
 							"width": 178,
 							"enterable": false,
 							"truncateMode": "none",
@@ -222,9 +222,9 @@
 								"onDataChange"
 							],
 							"header": {
-								"name": "HvD01_lstTB_NAME",
+								"name": "HvJCL_D01_lstTB_NAME",
 								"text": "テーブル名",
-								"dataSource": "HvD01_lstTB_NAME",
+								"dataSource": "HvJCL_D01_lstTB_NAME",
 								"class": "JCL_Meiryo10"
 							},
 							"footer": {
@@ -615,7 +615,7 @@
 			}
 		}
 	],
-	"geometryStamp": 1063,
+	"geometryStamp": 1070,
 	"$4d": {
 		"version": "1",
 		"kind": "form"

@@ -12,9 +12,8 @@ If ($check=True)
 	$[--PARENT_TBL_PREFIX]_id:=[--FRM_PREFIX]_var[--PARENT_TBL_PREFIX]_ID_get
 	[--FRM_PREFIX]_SaveValues($[--PARENT_TBL_PREFIX]_id)
 	
-	//form03用
-	  //配列要素を保存
-	[--FRM_PREFIX]_frmSaveValues_[--TBL_PREFIX] 
+	//関連テーブル 配列要素を保存
+	[--RELATED_BTN_OK] 
 	
 	ACCEPT
 	

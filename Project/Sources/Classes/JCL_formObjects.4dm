@@ -389,6 +389,11 @@ Function method_replaceTags()
 	$related_method:=This:C1470.relatedMethods_frmOnLoad($objParam)
 	$method:=Replace string:C233($method; "[--RELATED_FRMONLOAD]"; $related_method)
 	
+	//関連テーブル用のメソッド部分（OKボタン）を作成
+	C_TEXT:C284($related_method)
+	$related_method:=This:C1470.relatedMethods_btnOK($objParam)
+	$method:=Replace string:C233($method; "[--RELATED_BTN_OK]"; $related_method)
+	
 	//繰り返しタグを置き換え
 	$len:=Length:C16($method)
 	$buf:=""
@@ -455,7 +460,7 @@ Function method_replaceTags()
 	$0:=$newmethod
 	
 Function relatedMethods_frmOnLoad()
-	//関連テーブル用のメソッド部分を作成
+	//関連テーブル用のfrmOnLoadメソッド部分を作成
 	//20240509 
 	
 	C_OBJECT:C1216($1; $objParam)
@@ -468,12 +473,12 @@ Function relatedMethods_frmOnLoad()
 	
 	$cnt:=cs:C1710.JCL_tbl.new().findForeignKey($objParam.parent_tbl_name; ->$aryTblNr; ->$aryForeignKeys)
 	For ($i; 1; $cnt)
-		$tblName:=Table name:C256($aryTblNr{$i})
-		$tbl_prefix:=cs:C1710.JCL_tbl.new().getPrefix_fromStructure($tblName)  //テーブルプリフィックス
+		$tblName:=Table name:C256($aryTblNr{$i})  //関連テーブル名
+		$tbl_prefix:=cs:C1710.JCL_tbl.new().getPrefix_fromStructure($tblName)  //関連テーブルプリフィックス
 		
 		//プロセス変数定義
-		$body:=$body+"//"+$tblName
-		$body:=$body+$objParam.frm_prefix+"_frmDefInit_"+$objParam.tbl_prefix+Char:C90(13)
+		$body:=$body+"//"+$tblName+Char:C90(13)
+		$body:=$body+$objParam.frm_prefix+"_frmDefInit_"+$tbl_prefix+Char:C90(13)
 		
 		// デフォルトの並び順を指定、配列にプッシュしておく
 		$body:=$body+"  // デフォルトの並び順を指定、配列にプッシュしておく\n"
@@ -486,14 +491,40 @@ Function relatedMethods_frmOnLoad()
 		$body:=$body+";->v"+$objParam.frm_prefix+"_lst"+$tbl_prefix+"_SortOrders;2;1) //昇順"+Char:C90(13)
 		
 		//配列作成　[--FRM_PREFIX]_lst[--TBL_PREFIX]_Make 
-		$body:=$body+$objParam.frm_prefix+"_lst"+$tbl_prefix+Char:C90(13)
+		$body:=$body+$objParam.frm_prefix+"_lst"+$tbl_prefix+"_make"+Char:C90(13)
 		
 		//[--FRM_PREFIX]_SetControlsValues_[--TBL_PREFIX]
 		$body:=$body+$objParam.frm_prefix+"_SetControlsValues_"+$tbl_prefix+Char:C90(13)
 		$body:=$body+Char:C90(13)
 		
 	End for 
-	//ALERT($body)
+	
+	$0:=$body
+	
+Function relatedMethods_btnOK()
+	//関連テーブルのbtnOKメソッド部分を作成
+	//20240515
+	//[--FRM_PREFIX]_frmSaveValues_[--TBL_PREFIX]
+	
+	C_OBJECT:C1216($1; $objParam)
+	$objParam:=$1
+	C_TEXT:C284($0; $body)
+	$body:=""
+	C_LONGINT:C283($cnt)
+	ARRAY LONGINT:C221($aryTblNr; 0)
+	ARRAY TEXT:C222($aryForeignKeys; 0)
+	
+	$cnt:=cs:C1710.JCL_tbl.new().findForeignKey($objParam.parent_tbl_name; ->$aryTblNr; ->$aryForeignKeys)
+	For ($i; 1; $cnt)
+		$tblName:=Table name:C256($aryTblNr{$i})  //関連テーブル名
+		$tbl_prefix:=cs:C1710.JCL_tbl.new().getPrefix_fromStructure($tblName)  //関連テーブルプリフィックス
+		
+		//配列要素を保存
+		$body:=$body+"//"+$tblName+Char:C90(13)
+		$body:=$body+$objParam.frm_prefix+"_frmSaveValues_"+$tbl_prefix+Char:C90(13)
+		$body:=$body+Char:C90(13)
+		
+	End for 
 	
 	$0:=$body
 	

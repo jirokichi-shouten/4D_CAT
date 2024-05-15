@@ -6,5 +6,5 @@
 
 [--FRM_PREFIX]_SetControlsValues
 
-//関連テーブル
+//関連テーブル リストボックス表示
 [--RELATED_FRMONLOAD]

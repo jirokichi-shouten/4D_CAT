@@ -83,6 +83,16 @@ Function frmOnLoad()
 	//使用済み色リスト、テーブル一覧
 	This:C1470.lstTB_make()
 	
+	This:C1470.setControlsValues()
+	
+Function setControlsValues()
+	//20240515
+	//フォームオブジェクトを制御
+	
+	//リストボックスの選択行が１つの時に編集ボタンはイネイブル
+	JCL_btn_SetEnable_byListSelect(->vJCL_D01_lstTB; ->vJCL_D01_btnApply)
+	
+	
 Function frmDefInit()
 	//D01_frmDefInit
 	//20210607 wat
@@ -106,10 +116,10 @@ Function frmDefInit()
 	C_TEXT:C284(vJCL_D01_fldColorText)
 	
 	//色リスト
-	ARRAY BOOLEAN:C223(vD01_lstTB; 0)
-	ARRAY LONGINT:C221(vD01_lstTB_Nr; 0)
-	ARRAY TEXT:C222(vD01_lstTB_COLOR; 0)
-	ARRAY TEXT:C222(vD01_lstTB_NAME; 0)
+	ARRAY BOOLEAN:C223(vJCL_D01_lstTB; 0)
+	ARRAY LONGINT:C221(vJCL_D01_lstTB_Nr; 0)
+	ARRAY TEXT:C222(vJCL_D01_lstTB_COLOR; 0)
+	ARRAY TEXT:C222(vJCL_D01_lstTB_NAME; 0)
 	
 Function popTableName_make()
 	//JCL_D01_popTableName_make
@@ -188,29 +198,29 @@ Function lstTB_make()
 	//すべてのテーブル
 	cs:C1710.JCL_tbl.new().getNames(->$aryTblNames)
 	
-	COPY ARRAY:C226($aryTblNames; vD01_lstTB_NAME)
+	COPY ARRAY:C226($aryTblNames; vJCL_D01_lstTB_NAME)
 	
-	$sizeOfAry:=Size of array:C274(vD01_lstTB_NAME)
-	ARRAY LONGINT:C221(vD01_lstTB_Nr; $sizeOfAry)
-	ARRAY TEXT:C222(vD01_lstTB_COLOR; $sizeOfAry)
+	$sizeOfAry:=Size of array:C274(vJCL_D01_lstTB_NAME)
+	ARRAY LONGINT:C221(vJCL_D01_lstTB_Nr; $sizeOfAry)
+	ARRAY TEXT:C222(vJCL_D01_lstTB_COLOR; $sizeOfAry)
 	For ($i; 1; $sizeOfAry)
 		//配列を追加
-		vD01_lstTB_Nr{$i}:=$i
+		vJCL_D01_lstTB_Nr{$i}:=$i
 		
-		$table_name:=vD01_lstTB_NAME{$i}
+		$table_name:=vJCL_D01_lstTB_NAME{$i}
 		
 		//生成したテーブルフォームの色を取得、タイトルのバックにあるレクトから
 		$colorText:=cs:C1710.JCL_formGenerator.new().formColor_get($table_name)
 		
 		//リストボックスに適用
-		If ($colorText#"#000000")
+		If ($colorText#"")
 			//ゼロは白なのでスキップ、実行すると黒になるため
-			LISTBOX SET ROW COLOR:C1270(*; "vD01_lstTB_COLOR"; $i; $colorText; lk background color:K53:25)
+			LISTBOX SET ROW COLOR:C1270(*; "vJCL_D01_lstTB_COLOR"; $i; $colorText; lk background color:K53:25)
 			
 		End if 
 		
 		//色を整数から１６進数の文字列に変換する
-		vD01_lstTB_COLOR{$i}:=$colorText
+		vJCL_D01_lstTB_COLOR{$i}:=$colorText
 		
 	End for 
 	
@@ -258,7 +268,7 @@ Function lstTB()
 	$frmEvnt:=Form event code:C388
 	Case of 
 		: ($frmEvnt=On Clicked:K2:4)
-			$tblName:=JCL_lst_Selected_Str(->vD01_lstTB; ->vD01_lstTB_NAME)
+			$tblName:=JCL_lst_Selected_Str(->vJCL_D01_lstTB; ->vJCL_D01_lstTB_NAME)
 			
 			$index:=Find in array:C230(vJCL_D01_aryTableName; $tblName)
 			If ($index#-1)
@@ -267,6 +277,8 @@ Function lstTB()
 			End if 
 			
 			This:C1470.tbl_name:=$tblName
+			
+			This:C1470.setControlsValues()
 			
 	End case 
 	
@@ -329,7 +341,7 @@ Function btnApply()
 	cs:C1710.JCL_formGenerator.new().formColor_apply($table_name; $color_text)
 	
 	//使用済み色リスト、テーブル一覧
-	JCL_lst_Deselect(->vD01_lstTB)
+	JCL_lst_Deselect(->vJCL_D01_lstTB)
 	
 	This:C1470.lstTB_make()
 	
