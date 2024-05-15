@@ -12,6 +12,7 @@ vA01_varVersion:="0.9(1) 20240328"
 vA01_varVersion:="0.9(2) 20240329"
 vA01_varVersion:="1.0(3) 20240330"
 vA01_varVersion:="1.0(4) 20240503"
+vA01_varVersion:="1.0(5) 20240515"
 
 C_TEXT:C284(vA01_var4D_DataFile)
 vA01_var4D_DataFile:="データファイル："+Data file:C490
