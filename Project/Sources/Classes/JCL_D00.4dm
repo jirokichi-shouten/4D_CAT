@@ -74,6 +74,7 @@ Function frmDefInit()
 	vD00_varVersion:="0.9(2) 20240211"
 	vD00_varVersion:="1.0(3) 20240304"
 	vD00_varVersion:="1.0(4) 20240503"
+	vD00_varVersion:="1.0(5) 20240515"
 	
 	C_TEXT:C284(vD00_var4D_DataFile)
 	vD00_var4D_DataFile:="データファイル："+Data file:C490
