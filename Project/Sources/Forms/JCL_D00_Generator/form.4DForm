@@ -36,7 +36,7 @@
 			"objects": {
 				"vD00_varTableName": {
 					"type": "input",
-					"top": 86,
+					"top": 112,
 					"left": 498,
 					"width": 712,
 					"height": 356,
@@ -106,7 +106,7 @@
 				"vD00_lstT": {
 					"type": "listbox",
 					"left": 10,
-					"top": 110,
+					"top": 136,
 					"width": 478,
 					"height": 322,
 					"events": [
@@ -220,8 +220,8 @@
 				},
 				"vD00_var4D_DataFile": {
 					"type": "input",
-					"top": 449,
-					"left": 20,
+					"top": 466,
+					"left": 10,
 					"width": 730,
 					"height": 17,
 					"dataSource": "vD00_var4D_DataFile",
@@ -239,52 +239,11 @@
 					"sizingY": "move",
 					"stroke": "#008000"
 				},
-				"vD00_varProductName": {
-					"type": "input",
-					"top": 10,
-					"left": 20,
-					"width": 610,
-					"height": 17,
-					"dataSource": "vD00_varProductName",
-					"class": "JCL_YuGothic16",
-					"focusable": false,
-					"fill": "transparent",
-					"borderStyle": "none",
-					"enterable": false,
-					"contextMenu": "none",
-					"dragging": "none",
-					"dropping": "custom",
-					"events": [
-						"onDataChange"
-					],
-					"sizingY": "fixed"
-				},
-				"vD00_varVersion": {
-					"type": "input",
-					"top": 34,
-					"left": 20,
-					"width": 610,
-					"height": 17,
-					"dataSource": "vD00_varVersion",
-					"class": "JCL_YuGothic12",
-					"focusable": false,
-					"fill": "transparent",
-					"borderStyle": "none",
-					"enterable": false,
-					"contextMenu": "none",
-					"dragging": "none",
-					"dropping": "custom",
-					"events": [
-						"onDataChange"
-					],
-					"sizingY": "fixed",
-					"textAlign": "automatic"
-				},
 				"vD00_txtNumOfTables": {
 					"type": "input",
-					"top": 86,
+					"top": 112,
 					"left": 10,
-					"width": 150,
+					"width": 90,
 					"height": 17,
 					"dataSource": "vD00_txtNumOfTables",
 					"class": "JCL_YuGothic12",
@@ -303,7 +262,7 @@
 				},
 				"vD00_lstFL": {
 					"type": "listbox",
-					"top": 110,
+					"top": 136,
 					"left": 498,
 					"width": 712,
 					"height": 322,
@@ -694,9 +653,9 @@
 				"vD00_btnFields": {
 					"type": "button",
 					"text": "テーブル追加",
-					"top": 16,
-					"left": 352,
-					"width": 90,
+					"top": 68,
+					"left": 10,
+					"width": 84,
 					"height": 26,
 					"events": [
 						"onClick"
@@ -715,7 +674,7 @@
 					"type": "button",
 					"text": "テーブル削除",
 					"top": 68,
-					"left": 314,
+					"left": 280,
 					"width": 84,
 					"height": 26,
 					"focusable": false,
@@ -731,7 +690,7 @@
 					"type": "button",
 					"text": "フォーム作成",
 					"top": 68,
-					"left": 134,
+					"left": 190,
 					"width": 84,
 					"height": 26,
 					"focusable": false,
@@ -747,7 +706,7 @@
 					"type": "button",
 					"text": "全テーブル削除",
 					"top": 68,
-					"left": 404,
+					"left": 370,
 					"width": 84,
 					"height": 26,
 					"focusable": false,
@@ -762,9 +721,9 @@
 				"vD00_btnColors": {
 					"type": "button",
 					"text": "カラー設定",
-					"top": 16,
-					"left": 498,
-					"width": 110,
+					"top": 68,
+					"left": 460,
+					"width": 84,
 					"height": 26,
 					"events": [
 						"onClick"
@@ -783,7 +742,7 @@
 					"type": "button",
 					"text": "全フォーム作成",
 					"top": 68,
-					"left": 224,
+					"left": 100,
 					"width": 84,
 					"height": 26,
 					"focusable": false,
@@ -798,9 +757,9 @@
 				"vD00_btnFormColor": {
 					"type": "button",
 					"text": "カラー変更",
-					"top": 75,
+					"top": 104,
 					"left": 895,
-					"width": 110,
+					"width": 84,
 					"height": 26,
 					"events": [
 						"onClick"
@@ -814,11 +773,30 @@
 					"action": "",
 					"class": "JCL_YuGothic12",
 					"method": "ObjectMethods/vD00_btnFormColor.4dm"
+				},
+				"vJCL_D02_txtTitle": {
+					"type": "text",
+					"top": 16,
+					"left": 10,
+					"width": 163,
+					"height": 23,
+					"class": "JCL_YuGothic16",
+					"text": "ジェネレータ"
+				},
+				"vJCL_D02_txtTitle1": {
+					"type": "text",
+					"top": 20,
+					"left": 158,
+					"width": 903,
+					"height": 20,
+					"class": "JCL_YuGothic12",
+					"text": "［テーブル追加］でテーブルを生成、［全フォーム作成］でフォームを生成する。",
+					"stroke": "#8b4513"
 				}
 			}
 		}
 	],
-	"geometryStamp": 1027,
+	"geometryStamp": 1201,
 	"editor": {
 		"activeView": "View 1",
 		"defaultView": "View 1",
@@ -827,6 +805,6 @@
 		}
 	},
 	"width": 1220,
-	"height": 466,
+	"height": 492,
 	"method": "method.4dm"
 }

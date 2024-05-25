@@ -191,6 +191,14 @@ Function setControlsValues()
 	JCL_btn_SetEnable_byListSelect(->vD00_lstT; ->vD00_btnDelete)
 	JCL_btn_SetEnable_byListSelect(->vD00_lstT; ->vD00_btnFormColor)
 	
+	//まだテーブルがないとき
+	If ($sizeOfAry=0)
+		JCL_btn_SetEnable(->vD00_btnFomAll; False:C215)
+		JCL_btn_SetEnable(->vD00_btnAllDel; False:C215)
+		JCL_btn_SetEnable(->vD00_btnColors; False:C215)
+		
+	End if 
+	
 Function btnDelAllTables()
 	//D00_btnAllDel
 	//20240223 yabe wat
