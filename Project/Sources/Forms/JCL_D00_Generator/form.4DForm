@@ -86,7 +86,7 @@
 				},
 				"vD00_btnDesignMode": {
 					"type": "button",
-					"text": "デザインモードへ",
+					"text": "閉じる",
 					"top": 58,
 					"left": 1090,
 					"width": 110,
