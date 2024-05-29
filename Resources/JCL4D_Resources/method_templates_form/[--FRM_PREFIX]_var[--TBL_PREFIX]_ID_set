@@ -1,6 +1,6 @@
 //[--FRM_PREFIX]_var[--TBL_PREFIX]_ID_set
 //FG v202402 [--DATE]
-//[--TABLE] モード変数の値を取得
+//[--TABLE] ID変数の値を取得
 
 C_LONGINT($1)
 
