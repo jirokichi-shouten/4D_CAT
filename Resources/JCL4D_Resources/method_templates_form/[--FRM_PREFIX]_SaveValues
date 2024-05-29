@@ -1,5 +1,5 @@
 //[--FRM_PREFIX]_SaveValues
-//FG v202403 [--DATE]
+//FG v202405 [--DATE]
 //[--TABLE] プロセス変数の値をレコードに保存
 
 C_LONGINT($1;$[--TBL_PREFIX]_id)
