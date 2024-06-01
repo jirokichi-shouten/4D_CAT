@@ -3,6 +3,9 @@
 //20240207 ike wat
 //コミットコメントはここでタイプしてからGitHub Desktopに貼ると便利
 
+//20240601 wat
+//_GetRecordのテンプレートに不具合、READ WRITEにしていたのをREAD ONLYに修正。
+
 //20240529 wat
 //_SaveValuesのテンプレートに不具合、不要な代入文を削除。
 

@@ -8,7 +8,7 @@ C_Object($2;$obj[--TBL_PREFIX])
 $obj[--TBL_PREFIX]:=$2
 C_LONGINT($0;$numOfRecs)
 
-READ WRITE([[--TABLE]])
+READ ONLY([[--TABLE]])
 QUERY([[--TABLE]];[[--TABLE]][--TBL_PREFIX]_DEL_FLAG=0;*)
 QUERY([[--TABLE]];&;[[--TABLE]][--TBL_PREFIX]_ID=$[--TBL_PREFIX]_id)
 FIRST RECORD([[--TABLE]])
