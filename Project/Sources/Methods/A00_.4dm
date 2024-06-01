@@ -4,7 +4,8 @@
 //コミットコメントはここでタイプしてからGitHub Desktopに貼ると便利
 
 //20240601 wat
-//_GetRecordのテンプレートに不具合、READ WRITEにしていたのをREAD ONLYに修正。
+//_GetRecordのテンプレートに不具合、READ WRITEにしていたのをREAD ONLYに修正。first recordは不要なのでトル。
+//_make_onServerのカウンター変数が重複定義されていたのを修正。$i
 
 //20240529 wat
 //_SaveValuesのテンプレートに不具合、不要な代入文を削除。

@@ -8,7 +8,7 @@ $objSearch:=$1
 C_POINTER($2; $outAryObjPtr)  //オブジェクト型配列のポインタ
 $outAryObjPtr:=$2
 C_LONGINT($0)
-C_LONGINT($i; $numOfRecs)
+C_LONGINT($numOfRecs)
 C_TEXT($likeWord)
 C_LONGINT($i; $cnt)
 ARRAY POINTER($aryFldPtr; 0)
