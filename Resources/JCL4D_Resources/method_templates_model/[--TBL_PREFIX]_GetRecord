@@ -11,7 +11,6 @@ C_LONGINT($0;$numOfRecs)
 READ ONLY([[--TABLE]])
 QUERY([[--TABLE]];[[--TABLE]][--TBL_PREFIX]_DEL_FLAG=0;*)
 QUERY([[--TABLE]];&;[[--TABLE]][--TBL_PREFIX]_ID=$[--TBL_PREFIX]_id)
-FIRST RECORD([[--TABLE]])
 $numOfRecs:=records in selection([[--TABLE]])
 if ($numOfRecs=1)
 //レコードをオブジェクト型の変数に格納
