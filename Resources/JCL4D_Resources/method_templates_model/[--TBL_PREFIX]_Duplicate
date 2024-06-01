@@ -10,7 +10,6 @@ C_LONGINT($0;$new_[--TBL_PREFIX]_id)
 READ WRITE([[--TABLE]])
 QUERY([[--TABLE]];[[--TABLE]][--TBL_PREFIX]_DEL_FLAG=0;*)
 QUERY([[--TABLE]];&;[[--TABLE]][--TBL_PREFIX]_ID=$[--TBL_PREFIX]_id)
-FIRST RECORD([[--TABLE]])
 
 DUPLICATE RECORD([[--TABLE]])
 $new_[--TBL_PREFIX]_id:=Sequence number ([[--TABLE]])
