@@ -32,3 +32,4 @@ EMAIL	Is Alpha Field	255	1	0	メールアドレス
 TOKEN	Is Alpha Field	255	0	0	トークン	Generate digest($param; MD5 digest)で生成	
 CREATE_AT	Is Alpha Field	20	0	0	作成デイトマーク		
 DEL_FLAG	Is LongInt	0	1	0	削除フラグ		
+-							
