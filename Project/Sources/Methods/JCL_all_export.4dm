@@ -45,7 +45,6 @@ If ($open_dlg_ok=1)  //フォルダが選択された？
 				$tablePrt:=Table:C252($i)
 				READ ONLY:C145($tablePrt->)
 				ALL RECORDS:C47($tablePrt->)
-				FIRST RECORD:C50($tablePrt->)
 				$numOfAllRecs:=Records in selection:C76($tablePrt->)
 				
 				//フィールド名を書き出し

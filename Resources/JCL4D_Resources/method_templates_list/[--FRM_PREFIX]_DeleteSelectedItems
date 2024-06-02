@@ -17,7 +17,6 @@ For ($i;1;$selCnt)
 // レコードを取得
 $[--TBL_PREFIX]_id:=$ary[--TBL_PREFIX]_ID{$i}
 QUERY([[--TABLE]];[[--TABLE]][--TBL_PREFIX]_ID=$[--TBL_PREFIX]_id)
-FIRST RECORD([[--TABLE]])
 
 // 削除フラグをオン
 [[--TABLE]][--TBL_PREFIX]_DEL_FLAG:=1

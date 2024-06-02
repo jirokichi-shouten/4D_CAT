@@ -3,6 +3,9 @@
 //20240207 ike wat
 //コミットコメントはここでタイプしてからGitHub Desktopに貼ると便利
 
+//20240602 wat
+//JCLからもfirst recordを削除。
+
 //20240601 wat
 //_GetRecordのテンプレートに不具合、READ WRITEにしていたのをREAD ONLYに修正。first recordは不要なのでトル。
 //_make_onServerのカウンター変数が重複定義されていたのを修正。$i
