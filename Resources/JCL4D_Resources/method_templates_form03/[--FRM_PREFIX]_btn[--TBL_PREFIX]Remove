@@ -1,5 +1,5 @@
 //[--FRM_PREFIX]_btn[--TBL_PREFIX]Remove
-//FG form03 v202403 [--DATE]
+//FG form03 v202406 [--DATE]
 // リストボックスの選択行を削除
 
 C_LONGINT($sizeOfAry; $j)
@@ -11,7 +11,7 @@ $selCnt:=JCL_lst_SelectedValues(->v[--FRM_PREFIX]_lst[--TBL_PREFIX]; ->v[--FRM_P
 if ($selCnt>0)
 	$sizeOfAry:=Size of array($ary[--TBL_PREFIX]_ID)
 	For ($j; $sizeOfAry; 1; -1)
-		$pr_id:=v[--FRM_PREFIX]_lst[--TBL_PREFIX]_ID{$j}
+		$[--TBL_PREFIX]_id:=v[--FRM_PREFIX]_lst[--TBL_PREFIX]_ID{$j}
 		
 		$index:=Find in array($ary[--TBL_PREFIX]_ID; $[--TBL_PREFIX]_id)
 		If ($index>0)
