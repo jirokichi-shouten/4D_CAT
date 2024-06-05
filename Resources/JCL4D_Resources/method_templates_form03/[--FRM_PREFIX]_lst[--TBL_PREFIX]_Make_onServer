@@ -12,7 +12,7 @@ C_LONGINT($0)
 //最初に削除フラグでセットを作る
 READ ONLY([[--TABLE]])
 QUERY([[--TABLE]]; [[--TABLE]][--TBL_PREFIX]_DEL_FLAG=$objSearch.del_flag;*)
-QUERY([[--TABLE]];&; [[--TABLE]][--TBL_PREFIX]_[--PARENT_TBL_PREFIX]_ID=$objSearch.[--PARENT_TBL_PREFIX]_id)
+QUERY([[--TABLE]];&; [[--TABLE]][--TBL_PREFIX]_[--PARENT_TBL_PREFIX]_ID=$objSearch.[--PARENT_TBL_PREFIX]_ID)
 
 //DBデータを取得してオブジェクト配列に追加
 $numOfRecs:=[--FRM_PREFIX]_lst[--TBL_PREFIX]_Make_aryObj_onServer($outAryObjPtr)

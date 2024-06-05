@@ -2,18 +2,18 @@
 //FG v202103 [--DATE]
 //[--TABLE] 入力フォームを新規モードで表示
 
-C_LONGINT($[--TBL_PREFIX]_id)
-$[--TBL_PREFIX]_id:=0//IDを初期化
+C_LONGINT($[--TBL_PREFIX]_ID)
+$[--TBL_PREFIX]_ID:=0//IDを初期化
 C_LONGINT($display_ok)
 
 //入力フォームを開く
-$display_ok:=[--TBL_PREFIX]02_Input_Add (->$[--TBL_PREFIX]_id)
+$display_ok:=[--TBL_PREFIX]02_Input_Add (->$[--TBL_PREFIX]_ID)
 If ($display_ok=1)
 
 [--FRM_PREFIX]_lst[--TBL_PREFIX]_Make //テーブルからリロード
 
 //変更・追加の行を選択状態にする
-JCL_lst_SetSelect_byLong (->v[--FRM_PREFIX]_lst[--TBL_PREFIX];->v[--FRM_PREFIX]_lst[--TBL_PREFIX]_ID;$[--TBL_PREFIX]_id)
+JCL_lst_SetSelect_byLong (->v[--FRM_PREFIX]_lst[--TBL_PREFIX];->v[--FRM_PREFIX]_lst[--TBL_PREFIX]_ID;$[--TBL_PREFIX]_ID)
 
 [--FRM_PREFIX]_SetControlsValues 
 

@@ -3,17 +3,17 @@
 //OKボタン　フォーム上の関連テーブルのリストボックス配列を保存
 
 C_LONGINT($i;$sizeOfAry)
-C_LONGINT($[--TBL_PREFIX]_id)
+C_LONGINT($[--TBL_PREFIX]_ID)
 
   //配列にあるものはDBに追加、または更新
 $sizeOfAry:=Size of array(v[--FRM_PREFIX]_lst[--TBL_PREFIX]_ID)
 For ($i;1;$sizeOfAry)
 	If (v[--FRM_PREFIX]_lst[--TBL_PREFIX]_ID{$i}=0)
 		  //IDがゼロなら未保存のデータなので追加
-		$[--TBL_PREFIX]_id:=[--FRM_PREFIX]_frmSaveValues_[--TBL_PREFIX]Add ($i)
+		$[--TBL_PREFIX]_ID:=[--FRM_PREFIX]_frmSaveValues_[--TBL_PREFIX]Add ($i)
 
 		 //あとで削除されないように、配列とDBを同期させておく
-		v[--FRM_PREFIX]_lst[--TBL_PREFIX]_ID{$i}:=$[--TBL_PREFIX]_id
+		v[--FRM_PREFIX]_lst[--TBL_PREFIX]_ID{$i}:=$[--TBL_PREFIX]_ID
 		
 	Else 
 		  //IDがゼロじゃなければ既存のデータなので更新

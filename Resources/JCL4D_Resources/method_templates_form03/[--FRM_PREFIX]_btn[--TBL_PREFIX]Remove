@@ -5,15 +5,15 @@
 C_LONGINT($sizeOfAry; $j)
 ARRAY LONGINT($ary[--TBL_PREFIX]_ID; 0)
 C_LONGINT($selCnt; $index)
-C_LONGINT($[--TBL_PREFIX]_id)
+C_LONGINT($[--TBL_PREFIX]_ID)
 
 $selCnt:=JCL_lst_SelectedValues(->v[--FRM_PREFIX]_lst[--TBL_PREFIX]; ->v[--FRM_PREFIX]_lst[--TBL_PREFIX]_ID; ->$ary[--TBL_PREFIX]_ID)
 if ($selCnt>0)
 	$sizeOfAry:=Size of array($ary[--TBL_PREFIX]_ID)
 	For ($j; $sizeOfAry; 1; -1)
-		$[--TBL_PREFIX]_id:=v[--FRM_PREFIX]_lst[--TBL_PREFIX]_ID{$j}
+		$[--TBL_PREFIX]_ID:=v[--FRM_PREFIX]_lst[--TBL_PREFIX]_ID{$j}
 		
-		$index:=Find in array($ary[--TBL_PREFIX]_ID; $[--TBL_PREFIX]_id)
+		$index:=Find in array($ary[--TBL_PREFIX]_ID; $[--TBL_PREFIX]_ID)
 		If ($index>0)
 			// 配列から一つ要素を削除
 	  [--FRM_PREFIX]_lst[--TBL_PREFIX]_remove($j)

@@ -2,8 +2,6 @@
 //FG v202103 [--DATE]
 //[--TABLE] リストボックスの選択行を複数削除 確認ダイアログを表示
 
-C_LONGINT($[--TBL_PREFIX]_id)
-$[--TBL_PREFIX]_id:=0
 C_LONGINT($selCnt)
 C_LONGINT($dlg_ok)//システム変数OKを保持
 

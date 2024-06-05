@@ -2,17 +2,17 @@
 //FG form03 v202402 [--DATE]
 //[--TABLE] リストボックスに行を追加 親テーブルのIDを自動代入
 
-C_LONGINT($[--TBL_PREFIX]_id)
-$[--TBL_PREFIX]_id:=0//IDを初期化
-C_LONGINT($[--PARENT_TBL_PREFIX]_id)
-$[--PARENT_TBL_PREFIX]_id:=[--FRM_PREFIX]_var[--PARENT_TBL_PREFIX]_ID_get
+C_LONGINT($[--TBL_PREFIX]_ID)
+$[--TBL_PREFIX]_ID:=0//IDを初期化
+C_LONGINT($[--PARENT_TBL_PREFIX]_ID)
+$[--PARENT_TBL_PREFIX]_ID:=[--FRM_PREFIX]_var[--PARENT_TBL_PREFIX]_ID_get
 
 //行追加
 [--FRM_PREFIX]_lst[--TBL_PREFIX]_append
 
 //IDフィールドに親テーブルのIDを代入
 $sizeOfAry:=Size of array(v[--FRM_PREFIX]_lst[--TBL_PREFIX]_[--PARENT_TBL_PREFIX]_ID)
-v[--FRM_PREFIX]_lst[--TBL_PREFIX]_[--PARENT_TBL_PREFIX]_ID{$sizeOfAry}:=$[--PARENT_TBL_PREFIX]_id
+v[--FRM_PREFIX]_lst[--TBL_PREFIX]_[--PARENT_TBL_PREFIX]_ID{$sizeOfAry}:=$[--PARENT_TBL_PREFIX]_ID
 
 //追加の行に移動
 EDIT ITEM(v[--FRM_PREFIX]_lst[--TBL_PREFIX]_[--PARENT_TBL_PREFIX]_ID;$sizeOfAry)

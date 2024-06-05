@@ -5,7 +5,7 @@
 
 C_LONGINT($0;$selCnt)
 C_LONGINT($i)
-C_LONGINT($[--TBL_PREFIX]_id)
+C_LONGINT($[--TBL_PREFIX]_ID)
 ARRAY LONGINT($ary[--TBL_PREFIX]_ID;0)
 
 READ WRITE([[--TABLE]])
@@ -15,8 +15,8 @@ $selCnt:=JCL_lst_SelectedValues (->v[--FRM_PREFIX]_lst[--TBL_PREFIX];->v[--FRM_P
 For ($i;1;$selCnt)
 
 // レコードを取得
-$[--TBL_PREFIX]_id:=$ary[--TBL_PREFIX]_ID{$i}
-QUERY([[--TABLE]];[[--TABLE]][--TBL_PREFIX]_ID=$[--TBL_PREFIX]_id)
+$[--TBL_PREFIX]_ID:=$ary[--TBL_PREFIX]_ID{$i}
+QUERY([[--TABLE]];[[--TABLE]][--TBL_PREFIX]_ID=$[--TBL_PREFIX]_ID)
 
 // 削除フラグをオン
 [[--TABLE]][--TBL_PREFIX]_DEL_FLAG:=1

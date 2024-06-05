@@ -3,16 +3,16 @@
 //OKボタン　フォーム上の関連テーブルのリストボックス配列を保存
 // 配列で削除されているジャーナルを　レコードから削除
 
-C_LONGINT($[--PARENT_TBL_PREFIX]_id)
+C_LONGINT($[--PARENT_TBL_PREFIX]_ID)
 C_LONGINT($i;$numOfRecs)
 C_LONGINT($index)
 
-$[--PARENT_TBL_PREFIX]_id:=[--FRM_PREFIX]_var[--PARENT_TBL_PREFIX]_ID_get 
+$[--PARENT_TBL_PREFIX]_ID:=[--FRM_PREFIX]_var[--PARENT_TBL_PREFIX]_ID_get 
 
   // 保存されているレコードをロード
 READ WRITE([[--TABLE]])
 QUERY([[--TABLE]];[[--TABLE]][--TBL_PREFIX]_DEL_FLAG=0;*)
-QUERY([[--TABLE]];&;[[--TABLE]][--TBL_PREFIX]_[--PARENT_TBL_PREFIX]_ID=$[--PARENT_TBL_PREFIX]_id)
+QUERY([[--TABLE]];&;[[--TABLE]][--TBL_PREFIX]_[--PARENT_TBL_PREFIX]_ID=$[--PARENT_TBL_PREFIX]_ID)
 $numOfRecs:=Records in selection([[--TABLE]])
 For ($i;1;$numOfRecs)
 	GOTO SELECTED RECORD([[--TABLE]];$i)

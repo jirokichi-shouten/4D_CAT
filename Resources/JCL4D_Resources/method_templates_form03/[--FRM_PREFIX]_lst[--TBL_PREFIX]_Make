@@ -7,7 +7,7 @@ ARRAY OBJECT($aryObj; 0)
 C_OBJECT($objSearch)
 $objSearch:=New object
 $objSearch.del_flag:=0 
-$objSearch.[--PARENT_TBL_PREFIX]_id:=[--FRM_PREFIX]_var[--PARENT_TBL_PREFIX]_ID_get
+$objSearch.[--PARENT_TBL_PREFIX]_ID:=[--FRM_PREFIX]_var[--PARENT_TBL_PREFIX]_ID_get
 
   //サーバ上でクエリー実行、結果をオブジェクトの配列で取得
 $cnt:=[--FRM_PREFIX]_lst[--TBL_PREFIX]_Make_onServer($objSearch; ->$aryObj)

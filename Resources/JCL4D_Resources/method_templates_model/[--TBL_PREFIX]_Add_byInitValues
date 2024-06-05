@@ -2,15 +2,15 @@
 //method_generator [--DATE]
 //[--TABLE] レコード追加、初期値代入
 
-C_LONGINT($0;$[--TBL_PREFIX]_id)
+C_LONGINT($0;$[--TBL_PREFIX]_ID)
 
 //新規レコード作成
-$[--TBL_PREFIX]_id:=Sequence number ([[--TABLE]])
+$[--TBL_PREFIX]_ID:=Sequence number ([[--TABLE]])
 CREATE RECORD([[--TABLE]])
 
 [[--TABLE]][--FIELD]:=[--INITVALUE]
 
-[[--TABLE]][--TBL_PREFIX]_ID:=$[--TBL_PREFIX]_id
+[[--TABLE]][--TBL_PREFIX]_ID:=$[--TBL_PREFIX]_ID
 
 SAVE RECORD([[--TABLE]])
 

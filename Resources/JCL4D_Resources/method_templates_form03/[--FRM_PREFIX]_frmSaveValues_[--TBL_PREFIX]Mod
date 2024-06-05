@@ -5,15 +5,15 @@
 
 C_LONGINT($1;$nr)
 $nr:=$1
-C_LONGINT($0;$[--TBL_PREFIX]_id)
+C_LONGINT($0;$[--TBL_PREFIX]_ID)
 
-$[--TBL_PREFIX]_id:=v[--FRM_PREFIX]_lst[--TBL_PREFIX]_ID{$nr}
+$[--TBL_PREFIX]_ID:=v[--FRM_PREFIX]_lst[--TBL_PREFIX]_ID{$nr}
 
 //DB保存値と画面表示を比べて、違いがあった時だけ保存する
-$isSame:=[--FRM_PREFIX]_Compare[--TBL_PREFIX]_BeforeAfter($[--TBL_PREFIX]_id;$nr)
+$isSame:=[--FRM_PREFIX]_Compare[--TBL_PREFIX]_BeforeAfter($[--TBL_PREFIX]_ID;$nr)
 If ($isSame=False)
 	READ WRITE([[--TABLE]])
-	QUERY([[--TABLE]];[[--TABLE]][--TBL_PREFIX]_ID=$[--TBL_PREFIX]_id)
+	QUERY([[--TABLE]];[[--TABLE]][--TBL_PREFIX]_ID=$[--TBL_PREFIX]_ID)
 
 	[[--TABLE]][--FIELD]:=v[--FRM_PREFIX]_lst[--FIELD]{$nr}
 
@@ -23,4 +23,4 @@ If ($isSame=False)
 
 End if 
 
-$0:=$[--TBL_PREFIX]_id
+$0:=$[--TBL_PREFIX]_ID

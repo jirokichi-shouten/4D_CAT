@@ -4,7 +4,7 @@
 //新規レコードを作成しないで、DLGでOKされたときだけOKボタンメソッドで作成する
 
 C_POINTER($1)//ポインタ引数にIDを返す
-C_LONGINT($[--TBL_PREFIX]_id)
+C_LONGINT($[--TBL_PREFIX]_ID)
 C_LONGINT($dlg_ok)//システム変数OKを保持
 
 [--FRM_PREFIX]_DefInit 
@@ -14,11 +14,11 @@ C_LONGINT($dlg_ok)//システム変数OKを保持
 [--FRM_PREFIX]_InitValues 
 
 //画面表示
-$dlg_ok:=[--FRM_PREFIX]_Display ($[--TBL_PREFIX]_id)
+$dlg_ok:=[--FRM_PREFIX]_Display ($[--TBL_PREFIX]_ID)
 If ($dlg_ok#1)
 	//保存はOKボタン
 
 End if 
 
-$1->:=$[--TBL_PREFIX]_id//IDを返す
+$1->:=$[--TBL_PREFIX]_ID//IDを返す
 $0:=$dlg_ok

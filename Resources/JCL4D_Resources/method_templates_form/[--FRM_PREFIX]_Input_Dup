@@ -3,9 +3,9 @@
 //[--TABLE] レコード複製フォーム
 
 //C_LONGINT($1)//ID
-//$[--TBL_PREFIX]_id:=$1
+//$[--TBL_PREFIX]_ID:=$1
 //C_POINTER($2)
-//C_LONGINT($new_[--TBL_PREFIX]_id)
+//C_LONGINT($new_[--TBL_PREFIX]_ID)
 //C_LONGINT($0;$dlg_ok)//システム変数OKを保持
 
 //モードを渡す、フォームの［削除］ボタンを非表示にするためだったり．．
@@ -13,14 +13,14 @@
 //[--FRM_PREFIX]_varMode_Set ("dup")
 
 //READ ONLY([[--TABLE]])
-//QUERY([[--TABLE]];[[--TABLE]][--TBL_PREFIX]_ID=$[--TBL_PREFIX]_id)
+//QUERY([[--TABLE]];[[--TABLE]][--TBL_PREFIX]_ID=$[--TBL_PREFIX]_ID)
 //[--FRM_PREFIX]_LoadValues 
 
-//$dlg_ok:=[--FRM_PREFIX]_Display (->$new_[--TBL_PREFIX]_id)//OK変数の値を保持
+//$dlg_ok:=[--FRM_PREFIX]_Display (->$new_[--TBL_PREFIX]_ID)//OK変数の値を保持
 //If ($dlg_ok#1)
 	//保存はOKボタン
 
 //End if 
 
-//$2->:=$new_[--TBL_PREFIX]_id//IDを返す
+//$2->:=$new_[--TBL_PREFIX]_ID//IDを返す
 //$0:=$dlg_ok
