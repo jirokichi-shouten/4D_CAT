@@ -192,10 +192,16 @@ Function setControlsValues()
 	JCL_btn_SetEnable_byListSelect(->vD00_lstT; ->vD00_btnFormColor)
 	
 	//まだテーブルがないとき
+	$sizeOfAry:=Size of array:C274(vD00_lstT_nr)
 	If ($sizeOfAry=0)
 		JCL_btn_SetEnable(->vD00_btnFomAll; False:C215)
 		JCL_btn_SetEnable(->vD00_btnAllDel; False:C215)
 		JCL_btn_SetEnable(->vD00_btnColors; False:C215)
+		
+	Else 
+		JCL_btn_SetEnable(->vD00_btnFomAll; True:C214)
+		JCL_btn_SetEnable(->vD00_btnAllDel; True:C214)
+		JCL_btn_SetEnable(->vD00_btnColors; True:C214)
 		
 	End if 
 	
