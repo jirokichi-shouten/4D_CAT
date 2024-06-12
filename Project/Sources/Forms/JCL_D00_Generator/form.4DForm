@@ -243,7 +243,7 @@
 					"type": "input",
 					"top": 112,
 					"left": 10,
-					"width": 90,
+					"width": 310,
 					"height": 17,
 					"dataSource": "vD00_txtNumOfTables",
 					"class": "JCL_YuGothic12",
@@ -796,7 +796,7 @@
 			}
 		}
 	],
-	"geometryStamp": 1201,
+	"geometryStamp": 1212,
 	"editor": {
 		"activeView": "View 1",
 		"defaultView": "View 1",
