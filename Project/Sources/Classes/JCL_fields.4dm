@@ -1,4 +1,4 @@
-//JCL_tg
+//JCL_fields
 //JCL Table Generator and related functions
 //20240316 yabe wat
 //JCLのうちテーブル関連のメソッド群

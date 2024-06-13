@@ -1,4 +1,4 @@
-//catForm
+//JCL_formObjects
 //20240215 wat
 //フォームを作成するクラス
 

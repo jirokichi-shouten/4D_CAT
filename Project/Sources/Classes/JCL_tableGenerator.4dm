@@ -1,5 +1,4 @@
 //JCL_tableGenerator
-//JCL_tg
 //JCL Table Generator and related functions
 //20240316 yabe wat
 //JCLのうちテーブル生成関連のメソッド群をクラス化
