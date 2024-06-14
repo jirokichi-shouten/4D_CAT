@@ -781,7 +781,7 @@
 					"width": 163,
 					"height": 23,
 					"class": "JCL_YuGothic16",
-					"text": "ジェネレータ"
+					"text": "CATジェネレータ"
 				},
 				"vJCL_D02_txtTitle1": {
 					"type": "text",
@@ -792,11 +792,32 @@
 					"class": "JCL_YuGothic12",
 					"text": "［テーブル追加］でテーブルを生成、［全フォーム作成］でフォームを生成する。",
 					"stroke": "#8b4513"
+				},
+				"vD00_varVersion": {
+					"type": "input",
+					"top": 34,
+					"left": 16,
+					"width": 610,
+					"height": 17,
+					"dataSource": "vD00_varVersion",
+					"class": "JCL_YuGothic12",
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"enterable": false,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"sizingY": "fixed",
+					"textAlign": "automatic"
 				}
 			}
 		}
 	],
-	"geometryStamp": 1212,
+	"geometryStamp": 1218,
 	"editor": {
 		"activeView": "View 1",
 		"defaultView": "View 1",

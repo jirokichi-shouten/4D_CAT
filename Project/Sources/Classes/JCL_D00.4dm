@@ -75,6 +75,7 @@ Function frmDefInit()
 	vD00_varVersion:="1.0(3) 20240304"
 	vD00_varVersion:="1.0(4) 20240503"
 	vD00_varVersion:="1.0(5) 20240515"
+	vD00_varVersion:="1.0(6) 20240614"
 	
 	C_TEXT:C284(vD00_var4D_DataFile)
 	vD00_var4D_DataFile:="データファイル："+Data file:C490
@@ -301,18 +302,18 @@ Function btnFormColor()
 	//20240503
 	//フォームカラーの色変更、カラーピッカーを表示
 	
-	C_TEXT:C284($tblName)
-	C_TEXT:C284($colorTex)
-	C_LONGINT:C283($new_color)
 	C_LONGINT:C283($nr)
+	C_TEXT:C284($tblName)
+	C_LONGINT:C283($fore_color; $bak_color)
+	C_LONGINT:C283($new_color)
 	C_TEXT:C284($new_text)
 	
 	$nr:=JCL_lst_Selected_Long(->vD00_lstT; ->vD00_lstT_nr)
-	$colorText:=JCL_lst_Selected_Str(->vD00_lstT; ->vD00_lstT_Color)
 	$tblName:=JCL_lst_Selected_Str(->vD00_lstT; ->vD00_lstT_name)
+	OBJECT GET RGB COLORS:C1074(*; "vD00_varTableName"; $fore_color; $bak_color)
 	
 	//カラーピッカー
-	$new_color:=Select RGB color:C956($colorText)
+	$new_color:=Select RGB color:C956($bak_color)
 	If ($new_color#0)
 		//色変更
 		$new_text:=Replace string:C233(String:C10($new_color; "&$"); "$"; "")
