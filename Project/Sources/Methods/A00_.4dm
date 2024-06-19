@@ -3,6 +3,9 @@
 //20240207 ike wat
 //コミットコメントはここでタイプしてからGitHub Desktopに貼ると便利
 
+//20240619 ike wat
+//additionalMethods を追加: method_additionalsフォルダのメソッド群を、テーブルがあればコピーしてSourcesに追加。
+
 //20240614 wat
 //カラー設定でカラーピッカー表示時に元の色をとり損ねていた不具合を修正。
 

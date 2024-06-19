@@ -236,3 +236,40 @@ Function createOneMethod()
 	//$m:=$m+": $newmethod=["+$newmethod+"]"
 	//JCL_file_Logout($m)
 	
+Function createAdditionalMethods($inBlockText : Text)
+	//20240619 jiro
+	//モデルメソッド群を追加テンプレートから作成
+	
+	ARRAY TEXT:C222($aryLines; 0)
+	ARRAY TEXT:C222($aryTableItems; 0)
+	C_TEXT:C284($prefix)
+	
+	//改行で切り分ける
+	$numOfLines:=JCL_str_Extract_byReturn($inBlockText; ->$aryLines)
+	
+	//テーブル情報取得
+	$numOfItems:=JCL_str_Extract($aryLines{1}; Char:C90(Tab:K15:37); ->$aryTableItems)
+	$prefix:=$aryTableItems{2}
+	
+	//プリフィックスがリソースフォルダにあれば
+	C_OBJECT:C1216($folder)
+	$folder:=New object:C1471
+	$folder:=Folder:C1567("/RESOURCES/JCL4D_Resources/method_additionals/"+$prefix+"/")
+	If ($folder.exists)
+		//フォルダの中のメソッドをコピー
+		$files:=$folder.files(fk ignore invisible:K87:22)
+		For ($i; 1; $files.length)
+			$currentFileName:=$files[$i-1].name  // ファイル名を取得
+			$fileText:=$files[$i-1].getText()
+			
+			C_OBJECT:C1216($new_file)
+			$new_file:=New object:C1471
+			$new_file:=File:C1566("/SOURCES/Methods/"+$currentFileName)
+			$new_file.create()
+			$new_file.setText($fileText)
+			
+		End for 
+		ALERT:C41($prefix)
+		
+	End if 
+	

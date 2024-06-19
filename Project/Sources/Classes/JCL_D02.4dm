@@ -222,6 +222,9 @@ Function btnTable()
 				//ラベルファイルを作成
 				$jcl_fields.createLabelFile($block)
 				
+				//追加メソッドをテンプレートから持ってくる
+				$jcl_tg.createAdditionalMethods($block)
+				
 				$cnt:=$cnt+1
 				
 			End if 
