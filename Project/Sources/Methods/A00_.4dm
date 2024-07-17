@@ -3,6 +3,9 @@
 //20240207 ike wat
 //コミットコメントはここでタイプしてからGitHub Desktopに貼ると便利
 
+//20240717
+//additionalMethods　の仕組みを追加したため、v1.1としてリリースする。
+
 //20240619 ike wat
 //additionalMethods を追加: method_additionalsフォルダのメソッド群を、テーブルがあればコピーしてSourcesに追加。
 

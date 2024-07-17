@@ -123,11 +123,32 @@
 					],
 					"sizingY": "fixed",
 					"method": "ObjectMethods/vA01_varProductName.4dm"
+				},
+				"vA01_varVersion": {
+					"type": "input",
+					"top": 34,
+					"left": 16,
+					"width": 610,
+					"height": 17,
+					"dataSource": "vA01_varVersion",
+					"class": "JCL_YuGothic12",
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"enterable": false,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"sizingY": "fixed",
+					"textAlign": "automatic"
 				}
 			}
 		}
 	],
-	"geometryStamp": 814,
+	"geometryStamp": 816,
 	"editor": {
 		"activeView": "View 1",
 		"defaultView": "View 1",
