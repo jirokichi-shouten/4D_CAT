@@ -1,0 +1,1111 @@
+{
+	"destination": "detailScreen",
+	"windowSizingX": "fixed",
+	"windowSizingY": "fixed",
+	"width": 410,
+	"height": 440,
+	"markerHeader": 15,
+	"markerBody": 200,
+	"markerBreak": 220,
+	"markerFooter": 240,
+	"events": [
+		"onLoad",
+		"onValidate",
+		"onClick",
+		"onOutsideCall",
+		"onDoubleClick",
+		"onDrop",
+		"onMenuSelect",
+		"onPluginArea",
+		"onDataChange",
+		"onDragOver",
+		"onTimer",
+		"onAfterKeystroke",
+		"onAfterEdit",
+		"onBeginDragOver",
+		"onBoundVariableChange",
+		"onPageChange"
+	],
+	"method": "method.4dm",
+	"pageFormat": {
+		"paperName": "A4",
+		"paperWidth": "595pt",
+		"paperHeight": "842pt"
+	},
+	"pages": [
+		{
+			"objects": {
+				"Rectangle17": {
+					"type": "rectangle",
+					"top": 0,
+					"left": 0,
+					"width": 410,
+					"height": 440,
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"fill": "#CECCBF",
+					"stroke": "#007000",
+					"strokeWidth": 4
+				}
+			}
+		},
+		{
+			"objects": {
+				"ピクチャー7": {
+					"type": "picture",
+					"top": 10,
+					"left": 358,
+					"width": 42,
+					"height": 36,
+					"pictureFormat": "scaled",
+					"picture": "Images/ピクチャー7.png",
+					"class": "JCL_YuGothic16"
+				},
+				"vD20_varYearMonthStr": {
+					"type": "input",
+					"top": 10,
+					"left": 0,
+					"width": 410,
+					"height": 28,
+					"dataSource": "vD20_varYearMonthStr",
+					"stroke": "#000000",
+					"class": "JCL_YuGothic23",
+					"textAlign": "center",
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"enterable": false,
+					"contextMenu": "none",
+					"events": [
+						"onClick",
+						"onHeader",
+						"onPrintingBreak",
+						"onPrintingFooter",
+						"onDisplayDetail",
+						"onDataChange",
+						"onPrintingDetail"
+					]
+				},
+				"Texte1": {
+					"type": "text",
+					"top": 94,
+					"left": 50,
+					"width": 42,
+					"height": 25,
+					"textAlign": "center",
+					"text": "日",
+					"class": "JCL_YuGothic16",
+					"fontTheme": "normal"
+				},
+				"Texte2": {
+					"type": "text",
+					"top": 94,
+					"left": 94,
+					"width": 42,
+					"height": 25,
+					"textAlign": "center",
+					"text": "月",
+					"class": "JCL_YuGothic16",
+					"fontTheme": "normal"
+				},
+				"Texte3": {
+					"type": "text",
+					"top": 94,
+					"left": 138,
+					"width": 42,
+					"height": 25,
+					"textAlign": "center",
+					"text": "火",
+					"class": "JCL_YuGothic16",
+					"fontTheme": "normal"
+				},
+				"Texte4": {
+					"type": "text",
+					"top": 94,
+					"left": 182,
+					"width": 42,
+					"height": 25,
+					"textAlign": "center",
+					"text": "水",
+					"class": "JCL_YuGothic16",
+					"fontTheme": "normal"
+				},
+				"Texte5": {
+					"type": "text",
+					"top": 94,
+					"left": 226,
+					"width": 42,
+					"height": 25,
+					"textAlign": "center",
+					"text": "木",
+					"class": "JCL_YuGothic16",
+					"fontTheme": "normal"
+				},
+				"Texte6": {
+					"type": "text",
+					"top": 94,
+					"left": 270,
+					"width": 42,
+					"height": 25,
+					"textAlign": "center",
+					"text": "金",
+					"class": "JCL_YuGothic16",
+					"fontTheme": "normal"
+				},
+				"Texte7": {
+					"type": "text",
+					"top": 94,
+					"left": 314,
+					"width": 42,
+					"height": 25,
+					"textAlign": "center",
+					"text": "土",
+					"class": "JCL_YuGothic16",
+					"fontTheme": "normal"
+				},
+				"vD20_btnDownArrow": {
+					"type": "button",
+					"top": 530,
+					"left": 86,
+					"width": 51,
+					"height": 47,
+					"sizingY": "move",
+					"dataSource": "vD20_btnDownArrow",
+					"shortcutKey": "[down arrow]",
+					"text": "*",
+					"class": "JCL_YuGothic16",
+					"focusable": false,
+					"method": "ObjectMethods/vD20_btnDownArrow.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"vD20_btnUpArrow": {
+					"type": "button",
+					"top": 448,
+					"left": 86,
+					"width": 51,
+					"height": 47,
+					"sizingY": "move",
+					"dataSource": "vD20_btnUpArrow",
+					"shortcutKey": "[up arrow]",
+					"text": "*",
+					"class": "JCL_YuGothic16",
+					"focusable": false,
+					"method": "ObjectMethods/vD20_btnUpArrow.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"vD20_btnRightArrow": {
+					"type": "button",
+					"top": 487,
+					"left": 148,
+					"width": 51,
+					"height": 47,
+					"sizingY": "move",
+					"dataSource": "vD20_btnRightArrow",
+					"shortcutKey": "[right arrow]",
+					"text": "*",
+					"class": "JCL_YuGothic16",
+					"focusable": false,
+					"method": "ObjectMethods/vD20_btnRightArrow.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"vD20_btnLeftArrow": {
+					"type": "button",
+					"top": 480,
+					"left": 22,
+					"width": 51,
+					"height": 47,
+					"sizingY": "move",
+					"dataSource": "vD20_btnLeftArrow",
+					"shortcutKey": "[left arrow]",
+					"text": "*",
+					"class": "JCL_YuGothic16",
+					"focusable": false,
+					"method": "ObjectMethods/vD20_btnLeftArrow.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"vD20_popYear": {
+					"type": "dropdown",
+					"top": 48,
+					"left": 146,
+					"width": 114,
+					"height": 36,
+					"dataSource": "vD20_popYear",
+					"choiceList": {
+						"$ref": "/SOURCES/lists.json#/Jiro_Numbers"
+					},
+					"method": "ObjectMethods/vD20_popYear.4dm",
+					"events": [
+						"onDataChange"
+					],
+					"class": "JCL_YuGothic23"
+				},
+				"vD20_btnNextYear": {
+					"type": "button",
+					"top": 48,
+					"left": 270,
+					"width": 42,
+					"height": 36,
+					"sizingY": "move",
+					"dataSource": "vD20_btnNextYear",
+					"shortcutKey": "[up arrow]",
+					"shortcutAccel": true,
+					"text": "▲",
+					"focusable": false,
+					"method": "ObjectMethods/vD20_btnNextYear.4dm",
+					"events": [
+						"onClick"
+					],
+					"class": "JCL_YuGothic16"
+				},
+				"vD20_btnPrevYeat": {
+					"type": "button",
+					"top": 48,
+					"left": 94,
+					"width": 42,
+					"height": 36,
+					"sizingY": "move",
+					"dataSource": "vD20_btnPrevYeat",
+					"shortcutKey": "[down arrow]",
+					"shortcutAccel": true,
+					"text": "▼",
+					"focusable": false,
+					"method": "ObjectMethods/vD20_btnPrevYeat.4dm",
+					"events": [
+						"onClick"
+					],
+					"class": "JCL_YuGothic16"
+				},
+				"vD20_btnOK": {
+					"type": "button",
+					"top": 388,
+					"left": 58,
+					"width": 294,
+					"height": 42,
+					"sizingY": "move",
+					"dataSource": "vD20_btnOK",
+					"action": "accept",
+					"shortcutKey": "[Return]",
+					"text": "入力",
+					"fontFamily": "",
+					"focusable": false,
+					"events": [
+						"onClick"
+					],
+					"class": "JCL_YuGothic23"
+				},
+				"vD20_btnbPreviousMonth": {
+					"type": "button",
+					"top": 114,
+					"left": 10,
+					"width": 36,
+					"height": 262,
+					"sizingY": "move",
+					"dataSource": "vD20_btnbPreviousMonth",
+					"shortcutKey": "[left arrow]",
+					"shortcutAccel": true,
+					"text": "◀",
+					"focusable": false,
+					"method": "ObjectMethods/vD20_btnbPreviousMonth.4dm",
+					"events": [
+						"onClick"
+					],
+					"class": "JCL_YuGothic16"
+				},
+				"vD20_btnNextMonth": {
+					"type": "button",
+					"top": 114,
+					"left": 360,
+					"width": 36,
+					"height": 262,
+					"sizingY": "move",
+					"dataSource": "vD20_btnNextMonth",
+					"shortcutKey": "[right arrow]",
+					"shortcutAccel": true,
+					"text": "▶",
+					"focusable": false,
+					"method": "ObjectMethods/vD20_btnNextMonth.4dm",
+					"events": [
+						"onClick"
+					],
+					"fontStyle": "italic",
+					"class": "JCL_YuGothic16"
+				},
+				"vD20_btnToday": {
+					"type": "button",
+					"top": 469,
+					"left": 301,
+					"width": 94,
+					"height": 26,
+					"sizingY": "move",
+					"dataSource": "vD20_btnToday",
+					"text": "Today",
+					"class": "JCL_YuGothic16",
+					"focusable": false,
+					"method": "ObjectMethods/vD20_btnToday.4dm",
+					"events": [
+						"onClick"
+					]
+				},
+				"vD20_btnCancel": {
+					"type": "button",
+					"top": 10,
+					"left": 358,
+					"width": 42,
+					"height": 36,
+					"sizingY": "move",
+					"dataSource": "vD20_btnCancel",
+					"action": "cancel",
+					"shortcutKey": "w",
+					"shortcutAccel": true,
+					"display": false,
+					"events": [
+						"onClick"
+					],
+					"class": "JCL_YuGothic16"
+				},
+				"vD20_cbxDay1": {
+					"type": "checkbox",
+					"text": "1",
+					"top": 114,
+					"left": 50,
+					"width": 42,
+					"height": 42,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"style": "bevel",
+					"dataSource": "vD20_cbxDay1",
+					"class": "JCL_YuGothic16",
+					"method": "ObjectMethods/vD20_cbxDay1.4dm",
+					"dataSourceTypeHint": "boolean"
+				},
+				"vD20_cbxDay2": {
+					"type": "checkbox",
+					"text": "2",
+					"top": 114,
+					"left": 94,
+					"width": 42,
+					"height": 42,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"style": "bevel",
+					"dataSource": "vD20_cbxDay2",
+					"class": "JCL_YuGothic16",
+					"dataSourceTypeHint": "boolean",
+					"method": "ObjectMethods/vD20_cbxDay2.4dm"
+				},
+				"vD20_cbxDay3": {
+					"type": "checkbox",
+					"text": "3",
+					"top": 114,
+					"left": 138,
+					"width": 42,
+					"height": 42,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"style": "bevel",
+					"dataSource": "vD20_cbxDay3",
+					"class": "JCL_YuGothic16",
+					"dataSourceTypeHint": "boolean",
+					"method": "ObjectMethods/vD20_cbxDay3.4dm"
+				},
+				"vD20_cbxDay4": {
+					"type": "checkbox",
+					"text": "4",
+					"top": 114,
+					"left": 182,
+					"width": 42,
+					"height": 42,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"style": "bevel",
+					"dataSource": "vD20_cbxDay4",
+					"class": "JCL_YuGothic16",
+					"dataSourceTypeHint": "boolean",
+					"method": "ObjectMethods/vD20_cbxDay4.4dm"
+				},
+				"vD20_cbxDay5": {
+					"type": "checkbox",
+					"text": "5",
+					"top": 114,
+					"left": 226,
+					"width": 42,
+					"height": 42,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"style": "bevel",
+					"dataSource": "vD20_cbxDay5",
+					"class": "JCL_YuGothic16",
+					"dataSourceTypeHint": "boolean",
+					"method": "ObjectMethods/vD20_cbxDay5.4dm"
+				},
+				"vD20_cbxDay6": {
+					"type": "checkbox",
+					"text": "6",
+					"top": 114,
+					"left": 270,
+					"width": 42,
+					"height": 42,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"style": "bevel",
+					"dataSource": "vD20_cbxDay6",
+					"class": "JCL_YuGothic16",
+					"dataSourceTypeHint": "boolean",
+					"method": "ObjectMethods/vD20_cbxDay6.4dm"
+				},
+				"vD20_cbxDay7": {
+					"type": "checkbox",
+					"text": "7",
+					"top": 114,
+					"left": 314,
+					"width": 42,
+					"height": 42,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"style": "bevel",
+					"dataSource": "vD20_cbxDay7",
+					"class": "JCL_YuGothic16",
+					"dataSourceTypeHint": "boolean",
+					"method": "ObjectMethods/vD20_cbxDay7.4dm"
+				},
+				"vD20_cbxDay8": {
+					"type": "checkbox",
+					"text": "8",
+					"top": 158,
+					"left": 50,
+					"width": 42,
+					"height": 42,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"style": "bevel",
+					"dataSource": "vD20_cbxDay8",
+					"class": "JCL_YuGothic16",
+					"dataSourceTypeHint": "boolean",
+					"method": "ObjectMethods/vD20_cbxDay8.4dm"
+				},
+				"vD20_cbxDay9": {
+					"type": "checkbox",
+					"text": "9",
+					"top": 158,
+					"left": 94,
+					"width": 42,
+					"height": 42,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"style": "bevel",
+					"dataSource": "vD20_cbxDay9",
+					"class": "JCL_YuGothic16",
+					"dataSourceTypeHint": "boolean",
+					"method": "ObjectMethods/vD20_cbxDay9.4dm"
+				},
+				"vD20_cbxDay10": {
+					"type": "checkbox",
+					"text": "10",
+					"top": 158,
+					"left": 138,
+					"width": 42,
+					"height": 42,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"style": "bevel",
+					"dataSource": "vD20_cbxDay10",
+					"class": "JCL_YuGothic16",
+					"dataSourceTypeHint": "boolean",
+					"method": "ObjectMethods/vD20_cbxDay10.4dm"
+				},
+				"vD20_cbxDay11": {
+					"type": "checkbox",
+					"text": "11",
+					"top": 158,
+					"left": 182,
+					"width": 42,
+					"height": 42,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"style": "bevel",
+					"dataSource": "vD20_cbxDay11",
+					"class": "JCL_YuGothic16",
+					"dataSourceTypeHint": "boolean",
+					"method": "ObjectMethods/vD20_cbxDay11.4dm"
+				},
+				"vD20_cbxDay12": {
+					"type": "checkbox",
+					"text": "12",
+					"top": 158,
+					"left": 226,
+					"width": 42,
+					"height": 42,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"style": "bevel",
+					"dataSource": "vD20_cbxDay12",
+					"class": "JCL_YuGothic16",
+					"dataSourceTypeHint": "boolean",
+					"method": "ObjectMethods/vD20_cbxDay12.4dm"
+				},
+				"vD20_cbxDay13": {
+					"type": "checkbox",
+					"text": "13",
+					"top": 158,
+					"left": 270,
+					"width": 42,
+					"height": 42,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"style": "bevel",
+					"dataSource": "vD20_cbxDay13",
+					"class": "JCL_YuGothic16",
+					"dataSourceTypeHint": "boolean",
+					"method": "ObjectMethods/vD20_cbxDay13.4dm"
+				},
+				"vD20_cbxDay14": {
+					"type": "checkbox",
+					"text": "14",
+					"top": 158,
+					"left": 314,
+					"width": 42,
+					"height": 42,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"style": "bevel",
+					"dataSource": "vD20_cbxDay14",
+					"class": "JCL_YuGothic16",
+					"dataSourceTypeHint": "boolean",
+					"method": "ObjectMethods/vD20_cbxDay14.4dm"
+				},
+				"vD20_cbxDay15": {
+					"type": "checkbox",
+					"text": "15",
+					"top": 202,
+					"left": 50,
+					"width": 42,
+					"height": 42,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"style": "bevel",
+					"dataSource": "vD20_cbxDay15",
+					"class": "JCL_YuGothic16",
+					"dataSourceTypeHint": "boolean",
+					"method": "ObjectMethods/vD20_cbxDay15.4dm"
+				},
+				"vD20_cbxDay16": {
+					"type": "checkbox",
+					"text": "16",
+					"top": 202,
+					"left": 94,
+					"width": 42,
+					"height": 42,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"style": "bevel",
+					"dataSource": "vD20_cbxDay16",
+					"class": "JCL_YuGothic16",
+					"dataSourceTypeHint": "boolean",
+					"method": "ObjectMethods/vD20_cbxDay16.4dm"
+				},
+				"vD20_cbxDay17": {
+					"type": "checkbox",
+					"text": "17",
+					"top": 202,
+					"left": 138,
+					"width": 42,
+					"height": 42,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"style": "bevel",
+					"dataSource": "vD20_cbxDay17",
+					"class": "JCL_YuGothic16",
+					"dataSourceTypeHint": "boolean",
+					"method": "ObjectMethods/vD20_cbxDay17.4dm"
+				},
+				"vD20_cbxDay18": {
+					"type": "checkbox",
+					"text": "18",
+					"top": 202,
+					"left": 182,
+					"width": 42,
+					"height": 42,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"style": "bevel",
+					"dataSource": "vD20_cbxDay18",
+					"class": "JCL_YuGothic16",
+					"dataSourceTypeHint": "boolean",
+					"method": "ObjectMethods/vD20_cbxDay18.4dm"
+				},
+				"vD20_cbxDay19": {
+					"type": "checkbox",
+					"text": "19",
+					"top": 202,
+					"left": 226,
+					"width": 42,
+					"height": 42,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"style": "bevel",
+					"dataSource": "vD20_cbxDay19",
+					"class": "JCL_YuGothic16",
+					"dataSourceTypeHint": "boolean",
+					"method": "ObjectMethods/vD20_cbxDay19.4dm"
+				},
+				"vD20_cbxDay20": {
+					"type": "checkbox",
+					"text": "20",
+					"top": 202,
+					"left": 270,
+					"width": 42,
+					"height": 42,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"style": "bevel",
+					"dataSource": "vD20_cbxDay20",
+					"class": "JCL_YuGothic16",
+					"dataSourceTypeHint": "boolean",
+					"method": "ObjectMethods/vD20_cbxDay20.4dm"
+				},
+				"vD20_cbxDay21": {
+					"type": "checkbox",
+					"text": "21",
+					"top": 202,
+					"left": 314,
+					"width": 42,
+					"height": 42,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"style": "bevel",
+					"dataSource": "vD20_cbxDay21",
+					"class": "JCL_YuGothic16",
+					"dataSourceTypeHint": "boolean",
+					"method": "ObjectMethods/vD20_cbxDay21.4dm"
+				},
+				"vD20_cbxDay22": {
+					"type": "checkbox",
+					"text": "22",
+					"top": 246,
+					"left": 50,
+					"width": 42,
+					"height": 42,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"style": "bevel",
+					"dataSource": "vD20_cbxDay22",
+					"class": "JCL_YuGothic16",
+					"dataSourceTypeHint": "boolean",
+					"method": "ObjectMethods/vD20_cbxDay22.4dm"
+				},
+				"vD20_cbxDay23": {
+					"type": "checkbox",
+					"text": "23",
+					"top": 246,
+					"left": 94,
+					"width": 42,
+					"height": 42,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"style": "bevel",
+					"dataSource": "vD20_cbxDay23",
+					"class": "JCL_YuGothic16",
+					"dataSourceTypeHint": "boolean",
+					"method": "ObjectMethods/vD20_cbxDay23.4dm"
+				},
+				"vD20_cbxDay24": {
+					"type": "checkbox",
+					"text": "24",
+					"top": 246,
+					"left": 138,
+					"width": 42,
+					"height": 42,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"style": "bevel",
+					"dataSource": "vD20_cbxDay24",
+					"class": "JCL_YuGothic16",
+					"dataSourceTypeHint": "boolean",
+					"method": "ObjectMethods/vD20_cbxDay24.4dm"
+				},
+				"vD20_cbxDay25": {
+					"type": "checkbox",
+					"text": "25",
+					"top": 246,
+					"left": 182,
+					"width": 42,
+					"height": 42,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"style": "bevel",
+					"dataSource": "vD20_cbxDay25",
+					"class": "JCL_YuGothic16",
+					"dataSourceTypeHint": "boolean",
+					"method": "ObjectMethods/vD20_cbxDay25.4dm"
+				},
+				"vD20_cbxDay26": {
+					"type": "checkbox",
+					"text": "26",
+					"top": 246,
+					"left": 226,
+					"width": 42,
+					"height": 42,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"style": "bevel",
+					"dataSource": "vD20_cbxDay26",
+					"class": "JCL_YuGothic16",
+					"dataSourceTypeHint": "boolean",
+					"method": "ObjectMethods/vD20_cbxDay26.4dm"
+				},
+				"vD20_cbxDay27": {
+					"type": "checkbox",
+					"text": "27",
+					"top": 246,
+					"left": 270,
+					"width": 42,
+					"height": 42,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"style": "bevel",
+					"dataSource": "vD20_cbxDay27",
+					"class": "JCL_YuGothic16",
+					"dataSourceTypeHint": "boolean",
+					"method": "ObjectMethods/vD20_cbxDay27.4dm"
+				},
+				"vD20_cbxDay28": {
+					"type": "checkbox",
+					"text": "28",
+					"top": 246,
+					"left": 314,
+					"width": 42,
+					"height": 42,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"style": "bevel",
+					"dataSource": "vD20_cbxDay28",
+					"class": "JCL_YuGothic16",
+					"dataSourceTypeHint": "boolean",
+					"method": "ObjectMethods/vD20_cbxDay28.4dm"
+				},
+				"vD20_cbxDay29": {
+					"type": "checkbox",
+					"text": "29",
+					"top": 290,
+					"left": 50,
+					"width": 42,
+					"height": 42,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"style": "bevel",
+					"dataSource": "vD20_cbxDay29",
+					"class": "JCL_YuGothic16",
+					"dataSourceTypeHint": "boolean",
+					"method": "ObjectMethods/vD20_cbxDay29.4dm"
+				},
+				"vD20_cbxDay30": {
+					"type": "checkbox",
+					"text": "30",
+					"top": 290,
+					"left": 94,
+					"width": 42,
+					"height": 42,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"style": "bevel",
+					"dataSource": "vD20_cbxDay30",
+					"class": "JCL_YuGothic16",
+					"dataSourceTypeHint": "boolean",
+					"method": "ObjectMethods/vD20_cbxDay30.4dm"
+				},
+				"vD20_cbxDay31": {
+					"type": "checkbox",
+					"text": "31",
+					"top": 290,
+					"left": 138,
+					"width": 42,
+					"height": 42,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"style": "bevel",
+					"dataSource": "vD20_cbxDay31",
+					"class": "JCL_YuGothic16",
+					"dataSourceTypeHint": "boolean",
+					"method": "ObjectMethods/vD20_cbxDay31.4dm"
+				},
+				"vD20_cbxDay32": {
+					"type": "checkbox",
+					"text": "32",
+					"top": 290,
+					"left": 182,
+					"width": 42,
+					"height": 42,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"style": "bevel",
+					"dataSource": "vD20_cbxDay32",
+					"class": "JCL_YuGothic16",
+					"dataSourceTypeHint": "boolean",
+					"method": "ObjectMethods/vD20_cbxDay32.4dm"
+				},
+				"vD20_cbxDay33": {
+					"type": "checkbox",
+					"text": "33",
+					"top": 290,
+					"left": 226,
+					"width": 42,
+					"height": 42,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"style": "bevel",
+					"dataSource": "vD20_cbxDay33",
+					"class": "JCL_YuGothic16",
+					"dataSourceTypeHint": "boolean",
+					"method": "ObjectMethods/vD20_cbxDay33.4dm"
+				},
+				"vD20_cbxDay34": {
+					"type": "checkbox",
+					"text": "34",
+					"top": 290,
+					"left": 270,
+					"width": 42,
+					"height": 42,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"style": "bevel",
+					"dataSource": "vD20_cbxDay34",
+					"class": "JCL_YuGothic16",
+					"dataSourceTypeHint": "boolean",
+					"method": "ObjectMethods/vD20_cbxDay34.4dm"
+				},
+				"vD20_cbxDay35": {
+					"type": "checkbox",
+					"text": "35",
+					"top": 290,
+					"left": 314,
+					"width": 42,
+					"height": 42,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"style": "bevel",
+					"dataSource": "vD20_cbxDay35",
+					"class": "JCL_YuGothic16",
+					"dataSourceTypeHint": "boolean",
+					"method": "ObjectMethods/vD20_cbxDay35.4dm"
+				},
+				"vD20_cbxDay36": {
+					"type": "checkbox",
+					"text": "36",
+					"top": 334,
+					"left": 50,
+					"width": 42,
+					"height": 42,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"style": "bevel",
+					"dataSource": "vD20_cbxDay36",
+					"class": "JCL_YuGothic16",
+					"dataSourceTypeHint": "boolean",
+					"method": "ObjectMethods/vD20_cbxDay36.4dm"
+				},
+				"vD20_cbxDay37": {
+					"type": "checkbox",
+					"text": "37",
+					"top": 334,
+					"left": 94,
+					"width": 42,
+					"height": 42,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"style": "bevel",
+					"dataSource": "vD20_cbxDay37",
+					"class": "JCL_YuGothic16",
+					"dataSourceTypeHint": "boolean",
+					"method": "ObjectMethods/vD20_cbxDay37.4dm"
+				},
+				"vD20_cbxDay38": {
+					"type": "checkbox",
+					"text": "38",
+					"top": 334,
+					"left": 138,
+					"width": 42,
+					"height": 42,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"style": "bevel",
+					"dataSource": "vD20_cbxDay38",
+					"class": "JCL_YuGothic16",
+					"dataSourceTypeHint": "boolean",
+					"method": "ObjectMethods/vD20_cbxDay38.4dm"
+				},
+				"vD20_cbxDay39": {
+					"type": "checkbox",
+					"text": "39",
+					"top": 334,
+					"left": 182,
+					"width": 42,
+					"height": 42,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"style": "bevel",
+					"dataSource": "vD20_cbxDay39",
+					"class": "JCL_YuGothic16",
+					"dataSourceTypeHint": "boolean",
+					"method": "ObjectMethods/vD20_cbxDay39.4dm"
+				},
+				"vD20_cbxDay40": {
+					"type": "checkbox",
+					"text": "40",
+					"top": 334,
+					"left": 226,
+					"width": 42,
+					"height": 42,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"style": "bevel",
+					"dataSource": "vD20_cbxDay40",
+					"class": "JCL_YuGothic16",
+					"dataSourceTypeHint": "boolean",
+					"method": "ObjectMethods/vD20_cbxDay40.4dm"
+				},
+				"vD20_cbxDay41": {
+					"type": "checkbox",
+					"text": "41",
+					"top": 334,
+					"left": 270,
+					"width": 42,
+					"height": 42,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"style": "bevel",
+					"dataSource": "vD20_cbxDay41",
+					"class": "JCL_YuGothic16",
+					"dataSourceTypeHint": "boolean",
+					"method": "ObjectMethods/vD20_cbxDay41.4dm"
+				},
+				"vD20_cbxDay42": {
+					"type": "checkbox",
+					"text": "42",
+					"top": 334,
+					"left": 314,
+					"width": 42,
+					"height": 42,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"style": "bevel",
+					"dataSource": "vD20_cbxDay42",
+					"class": "JCL_YuGothic16",
+					"dataSourceTypeHint": "boolean",
+					"method": "ObjectMethods/vD20_cbxDay42.4dm"
+				}
+			}
+		}
+	],
+	"editor": {
+		"activeView": "ビュー 1",
+		"defaultView": "ビュー 1",
+		"views": {
+			"ビュー 1": {},
+			"ビュー 2": {},
+			"ビュー 3": {},
+			"ビュー 4": {},
+			"ビュー 5": {},
+			"ビュー 6": {},
+			"ビュー 7": {},
+			"ビュー 8": {},
+			"ビュー 9": {}
+		}
+	},
+	"geometryStamp": 1037,
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	}
+}

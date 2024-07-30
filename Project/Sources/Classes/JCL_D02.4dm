@@ -10,11 +10,9 @@ Class constructor
 	//usage:
 	//C_LONGINT($dlgOK)
 	//C_OBJECT(vD02)
-	
 	//vD02:=cs.JCL_D02.new()
 	//$dlgOk:=vD02.display()
 	//If ($dlgOk=1)
-	
 	//End if 
 	
 	
