@@ -6,13 +6,26 @@ Class constructor
 	C_OBJECT:C1216($1; $objParam)
 	$objParam:=$1
 	C_TEXT:C284($text)
-	//C_OBJECT($objForm)
-	//$objForm:=New object
+	C_OBJECT:C1216($objForm)
+	This:C1470.objForm:=New object:C1471
 	
 	//リソースフォルダから、テンプレートファイルの内容を読み込んで　解析
-	$text:=File:C1566("/RESOURCES/JCL4D_Resources/frm_templates/"+$objParam.form_templates).getText()
-	This:C1470.objForm:=JSON Parse:C1218($text)
+	//$text:=File("/RESOURCES/JCL4D_Resources/frm_templates/"+$objParam.form_templates).getText()
+	//This.objForm:=JSON Parse($text)
 	
+	This:C1470.objForm.destination:="detailScreen"
+	This:C1470.objForm.width:=1042
+	This:C1470.objForm.height:=576
+	This:C1470.objForm.windowMinHeight:=178
+	This:C1470.objForm.width:=1042
+	This:C1470.objForm.events:=New collection:C1472("onLoad"; "onValidate"; \
+		"onClick"; "onHeader"; "onDoubleClick"; \
+		"onDrop"; "onDataChange"; "onAfterKeystroke;"+\
+		"onAfterEdit"; "onBeginDragOver"; "onPageChange")
+	This:C1470.objForm.method:="method.4dm"
+	This:C1470.objForm.pages:=New collection:C1472(Null:C1517; New object:C1471("objects"; New object:C1471()))
+	This:C1470.objForm.geometryStamp:=2
+	This:C1470.objForm.$4d:=New object:C1471("version"; "1"; "kind"; "form")
 	
 Function saveForm($objParam : Object)
 	//プロジェクトのソースフォルダに保存
@@ -157,7 +170,6 @@ Function addButton($objParam : Object; $top : Integer; $left : Integer; $width :
 	This:C1470.objForm.pages[1].objects[$new_name].text:=$objParam.text
 	This:C1470.objForm.pages[1].objects[$new_name].events:=New collection:C1472("onClick")
 	
-	
 Function addMethodButton($objParam : Object; $top : Integer; $left : Integer; $width : Integer; $height : Integer)
 	//メソッド付きボタン
 	C_TEXT:C284($new_name)
@@ -175,6 +187,22 @@ Function addMethodButton($objParam : Object; $top : Integer; $left : Integer; $w
 	This:C1470.objForm.pages[1].objects[$new_name].text:=$objParam.text
 	This:C1470.objForm.pages[1].objects[$new_name].events:=New collection:C1472("onClick")
 	
+Function addCheckBox($objParam : Object; $top : Integer; $left : Integer; $width : Integer; $height : Integer)
+	//メソッド付きボタン
+	C_TEXT:C284($new_name)
+	$new_name:="v"+$objParam.name
+	This:C1470.objForm.pages[1].objects[$new_name]:=New object:C1471
+	This:C1470.objForm.pages[1].objects[$new_name].type:="checkbox"
+	This:C1470.objForm.pages[1].objects[$new_name].text:=$objParam.text
+	This:C1470.objForm.pages[1].objects[$new_name].dataSource:=$new_name
+	This:C1470.objForm.pages[1].objects[$new_name].dataSourceTypeHint:="integer"
+	This:C1470.objForm.pages[1].objects[$new_name].top:=$top
+	This:C1470.objForm.pages[1].objects[$new_name].left:=$left
+	This:C1470.objForm.pages[1].objects[$new_name].width:=$width
+	This:C1470.objForm.pages[1].objects[$new_name].height:=$height
+	This:C1470.objForm.pages[1].objects[$new_name].class:="JCL_YuGothic12"
+	This:C1470.objForm.pages[1].objects[$new_name].method:="ObjectMethods/"+$new_name+".4dm"
+	This:C1470.objForm.pages[1].objects[$new_name].events:=New collection:C1472("onClick")
 	
 Function addListbox($objParam : Object; $top : Integer; $left : Integer; $width : Integer; $height : Integer; \
 $aryFieldNamePtr : Pointer; $aryFieldTypePtr : Pointer; $aryFieldLengthPtr : Pointer; $foreign : Text)

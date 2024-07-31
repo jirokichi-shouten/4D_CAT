@@ -1,6 +1,6 @@
 //[--FRM_PREFIX]_btnFind
 //FG v202402 [--DATE]
-//[--TABLE] フォームオンロード
+//[--TABLE] 検索ボタンがクリックされた
 
 
 [--FRM_PREFIX]_lst[--TBL_PREFIX]_Make 

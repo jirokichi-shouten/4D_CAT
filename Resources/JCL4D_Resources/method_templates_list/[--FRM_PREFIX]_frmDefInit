@@ -13,3 +13,6 @@ ARRAY [--DATATYPE](v[--FRM_PREFIX]_lst[--FIELD];0)
   // ソート順を覚えるため
 ARRAY TEXT(v[--FRM_PREFIX]_lst[--TBL_PREFIX]_HeaderNames;0)
 ARRAY LONGINT(v[--FRM_PREFIX]_lst[--TBL_PREFIX]_SortOrders;0)
+
+//チェックボックス
+C_LONGINT(v[--FRM_PREFIX]_cbxShowDeleted)

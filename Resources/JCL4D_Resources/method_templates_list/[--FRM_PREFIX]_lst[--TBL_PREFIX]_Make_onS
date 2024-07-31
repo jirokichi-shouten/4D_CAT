@@ -20,7 +20,12 @@ $branch_set:="branch_set"
 
 //最初に削除フラグでセットを作る
 READ ONLY([[--TABLE]])
+if ($objSearch.show_deleted=0)
 QUERY([[--TABLE]]; [[--TABLE]][--TBL_PREFIX]_DEL_FLAG=$objSearch.del_flag)
+else
+all records([[--TABLE]])
+end if
+
 CREATE SET([[--TABLE]]; $current_set)
 
 //キーワードによる複数フィールドに対してのクエリ

@@ -1,0 +1,7 @@
+//[--FRM_PREFIX]_cbxShowDeleted
+//FG v202407 [--DATE]
+//[--TABLE] 「削除されたレコードを表示」チェックボックスがクリックされた
+
+
+[--FRM_PREFIX]_lst[--TBL_PREFIX]_Make 
+[--FRM_PREFIX]_SetControlsValues 

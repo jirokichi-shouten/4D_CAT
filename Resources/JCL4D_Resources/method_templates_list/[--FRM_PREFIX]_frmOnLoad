@@ -8,5 +8,8 @@
 JCL_lst_Sort_Append ("v[--FRM_PREFIX]_lst[--TBL_PREFIX]";->v[--FRM_PREFIX]_lst[--TBL_PREFIX]_HeaderNames;->v[--FRM_PREFIX]_lst[--TBL_PREFIX]_SortOrders;1;2)  // 降順
 JCL_lst_Sort_Append ("v[--FRM_PREFIX]_lst[--TBL_PREFIX]";->v[--FRM_PREFIX]_lst[--TBL_PREFIX]_HeaderNames;->v[--FRM_PREFIX]_lst[--TBL_PREFIX]_SortOrders;2;1)  // 昇順
 
+//削除されたレコードも表示
+v[--FRM_PREFIX]_cbxShowDeleted:=1
+
 [--FRM_PREFIX]_lst[--TBL_PREFIX]_Make 
 [--FRM_PREFIX]_SetControlsValues 

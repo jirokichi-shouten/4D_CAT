@@ -269,7 +269,5 @@ Function createAdditionalMethods($inBlockText : Text)
 			$new_file.setText($fileText)
 			
 		End for 
-		ALERT:C41($prefix)
-		
 	End if 
 	

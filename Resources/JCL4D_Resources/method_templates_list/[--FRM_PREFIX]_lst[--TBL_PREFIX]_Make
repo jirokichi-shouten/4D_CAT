@@ -7,6 +7,7 @@ ARRAY OBJECT($aryObj; 0)
 C_OBJECT($objSearch)
 $objSearch:=New object
 $objSearch.del_flag:=0 
+$objSearch.show_deleted:=v[--FRM_PREFIX]_cbxShowDeleted
 $objSearch.keyword:=v[--FRM_PREFIX]_varKeyword
 
   //サーバ上でクエリー実行、結果をオブジェクトの配列で取得

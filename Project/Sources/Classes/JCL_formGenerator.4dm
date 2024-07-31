@@ -214,6 +214,13 @@ Function form01_List()
 	$objParam.shortcutKey:="w"
 	$frm.addButton($objParam; 16; 980; 42; 26)
 	
+	//チェックボックス
+	$objParam.name:=$objParam.frm_prefix+"_cbxShowDeleted"
+	$objParam.type:="checkbox"
+	$objParam.text:="削除されたレコードを表示"
+	$frm.addCheckBox($objParam; 80; 674; 178; 22)
+	$frm.saveObjMethod($objParam; $objParam.name)
+	
 	//リストボックス
 	$objParam.name:=$objParam.frm_prefix+"_lst"+$objParam.tbl_prefix
 	$frm.addListbox($objParam; 110; 20; 1002; 440; $aryFieldNamePtr; $aryFieldTypePtr; $aryFieldLengthPtr; "")
