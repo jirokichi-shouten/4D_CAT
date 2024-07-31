@@ -1,6 +1,6 @@
 //%attributes = {"executedOnServer":true}
 //[--FRM_PREFIX]_lst[--TBL_PREFIX]_Make_onS
-//FG v202406 [--DATE]
+//FG v202407 [--DATE]
 //[[--TABLE]] リストボックス用オブジェクト配列を作成 //サーバ上で実行
 
 C_OBJECT($1;$objSearch)
@@ -45,6 +45,6 @@ End if
 USE SET($current_set)
 
 //DBデータを取得してオブジェクト配列に追加
-$numOfRecs:=[--FRM_PREFIX]_lst[--TBL_PREFIX]_Make_aryObj_onS($outAryObjPtr)
+$numOfRecs:=[--FRM_PREFIX]_lst[--TBL_PREFIX]_Make_aryObj($outAryObjPtr)
 
 $0:=$numOfRecs

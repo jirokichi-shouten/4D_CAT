@@ -1,6 +1,5 @@
-//%attributes = {"executedOnServer":true}
 //[--FRM_PREFIX]_lst[--TBL_PREFIX]_Make_asign
-//FG v202209 [--DATE]
+//FG v202407 [--DATE]
 //[--TABLE]  オブジェクトの配列からリストボックスのプロセス変数へ転送
 
 C_LONGINT($1;$cnt)
