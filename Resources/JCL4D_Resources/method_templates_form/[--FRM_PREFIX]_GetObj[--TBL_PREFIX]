@@ -1,0 +1,7 @@
+//[--FRM_PREFIX]_GetObj[--TBL_PREFIX]
+//FG v202408 [--DATE]
+//[--TABLE] プロセス変数の値をオブジェクトに代入
+
+C_OBJECT($1;$obj[--TBL_PREFIX])$obj[--TBL_PREFIX]:=$1
+
+//IDを含む各フィールドへの代入$obj[--TBL_PREFIX].[--FIELD]:=v[--FRM_PREFIX]_var[--FIELD]

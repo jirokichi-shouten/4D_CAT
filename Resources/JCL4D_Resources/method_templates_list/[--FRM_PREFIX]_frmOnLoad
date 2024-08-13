@@ -5,8 +5,11 @@
 [--FRM_PREFIX]_frmDefInit 
 
   // デフォルトの並び順を指定、配列にプッシュしておく
-JCL_lst_Sort_Append ("v[--FRM_PREFIX]_lst[--TBL_PREFIX]";->v[--FRM_PREFIX]_lst[--TBL_PREFIX]_HeaderNames;->v[--FRM_PREFIX]_lst[--TBL_PREFIX]_SortOrders;1;2)  // 降順
-JCL_lst_Sort_Append ("v[--FRM_PREFIX]_lst[--TBL_PREFIX]";->v[--FRM_PREFIX]_lst[--TBL_PREFIX]_HeaderNames;->v[--FRM_PREFIX]_lst[--TBL_PREFIX]_SortOrders;2;1)  // 昇順
+C_LONGINT($nr)
+$nr:=JCL_lst_ColNr_byColName("v[--FRM_PREFIX]_lst[--TBL_PREFIX]"; "v[--FRM_PREFIX]_lst[--TBL_PREFIX]_SORT_ORDER")JCL_lst_Sort_Append ("v[--FRM_PREFIX]_lst[--TBL_PREFIX]";->v[--FRM_PREFIX]_lst[--TBL_PREFIX]_HeaderNames;->v[--FRM_PREFIX]_lst[--TBL_PREFIX]_SortOrders;1;2)  // 降順
+if ($nr#0)
+JCL_lst_Sort_Append ("v[--FRM_PREFIX]_lst[--TBL_PREFIX]";->v[--FRM_PREFIX]_lst[--TBL_PREFIX]_HeaderNames;->v[--FRM_PREFIX]_lst[--TBL_PREFIX]_SortOrders;$nr;1)  // 昇順
+end if
 
 //削除されたレコードも表示
 v[--FRM_PREFIX]_cbxShowDeleted:=1

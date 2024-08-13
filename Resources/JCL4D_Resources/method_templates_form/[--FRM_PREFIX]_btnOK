@@ -1,29 +1,13 @@
 //[--FRM_PREFIX]_btnOK
-//FG v202402 [--DATE]
+//FG v202408 [--DATE]
 //[--TABLE] 保存
 
-C_TEXT($mode)
-C_LONGINT($[--TBL_PREFIX]_ID)
+C_OBJECT($obj[--TBL_PREFIX])$obj[--TBL_PREFIX]:=New object
+C_BOOLEAN($isSame)
+//DB保存値と画面表示を比べて、違いがあった時だけ保存する$isSame:=[--FRM_PREFIX]_Compare[--TBL_PREFIX]_BeforeAfter($[--TBL_PREFIX]_ID)If ($isSame=False)	//フォームの値を取得[--FRM_PREFIX]_GetObj[--TBL_PREFIX]($obj[--TBL_PREFIX])
 
-READ WRITE([[--TABLE]])
+[--TBL_PREFIX]_SaveRecord($obj[--TBL_PREFIX])
 
-$mode:=[--FRM_PREFIX]_varMode_Get 
-If ($mode="add")
-$[--TBL_PREFIX]_ID:=[--TBL_PREFIX]_Add_byInitValues
-[--FRM_PREFIX]_SaveValues($[--TBL_PREFIX]_ID)
-
-Else 
-$[--TBL_PREFIX]_ID:=[--FRM_PREFIX]_var[--TBL_PREFIX]_ID_get
-QUERY([[--TABLE]];[[--TABLE]][--TBL_PREFIX]_ID=$[--TBL_PREFIX]_ID)
-[--FRM_PREFIX]_SaveValues($[--TBL_PREFIX]_ID)
-//[[--TABLE]][--TBL_PREFIX]_UPDATE_DATEMARK:=JCL_str_Datemark (Current date;Current time)
-
-End if 
-
-SAVE RECORD([[--TABLE]])
-
-UNLOAD RECORD([[--TABLE]])
-READ ONLY([[--TABLE]])
-
+End if 
 ACCEPT
 

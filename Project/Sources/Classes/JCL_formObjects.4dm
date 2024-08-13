@@ -225,14 +225,12 @@ $aryFieldNamePtr : Pointer; $aryFieldTypePtr : Pointer; $aryFieldLengthPtr : Poi
 	This:C1470.objForm.pages[1].objects[$new_name].rowHeightAutoMax:="20px"
 	This:C1470.objForm.pages[1].objects[$new_name].method:="ObjectMethods/"+$new_name+".4dm"
 	This:C1470.objForm.pages[1].objects[$new_name].events:=New collection:C1472("onClick"; "onDoubleClick"; \
-		"onDataChange"; "onSelectionChange"; "onHeaderClick")
+		"onDataChange"; "onAfterSort"; "onSelectionChange"; "onHeaderClick")
 	This:C1470.objForm.pages[1].objects[$new_name].columns:=New collection:C1472
 	
 	If ($foreign="foreign")
 		//編集可能なリストボックス
 		This:C1470.objForm.pages[1].objects[$new_name].singleClickEdit:=True:C214
-		This:C1470.objForm.pages[1].objects[$new_name].events:=New collection:C1472("onClick"; \
-			"onDataChange"; "onSelectionChange"; "onHeaderClick")
 		
 	End if 
 	
