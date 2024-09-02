@@ -1,0 +1,53 @@
+﻿ASSETS	AS				資産	管理対象の資産	
+ID	Is LongInt	0	1	0	ID	プライマリーキー	
+FA_ID	Is LongInt	0	1	0	ファミリーID	親テーブル（所属するファミリー）のID	
+CODE	Is Alpha Field	20	1	0	コード文字列	管理コード、数字と文字の組み合わせを想定	
+NAME	Is Alpha Field	255	0	0	名前	名前、資産には名前を付ける。	
+CATEGORY	Is Alpha Field	80	0	0	カテゴリー	資産を分類するため、コンピュータ、車、工具、備品、土地、家屋、設備	
+SPEC	Is Text	0	0	0	スペック	仕様詳細など	
+LOCATION	Is Alpha Field	80	0	0	設置場所	移動したら履歴に記述。	
+ACQUISITION_DATE	Is Date	0	0	0	取得日		
+DISPOSAL_DATE	Is Date	0	0	0	廃棄日		
+COST	Is Real	0	0	0	取得価格	Asset cost	
+VENDAR	Is Alpha Field	80	0	0	ベンダー名	購入先	
+RESPONSIBLE_PERSON	Is Alpha Field	80	0	0	担当者		
+NOTES	Is Text	0	0	0	備考		
+URL	Is Alpha Field	255	0	0	URL	製品のページ	
+DEL_FLAG	Is LongInt	0	1	0	削除フラグ	0:削除されていない、1以上：削除されている	
+CREATE_DATEMARK	Is Alpha Field	20	0	0	作成デイトマーク	17桁の文字列：yyyyMMddHHmmssSSS	
+UPDATE_DATEMARK	Is Alpha Field	20	0	0	更新デイトマーク	17桁の文字列：yyyyMMddHHmmssSSS	
+-							 x
+FAMILIES	FA				ファミリー	資産をグループ化するために設置、同時に購入した資産を紐付けたりできる。	償却対象の概念とは別
+ID	Is LongInt	0	1	0	ID	プライマリーキー	
+NAME	Is Alpha Field	255	0	0	ファミリー名		
+REMARK	Is Text	0	0	0	リマーク	備考欄	
+SORT_ORDER	Is LongInt	0	0	0	並び順		
+DEL_FLAG	Is LongInt	0	1	0	削除フラグ	0:削除されていない、1以上：削除されている	
+UPDATE_DATEMARK	Is Alpha Field	20	0	0	作成デイトマーク	17桁の文字列：yyyyMMddHHmmssSSS	
+-							
+HISTORIES	HI				履歴	資産の管理履歴	
+ID	Is LongInt	0	1	0	ID	プライマリーキー	
+AS_ID	Is LongInt	0	1	0	資産ID	親テーブルのID	
+TITLE	Is Alpha Field	255	0	0	タイトル	履歴のタイトル	
+DESCRIPTION	Is Text	0	0	0	詳細	履歴の詳細	
+DEL_FLAG	Is LongInt	0	1	0	削除フラグ	0:削除されていない、1以上：削除されている	
+UPDATE_DATEMARK	Is Alpha Field	20	0	0	作成デイトマーク	17桁の文字列：yyyyMMddHHmmssSSS	
+-							
+Z_KeyNValue	KN				キーNバリュー	設定情報群を保持する	
+ID	Is LongInt	0	0	0	ID	プライマリーキー	
+KEY	Is Alpha Field	80	1	0	キー文字列		
+CODE	Is Alpha Field	80	1	0	コード文字列		
+VALUE	Is Text	0	0	0	バリュー文字列		
+LONG_VALUE	Is LongInt	0	0	0	バリュー整数値		
+SORT_ORDER	Is LongInt	0	1	0	ソート順	値一覧の並び順	
+DEL_FLAG	Is LongInt	0	1	0	削除フラグ	0:削除されていない、1以上：削除されている	
+UPDATE_DATEMARK	Is Alpha Field	20	0	0	更新デイトマーク	17桁の文字列：yyyyMMddHHmmssSSS	
+-							
+Z_KeyValue	KV				キーバリュー	設定情報などを保持する	
+ID	Is LongInt	0	0	0	ID	プライマリーキー	
+KEY	Is Alpha Field	80	1	0	キー文字列		
+VALUE	Is Text	0	0	0	バリュー文字列		
+LONG_VALUE	Is LongInt	0	0	0	バリュー整数値		
+DEL_FLAG	Is LongInt	0	1	0	削除フラグ	0:削除されていない、1以上：削除されている	
+UPDATE_DATEMARK	Is Alpha Field	20	0	0	更新デイトマーク	17桁の文字列：yyyyMMddHHmmssSSS	
+-							

@@ -17,6 +17,6 @@ End if
 //値をオブジェクト型の変数から取得
 [[--TABLE]][--FIELD]:=$obj[--TBL_PREFIX].[--FIELD]
 [[--TABLE]][--TBL_PREFIX]_ID:=$[--TBL_PREFIX]_id
-SAVE RECORD([Z_KeyValue])UNLOAD RECORD([[--TABLE]])READ ONLY([[--TABLE]])
+SAVE RECORD([[--TABLE]])UNLOAD RECORD([[--TABLE]])READ ONLY([[--TABLE]])
 
 $0:=$numOfRecs

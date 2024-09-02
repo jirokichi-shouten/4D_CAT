@@ -12,7 +12,7 @@
     <SourcesFiles>
       <RuntimeVL>
         <RuntimeVLIncludeIt>True</RuntimeVLIncludeIt>
-        <RuntimeVLMacFolder>Macintosh HD:Applications:4D:4D 20.3:4D Volume Desktop.app:</RuntimeVLMacFolder>
+        <RuntimeVLMacFolder>Macintosh HD:Applications:4D:4D 20.4:4D Volume Desktop.app:</RuntimeVLMacFolder>
       </RuntimeVL>
       <CS>
         <ServerIncludeIt>False</ServerIncludeIt>
