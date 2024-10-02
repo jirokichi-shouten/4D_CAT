@@ -1,38 +1,37 @@
-//%attributes = {}
 //KV_VALUE_save
 //20160628 wat
 // キーバリューテーブルに値を保存
 //usage: KV_VALUE_save(key;value)
 
-C_TEXT:C284($1; $inKey)
+C_TEXT($1; $inKey)
 $inKey:=$1  //キーコード
-C_TEXT:C284($2; $inValue)
+C_TEXT($2; $inValue)
 $inValue:=$2  //バリュー
 
 //設定テーブルをリードライトモードにしてクエリ
-READ WRITE:C146([Z_KeyValue:7])
+READ WRITE([Z_KeyValue])
 
-QUERY:C277([Z_KeyValue:7]; [Z_KeyValue:7]KV_KEY:2=$inKey)
-FIRST RECORD:C50([Z_KeyValue:7])
+QUERY([Z_KeyValue]; [Z_KeyValue]KV_KEY=$inKey)
+FIRST RECORD([Z_KeyValue])
 
-If (Records in selection:C76([Z_KeyValue:7])>0)
+If (Records in selection([Z_KeyValue])>0)
 	
 	//レコードがあれば更新  //更新日時を保存
-	[Z_KeyValue:7]KV_VALUE:3:=$inValue
-	[Z_KeyValue:7]KV_DEL_FLAG:5:=0  //20181107 wat
+	[Z_KeyValue]KV_VALUE:=$inValue
+	[Z_KeyValue]KV_DEL_FLAG:=0  //20181107 wat
 	
-	SAVE RECORD:C53([Z_KeyValue:7])
+	SAVE RECORD([Z_KeyValue])
 	
 Else 
 	
 	//レコードがなければ作る
 	KV_Add_byInitValues
-	[Z_KeyValue:7]KV_KEY:2:=$inKey
-	[Z_KeyValue:7]KV_VALUE:3:=$inValue
-	SAVE RECORD:C53([Z_KeyValue:7])
+	[Z_KeyValue]KV_KEY:=$inKey
+	[Z_KeyValue]KV_VALUE:=$inValue
+	SAVE RECORD([Z_KeyValue])
 	
 End if 
 
 //レコードを解放
-UNLOAD RECORD:C212([Z_KeyValue:7])
-READ ONLY:C145([Z_KeyValue:7])
+UNLOAD RECORD([Z_KeyValue])
+READ ONLY([Z_KeyValue])

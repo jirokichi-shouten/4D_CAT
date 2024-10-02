@@ -12,6 +12,7 @@ ID	Is LongInt	0	0	0	ID
 KEY	Is Alpha Field	80	1	1	キー文字列		
 VALUE	Is Text	0	0	0	バリュー文字列		
 LONG_VALUE	Is LongInt	0	0	0	バリュー整数値		
+BLOB	Is Blob	0	0	0	バリューblob	印刷設定に使う	
 DEL_FLAG	Is LongInt	0	1	0	削除フラグ		
 -							
 USERS	US	フォーム作る			ログインユーザ		

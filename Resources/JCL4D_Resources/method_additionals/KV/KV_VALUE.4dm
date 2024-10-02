@@ -1,4 +1,3 @@
-//%attributes = {}
 //KV_VALUE
 //20160628 wat ike
 //引数キーコードの値を設定テーブルから取得し返す
@@ -7,17 +6,17 @@
 //20080520　矢部　新規作成
 //20100803 wat rename
 
-C_TEXT:C284($1; $key)
+C_TEXT($1; $key)
 $key:=$1
-C_TEXT:C284($0; $value)
+C_TEXT($0; $value)
 $value:=""
 
-READ ONLY:C145([Z_KeyValue:7])
-QUERY:C277([Z_KeyValue:7]; [Z_KeyValue:7]KV_KEY:2=$key)
-FIRST RECORD:C50([Z_KeyValue:7])
-If (Records in selection:C76([Z_KeyValue:7])>0)
+READ ONLY([Z_KeyValue])
+QUERY([Z_KeyValue]; [Z_KeyValue]KV_KEY=$key)
+FIRST RECORD([Z_KeyValue])
+If (Records in selection([Z_KeyValue])>0)
 	
-	$value:=[Z_KeyValue:7]KV_VALUE:3
+	$value:=[Z_KeyValue]KV_VALUE
 	
 End if 
 

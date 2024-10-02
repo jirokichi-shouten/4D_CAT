@@ -43,7 +43,7 @@ Case of
 		//: ($type=Is Subtable )
 		//$sql_type:=" VARCHAR,"
 	: ($type="Is BLOB")
-		$sql_type:=" BLOB NOT NULL "+$ql_unique+","
+		$sql_type:=" BLOB "+$ql_unique+","
 End case 
 
 $0:=$sql_type
