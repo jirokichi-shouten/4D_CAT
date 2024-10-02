@@ -96,11 +96,8 @@ Function dataType()
 		: ($fieldType="Is Picture")
 			$dataType:="PICTURE"
 			
-		: ($fieldType="Is Subtable")
-			$dataType:=""
-			
 		: ($fieldType="Is BLOB")
-			$dataType:=""
+			$dataType:="BLOB"
 	End case 
 	
 	$0:=$dataType
@@ -141,13 +138,10 @@ Function initValue()
 			$initValue:="false"
 			
 		: ($fieldType="Is Picture")
-			$initValue:=""
-			
-		: ($fieldType="Is Subtable")
-			$initValue:=""
+			$initValue:="null"
 			
 		: ($fieldType="Is BLOB")
-			$initValue:=""
+			$initValue:="null"
 	End case 
 	
 	$0:=$initValue
