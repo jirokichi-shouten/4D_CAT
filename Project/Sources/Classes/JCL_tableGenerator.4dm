@@ -259,7 +259,7 @@ Function createAdditionalMethods($inBlockText : Text)
 		//フォルダの中のメソッドをコピー
 		$files:=$folder.files(fk ignore invisible:K87:22)
 		For ($i; 1; $files.length)
-			$currentFileName:=$files[$i-1].name  // ファイル名を取得
+			$currentFileName:=$files[$i-1].fullName  // ファイル名を取得 20241002
 			$fileText:=$files[$i-1].getText()
 			
 			C_OBJECT:C1216($new_file)
