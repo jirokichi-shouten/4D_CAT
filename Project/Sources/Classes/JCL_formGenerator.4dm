@@ -304,8 +304,6 @@ Function form02_Input_add()
 			$label:=$fld_name
 			
 		End if 
-		//フィールド位置
-		$objFldPos:=This:C1470.fldNextPos($objFldPos; 90)  //20240201 90はトップの戻るところ 
 		
 		//フィールドラベル
 		$objParam.name:=$objParam.frm_prefix+"_lbl"+$fld_name
@@ -322,6 +320,9 @@ Function form02_Input_add()
 		End if 
 		$objParam.name:=$objParam.frm_prefix+"_var"+$fld_name
 		$frm.addInput($objParam; $objFldPos.top; $objFldPos.left; 110; 17; $enterable)
+		
+		//フィールド位置
+		$objFldPos:=This:C1470.fldNextPos($objFldPos; 90)  //20240201 90はトップの戻るところ 
 		
 	End for 
 	
@@ -400,9 +401,6 @@ Function form03_Input_mod()
 			$label:=$fld_name
 			
 		End if 
-		//フィールド位置
-		$objFldPos:=This:C1470.fldNextPos($objFldPos; 90)  //20240201 90はトップの戻るところ 
-		
 		//フィールドラベル
 		$objParam.name:=$objParam.frm_prefix+"_lbl"+$fld_name
 		$objParam.text:=$label
@@ -418,6 +416,9 @@ Function form03_Input_mod()
 		End if 
 		$objParam.name:=$objParam.frm_prefix+"_var"+$inAryFldNamePtr->{$i}
 		$frm.addInput($objParam; $objFldPos.top; $objFldPos.left; 110; 17; $enterable)
+		
+		//フィールド位置
+		$objFldPos:=This:C1470.fldNextPos($objFldPos; 90)  //20240201 90はトップの戻るところ 
 		
 	End for 
 	
