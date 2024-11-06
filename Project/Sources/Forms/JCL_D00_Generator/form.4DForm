@@ -82,7 +82,9 @@
 					"shortcutAlt": false,
 					"shortcutKey": "q",
 					"action": "quit",
-					"class": "JCL_YuGothic12"
+					"class": "JCL_YuGothic12",
+					"stroke": "#000000",
+					"fontWeight": "bold"
 				},
 				"vD00_btnDesignMode": {
 					"type": "button",
@@ -277,7 +279,7 @@
 					"horizontalLineStroke": "#AAAAAA",
 					"verticalLineStroke": "#AAAAAA",
 					"stroke": "automatic",
-					"fill": "#FFFFFF",
+					"fill": "automatic",
 					"alternateFill": "automatic",
 					"fontFamily": "Meiryo",
 					"fontSize": 12,

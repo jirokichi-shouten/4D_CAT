@@ -112,7 +112,8 @@
 					"focusable": false,
 					"events": [
 						"onClick"
-					]
+					],
+					"stroke": "#000000"
 				}
 			}
 		}

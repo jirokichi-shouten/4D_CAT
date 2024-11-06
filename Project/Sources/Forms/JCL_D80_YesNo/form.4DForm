@@ -115,7 +115,13 @@
 					"events": [
 						"onClick"
 					],
-					"fontFamily": "YuGothic Medium"
+					"fontFamily": "YuGothic Medium",
+					"stroke": "#000000",
+					"textDecoration": "none",
+					"fontStyle": "normal",
+					"fontWeight": "normal",
+					"borderStyle": "none",
+					"style": "regular"
 				},
 				"vJCL_D80_btnCancel": {
 					"type": "button",
@@ -132,7 +138,13 @@
 					"events": [
 						"onClick"
 					],
-					"fontFamily": "YuGothic Medium"
+					"fontFamily": "YuGothic Medium",
+					"stroke": "#000000",
+					"textDecoration": "none",
+					"fontStyle": "normal",
+					"fontWeight": "normal",
+					"borderStyle": "none",
+					"style": "regular"
 				}
 			}
 		}
