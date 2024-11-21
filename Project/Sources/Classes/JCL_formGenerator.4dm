@@ -261,7 +261,7 @@ Function form02_Input_add()
 	$frm.addRect($objParam; 0; 0; 1042; 55)
 	
 	$objParam.name:=$objParam.frm_prefix+"_txtTitle"
-	$objParam.text:=cs:C1710.JCL_fields.new().cache_TableLabel_get($objParam.tbl_name)+"編集"
+	$objParam.text:=cs:C1710.JCL_fields.new().cache_TableLabel_get($objParam.tbl_name)+"追加"
 	$objParam.css_class:="JCL_YuGothic16"
 	$frm.addLabel($objParam; 16; 26; 288; 26)
 	
