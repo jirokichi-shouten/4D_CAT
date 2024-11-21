@@ -112,7 +112,9 @@
 					"events": [
 						"onClick"
 					],
-					"class": "JCL_YuGothic14"
+					"class": "JCL_YuGothic14",
+					"stroke": "#000000",
+					"textDecoration": "none"
 				},
 				"<>JCL_D90_Count": {
 					"type": "input",

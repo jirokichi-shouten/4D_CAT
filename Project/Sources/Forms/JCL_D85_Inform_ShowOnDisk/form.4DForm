@@ -112,12 +112,13 @@
 					"focusable": false,
 					"events": [
 						"onClick"
-					]
+					],
+					"stroke": "#000000"
 				},
 				"vJCL_D85_btnShowOnDisk": {
 					"type": "button",
 					"top": 178,
-					"left": 288,
+					"left": 316,
 					"width": 110,
 					"height": 26,
 					"dataSource": "vJCL_D85_btnShowOnDisk",
@@ -127,12 +128,13 @@
 					"method": "ObjectMethods/vJCL_D85_btnShowOnDisk.4dm",
 					"events": [
 						"onClick"
-					]
+					],
+					"stroke": "#000000"
 				}
 			}
 		}
 	],
-	"geometryStamp": 12,
+	"geometryStamp": 13,
 	"$4d": {
 		"version": "1",
 		"kind": "form"

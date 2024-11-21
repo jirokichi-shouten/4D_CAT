@@ -113,7 +113,8 @@
 					"focusable": false,
 					"events": [
 						"onClick"
-					]
+					],
+					"stroke": "#000000"
 				},
 				"vJCL_D81_btnCancel": {
 					"type": "button",
@@ -129,7 +130,8 @@
 					"focusable": false,
 					"events": [
 						"onClick"
-					]
+					],
+					"stroke": "#000000"
 				}
 			}
 		}

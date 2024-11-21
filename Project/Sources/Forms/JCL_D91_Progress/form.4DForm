@@ -113,7 +113,8 @@
 					"events": [
 						"onClick"
 					],
-					"class": "JCL_YuGothic14"
+					"class": "JCL_YuGothic14",
+					"stroke": "#000000"
 				},
 				"<>JCL_D91_Count": {
 					"type": "input",

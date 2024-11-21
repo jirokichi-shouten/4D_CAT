@@ -61,7 +61,9 @@
 					"shortcutAlt": false,
 					"shortcutKey": "q",
 					"action": "quit",
-					"class": "JCL_YuGothic12"
+					"class": "JCL_YuGothic12",
+					"stroke": "#000000",
+					"fontWeight": "bold"
 				},
 				"vA01_btnDesignMode": {
 					"type": "button",
