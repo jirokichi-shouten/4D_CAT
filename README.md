@@ -1,2 +1,2 @@
-# JCL4D_v20
- Jirokichi Common Library for 4D v20 Project mode
+# JCL4D_CAT
+ Jirokichi Common Library for 4D Project mode
