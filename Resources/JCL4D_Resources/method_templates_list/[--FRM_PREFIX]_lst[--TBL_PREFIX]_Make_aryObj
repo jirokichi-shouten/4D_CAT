@@ -1,4 +1,4 @@
-//[--FRM_PREFIX]_lst[--TBL_PREFIX]_Make_aryObj_onS
+//[--FRM_PREFIX]_lst[--TBL_PREFIX]_Make_aryObj
 //FG v202407 [--DATE]
 //[[--TABLE]] 一覧表に必要な値をオブジェクト配列に作成
 //カレントセレクションが前提
