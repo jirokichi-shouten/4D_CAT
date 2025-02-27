@@ -1,0 +1,21 @@
+//[--TBL_PREFIX]_itemAry_check
+//FG v202502 [--DATE]
+//インポート時の内容チェック// 読み込んだ１行をチェックする　//最低２列はあるという想定
+
+C_POINTER($1; $aryItemPtr)
+$aryItemPtr:=$1
+C_BOOLEAN($isValid; $0)
+$isValid:=False
+
+If ($aryItemPtr->{1}#"")  // １列目が空でなければ
+	If ($aryItemPtr->{2}#"")  // ２列目が空でなければ
+		//追加のコードがあればここにif文を追加
+		//...
+
+		//有効
+		$isValid:=True
+		
+	End if 
+End if 
+
+$0:=$isValid

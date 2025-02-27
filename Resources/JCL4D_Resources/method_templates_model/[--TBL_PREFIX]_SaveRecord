@@ -5,18 +5,24 @@
 C_Object($1;$obj[--TBL_PREFIX])
 $obj[--TBL_PREFIX]:=$1
 C_LONGINT($0;$numOfRecs)
-C_LONGINT($[--TBL_PREFIX]_id)$[--TBL_PREFIX]_id:=$obj[--TBL_PREFIX].[--TBL_PREFIX]_ID
+C_LONGINT($[--TBL_PREFIX]_id)
+$[--TBL_PREFIX]_id:=$obj[--TBL_PREFIX].[--TBL_PREFIX]_ID
+
 READ WRITE([[--TABLE]])
 QUERY([[--TABLE]];[[--TABLE]][--TBL_PREFIX]_ID=$[--TBL_PREFIX]_id)
 $numOfRecs:=records in selection([[--TABLE]])
 if ($numOfRecs=0)
-	$[--TBL_PREFIX]_id:=Sequence number([[--TABLE]])		CREATE RECORD([[--TABLE]])
+	$[--TBL_PREFIX]_id:=Sequence number([[--TABLE]])
+		CREATE RECORD([[--TABLE]])
 
 End if
 
 //値をオブジェクト型の変数から取得
 [[--TABLE]][--FIELD]:=$obj[--TBL_PREFIX].[--FIELD]
 [[--TABLE]][--TBL_PREFIX]_ID:=$[--TBL_PREFIX]_id
-SAVE RECORD([[--TABLE]])UNLOAD RECORD([[--TABLE]])READ ONLY([[--TABLE]])
+SAVE RECORD([[--TABLE]])
+
+UNLOAD RECORD([[--TABLE]])
+READ ONLY([[--TABLE]])
 
 $0:=$numOfRecs

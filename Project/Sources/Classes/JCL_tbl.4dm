@@ -146,6 +146,46 @@ Function initValue()
 	
 	$0:=$initValue
 	
+Function importItem()
+	//20250226 wat
+	//メソッド生成時、インポートファイルの値を型を識別して変換
+	
+	C_TEXT:C284($1; $fieldType)
+	$fieldType:=$1  //フィールド型
+	C_TEXT:C284($2; $itemStr)
+	$itemStr:=$2  //アイテム文字
+	C_TEXT:C284($0; $retText)
+	
+	$retText:=""
+	Case of 
+		: ($fieldType="Is Alpha Field")
+			$retText:=$itemStr
+			
+		: ($fieldType="Is Text")
+			$retText:=$itemStr
+			
+		: ($fieldType="Is Real")
+			$retText:="Num("+$itemStr+")"
+			
+		: ($fieldType="Is Integer")
+			$retText:="Num("+$itemStr+")"
+			
+		: ($fieldType="Is LongInt")
+			$retText:="Num("+$itemStr+")"
+			
+		: ($fieldType="Is Date")
+			$retText:="Date("+$itemStr+")"
+			
+		: ($fieldType="Is Time")
+			$retText:="Time("+$itemStr+")"
+			
+		: ($fieldType="Is Boolean")
+			$retText:="Bool("+$itemStr+")"
+			
+	End case 
+	
+	$0:=$retText
+	
 Function findForeignKey()
 	//20240225 wat
 	//外部キーを見つける。xx_yy_IDの形を見つけて、配列でテーブル名を返す。

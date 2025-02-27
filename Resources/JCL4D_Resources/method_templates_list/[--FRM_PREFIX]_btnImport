@@ -1,0 +1,31 @@
+//[--FRM_PREFIX]_btnImport
+//FG v202502 [--DATE]
+//タブ区切りテキストから読み込む IDによりあれば更新、なければ登録
+
+C_LONGINT($cnt)
+C_TEXT($msg)
+C_LONGINT($dlg_ok)
+C_BLOB($fileBlob)  //読み込んだファイルの内容
+C_TEXT($fileText)  //読み込んだファイル
+
+//ファイルを選択して、その内容を取得
+$dlg_ok:=JCL_file_SelectFileDlg(->$fileBlob)
+If ($dlg_ok=1)
+	
+	//読み込んだファイルの内容を4Dの文字セットにエンコード
+	$fileText:=Convert to text($fileBlob; "UTF-8")
+	
+	//　テキストブロックから　科目　レコードを作成
+	$cnt:=[--TBL_PREFIX]_Adds_byFileText($fileText)
+	
+	$msg:="完了"+Char(Carriage return)
+	$msg:=$msg+String($cnt)+"個のレコードを作成しました。"
+	ALERT($msg)
+	
+End if 
+
+[--FRM_PREFIX]_lst[--TBL_PREFIX]_Make
+
+[--FRM_PREFIX]_SetControlsValues
+
+$0:=$dlg_ok

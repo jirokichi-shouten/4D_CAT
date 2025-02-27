@@ -207,6 +207,12 @@ Function form01_List()
 	$frm.addPictureButton($objParam; 68; 996)
 	$frm.saveObjMethod($objParam; $objParam.name)
 	
+	//フォームのImportボタン
+	$objParam.name:=$objParam.frm_prefix+"_btnImport"
+	$objParam.picture:="/RESOURCES/JCL4D_Resources/pictures/tray_and_arrow_down.png"
+	$frm.addPictureButton($objParam; 68; 220)
+	$frm.saveObjMethod($objParam; $objParam.name)
+	
 	//フォームのCloseボタン
 	$objParam.name:=$objParam.frm_prefix+"_btnClose"
 	$objParam.text:="X"

@@ -163,7 +163,9 @@ Function createOneMethod()
 	C_LONGINT:C283($pos; $pos_method; $pos_row)
 	C_TEXT:C284($dateTimeStr)
 	C_TEXT:C284($newmethod)
-	C_TEXT:C284($dataType; $initValue)
+	C_TEXT:C284($dataType; $initValue; $importItem)
+	C_LONGINT:C283($h; $len)
+	C_TEXT:C284($row; $chr; $fieldName; $newRow)
 	
 	//フィールド名のプリフィックス
 	$pos:=Position:C15("_"; $aryFieldNamePtr->{1})
@@ -209,6 +211,11 @@ Function createOneMethod()
 					//初期値を置換
 					$initValue:=cs:C1710.JCL_tbl.new().initValue($aryFieldTypePtr->{$k})
 					$newRow:=Replace string:C233($newRow; "[--INITVALUE]"; $initValue)
+					
+					//インポートのアイテムの型を置換
+					$importItem:=cs:C1710.JCL_tbl.new().importItem($aryFieldTypePtr->{$k}; "$aryItemPtr->{"+String:C10($k)+"}")
+					$newRow:=Replace string:C233($newRow; "[--IMPORTITEM]"; $importItem)
+					
 					$newmethod:=$newmethod+$newRow
 					
 				End for 

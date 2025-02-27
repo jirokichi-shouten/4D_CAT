@@ -1,0 +1,43 @@
+//[--TBL_PREFIX]_Adds_byFileText
+//FG v202502 [--DATE]
+//[--TABLE] テキストブロックからレコードを作成 //プログレスバーはお好みで。
+
+C_TEXT($1; $fileText)
+$fileText:=$1  //読み込んだファイルの内容
+C_LONGINT($0; $cnt)
+$cnt:=0  //作成したレコード数
+ARRAY TEXT($lineAry; 0)  //改行で切り分けた配列
+ARRAY TEXT($itemAry; 0)  //タブで切り分けた配列
+C_LONGINT($minimumCols)
+$minimumCols:=2  //必要な列数 
+C_LONGINT($i; $numOfLines; $numOfItems)
+C_BOOLEAN($isValidRow)
+C_LONGINT($[--TBL_PREFIX]_id)
+C_BOOLEAN($done)
+
+//JCL_pgs_DefInit
+//JCL_pgs_Show("KNを読み込んでいます．．．")
+
+//改行で切り分ける// 区切り文字をCR→CRLF
+$numOfLines:=JCL_str_Extract($fileText; Char(Line feed); ->$lineAry)
+For ($i; 2; $numOfLines)  //2行目から読む
+	//JCL_pgs_SetValue(($i/$numOfLines)*100; "ID："; $i; $numOfLines)
+	
+	//タブで切り分ける
+	DELETE FROM ARRAY($itemAry; 1; Size of array($itemAry))
+	$numOfItems:=JCL_str_Extract($lineAry{$i}; Char(Tab); ->$itemAry)
+	If ($minimumCols<=$numOfItems)
+		
+		$isValidRow:=[--TBL_PREFIX]_itemAry_check(->$itemAry)
+		If ($isValidRow=True)
+			// コードで検索して、なければ科目を作成、あったら情報更新
+			$[--TBL_PREFIX]_id:=[--TBL_PREFIX]_Save_byItemAry(->$itemAry)
+			
+			$cnt:=$cnt+1
+			//$done:=JCL_pgs_IsCancel
+		End if 
+	End if 
+End for 
+//JCL_pgs_Cancel
+
+$0:=$cnt

@@ -393,7 +393,7 @@ Function method_replaceTags()
 	C_LONGINT:C283($len; $h; $k)
 	C_LONGINT:C283($pos_row)
 	C_TEXT:C284($dateTimeStr)
-	C_TEXT:C284($dataType; $initValue; $strValue)
+	C_TEXT:C284($dataType; $initValue; $strValue; $importItem)
 	C_TEXT:C284($chr; $buf; $newBuf)
 	//日付時刻文字列を作成
 	$dateTimeStr:=String:C10(Current date:C33)+" "+String:C10(Current time:C178)
@@ -443,6 +443,10 @@ Function method_replaceTags()
 					//初期値を置換
 					$initValue:=cs:C1710.JCL_tbl.new().initValue($aryFieldTypePtr->{$k})
 					$newBuf:=Replace string:C233($newBuf; "[--INITVALUE]"; $initValue)
+					
+					//インポートのアイテムの型を置換
+					$importItem:=cs:C1710.JCL_tbl.new().importItem($aryFieldTypePtr->{$k}; "$aryItemPtr->{"+String:C10($k)+"}")
+					$newBuf:=Replace string:C233($newBuf; "[--IMPORTITEM]"; $importItem)
 					
 					$newmethod:=$newmethod+$newBuf
 					

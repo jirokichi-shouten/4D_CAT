@@ -1,0 +1,17 @@
+//[--TBL_PREFIX]_Save_byItemAry
+//FG v202502 [--DATE]
+//テーブルに保存
+
+C_POINTER($1; $aryItemPtr)
+$aryItemPtr:=$1
+C_LONGINT($[--TBL_PREFIX]_id; $0)
+C_OBJECT($obj[--TBL_PREFIX])
+
+$obj[--TBL_PREFIX]:=New object
+
+//型を取得して代入を条件分岐
+$obj[--TBL_PREFIX].[--FIELD]:=[--IMPORTITEM]
+
+[--TBL_PREFIX]_SaveRecord($obj[--TBL_PREFIX])
+
+$0:=$[--TBL_PREFIX]_id
