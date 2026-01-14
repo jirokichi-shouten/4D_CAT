@@ -29,7 +29,7 @@ $filePath:=JCL_file_MakeFilePath($folderPath; $fileName)
 $fileText:=Document to text:C1236($filePath; UTF8 text without length:K22:17)
 If ($fileText#"")
 	//改行コードをLFに統一
-	$fileText:=JCL_str_ReplaceReturn($fileText)
+	$fileText:=JCL_str_unifyLF($fileText)
 	
 	//改行で切り分ける
 	$numOfLines:=JCL_str_Extract_byReturn($fileText; ->$aryLines)

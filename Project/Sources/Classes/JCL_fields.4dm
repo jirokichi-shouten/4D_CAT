@@ -8,7 +8,7 @@ Class constructor
 	
 Function createLabelFile($inBlockText : Text)
 	//fieldsのテキストブロックからラベルファイルを作成
-	//20240316 wat 
+	//20240316 wat
 	
 	ARRAY TEXT:C222($aryLines; 0)
 	ARRAY TEXT:C222($aryTableItems; 0)
@@ -39,7 +39,7 @@ Function createLabelFile($inBlockText : Text)
 	
 Function deleteLabelFile($tblName : Text)
 	//リソースフォルダのラベルファイルを削除
-	//20240316 wat 
+	//20240316 wat
 	
 	C_TEXT:C284($file_name)
 	$file_name:=$tblName+".txt"  //ファイル名
@@ -78,7 +78,7 @@ Function blocks_extract($inFileText : Text; $outAryBlokPtr : Pointer) : Integer
 		If ($numOfItems<8)  //20240503
 			//列数不足
 			$i:=$numOfLines
-			//break 
+			//break
 			
 		Else 
 			//テーブル情報を取得
@@ -236,7 +236,7 @@ Function cache_make
 		$fileText:=$files[$i-1].getText("UTF-8"; Document with LF:K24:22)
 		
 		//改行コードをLFに統一
-		$fileText:=JCL_str_ReplaceReturn($fileText)
+		$fileText:=JCL_str_unifyLF($fileText)
 		
 		//改行で切り分ける
 		DELETE FROM ARRAY:C228($aryLines; 1; Size of array:C274($aryLines))

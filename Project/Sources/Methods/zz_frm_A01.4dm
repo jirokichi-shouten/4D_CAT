@@ -1,5 +1,5 @@
 //%attributes = {}
-//zz_fr_A01
+//zz_frm_A01
 //20240203 wat
 //A01にボタンを追加する
 
@@ -12,7 +12,7 @@ $frmPrefix:="US01"
 $btnName:="vA01_btn"+$frmPrefix
 $tblName:="user"
 
-$file:=File:C1566("/SOURCES/Forms/"+$frmName+"/form.4DForm")
+$file:=File:C1566("/SOURCES/Forms/"+$frmName+"/form.4DForm")  //```
 If ($file.exists)
 	//ファイルの中身を解析
 	$defA01:=JSON Parse:C1218($file.getText("UTF-8"; Document with LF:K24:22))

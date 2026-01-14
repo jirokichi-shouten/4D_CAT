@@ -13,7 +13,7 @@ Class constructor
 	//vD02:=cs.JCL_D02.new()
 	//$dlgOk:=vD02.display()
 	//If ($dlgOk=1)
-	//End if 
+	//End if
 	
 	
 Function frm()
@@ -128,7 +128,7 @@ Function lstTB_make($block : Text)
 	$jcl_fields:=cs:C1710.JCL_fields.new()
 	
 	If ($block#"")
-		$block:=JCL_str_ReplaceReturn($block)  //改行コードをLFに統一
+		$block:=JCL_str_unifyLF($block)  //改行コードをLFに統一
 		$numOfLines:=JCL_str_Extract_byReturn($block; ->$aryLines)  //改行で切り分ける
 		
 		//最初の要素はテーブル情報
@@ -243,7 +243,7 @@ Function btnTable()
 Function lstFL()
 	//JCL_D02_lstFL
 	//20240116 wat
-	//return 
+	//return
 	
 	
 Function lstFL_make($fieldBlock : Text)
@@ -270,7 +270,7 @@ Function lstFL_make($fieldBlock : Text)
 		DELETE FROM ARRAY:C228(vJCL_D02_lstFL_REMARK; 1; Size of array:C274(vJCL_D02_lstFL_REMARK))
 		
 		//フィールド一覧作成
-		$fieldBlock:=JCL_str_ReplaceReturn($fieldBlock)  //改行コードをLFに統一
+		$fieldBlock:=JCL_str_unifyLF($fieldBlock)  //改行コードをLFに統一
 		$numOfLines:=JCL_str_Extract_byReturn($fieldBlock; ->$aryLines)  //改行で切り分ける
 		
 		//１行目はテーブル情報
@@ -300,7 +300,7 @@ Function lstFL_make($fieldBlock : Text)
 		End for 
 	End if 
 	
-	//return 
+	//return
 	
 Function lstTB()
 	//JCL_D02_lstTB
@@ -325,7 +325,7 @@ Function lstTB()
 			
 	End case 
 	
-	//return 
+	//return
 	
 Function btnImport()
 	//JCL_D02_btnImport
@@ -345,7 +345,7 @@ Function btnImport()
 	If ($dlg_ok=1)
 		//読み込んだファイルの内容を4Dの文字セットにエンコード
 		$fileText:=Convert to text:C1012($fileBlob; "UTF-8")
-		$fileText:=JCL_str_ReplaceReturn($fileText)  //add_ikeda 20221227
+		$fileText:=JCL_str_unifyLF($fileText)  //add_ikeda 20221227
 		$fileText:=Replace string:C233($fileText; "　"; " ")  //全角文字を置き換える
 		$fileText:=Replace string:C233($fileText; "＿"; "_")  //全角文字を置き換える
 		
@@ -370,7 +370,7 @@ Function btnImport()
 		End if 
 	End if 
 	
-	//return 
+	//return
 	
 Function lstTB_check()
 	//JCL_D02_lstTB_check
@@ -393,7 +393,7 @@ Function lstTB_check()
 		End if 
 	End for 
 	
-	//return 
+	//return
 	
 Function setControlsValues()
 	//JCL_D02_SetControlsValues
@@ -410,10 +410,10 @@ Function setControlsValues()
 	//If ($status="temporary")
 	//APPEND TO ARRAY(vJCL_D20_lstTB_BakColor; JCL_num_GetRGB(255; 255; 255))  // 背景色
 	//APPEND TO ARRAY(vJCL_D20_lstTB_FontColor; JCL_num_GetRGB(255; 0; 0))  // フォントカラー
-	//Else 
+	//Else
 	//APPEND TO ARRAY(vJCL_D20_lstTB_BakColor; JCL_num_GetRGB(255; 255; 255))  // 背景色
 	//APPEND TO ARRAY(vJCL_D20_lstTB_FontColor; JCL_num_GetRGB(0; 0; 0))  // フォントカラー
-	//End if 
+	//End if
 	
-	//End for 
+	//End for
 	
