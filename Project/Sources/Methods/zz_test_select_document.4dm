@@ -5,8 +5,11 @@
 C_OBJECT:C1216($myFile)
 $myFile:=New object:C1471
 C_TEXT:C284($fileText)
-C_LONGINT:C283($numOfBlocks; $i)
+C_LONGINT:C283($numOfBlocks; $b)
 C_LONGINT:C283($pos)
+ARRAY TEXT:C222($aryBlocks; 0)
+ARRAY TEXT:C222($aryLines; 0)
+C_LONGINT:C283($numOfLines; $i)
 
 $document_path:=Select document:C905(111; ""; "PostgreSQLのDumpファイルを選択してください。"; 0)
 $open_ok:=OK
@@ -18,9 +21,9 @@ If ($open_ok=1)
 	JCL_file_Logout("["+$myFile.name+"]")
 	
 	$numOfBlocks:=JCL_str_Extract($fileText; "CREATE TABLE "; ->$aryBlocks)
-	For ($i; 2; $numOfBlocks)
+	For ($b; 2; $numOfBlocks)
 		//テーブル情報を2つ目以降の配列要素から取得
-		$block:=JCL_str_unifyLF($aryBlocks{$i})
+		$block:=JCL_str_unifyLF($aryBlocks{$b})
 		
 		C_OBJECT:C1216($csImporter_PostgreSQL)
 		$csImporter_PostgreSQL:=cs:C1710.JCL_Importer_PostgreSQL.new()
@@ -46,22 +49,26 @@ If ($open_ok=1)
 		$pos2:=Position:C15(");"; $block)
 		$fieldsBlock:=Substring:C12($block; $pos1; ($pos2-$pos1)+Length:C16(");"))
 		
+		DELETE FROM ARRAY:C228($aryLines; 1; Size of array:C274($aryLines))
 		$numOfLines:=JCL_str_Extract_byReturn($fieldsBlock; ->$aryLines)
 		For ($i; 2; $numOfLines-1)
 			//データ型
 			$fieldText:=$aryLines{$i}
 			
+			C_OBJECT:C1216($objField)
+			$objField:=$csImporter_PostgreSQL.getFieldInfo($fieldText)
 			
 			
-			
-			JCL_file_Logout("["+$fieldsBlock+"]")
+			//JCL_file_Logout("["+$objField.name+"]")
+			//JCL_file_Logout("["+$objField.data_type+"]")
+			//JCL_file_Logout("["+String($objField.length)+"]")
 			
 		End for 
 		
 		//If ($pos>0)
 		//$block:=Substring($block; $pos+1)
 		
-		//JCL_file_Logout($block)
+		JCL_file_Logout("")
 		
 		//End if 
 		
