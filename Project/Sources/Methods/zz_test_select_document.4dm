@@ -2,6 +2,8 @@
 //zz_test_select_document
 //20260110 wat
 
+C_TEXT:C284($outBuf)
+$outBuf:=""
 C_OBJECT:C1216($myFile)
 $myFile:=New object:C1471
 C_TEXT:C284($fileText)
@@ -10,6 +12,7 @@ C_LONGINT:C283($pos)
 ARRAY TEXT:C222($aryBlocks; 0)
 ARRAY TEXT:C222($aryLines; 0)
 C_LONGINT:C283($numOfLines; $i)
+C_TEXT:C284($tableName; $tablePrefix; $name)
 
 $document_path:=Select document:C905(111; ""; "PostgreSQLのDumpファイルを選択してください。"; 0)
 $open_ok:=OK
@@ -32,19 +35,13 @@ If ($open_ok=1)
 		$tableName:=$csImporter_PostgreSQL.getTableName($block)
 		
 		//テーブル名を出力
-		//フィールド情報を出力
+		$outBuf:=$outBuf+$tableName+Char:C90(Tab:K15:37)
 		
-		//$pos:=Position("."; $block)
-		//$block:=Replace string($block; Substring($block; 1; $pos); "")
+		//テーブルプリフィックスを出力
+		$tablePrefix:=$csImporter_PostgreSQL.getTablePrefix($block)
+		$outBuf:=$outBuf+$tablePrefix+Char:C90(13)
 		
-		//$pos:=Position(" "; $block)
-		//$tableName:=Substring($block; 1; $pos-1)
-		JCL_file_Logout("["+$tableName+"]")
-		
-		//dumpのCOPY部のブロックからフィールド情報を取得
-		//ARRAY OBJECT($aryObj; 0)
-		//$cnt:=$csImporter_PostgreSQL.getAryFields($block; ->$aryObj)
-		
+		//フィールド情報を取得　ブロックテキストから（）で囲まれているところを取り出す
 		$pos1:=Position:C15("("; $block)
 		$pos2:=Position:C15(");"; $block)
 		$fieldsBlock:=Substring:C12($block; $pos1; ($pos2-$pos1)+Length:C16(");"))
@@ -52,28 +49,56 @@ If ($open_ok=1)
 		DELETE FROM ARRAY:C228($aryLines; 1; Size of array:C274($aryLines))
 		$numOfLines:=JCL_str_Extract_byReturn($fieldsBlock; ->$aryLines)
 		For ($i; 2; $numOfLines-1)
-			//データ型
+			//フィールド情報を取得
 			$fieldText:=$aryLines{$i}
 			
 			C_OBJECT:C1216($objField)
 			$objField:=$csImporter_PostgreSQL.getFieldInfo($fieldText)
 			
-			
-			//JCL_file_Logout("["+$objField.name+"]")
-			//JCL_file_Logout("["+$objField.data_type+"]")
-			//JCL_file_Logout("["+String($objField.length)+"]")
+			//フィールド情報を出力
+			$name:=Replace string:C233($objField.name; $tablePrefix+"_"; "")  //プリフィクスをトル
+			$outBuf:=$outBuf+$name+Char:C90(Tab:K15:37)
+			$outBuf:=$outBuf+$objField.data_type+Char:C90(Tab:K15:37)
+			$outBuf:=$outBuf+String:C10($objField.length)+Char:C90(Tab:K15:37)
+			$outBuf:=$outBuf+"4D_CAT"+Char:C90(13)
 			
 		End for 
+	End for 
+	
+	//ファイル保存ダイアログを表示
+	C_TIME:C306($docRef)
+	//$docRef:=Create document("fields"; "txt")
+	$docRef:=Create document:C266(""; "txt")
+	If (OK=1)  // ドキュメントが正常に作成された場合、
+		CLOSE DOCUMENT:C267($docRef)
+		JCL_file_Text2Document(Document; $outBuf)  // ドキュメントに書き込み
 		
-		//If ($pos>0)
-		//$block:=Substring($block; $pos+1)
+	Else 
+		// エラー管理
+	End if 
+	
+	//create index部を探す
+	DELETE FROM ARRAY:C228($aryBlocks; 1; Size of array:C274($aryBlocks))
+	$numOfBlocks:=JCL_str_Extract($fileText; "CREATE INDEX "; ->$aryBlocks)
+	For ($b; 2; $numOfBlocks)
+		//テーブル情報を2つ目以降の配列要素から取得
 		
-		JCL_file_Logout("")
+		$block:=JCL_str_unifyLF($aryBlocks{$b})
 		
-		//End if 
+		//dumpのCREATE INDEX 部のブロックからインデックスフィールド名を取得
+		C_OBJECT:C1216($objIndex)
+		$objIndex:=$csImporter_PostgreSQL.getIndexName($block)
 		
+		JCL_file_Logout("["+$objIndex.table_name+"]")
+		JCL_file_Logout("["+$objIndex.field_name+"]")
+		JCL_file_Logout("["+$objIndex.index_type+"]")
 		
 	End for 
+	
+	
+	
+	JCL_file_Logout("end")
+	
 	
 	C_TEXT:C284($m)
 	$m:=$m+"$numOfBlocks:=["+String:C10($numOfBlocks)+"]"+Char:C90(13)

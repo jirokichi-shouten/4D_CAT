@@ -1,0 +1,47 @@
+//[--TBL_PREFIX]_Add_byPG_Dump
+//method_generator [--DATE]
+//[--TABLE] レコード追加、DumpのCOPY部の値を代入
+
+C_TEXT($1; $block)
+$block:=$1  //対象文字列ブロック
+ARRAY TEXT($aryBlocks; 0)
+ARRAY TEXT($aryLines; 0)
+C_LONGINT($i; $numOfLines)
+ARRAY TEXT($aryItems; 0)
+C_LONGINT($i; $numOfItems)
+
+READ WRITE([[--TABLE]])
+
+JCL_str_Extract($block; "\\."; ->$aryBlocks)
+$numOfRecs:=JCL_str_Extract($aryBlocks{1}; Char(Line feed); ->$aryLines)-1
+For ($i; 1; $numOfRecs)
+	DELETE FROM ARRAY($aryFields; 1; Size of array($aryFields))
+	$numOfFields:=JCL_str_Extract($aryLines{$i+1}; Char(Tab); ->$aryFields)
+	If ($numOfFields>=9)
+		CREATE RECORD([[--TABLE]])
+
+[[--TABLE]][--FIELD]:=[--ARY_ITEMS]
+
+		SAVE RECORD([[--TABLE]])
+	End if 
+End for 
+
+UNLOAD RECORD([[--TABLE]])
+READ ONLY([[--TABLE]])
+
+
+
+C_LONGINT($0;$[--TBL_PREFIX]_ID)
+
+//新規レコード作成
+$[--TBL_PREFIX]_ID:=Sequence number ([[--TABLE]])
+CREATE RECORD([[--TABLE]])
+
+[[--TABLE]][--FIELD]:=[--INITVALUE]
+
+[[--TABLE]][--TBL_PREFIX]_ID:=$[--TBL_PREFIX]_ID
+
+SAVE RECORD([[--TABLE]])
+
+$0:=$[--TBL_PREFIX]_id
+
