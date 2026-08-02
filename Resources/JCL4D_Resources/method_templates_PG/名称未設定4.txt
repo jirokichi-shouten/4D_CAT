@@ -1,0 +1,17 @@
+//[--TBL_PREFIX]_Add_byPG_Dump
+//method_generator [--DATE]
+//[--TABLE] レコード追加、DumpのCOPY部の値を代入
+
+C_LONGINT($0;$[--TBL_PREFIX]_ID)
+
+//新規レコード作成
+$[--TBL_PREFIX]_ID:=Sequence number ([[--TABLE]])
+CREATE RECORD([[--TABLE]])
+
+[[--TABLE]][--FIELD]:=[--INITVALUE]
+
+[[--TABLE]][--TBL_PREFIX]_ID:=$[--TBL_PREFIX]_ID
+
+SAVE RECORD([[--TABLE]])
+
+$0:=$[--TBL_PREFIX]_id

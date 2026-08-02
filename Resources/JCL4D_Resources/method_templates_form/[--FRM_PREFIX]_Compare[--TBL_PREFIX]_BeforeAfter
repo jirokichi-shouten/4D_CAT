@@ -12,7 +12,7 @@ QUERY([[--TABLE]];[[--TABLE]][--TBL_PREFIX]_ID=$[--TBL_PREFIX]_ID)
 
 If (\
 	([[--TABLE]][--FIELD]#v[--FRM_PREFIX]_var[--FIELD]) |\
-	(True=True))
+	(True=False))
 	$isSame:=False
 End if
 
