@@ -77,23 +77,7 @@ If ($open_ok=1)
 		// エラー管理
 	End if 
 	
-	//create index部を探す
-	DELETE FROM ARRAY:C228($aryBlocks; 1; Size of array:C274($aryBlocks))
-	$numOfBlocks:=JCL_str_Extract($fileText; "CREATE INDEX "; ->$aryBlocks)
-	For ($b; 2; $numOfBlocks)
-		//テーブル情報を2つ目以降の配列要素から取得
-		
-		$block:=JCL_str_unifyLF($aryBlocks{$b})
-		
-		//dumpのCREATE INDEX 部のブロックからインデックスフィールド名を取得
-		C_OBJECT:C1216($objIndex)
-		$objIndex:=$csImporter_PostgreSQL.getIndexName($block)
-		
-		JCL_file_Logout("["+$objIndex.table_name+"]")
-		JCL_file_Logout("["+$objIndex.field_name+"]")
-		JCL_file_Logout("["+$objIndex.index_type+"]")
-		
-	End for 
+	//20260909 Codex/wat修正 PostgreSQL対応はfields.txt生成専用に限定したため、CREATE INDEX解析は廃止。
 	
 	
 	
@@ -108,4 +92,3 @@ If ($open_ok=1)
 	ALERT:C41($m)
 	
 End if 
-

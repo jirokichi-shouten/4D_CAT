@@ -1,8 +1,7 @@
 //JCL_Importer_PostgreSQL
 //20260109 wat
-//PostgreSQLのDumpファイルを取り込む。
-//　Create Table部からfields.txtを作成、インポートメソッドを生成
-//　COPY部からレコードデータを作成
+//20260909 Codex/wat修正 PostgreSQLのDumpファイルのCREATE TABLE部からfields.txtを作成する機能に限定。
+//20260909 Codex/wat修正 テーブル作成、インポートメソッド生成、COPY部からのレコードデータ作成は対象外。
 //CREATE TABLE: データ型変換：日付はtimestamp型：日付部と時刻部がある。どうやらTWTでは時刻の部分を使っていない。日付部だけ取得する
 //
 //fieldsの列：フィールド名、データ型、データ長、
@@ -32,13 +31,14 @@ Function readDumpFile
 	
 Function importer
 	//20260111 wat
-	//dumpファイルを読込んで、fields.txtを出力、インポートメソッドを出力
+	//20260909 Codex/wat修正 dumpファイルを読込んで、CREATE TABLE部からfields.txtのみを出力
 	
 	C_TEXT:C284($fileText)
 	C_LONGINT:C283($numOfBlocks; $b)
 	ARRAY TEXT:C222($aryBlocks; 0)
 	C_TEXT:C284($outBuf)
 	C_TEXT:C284($block)
+	C_BOOLEAN:C305($valid)
 	
 	$fileText:=This:C1470.readDumpFile()
 	
@@ -47,9 +47,13 @@ Function importer
 		//テーブル情報を2つ目以降の配列要素から取得
 		$block:=JCL_str_unifyLF($aryBlocks{$b})
 		
-		//dumpのCREATE TABLE部のブロックからテーブルフィールズを取得
-		$outBuf:=$outBuf+This:C1470.getTableFields($block)
-		
+		//20260909 Codex/wat修正 対応外の型を含むテーブルはfields.txt出力対象から除外
+		$valid:=This:C1470.tableIsValid($block)
+		If ($valid=True:C214)
+			//dumpのCREATE TABLE部のブロックからテーブルフィールズを取得
+			$outBuf:=$outBuf+This:C1470.getTableFields($block)
+			
+		End if 
 	End for 
 	
 	//fields.txtに書き出し //ファイル保存ダイアログを表示
@@ -63,135 +67,10 @@ Function importer
 		// エラー管理
 	End if 
 	
-Function creater
-	//20260314 wat@tottori
-	//dumpファイルを読込んで, テーブル作成
-	
-	C_TEXT:C284($fileText)
-	C_LONGINT:C283($numOfBlocks; $b)
-	ARRAY TEXT:C222($aryBlocks; 0)
-	C_LONGINT:C283($numOfLines; $i)
-	C_TEXT:C284($block; $fieldsBlock)
-	
-	$fileText:=This:C1470.readDumpFile()
-	
-	$numOfBlocks:=JCL_str_Extract($fileText; "CREATE TABLE "; ->$aryBlocks)
-	For ($b; 2; $numOfBlocks)
-		//テーブル情報を2つ目以降の配列要素から取得
-		$block:=JCL_str_unifyLF($aryBlocks{$b})
-		
-		$valid:=This:C1470.tableIsValid($block)
-		If ($valid=True:C214)
-			//dumpのCREATE TABLE部のブロックからテーブルフィールズを取得
-			$fieldsBlock:=This:C1470.getTableFields($block)
-			
-			This:C1470.createTable($fieldsBlock)
-			
-		End if 
-	End for 
-	
-Function data_loader
-	//20260317 wat@tottori
-	//dumpファイルを読込んで、データインサート。テーブルは作成されてある前提
-	//COPY public.client (cl_code, ...でフィールド名を切り出す
-	//メソッドテンプレートを読込んでメソッドを生成　続くデータブロックで値を切り出す
-	
-	C_TEXT:C284($fileText)
-	C_TEXT:C284($methodName; $templateFileName)
-	ARRAY TEXT:C222($aryBlocks; 0)
-	C_LONGINT:C283($numOfBlocks; $b)
-	C_TEXT:C284($block)
-	C_LONGINT:C283($pos; $pos1; $pos2; $pos3; $pos4)
-	C_TEXT:C284($tableName)
-	C_TEXT:C284($fieldsBlock; $dataBlock)
-	ARRAY TEXT:C222($aryLines; 0)
-	C_LONGINT:C283($numOfLines; $i)
-	ARRAY TEXT:C222($aryItems; 0)
-	C_LONGINT:C283($numOfItems; $k)
-	C_TEXT:C284($buf)
-	C_OBJECT:C1216($file)
-	
-	$templateFileName:="[--TBL_PREFIX]_Add_byPG_Dump"
-	
-	$fileText:=This:C1470.readDumpFile()
-	
-	$numOfBlocks:=JCL_str_Extract($fileText; "COPY public."; ->$aryBlocks)
-	For ($b; 2; $numOfBlocks)
-		//テーブル情報を2つ目以降の配列要素から取得
-		$block:=$aryBlocks{$b}
-		$block:=Replace string:C233($block; Char:C90(Carriage return:K15:38)+Char:C90(Line feed:K15:40); Char:C90(13))  //先にCRLFを置き換える
-		$block:=Replace string:C233($block; Char:C90(Line feed:K15:40); Char:C90(13))  //残ったLFを置き換える
-		
-		$pos:=Position:C15(" "; $block)
-		$tableName:=Substring:C12($block; 1; $pos-1)
-		
-		$file:=File:C1566("/RESOURCES/JCL4D_Resources/method_templates_PG/"+$templateFileName)
-		$methodName:=$file.name
-		$buf:=$file.getText("UTF-8"; Document with LF:K24:22)
-		$buf:=Replace string:C233($buf; "[--TABLE]"; $tableName)
-		
-		//dumpのCOPY部のブロックからフィールド列挙（フィールズ）ブロックを取得
-		$pos1:=Position:C15("("; $block)
-		$pos2:=Position:C15(")"; $block)
-		$fieldsBlock:=Substring:C12($block; $pos1; $pos2-$pos1+1)
-		
-		$numOfItems:=JCL_str_Extract($fieldsBlock; Char:C90(Tab:K15:37); ->$aryItems)
-		//テーブル接頭辞を取得
-		$pos:=Position:C15("_"; $aryItems{1})
-		$tbl_prefix:=Substring:C12($aryItems{1}; 1; $pos-1)
-		$buf:=Replace string:C233($buf; "[--TBL_PREFIX]"; $tbl_prefix)
-		
-		For ($i; 1; $numOfItems)
-			$fieldName:=$aryItems{$i}
-			
-			//[assign]as_pr_id:=Num($aryItems{1}
-			$itemValue:=This:C1470.getValue($fieldType; 
-			
-			
-			$fields_buf:="["+$tableName+"]"+$fieldName+":=$aryItems{"+String:C10($i)+"}"
-			$importItem:=cs:C1710.JCL_tbl.new().importItem($aryFieldTypePtr->{$k}; "$aryItemPtr->{"+String:C10($k)+"}")
-			$newRow:=Replace string:C233($newRow; "[--IMPORTITEM]"; $importItem)
-			
-		End for 
-		$buf:=Replace string:C233($buf; "[--FIELD]"; $tbl_prefix)
-		
-		
-		
-		//データブロックはstdinの次の行に続くスペース区切りの文字列
-		$key:="stdin;"
-		$pos3:=Position:C15($key; $block; $pos2)+2
-		$pos4:=Position:C15("\\."; $block; $pos3)
-		$dataBlock:=Substring:C12($block; $pos3+Length:C16($key); $pos4-$pos3)
-		
-		$numOfLines:=JCL_str_Extract($dataBlock; Char:C90(13); ->$aryLines)
-		For ($i; 1; $numOfLines)
-			$values:=$aryLines{$i}
-			$numOfItems:=JCL_str_Extract($values; Char:C90(Tab:K15:37); ->$aryItems)
-			For ($k; 1; $numOfItems)
-				
-			End for 
-			
-			//$sql:=$sql+"("+Substring($values; 1; Length($values)-1)+"), "
-			$sql:=$sql+"("+$values+"), "
-			
-		End for 
-		//最後のカンマをトル
-		$sql:=Substring:C12($sql; 1; Length:C16($sql)-2)
-		
-		JCL_file_Logout($sql)
-		
-		JCL_err_OnErrCall_sql($sql)
-		SQL LOGIN:C817(SQL_INTERNAL:K49:11; ""; "")
-		SQL EXECUTE:C820($sql)
-		SQL LOGOUT:C872
-		$error:=JCL_err_OnErrCall_stop
-		
-	End for 
-	
-	
 Function tableIsValid($block : Text) : Boolean
 	//20260314 wat@tottori
 	//テーブルブロックが妥当か？taskのようにフィールドがないテーブルを排除
+	//20260909 Codex/wat修正 fields.txt生成専用の妥当性チェックとして使用
 	
 	C_BOOLEAN:C305($0; $valid)
 	$valid:=True:C214
@@ -215,73 +94,6 @@ Function tableIsValid($block : Text) : Boolean
 	End if 
 	
 	$0:=$valid
-	
-Function createTable($block : Text) : Integer
-	//20260314 wat@tottori
-	//フィールズブロックからテーブル作成
-	
-	C_LONGINT:C283($0; $numOfTbls)
-	ARRAY TEXT:C222($aryLines; 0)
-	ARRAY TEXT:C222($aryTableItems; 0)
-	ARRAY TEXT:C222($aryFieldItems; 0)
-	C_LONGINT:C283($numOfLines; $numOfItems)
-	C_TEXT:C284($sql)
-	C_TEXT:C284($fldName; $tblName; $prefix; $fldFullName)
-	C_BOOLEAN:C305($id_exist)  //20260317
-	
-	//改行で切り分ける
-	$numOfLines:=JCL_str_Extract($block; Char:C90(13); ->$aryLines)
-	
-	//１行目からテーブル情報取得
-	$numOfItems:=JCL_str_Extract($aryLines{1}; Char:C90(Tab:K15:37); ->$aryTableItems)
-	$tblName:=$aryTableItems{1}  //テーブル名
-	$prefix:=$aryTableItems{2}  //プリフィックス
-	
-	//テーブル作成　２行目以降のフィールド情報でSQL文を組み立てて実行
-	$sql:="CREATE TABLE "+$tblName+"("
-	
-	For ($i; 2; $numOfLines-2)
-		//フィールド名とか切り出し
-		DELETE FROM ARRAY:C228($aryFieldItems; 1; Size of array:C274($aryFieldItems))
-		$numOfItems:=JCL_str_Extract($aryLines{$i}; Char:C90(Tab:K15:37); ->$aryFieldItems)
-		
-		//ＳＱＬのカラム定義節を組み立て
-		$fldName:=Replace string:C233($aryFieldItems{1}; " "; "_")  //フィールド名にスペースがあったらアンダースコアに置き換える
-		If ($fldName="")
-			JCL_file_Logout("NO NAME? $fldName=["+$fldName+"]"+$aryLines{$i})
-			
-		End if 
-		$fldFullName:=$prefix+"_"+$fldName
-		$typeStr:=JCL_tbl_Type_SQL($aryFieldItems{2}; $aryFieldItems{3}; $aryFieldItems{5})  //20240121
-		$sql:=$sql+$fldFullName+$typeStr
-		
-		//idフィールドがあるかどうかを判定 20260317
-		If ($fldName="id")
-			$id_exist:=True:C214
-			
-		End if 
-	End for 
-	
-	//最後のカンマのあとにプライマリーキーを追加して括弧とセミコロンを追加
-	If ($id_exist=True:C214)
-		//idフィールドがある場合だけ
-		$sql:=$sql+" PRIMARY KEY("+$prefix+"_ID));"
-		
-	Else 
-		//idフィールドがない場合、最後のカンマをトル、カッコで閉じる
-		$sql:=Substring:C12($sql; 1; Length:C16($sql)-1)
-		$sql:=$sql+");"
-		
-	End if 
-	
-	JCL_file_Logout($sql)
-	
-	JCL_err_OnErrCall_sql($sql)
-	SQL LOGIN:C817(SQL_INTERNAL:K49:11; ""; "")
-	SQL EXECUTE:C820($sql)
-	SQL LOGOUT:C872
-	$error:=JCL_err_OnErrCall_stop
-	$0:=$numOfTbls
 	
 Function getTableFields($block : Text) : Text
 	//20260314 wat@tottori
@@ -373,13 +185,12 @@ Function getFields($fieldsBlock : Text; $tablePrefix : Text) : Text
 		$outBuf:=$outBuf+String:C10($objField.length)+Char:C90(Tab:K15:37)
 		$outBuf:=$outBuf+"0"+Char:C90(Tab:K15:37)  //インデックス
 		$outBuf:=$outBuf+"0"+Char:C90(Tab:K15:37)  //ユニーク
-		$outBuf:=$outBuf+"from PG Dump file"+Char:C90(Tab:K15:37)  //ユニーク
+		$outBuf:=$outBuf+"from PG Dump file"+Char:C90(Tab:K15:37)  //コメント
 		$outBuf:=$outBuf+"4D_CAT"+Char:C90(13)
 		
 	End for 
 	
 	$0:=$outBuf
-	
 	
 Function getTableName($inBlockText : Text) : Text
 	//20260112 wat
@@ -504,38 +315,3 @@ Function extractName($inText : Text) : Text
 	$outText:=Substring:C12($buf; 1; $pos-1)
 	
 	$0:=$outText
-	
-Function getIndexName($inBlockText : Text) : Object
-	//20260112 wat
-	//dumpのインデックスブロックテキストからインデックス情報を取得、オブジェクト型で返す
-	
-	C_OBJECT:C1216($0; $objIndex)
-	$objIndex:=New object:C1471
-	C_TEXT:C284($block)
-	$block:=$inBlockText
-	ARRAY TEXT:C222($aryLines; 0)
-	
-	$objIndex.table_name:=This:C1470.getTableName($inBlockText)
-	
-	$pos1:=Position:C15("("; $block)
-	$pos2:=Position:C15(");"; $block)
-	$objIndex.field_name:=Substring:C12($inBlockText; $pos1+1; ($pos2-$pos1)-1)
-	
-	//index type
-	$pos:=Position:C15("USING "; $block)
-	//USINGまでの文字列をトル
-	$block:=Replace string:C233($block; Substring:C12($block; 1; $pos+Length:C16("USING ")-1); "")
-	
-	//スペースまでがテーブル名
-	$pos:=Position:C15(" "; $block)
-	$objIndex.index_type:=Substring:C12($block; 1; $pos-1)
-	
-	$0:=$objIndex
-	
-Function createImportMethod()
-	//20260316 wat@tottori
-	//インポートメソッド作成、テンプレートと読込んで
-	
-	$numOfFields:=Get last field number:C255([assign:18]->)
-	
-	
