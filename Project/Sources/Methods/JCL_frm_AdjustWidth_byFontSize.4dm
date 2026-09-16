@@ -34,7 +34,7 @@ If ($objPtr#Null:C1517)
 		// フォント変更後、オフジェクトの最適サイズ　を取り直す
 		OBJECT GET BEST SIZE:C717(*; $fldName; $best_width; $best_height)
 		
-		$m:="JCL_frm_AdjustFontSize"
+		$m:="JCL_frm_AdjustWidth_byFontSize"
 		$m:=$m+": $fldName=["+$fldName+"]"
 		$m:=$m+": $org_width=["+String:C10($org_width)+"]"
 		$m:=$m+": $best_width=["+String:C10($best_width)+"]"
@@ -48,7 +48,7 @@ If ($objPtr#Null:C1517)
 	
 Else 
 	C_TEXT:C284($msg)
-	$msg:="Object not found: JCL_frm_AdjustFontSize"+Char:C90(Carriage return:K15:38)
+	$msg:="Object not found: JCL_frm_AdjustWidth_byFontSize"+Char:C90(Carriage return:K15:38)
 	$msg:=$msg+"$fldName=["+$fldName+"]"
 	//$msg:=$msg+"$objPtr=["+string($objPtr)+"]"
 	ALERT:C41($msg+": Null")
