@@ -23,8 +23,7 @@ If ($objPtr#Null:C1517)
 	
 	// 文字列描画後の　オフジェクトの最適サイズ
 	OBJECT GET BEST SIZE:C717(*; $fldName; $best_width; $best_height)
-	
-	While ($org_height<=$best_height)
+	While (($org_height<=$best_height) & ($done=False:C215))
 		// フォントサイズを一つ小さくする
 		$font_size:=$font_size-1
 		OBJECT SET FONT SIZE:C165(*; $fldName; $font_size)
