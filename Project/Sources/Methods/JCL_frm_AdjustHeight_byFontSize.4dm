@@ -10,7 +10,7 @@ $fldName:=$1
 C_LONGINT:C283($font_size)
 C_LONGINT:C283($best_width; $best_height)
 C_LONGINT:C283($org_width; $org_height)
-C_BOOLEAN:C305($done)  //20220410
+C_BOOLEAN:C305($done)  //20260916
 
 //オブジェクトが存在するかどうか
 C_POINTER:C301($objPtr)
@@ -33,7 +33,7 @@ If ($objPtr#Null:C1517)
 		// フォント変更後、オフジェクトの最適サイズ　を取り直す
 		OBJECT GET BEST SIZE:C717(*; $fldName; $best_width; $best_height)
 		
-		If ($font_size<3)  //20220410
+		If ($font_size<3)  //20260916
 			$done:=True:C214
 		End if 
 	End while 
