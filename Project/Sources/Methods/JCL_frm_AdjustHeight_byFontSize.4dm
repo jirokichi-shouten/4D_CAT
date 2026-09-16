@@ -3,6 +3,7 @@
 //JCL_frm_AdjustFontHeight（元の名前）
 //20180521 wat
 //フォームオブジェクト　文字高さと行数によってフォントサイズを小さくする
+//20260916 wat 無限ループ防止とオブジェクト存在確認を追加。
 
 C_TEXT:C284($1; $fldName)
 $fldName:=$1
@@ -22,6 +23,7 @@ If ($objPtr#Null:C1517)
 	JCL_frm_GetObjectSize($fldName; ->$org_width; ->$org_height)
 	
 	// 文字列描画後の　オフジェクトの最適サイズ
+	$done:=False:C215
 	OBJECT GET BEST SIZE:C717(*; $fldName; $best_width; $best_height)
 	While (($org_height<=$best_height) & ($done=False:C215))
 		// フォントサイズを一つ小さくする
