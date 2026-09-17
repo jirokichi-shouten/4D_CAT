@@ -1,29 +1,39 @@
 # JCL4D_Core化 検討メモ
 
-作成日: 2026-09-16  
-目的: `4D_CAT` に含まれる共通ライブラリ部分を `JCL4D_Core` として切り出し、`4D_CAT` をテーブル・フォーム・メソッド生成に集中させる。
+作成日: 2026-09-17
 
-この文書は初版の分類メモです。まだコード移動は行わず、まず「Core に入れるもの」「CAT 側に残すもの」「保留するもの」を見える化します。
+## 目的
 
-## 基本方針
+`4D_CAT` に含まれている共通ライブラリ部分を `JCL4D_Core` として切り出し、`4D_CAT` をテーブル・フォーム・メソッド生成に集中させる。
 
-`JCL4D_Core` は、どの 4D プロジェクトでも使える汎用部品だけを持つ。
+`JCL4D_Core` は、どの 4D プロジェクトでも利用できる汎用部品の集合とする。
+`4D_CAT` は、`fields.txt` を中心にテーブル・フォーム・メソッドを生成するジェネレータとして残す。
 
-`4D_CAT` は、`fields.txt` を読んでテーブル・フォーム・メソッドを生成するアプリ／ジェネレータとして残す。
+## 分離の基本方針
 
-判断基準:
+### JCL4D_Core に入れるもの
 
-- Core: 特定の CAT 画面、生成テンプレート、fields 形式に依存しない。
-- CAT: テーブル生成、フォーム生成、メソッド生成、fields 管理、CAT 専用 UI に依存する。
-- 保留: 汎用にも見えるが CAT 依存や構造依存が強そうなもの。
-- 削除候補: 実験用、旧コード、用途不明、テスト専用。
+- 特定の CAT 画面に依存しない
+- `fields.txt` の仕様に依存しない
+- メソッド生成テンプレートに依存しない
+- 一般的な 4D プロジェクトで再利用できる
+- 文字列、ファイル、配列、エラー処理、ダイアログ、リストボックス操作などの基礎部品
 
-## 作業時の注意
+### 4D_CAT に残すもの
 
-- いきなりファイル移動しない。まず依存関係を確認する。
-- 4D Project mode はメソッド名・フォーム名・リソース参照の影響が大きいため、小さく分けて移す。
-- `Project/Sources/Methods/JCL_frm_AdjustHeight_byFontSize.4dm` には既存の未コミット変更があるため、Core化作業では触らない。
-- Core へ移す候補は、移動前に CAT 側からの参照を `rg` で確認する。
+- テーブル生成
+- フォーム生成
+- メソッド生成
+- `fields.txt` / `fields_labels` 管理
+- 生成用テンプレート
+- CAT 専用画面
+- CAT 専用テスト・実験コード
+
+### 保留するもの
+
+- 汎用に見えるが、構造ファイルや CAT の命名規約に依存している可能性があるもの
+- 4D Component 化する場合に扱いを確認したいもの
+- UIフォーム・Resources・画像などを一緒に移す必要があるもの
 
 ## 目標構成案
 
@@ -31,7 +41,8 @@
 JCL4D_Core
   Project/Sources/Classes
     JCL_str.4dm
-    JCL_tbl.4dm        # 要検討。汎用部分だけなら Core
+    JCL_tbl.4dm        # 汎用部分のみ。要分割検討。
+
   Project/Sources/Methods
     JCL_str_*
     JCL_file_*
@@ -46,27 +57,42 @@ JCL4D_Core
     JCL_obj_*
     JCL_num_*
     JCL_utl_*
+
+  Project/Sources/Forms
+    JCL_D80_YesNo
+    JCL_D81_NoYes
+    JCL_D82_Inform
+    JCL_D83_Surprise
+    JCL_D84_InputOne
+    JCL_D85_Inform_ShowOnDisk
+    JCL_D90_ProgressBar
+    JCL_D91_Progress
+
   Resources/JCL4D_Resources
     error_codes.txt
     error_codes_sql.txt
     national_holidays.txt
-    pictures/          # ダイアログや汎用UIで使うものだけ
+    pictures/          # Core側フォームが使うものだけ
 
 4D_CAT
   Project/Sources/Classes
     JCL_D00.4dm
     JCL_D01.4dm
     JCL_D02.4dm
-    JCL_D20.4dm        # 要検討。汎用カレンダーなら Core 候補
+    JCL_D20.4dm        # カレンダーを Core にするかは保留
     JCL_fields.4dm
     JCL_formGenerator.4dm
     JCL_formObjects.4dm
     JCL_tableGenerator.4dm
     JCL_Importer_PostgreSQL.4dm
+
   Resources/JCL4D_Resources
-    method_templates_*
-    method_additionals/
     fields_labels/
+    method_templates_model/
+    method_templates_list/
+    method_templates_form/
+    method_templates_form03/
+    method_additionals/
     sql_reserved/
 ```
 
@@ -74,7 +100,7 @@ JCL4D_Core
 
 ### 文字列系
 
-Core 化優先度: 高
+優先度: 高
 
 - `Classes/JCL_str.4dm`
 - `Methods/JCL_str_Datemark.4dm`
@@ -101,14 +127,14 @@ Core 化優先度: 高
 - `Methods/JCL_str_unifyCR.4dm`
 - `Methods/JCL_str_unifyLF.4dm`
 
-メモ:
+確認事項:
 
-- `JCL_str_byResources.4dm` は Resources 依存があるため、Core 側 Resources の配置ルールを決めてから移す。
-- `JCL_str_Extract_mp.4dm` はマルチプロセス/スレッド安全性の意図を確認する。
+- `JCL_str_byResources.4dm` は Resources 参照方法を確認する。
+- `JCL_str_Extract_mp.4dm` は `shared` / プリエンプティブ対応の意図を確認する。
 
 ### ファイル系
 
-Core 化優先度: 高
+優先度: 高
 
 - `Methods/JCL_file_Close.4dm`
 - `Methods/JCL_file_CreatedOn.4dm`
@@ -138,18 +164,18 @@ Core 化優先度: 高
 - `Methods/JCL_file_WriteTab.4dm`
 - `Methods/JCL_file_csv_ReadRow.4dm`
 
-保留寄り:
+保留:
 
 - `Methods/JCL_file_SQLOut.4dm`
 
-メモ:
+確認事項:
 
-- `JCL_file_SQLOut.4dm` は SQL 生成・ログ用途に寄っていれば CAT 側でもよい。
-- `JCL_file_GetFromResourcesFolder.4dm` は Core に置く場合、Core/呼び出しプロジェクトどちらの Resources を見るかを決める必要がある。
+- `JCL_file_GetFromResourcesFolder.4dm` は Core 側 Resources を読むのか、呼び出し元 Project の Resources を読むのか決める。
+- `JCL_file_SQLOut.4dm` は SQL生成ログ用途が強ければ CAT 側に残す。
 
 ### 配列系
 
-Core 化優先度: 高
+優先度: 高
 
 - `Methods/JCL_ary_FindInLike.4dm`
 - `Methods/JCL_ary_Next_Long.4dm`
@@ -159,13 +185,13 @@ Core 化優先度: 高
 - `Methods/JCL_ary_debug_Logout.4dm`
 - `Methods/JCL_ary_or.4dm`
 
-メモ:
+確認事項:
 
-- `JCL_ary_debug_Logout.4dm` は `JCL_file_Logout` に依存する想定。Core 内依存なら問題なし。
+- `JCL_ary_debug_Logout.4dm` は `JCL_file_Logout` 依存。Core 内依存として扱える。
 
 ### エラー処理
 
-Core 化優先度: 高
+優先度: 高
 
 - `Methods/JCL_err_4D_Error.4dm`
 - `Methods/JCL_err_OnErrCall.4dm`
@@ -176,13 +202,13 @@ Core 化優先度: 高
 - `Resources/JCL4D_Resources/error_codes.txt`
 - `Resources/JCL4D_Resources/error_codes_sql.txt`
 
-メモ:
+確認事項:
 
-- SQL 用エラー処理を Core に入れるかは判断が必要。ただし汎用 DB 操作でも使えるため、初期候補に入れる。
+- SQL 用エラー処理は Core に入れる方針でよさそう。ただし CAT の SQL生成機能に寄りすぎていないか確認する。
 
 ### ダイアログ系
 
-Core 化優先度: 高
+優先度: 高
 
 - `Methods/JCL_dlg_Inform.4dm`
 - `Methods/JCL_dlg_Inform_ShowOnDisk.4dm`
@@ -192,24 +218,21 @@ Core 化優先度: 高
 - `Methods/JCL_dlg_Wait_Show.4dm`
 - `Methods/JCL_dlg_YesNo.4dm`
 - `Methods/JCL_dlg_usage.4dm`
+- `Forms/JCL_D80_YesNo`
+- `Forms/JCL_D81_NoYes`
+- `Forms/JCL_D82_Inform`
+- `Forms/JCL_D83_Surprise`
+- `Forms/JCL_D84_InputOne`
+- `Forms/JCL_D85_Inform_ShowOnDisk`
 
-関連フォーム:
+確認事項:
 
-- `Project/Sources/Forms/JCL_D80_YesNo`
-- `Project/Sources/Forms/JCL_D81_NoYes`
-- `Project/Sources/Forms/JCL_D82_Inform`
-- `Project/Sources/Forms/JCL_D83_Surprise`
-- `Project/Sources/Forms/JCL_D84_InputOne`
-- `Project/Sources/Forms/JCL_D85_Inform_ShowOnDisk`
-
-メモ:
-
-- ダイアログフォームも Core 側へ移す必要がある。
-- フォームが Resources の画像に依存している場合、その画像も Core 側候補。
+- フォームと画像リソースをセットで移す。
+- `JCL_dlg_usage.4dm` は Core 本体ではなく Examples 扱いでもよい。
 
 ### 進捗・待機
 
-Core 化優先度: 高
+優先度: 高
 
 - `Methods/JCL_pgs_Cancel.4dm`
 - `Methods/JCL_pgs_DefInit.4dm`
@@ -227,19 +250,16 @@ Core 化優先度: 高
 - `Methods/JCL_wait_SampleCode.4dm`
 - `Methods/JCL_wait_SetValue.4dm`
 - `Methods/JCL_wait_Show.4dm`
+- `Forms/JCL_D90_ProgressBar`
+- `Forms/JCL_D91_Progress`
 
-関連フォーム:
+確認事項:
 
-- `Project/Sources/Forms/JCL_D90_ProgressBar`
-- `Project/Sources/Forms/JCL_D91_Progress`
-
-メモ:
-
-- `usage` / `SampleCode` は Core 本体ではなく Documentation または Examples に移す選択肢もある。
+- `usage` / `SampleCode` は Examples 扱いがよさそう。
 
 ### リストボックス系
 
-Core 化優先度: 中〜高
+優先度: 中〜高
 
 - `Methods/JCL_lst_ColNr_byColName.4dm`
 - `Methods/JCL_lst_ColNumber.4dm`
@@ -272,14 +292,14 @@ Core 化優先度: 中〜高
 - `Methods/JCL_lst_Make_Join.4dm`
 - `Methods/JCL_lst_remake_byStructure.4dm`
 
-メモ:
+確認事項:
 
-- `JCL_lst_remake_byStructure.4dm` は構造/テーブル依存が強そうなので CAT 寄り。
-- `Export_pgs*` は進捗依存だけなら Core、CAT 固有出力なら保留。
+- `JCL_lst_remake_byStructure.4dm` は構造ファイル依存が強ければ CAT 側。
+- `Export_pgs*` は進捗フォーム依存だけなら Core、CAT 出力仕様に依存するなら保留。
 
 ### ボタン・フォーム・オブジェクト系
 
-Core 化優先度: 中
+優先度: 中
 
 - `Methods/JCL_btn_SetEnable.4dm`
 - `Methods/JCL_btn_SetEnable_byListCount.4dm`
@@ -296,14 +316,13 @@ Core 化優先度: 中
 - `Methods/JCL_obj_SetVisible.4dm`
 - `Methods/JCL_key_NumFilter_onBeforeKey.4dm`
 
-メモ:
+確認事項:
 
-- `JCL_frm_AdjustHeight_byFontSize.4dm` は現在未コミット変更があるため、Core化作業では一旦触らない。
-- 汎用フォーム操作として有用だが、生成フォームの規約に依存していないか確認する。
+- 生成フォームの命名規約や CAT 固有オブジェクト名に依存していないか確認する。
 
 ### ポップアップ・印刷・HTTP・数値・ユーティリティ
 
-Core 化優先度: 中
+優先度: 中
 
 - `Methods/JCL_pop_Check.4dm`
 - `Methods/JCL_pop_CurrentSelected.4dm`
@@ -320,14 +339,14 @@ Core 化優先度: 中
 - `Methods/JCL_utl_MacAddress.4dm`
 - `Methods/JCL_utl_MachineInfo.4dm`
 
-メモ:
+確認事項:
 
-- `JCL_HTTP_Request_POST.4dm` は汎用だが、認証/用途依存がないか確認する。
-- `JCL_num_GetTax.4dm` は税率固定などがあれば Core ではなく業務別ライブラリの方がよい可能性がある。
+- `JCL_num_GetTax.4dm` は税率固定なら業務別ライブラリ寄り。
+- `JCL_HTTP_Request_POST.4dm` は用途固有のヘッダやURLがないか確認する。
 
 ### モデル保存・シリアル番号
 
-Core 化優先度: 中〜低
+優先度: 中〜低
 
 - `Methods/JCL_model_saveLong.4dm`
 - `Methods/JCL_model_saveReal.4dm`
@@ -341,12 +360,11 @@ Core 化優先度: 中〜低
 - `Methods/JCL_tbl_SerialNumber_Reset.4dm`
 - `Methods/JCL_tbl_ResetSN.4dm`
 
-メモ:
+確認事項:
 
-- テーブル構造や ID 命名規約に依存していれば CAT 側。
-- 汎用ユーティリティとして切れるなら Core。
+- テーブルID規約や CAT の生成テーブル規約に依存するなら CAT 側。
 
-## CAT 側に残す候補
+## 4D_CAT 側に残す候補
 
 ### CAT アプリ・起動・画面
 
@@ -359,18 +377,15 @@ Core 化優先度: 中〜低
 - `Methods/A01_frmDefInit.4dm`
 - `Methods/A01_frmOnLoad.4dm`
 - `Methods/A01_main.4dm`
-- `Methods/JCL_A00_OnStartup.4dm`
-- `Methods/JCL_A01_Display.4dm`
-- `Methods/JCL_A01_main.4dm`
 - `Methods/JCL_D00_Generator.4dm`
-- `Project/Sources/Forms/A01_main`
-- `Project/Sources/Forms/JCL_D00_Generator`
-- `Project/Sources/Forms/JCL_D01_Select`
-- `Project/Sources/Forms/JCL_D02_Fields`
+- `Forms/A01_main`
+- `Forms/JCL_D00_Generator`
+- `Forms/JCL_D01_Select`
+- `Forms/JCL_D02_Fields`
 
 メモ:
 
-- `A00_.4dm` は変更履歴メモとしての性格が強い。将来的には Documentation へ移す候補。
+- `A00_.4dm` は変更履歴メモとしての性格が強い。将来的には Documentation へ移してもよい。
 
 ### ジェネレータ系クラス
 
@@ -385,23 +400,23 @@ Core 化優先度: 中〜低
 
 メモ:
 
-- `JCL_Importer_PostgreSQL.4dm` は fields.txt 生成補助に縮退済み。CAT の fields 形式に依存するため CAT 側。
+- `JCL_Importer_PostgreSQL.4dm` は PostgreSQL dump の `CREATE TABLE` 部から `fields.txt` を生成する補助機能。`fields.txt` 形式に依存するため CAT 側。
 
 ### テンプレート・fields・予約語
 
+- `Resources/JCL4D_Resources/fields_labels/`
 - `Resources/JCL4D_Resources/method_templates_model/`
 - `Resources/JCL4D_Resources/method_templates_list/`
 - `Resources/JCL4D_Resources/method_templates_form/`
 - `Resources/JCL4D_Resources/method_templates_form03/`
 - `Resources/JCL4D_Resources/method_additionals/`
-- `Resources/JCL4D_Resources/fields_labels/`
 - `Resources/JCL4D_Resources/sql_reserved/`
 
 メモ:
 
-- これらは CAT の生成機能そのものなので Core には入れない。
+- 生成機能そのものなので CAT 側に残す。
 
-### fields 関連メソッド
+### fields 関連
 
 - `Methods/JCL_fields_Label.4dm`
 - `Methods/JCL_fields_cache_TableLabel.4dm`
@@ -425,19 +440,20 @@ Core 化優先度: 中〜低
 - `Methods/JCL_method_info.4dm`
 - `Methods/JCL_method_isExist.4dm`
 
-メモ:
+確認事項:
 
-- `method_info` / `method_isExist` は汎用なら Core 候補。ただし CAT の import/export と一体なら CAT 側。
+- `method_info` / `method_isExist` は汎用なら Core 候補。
 
 ## 保留候補
 
-### `JCL_tbl` 系
+### JCL_tbl 系
 
-`JCL_tbl` は Core 化で一番判断が必要。
+`JCL_tbl` 系は Core 化の最大の判断ポイント。
+構造情報を読むだけの機能は Core 候補、テーブル生成・SQL生成・CAT固有規約に関わる機能は CAT 側候補。
 
 Core 候補:
 
-- `Classes/JCL_tbl.4dm` のうち、テーブル名取得・フィールドポインタ取得・型変換などの汎用部分
+- `Classes/JCL_tbl.4dm` の汎用部分
 - `Methods/JCL_tbl_DataSourceTypeHint.4dm`
 - `Methods/JCL_tbl_DataType.4dm`
 - `Methods/JCL_tbl_Fields_withAttr.4dm`
@@ -473,25 +489,22 @@ CAT 候補:
 - `Methods/JCL_tbl_Type_SQL.4dm`
 - `Methods/JCL_tbl_UpdateFld_byNewStr.4dm`
 
-メモ:
+確認事項:
 
-- テーブル構造を読むだけなら Core。
-- テーブルを作る、削除する、SQLを生成する、CAT のフォーム色や fields ファイルに依存するものは CAT。
-- `JCL_tbl_Type_SQL.4dm` は SQL生成で使うため CAT 寄り。ただし汎用 SQL helper として切るなら別モジュール。
+- `Classes/JCL_tbl.4dm` を分割するか、そのまま保留するか。
+- `JCL_tbl_Type_SQL.4dm` は SQL helper として汎用化するか、CAT 側に残すか。
 
 ### カレンダー
 
 - `Classes/JCL_D20.4dm`
-- `Project/Sources/Forms/JCL_D20_Calendar`
+- `Forms/JCL_D20_Calendar`
 - `Resources/JCL4D_Resources/national_holidays.txt`
 - `Resources/JCL4D_Resources/pictures/calendar*.png`
 
 判断:
 
-- 汎用カレンダーダイアログとして使えるなら Core 候補。
-- CAT の生成UIに従属しているなら CAT 側。
-
-現時点では「保留」。独立性を確認してから決める。
+- 汎用カレンダーダイアログとして独立して使えるなら Core 候補。
+- CAT の画面や生成機能に従属しているなら CAT 側。
 
 ### Common Window / Notes
 
@@ -500,8 +513,8 @@ CAT 候補:
 
 判断:
 
-- 用途が汎用なら Core。
-- CAT デバッグや内部メモ用途なら CAT または削除候補。
+- 汎用なら Core。
+- CAT 内部メモやデバッグ用途なら CAT または削除候補。
 
 ## 削除・隔離候補
 
@@ -529,31 +542,30 @@ CAT 候補:
 方針:
 
 - Core には入れない。
-- 残すなら `Tests` または `Examples` 相当の場所へ隔離する。
-- 4D Project mode 上でフォルダ分け可能か確認する。
+- 残すなら `Tests` または `Examples` 相当として隔離する。
 
 ### `.DS_Store`
 
 - `Resources/JCL4D_Resources/.DS_Store`
-- 各テンプレートフォルダ内の `.DS_Store`
+- テンプレートフォルダ内の `.DS_Store`
 
 方針:
 
-- Git管理から外せるなら削除候補。
-- `.gitignore` の整備も検討。
+- Git管理から外す。
+- `.gitignore` を整備する。
 
-## 第一段階の具体作業案
+## 第一段階の作業案
 
 ### Phase 1: 分類確定
 
 1. この文書をレビューする。
-2. `JCL_tbl` 系を Core/CAT に分割する基準を決める。
+2. `JCL_tbl` 系を Core / CAT / 保留に分ける。
 3. `JCL_D20` カレンダーを Core に入れるか決める。
 4. `usage` / `SampleCode` / `zz_test_*` の扱いを決める。
 
 ### Phase 2: Core候補の依存関係確認
 
-優先して確認する順:
+優先順:
 
 1. `JCL_str_*`
 2. `JCL_file_*`
@@ -561,6 +573,8 @@ CAT 候補:
 4. `JCL_err_*`
 5. `JCL_dlg_*`
 6. `JCL_pgs_*` / `JCL_wait_*`
+7. `JCL_lst_*`
+8. `JCL_btn_*` / `JCL_frm_*` / `JCL_obj_*`
 
 確認内容:
 
@@ -568,45 +582,48 @@ CAT 候補:
 - 依存フォーム
 - 依存 Resources
 - CAT 専用メソッドへの依存
+- 4D Component 化した場合の参照可否
 
-### Phase 3: Coreプロジェクトの作成方針
+### Phase 3: Coreプロジェクト作成方針
 
 候補:
 
 1. 新しい 4D Project として `JCL4D_Core` を作る。
 2. 4D Component として配布できる形にする。
-3. 当面は `4D_CAT` 内に `Core候補` を残し、ドキュメントと依存整理だけ進める。
+3. 当面は `4D_CAT` 内で Core 候補を整理し、依存確認後に切り出す。
 
 推奨:
 
 - 最初は 3。
-- 依存関係が見えたら 1 または 2 に進む。
+- 依存関係が整理できたら 1 または 2 に進む。
 
 ## 初回移行候補
 
-まず Core 化しやすい低リスク候補:
+低リスクで Core 化しやすい候補:
 
-- `JCL_str_Extract.4dm`
-- `JCL_str_Extract_byReturn.4dm`
-- `JCL_str_unifyCR.4dm`
-- `JCL_str_unifyLF.4dm`
-- `JCL_file_MakeFilePath.4dm`
-- `JCL_file_Extension.4dm`
-- `JCL_ary_concat.4dm`
-- `JCL_ary_and.4dm`
-- `JCL_ary_or.4dm`
+- `Methods/JCL_str_Extract.4dm`
+- `Methods/JCL_str_Extract_byReturn.4dm`
+- `Methods/JCL_str_unifyCR.4dm`
+- `Methods/JCL_str_unifyLF.4dm`
+- `Methods/JCL_file_MakeFilePath.4dm`
+- `Methods/JCL_file_Extension.4dm`
+- `Methods/JCL_ary_concat.4dm`
+- `Methods/JCL_ary_and.4dm`
+- `Methods/JCL_ary_or.4dm`
 
 理由:
 
 - 生成UIへの依存が薄い。
-- 他メソッドから使われる基礎部品で、Core 化の効果が大きい。
+- 基礎部品として他メソッドから利用される。
+- Core 化の効果を確認しやすい。
 
 ## 未決事項
 
 - Core は 4D Component として配布するのか、Project source としてコピーするのか。
 - Core 側 Resources の参照パスをどうするか。
-- Core にフォームを含めるか。含めるならダイアログ/進捗/カレンダーの扱い。
+- Core にフォームを含めるか。
+- Core に `JCL_D20` カレンダーを含めるか。
+- `JCL_tbl` 系を分割するか。
 - メソッド名の `JCL_` prefix は維持するか。
 - CAT 側から Core をどう参照するか。
 - バージョン番号・リリースノートをどこで管理するか。
-
