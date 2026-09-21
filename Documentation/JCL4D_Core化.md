@@ -9,6 +9,16 @@
 `JCL4D_Core` は、どの 4D プロジェクトでも利用できる汎用部品の集合とする。
 `4D_CAT` は、`fields.txt` を中心にテーブル・フォーム・メソッドを生成するジェネレータとして残す。
 
+## ソース変更コメント規約
+
+Codex が既存の 4D ソース内容を修正する場合は、変更箇所の履歴コメントとして次の形式を残す。
+
+```4d
+//YYYYMMDD Codex/wat 変更内容
+```
+
+日付は変更実施日を8桁で記述する。ファイル移動だけでソース内容を変更しない場合は追加しない。
+
 ## 分離の基本方針
 
 ### JCL4D_Core に入れるもの
@@ -616,6 +626,87 @@ CAT 候補:
 - 生成UIへの依存が薄い。
 - 基礎部品として他メソッドから利用される。
 - Core 化の効果を確認しやすい。
+
+## 第2弾移行結果
+
+実施日: 2026-09-21
+
+文字列系のうち、CAT 固有の Resources やクラス名前空間に依存しない次のメソッドを `JCL4D_Core` へ移した。
+
+- `JCL_str_Datemark`
+- `JCL_str_Datemark_format`
+- `JCL_str_DocCreateDatemark`
+- `JCL_str_DocModifyDatemark`
+- `JCL_str_Extract_mp`
+- `JCL_str_GetWareki`
+- `JCL_str_IsCharRetrurn`
+- `JCL_str_IsNumber`
+- `JCL_str_Keitai_format`
+- `JCL_str_LastNumber`
+- `JCL_str_NextNumber`
+- `JCL_str_Numbers`
+- `JCL_str_Platform`
+- `JCL_str_RPos`
+- `JCL_str_Remove_LeftSpace`
+- `JCL_str_Week`
+- `JCL_str_dateTime`
+- `JCL_str_isComment`
+
+全メソッドをホスト公開し、Core 内の相互依存が解決していることを確認した。
+
+保留:
+
+- `JCL_str_byResources`: ホスト側の `Resources/jiro` を固定参照しているため。
+- `Classes/JCL_str.4dm`: CAT が `cs.JCL_str` として参照しており、コンポーネントへ移すとクラス名前空間の変更が必要になるため。
+
+マニュアルとの照合:
+
+- 掲載されている `JCL_str_Datemark` は今回移行した。
+- 掲載されている `JCL_str_Extract` は第1弾で移行済み。
+- マニュアル掲載の `JCL_str_RandomAlphaNumbers` と `JCL_str_RandomAlphabets` は現行の `4D_CAT` に実装ファイルがなかったため、2026-09-22 にマニュアル掲載コードを基に `JCL4D_Core` へ新規追加した。HTML上で欠けていた改行を補い、4Dのプロジェクトソース形式に合わせた。
+
+## 第3弾移行結果
+
+実施日: 2026-09-22
+
+ファイル系のうち、Core 内で依存関係が完結する次のメソッドを `JCL4D_Core` へ移した。
+
+- `JCL_file_Close`
+- `JCL_file_CreatedOn`
+- `JCL_file_DocumentsFolderPath`
+- `JCL_file_Logout`
+- `JCL_file_Logout_mp`
+- `JCL_file_OnErrorCall`
+- `JCL_file_Open`
+- `JCL_file_OpenForWrite`
+- `JCL_file_ReadAllSJIS`
+- `JCL_file_ReadSJIS`
+- `JCL_file_SelectFileDlg`
+- `JCL_file_SelectFolder`
+- `JCL_file_SelectFolder_forWrite`
+- `JCL_file_SelectUtf8`
+- `JCL_file_Text2Document`
+- `JCL_file_WriteCRLF`
+- `JCL_file_WriteSJIS`
+- `JCL_file_WriteTab`
+- `JCL_file_csv_ReadRow`
+
+`JCL_file_Open` と `JCL_file_ReadAllSJIS` に残っていた旧名 `Jiro_file_OnErrorCall` は、Core 内の現行名 `JCL_file_OnErrorCall` へ修正した。
+
+保留:
+
+- `JCL_file_GetFromResourcesFolder`: Component とホストのどちらの Resources を読むか未決定。
+- `JCL_file_HTML_toWebArea`: Web Area とホストフォームの実行コンテキスト、および固定フォルダ名 `DMS4D_TMP` の整理が必要。
+- `JCL_file_SQLOut`: CAT の SQL 出力用途として残す。
+- `JCL_file_SelectSJIS`: 固定プロンプトとデバッグ用 `ALERT` があり、汎用化が必要。
+- `JCL_file_SelectXMac`: 固定プロンプトがあり、汎用化が必要。
+- `JCL_file_StructureName`: Component から `Structure file` を呼んだ場合の対象がホストかCoreかを確認する必要がある。
+
+マニュアルとの照合:
+
+- 掲載されている `JCL_file_Close`、`JCL_file_OpenForWrite`、`JCL_file_WriteCRLF`、`JCL_file_WriteTab`、`JCL_file_WriteSJIS`、`JCL_file_Logout`、`JCL_file_OnErrorCall`、`JCL_file_SelectFolder` は今回移行した。
+- 掲載されている `JCL_file_GetDirSeparator` と `JCL_file_MakeFilePath` は第1弾で移行済み。
+- マニュアル掲載の `JCL_file_List` と `JCL_print_toPDF` は、現行の `4D_CAT` に実装ファイルがないため今回の対象外。
 
 ## 開発時とビルド時の構成方針（暫定）
 
