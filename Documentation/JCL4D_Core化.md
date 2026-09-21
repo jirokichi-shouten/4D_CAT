@@ -627,7 +627,7 @@ CAT 候補:
 - 基礎部品として他メソッドから利用される。
 - Core 化の効果を確認しやすい。
 
-## 第2弾移行結果
+## 第2弾移行結果（文字列系）
 
 実施日: 2026-09-21
 
@@ -665,7 +665,7 @@ CAT 候補:
 - 掲載されている `JCL_str_Extract` は第1弾で移行済み。
 - マニュアル掲載の `JCL_str_RandomAlphaNumbers` と `JCL_str_RandomAlphabets` は現行の `4D_CAT` に実装ファイルがなかったため、2026-09-22 にマニュアル掲載コードを基に `JCL4D_Core` へ新規追加した。HTML上で欠けていた改行を補い、4Dのプロジェクトソース形式に合わせた。
 
-## 第3弾移行結果
+## 第2弾移行結果（ファイル系）
 
 実施日: 2026-09-22
 
@@ -707,6 +707,29 @@ CAT 候補:
 - 掲載されている `JCL_file_Close`、`JCL_file_OpenForWrite`、`JCL_file_WriteCRLF`、`JCL_file_WriteTab`、`JCL_file_WriteSJIS`、`JCL_file_Logout`、`JCL_file_OnErrorCall`、`JCL_file_SelectFolder` は今回移行した。
 - 掲載されている `JCL_file_GetDirSeparator` と `JCL_file_MakeFilePath` は第1弾で移行済み。
 - マニュアル掲載の `JCL_file_List` と `JCL_print_toPDF` は、現行の `4D_CAT` に実装ファイルがないため今回の対象外。
+
+## 第3弾移行結果
+
+実施日: 2026-09-22
+
+配列・数値・ユーティリティ系のうち、Core 内で依存関係が完結する次のメソッドを `JCL4D_Core` へ移した。
+
+- `JCL_ary_FindInLike`
+- `JCL_ary_Next_Long`
+- `JCL_ary_Prev_Long`
+- `JCL_ary_debug_Logout`
+- `JCL_num_GetAge`
+- `JCL_num_GetRGB`
+- `JCL_num_GetTax`
+- `JCL_utl_ColorRandom`
+- `JCL_utl_MacAddress`
+- `JCL_utl_MachineInfo`
+
+全メソッドをホスト公開した。`JCL_ary_debug_Logout` が使用する `JCL_file_Logout` と、`JCL_utl_MacAddress` が使用する `JCL_str_Extract` は移行済みのため、Core 内で依存関係が完結する。
+
+保留:
+
+- `JCL_str_byResources`: ホスト側の `Resources/jiro` を固定参照しており、現行のResources構成にも同フォルダがない。Component とホストのどちらの Resources を読むか決定してから移行する。
 
 ## 開発時とビルド時の構成方針（暫定）
 
