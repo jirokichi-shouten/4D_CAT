@@ -784,6 +784,48 @@ CAT 候補:
 - ホスト側から `JCL_lst_SelectedCount` とボタン制御メソッドを呼び出すテストを実施済み。
 - `JCL_lst_Count` と `JCL_btn_SetEnable_byListCount` の個別確認結果は未記録。
 
+## 第6弾移行結果
+
+実施日: 2026-09-23
+
+リストボックスの選択・値取得・列情報・コピー・ソートを扱う次のメソッドを `JCL4D_Core` へ移した。
+
+- `JCL_lst_Deselect`
+- `JCL_lst_SelectAll`
+- `JCL_lst_SetSelect_byRow`
+- `JCL_lst_SetSelect_byLong`
+- `JCL_lst_SetSelect_byStr`
+- `JCL_lst_ColNr_byColName`
+- `JCL_lst_ColNumber`
+- `JCL_lst_Copy`
+- `JCL_lst_GetOneRow`
+- `JCL_lst_GetValue`
+- `JCL_lst_SelectedValues`
+- `JCL_lst_Selected_Long`
+- `JCL_lst_Selected_Real`
+- `JCL_lst_Selected_Str`
+- `JCL_lst_Selected_firstRow`
+- `JCL_lst_Sort`
+- `JCL_lst_Sort_Append`
+- `JCL_lst_Sort_AppendCurrent`
+- `JCL_lst_Sort_HeaderName`
+- `JCL_lst_Sort_HeaderReset`
+
+全メソッドをホスト公開した。`JCL_lst_SetSelect_byStr`、`JCL_lst_ColNr_byColName`、`JCL_lst_Copy` には `shared:true` を追加し、変更履歴コメントを残した。選択・ソート系が呼ぶ他の `JCL_lst_*` メソッドもCore内にあり、依存関係が完結する。
+
+4D上での確認項目:
+
+- 親フォームのリストボックスで、行番号・数値キー・文字列キーによる選択が反映されること。
+- 複数選択可能なリストボックスで、全選択と選択解除が反映されること。
+- キーに一致する行がない場合に選択が解除され、`byLong` と `byStr` が0を返すこと。
+- 列名からの列番号取得、選択値の取得、コピー、ソートが親フォームから動作すること。これらは個別の実行確認が必要。
+
+保留:
+
+- `JCL_lst_Export`、`JCL_lst_Export_pgs2`、`JCL_lst_Export_pgs4`: ダイアログと進捗表示への依存がある。
+- `JCL_lst_Make_Join`: ホストのテーブル選択を変更する。
+- `JCL_lst_remake_byStructure`: テーブル構造・命名規約への依存がある。
+
 ## 開発時とビルド時の構成方針（暫定）
 
 - 開発時は `JCL4D_Core` を独立した隣接リポジトリとして管理し、Core の `.4DProject` ファイルに対する macOS の Finder エイリアスを親プロジェクトの `Components` に置いて参照する。POSIX シンボリックリンクは使用しない。
