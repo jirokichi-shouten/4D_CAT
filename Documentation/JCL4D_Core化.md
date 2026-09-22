@@ -757,8 +757,32 @@ CAT 候補:
 
 保留:
 
-- `JCL_btn_SetEnable_byListCount`、`JCL_btn_SetEnable_byListSelect`、`JCL_btn_SetEnable_byNSelect`: `JCL_lst_*` への依存があり、リスト系移行時に扱う。
+- `JCL_btn_SetEnable_byListCount`、`JCL_btn_SetEnable_byListSelect`、`JCL_btn_SetEnable_byNSelect`: 第4弾では `JCL_lst_*` への依存により保留し、第5弾で移行した。
 - `JCL_frm_isExist`: テーブルフォーム名の探索を伴うため、コンポーネントからホストのフォームを検索する仕様を確認してから扱う。
+
+## 第5弾移行結果
+
+実施日: 2026-09-22
+
+リストボックスの件数・選択件数を数える基本メソッドと、それを使ってボタンの有効状態を切り替えるメソッドを `JCL4D_Core` へ移した。
+
+- `JCL_lst_Count`
+- `JCL_lst_SelectedCount`
+- `JCL_btn_SetEnable_byListCount`
+- `JCL_btn_SetEnable_byListSelect`
+- `JCL_btn_SetEnable_byNSelect`
+
+5メソッドとも既存の `shared:true` 属性を維持し、ソース内容は変更していない。ボタン系3メソッドが呼ぶ `JCL_btn_SetEnable` は第4弾でCoreへ移行済みであり、Core内依存が完結する。
+
+4D上での確認項目:
+
+- 親フォームからボタン系メソッドを呼び、リスト行数が0件と1件以上の場合に有効状態が切り替わること。
+- 選択が0件、1件、複数件の場合に、`byListSelect` は1件だけ、`byNSelect` は1件以上でボタンを有効にすること。
+
+動作確認（2026-09-23）:
+
+- ホスト側から `JCL_lst_SelectedCount` とボタン制御メソッドを呼び出すテストを実施済み。
+- `JCL_lst_Count` と `JCL_btn_SetEnable_byListCount` の個別確認結果は未記録。
 
 ## 開発時とビルド時の構成方針（暫定）
 

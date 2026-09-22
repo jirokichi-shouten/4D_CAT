@@ -150,9 +150,9 @@
 				},
 				"vA02_btnTest": {
 					"type": "button",
-					"text": "Test",
-					"top": 112,
-					"left": 204,
+					"text": "TestVisible",
+					"top": 110,
+					"left": 84,
 					"width": 110,
 					"height": 26,
 					"events": [
@@ -170,9 +170,9 @@
 				},
 				"vA02_btnTestHeight": {
 					"type": "button",
-					"text": "Test",
-					"top": 224,
-					"left": 204,
+					"text": "TestHeight",
+					"top": 152,
+					"left": 84,
 					"width": 110,
 					"height": 26,
 					"events": [
@@ -190,9 +190,9 @@
 				},
 				"vA02_txtAdjustHeight": {
 					"type": "input",
-					"top": 270,
-					"left": 193,
-					"width": 610,
+					"top": 152,
+					"left": 220,
+					"width": 190,
 					"height": 41,
 					"dataSource": "vTestText",
 					"class": "JCL_YuGothic16",
@@ -208,11 +208,81 @@
 					],
 					"sizingY": "fixed",
 					"method": "ObjectMethods/vA02_txtAdjustHeight.4dm"
+				},
+				"vA02_lstTB": {
+					"type": "listbox",
+					"top": 254,
+					"left": 225,
+					"width": 336,
+					"height": 170,
+					"sizingX": "fixed",
+					"sizingY": "grow",
+					"resizingMode": "legacy",
+					"dataSource": "vA02_lstTB",
+					"rowHeight": "20px",
+					"rowHeightAutoMin": "20px",
+					"rowHeightAutoMax": "20px",
+					"class": "JCL_YuGothic12",
+					"events": [
+						"onClick",
+						"onDoubleClick",
+						"onDataChange",
+						"onSelectionChange",
+						"onHeaderClick"
+					],
+					"showFooters": false,
+					"selectionMode": "single",
+					"singleClickEdit": true,
+					"columns": [
+						{
+							"name": "vA02_lstTB_NAME",
+							"dataSource": "vA02_lstTB_NAME",
+							"width": 178,
+							"enterable": false,
+							"truncateMode": "none",
+							"class": "JCL_YuGothic12",
+							"events": [
+								"onClick",
+								"onDataChange"
+							],
+							"header": {
+								"name": "HvA02_lstTB_NAME",
+								"text": "テーブル名",
+								"dataSource": "HvA02_lstTB_NAME",
+								"class": "JCL_Meiryo10"
+							},
+							"footer": {
+								"name": "vA02_lftTB_NAME",
+								"timeFormat": "hh_mm_ss",
+								"class": "JCL_Meiryo12"
+							}
+						}
+					]
+				},
+				"vA02_btnTestLstbx": {
+					"type": "button",
+					"text": "TestListbox",
+					"top": 252,
+					"left": 84,
+					"width": 110,
+					"height": 26,
+					"events": [
+						"onClick"
+					],
+					"dataSource": "vA02_btnTestLstbx",
+					"shortcutAccel": false,
+					"shortcutControl": false,
+					"shortcutShift": false,
+					"shortcutAlt": false,
+					"shortcutKey": "",
+					"action": "",
+					"class": "JCL_YuGothic12",
+					"method": "ObjectMethods/vA02_btnTestLstbx.4dm"
 				}
 			}
 		}
 	],
-	"geometryStamp": 849,
+	"geometryStamp": 961,
 	"editor": {
 		"activeView": "View 1",
 		"defaultView": "View 1",
