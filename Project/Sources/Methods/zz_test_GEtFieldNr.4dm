@@ -13,3 +13,10 @@ ALERT:C41(String:C10($nr))
 $str:=JCL_str_RandomAlphabets(3)
 $str:=JCL_str_RandomAlphaNumbers(4)
 ALERT:C41(String:C10($str))
+
+JCL_ary_FindInLike
+JCL_num_GetAge
+JCL_utl_ColorRandom
+
+JCL_obj_LeftTop
+

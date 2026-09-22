@@ -731,6 +731,35 @@ CAT 候補:
 
 - `JCL_str_byResources`: ホスト側の `Resources/jiro` を固定参照しており、現行のResources構成にも同フォルダがない。Component とホストのどちらの Resources を読むか決定してから移行する。
 
+## 第4弾移行結果
+
+実施日: 2026-09-22
+
+フォーム上のオブジェクトを扱う基本メソッドを `JCL4D_Core` へ移した。
+
+- `JCL_btn_SetEnable`
+- `JCL_btn_SetVisible`
+- `JCL_obj_LeftTop`
+- `JCL_obj_SetVisible`
+- `JCL_frm_GetObjectSize`
+- `JCL_frm_DefaultFontSize`
+- `JCL_frm_AdjustHeight_byFontSize`
+- `JCL_frm_AdjustWidth_byFontSize`
+
+全メソッドをホスト公開した。フォントサイズ調整の2メソッドが呼ぶ `JCL_frm_GetObjectSize` も同時に移しており、Core 内依存は解決する。これらのメソッドは現在フォームのオブジェクトやウィンドウに依存するため、ホスト側フォームからコンポーネントメソッドとして呼び、対象オブジェクトに操作が反映されることを4D上で確認する必要がある。
+
+動作確認（ホストフォームから呼び出し）:
+
+- `JCL_btn_SetVisible`: ボタンの表示切り替えを確認済み。
+- `JCL_frm_AdjustHeight_byFontSize`: フォントサイズの縮小を確認済み。
+- `JCL_frm_AdjustWidth_byFontSize`: 今回はテストを省略。未検証として扱う。
+- その他の移行メソッド: 個別の動作確認は未実施。
+
+保留:
+
+- `JCL_btn_SetEnable_byListCount`、`JCL_btn_SetEnable_byListSelect`、`JCL_btn_SetEnable_byNSelect`: `JCL_lst_*` への依存があり、リスト系移行時に扱う。
+- `JCL_frm_isExist`: テーブルフォーム名の探索を伴うため、コンポーネントからホストのフォームを検索する仕様を確認してから扱う。
+
 ## 開発時とビルド時の構成方針（暫定）
 
 - 開発時は `JCL4D_Core` を独立した隣接リポジトリとして管理し、Core の `.4DProject` ファイルに対する macOS の Finder エイリアスを親プロジェクトの `Components` に置いて参照する。POSIX シンボリックリンクは使用しない。

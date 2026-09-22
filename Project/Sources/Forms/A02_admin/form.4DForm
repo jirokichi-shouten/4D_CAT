@@ -38,44 +38,45 @@
 					"type": "rectangle",
 					"top": 0,
 					"left": 0,
-					"width": 1220,
+					"width": 796,
 					"height": 55,
 					"sizingX": "grow",
 					"stroke": "#FFFFFF",
-					"fill": "#c0c0c0"
+					"fill": "#c0c0c0",
+					"right": 796
 				},
-				"vA01_btnQuit": {
+				"vA02_btnQuit": {
 					"type": "button",
-					"text": "終了",
+					"text": "X",
 					"top": 16,
-					"left": 1090,
+					"left": 666,
 					"width": 110,
 					"height": 26,
 					"events": [
 						"onClick"
 					],
-					"dataSource": "vA01_btnQuit",
+					"dataSource": "vA02_btnQuit",
 					"shortcutAccel": true,
 					"shortcutControl": false,
-					"shortcutShift": false,
+					"shortcutShift": true,
 					"shortcutAlt": false,
-					"shortcutKey": "q",
-					"action": "quit",
+					"shortcutKey": "w",
+					"action": "cancel",
 					"class": "JCL_YuGothic12",
 					"stroke": "#000000",
 					"fontWeight": "bold"
 				},
-				"vA01_btnDesignMode": {
+				"vA02_btnDesignMode": {
 					"type": "button",
 					"text": "デザインモードへ",
 					"top": 58,
-					"left": 1090,
+					"left": 666,
 					"width": 110,
 					"height": 26,
 					"events": [
 						"onClick"
 					],
-					"dataSource": "vA01_btnDesignMode",
+					"dataSource": "vA02_btnDesignMode",
 					"shortcutAccel": false,
 					"shortcutControl": false,
 					"shortcutShift": false,
@@ -84,13 +85,13 @@
 					"action": "design",
 					"class": "JCL_YuGothic12"
 				},
-				"vA01_var4D_DataFile": {
+				"vA02_var4D_DataFile": {
 					"type": "input",
 					"top": 624,
 					"left": 20,
 					"width": 730,
 					"height": 17,
-					"dataSource": "vA01_var4D_DataFile",
+					"dataSource": "vA02_var4D_DataFile",
 					"class": "JCL_YuGothic10",
 					"focusable": false,
 					"fill": "transparent",
@@ -105,13 +106,13 @@
 					"sizingY": "move",
 					"stroke": "#008000"
 				},
-				"vA01_varProductName": {
+				"vA02_varProductName": {
 					"type": "input",
 					"top": 10,
 					"left": 20,
 					"width": 610,
 					"height": 17,
-					"dataSource": "vA01_varProductName",
+					"dataSource": "vA02_varProductName",
 					"class": "JCL_YuGothic16",
 					"focusable": false,
 					"fill": "transparent",
@@ -124,15 +125,15 @@
 						"onDataChange"
 					],
 					"sizingY": "fixed",
-					"method": "ObjectMethods/vA01_varProductName.4dm"
+					"method": "ObjectMethods/vA02_varProductName.4dm"
 				},
-				"vA01_varVersion": {
+				"vA02_varVersion": {
 					"type": "input",
 					"top": 34,
 					"left": 16,
 					"width": 610,
 					"height": 17,
-					"dataSource": "vA01_varVersion",
+					"dataSource": "vA02_varVersion",
 					"class": "JCL_YuGothic12",
 					"focusable": false,
 					"fill": "transparent",
@@ -146,11 +147,72 @@
 					],
 					"sizingY": "fixed",
 					"textAlign": "automatic"
+				},
+				"vA02_btnTest": {
+					"type": "button",
+					"text": "Test",
+					"top": 112,
+					"left": 204,
+					"width": 110,
+					"height": 26,
+					"events": [
+						"onClick"
+					],
+					"dataSource": "vA02_btnTest",
+					"shortcutAccel": false,
+					"shortcutControl": false,
+					"shortcutShift": false,
+					"shortcutAlt": false,
+					"shortcutKey": "",
+					"action": "",
+					"class": "JCL_YuGothic12",
+					"method": "ObjectMethods/vA02_btnTest.4dm"
+				},
+				"vA02_btnTestHeight": {
+					"type": "button",
+					"text": "Test",
+					"top": 224,
+					"left": 204,
+					"width": 110,
+					"height": 26,
+					"events": [
+						"onClick"
+					],
+					"dataSource": "vA02_btnTestHeight",
+					"shortcutAccel": false,
+					"shortcutControl": false,
+					"shortcutShift": false,
+					"shortcutAlt": false,
+					"shortcutKey": "",
+					"action": "",
+					"class": "JCL_YuGothic12",
+					"method": "ObjectMethods/vA02_btnTestHeight.4dm"
+				},
+				"vA02_txtAdjustHeight": {
+					"type": "input",
+					"top": 270,
+					"left": 193,
+					"width": 610,
+					"height": 41,
+					"dataSource": "vTestText",
+					"class": "JCL_YuGothic16",
+					"focusable": false,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"enterable": false,
+					"contextMenu": "none",
+					"dragging": "none",
+					"dropping": "custom",
+					"events": [
+						"onDataChange"
+					],
+					"sizingY": "fixed",
+					"method": "ObjectMethods/vA02_txtAdjustHeight.4dm"
 				}
 			}
 		}
 	],
-	"geometryStamp": 817,
+	"geometryStamp": 849,
 	"editor": {
 		"activeView": "View 1",
 		"defaultView": "View 1",
@@ -158,7 +220,7 @@
 			"View 1": {}
 		}
 	},
-	"width": 1220,
-	"height": 644,
+	"width": 796,
+	"height": 492,
 	"method": "method.4dm"
 }
