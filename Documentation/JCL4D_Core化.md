@@ -60,7 +60,6 @@ JCL4D_Core
     JCL_err_*
     JCL_dlg_*
     JCL_pgs_*
-    JCL_wait_*
     JCL_lst_*
     JCL_btn_*
     JCL_frm_*
@@ -76,7 +75,6 @@ JCL4D_Core
     JCL_D84_InputOne
     JCL_D85_Inform_ShowOnDisk
     JCL_D90_ProgressBar
-    JCL_D91_Progress
 
   Resources/JCL4D_Resources
     error_codes.txt
@@ -225,9 +223,7 @@ JCL4D_Core
 - `Methods/JCL_dlg_InputOne.4dm`
 - `Methods/JCL_dlg_NoYes.4dm`
 - `Methods/JCL_dlg_Surprise.4dm`
-- `Methods/JCL_dlg_Wait_Show.4dm`
 - `Methods/JCL_dlg_YesNo.4dm`
-- `Methods/JCL_dlg_usage.4dm`
 - `Forms/JCL_D80_YesNo`
 - `Forms/JCL_D81_NoYes`
 - `Forms/JCL_D82_Inform`
@@ -238,7 +234,7 @@ JCL4D_Core
 確認事項:
 
 - フォームと画像リソースをセットで移す。
-- `JCL_dlg_usage.4dm` は Core 本体ではなく Examples 扱いでもよい。
+- 使用例はCAT側の `zz_test_JCL_dlg.4dm` に残す。
 
 ### 進捗・待機
 
@@ -251,21 +247,12 @@ JCL4D_Core
 - `Methods/JCL_pgs_Open.4dm`
 - `Methods/JCL_pgs_SetValue.4dm`
 - `Methods/JCL_pgs_Show.4dm`
-- `Methods/JCL_pgs_usage.4dm`
-- `Methods/JCL_pgs_usage2.4dm`
-- `Methods/JCL_wait_Cancel.4dm`
-- `Methods/JCL_wait_DefInit.4dm`
-- `Methods/JCL_wait_IsCancel.4dm`
-- `Methods/JCL_wait_Open.4dm`
-- `Methods/JCL_wait_SampleCode.4dm`
-- `Methods/JCL_wait_SetValue.4dm`
-- `Methods/JCL_wait_Show.4dm`
 - `Forms/JCL_D90_ProgressBar`
-- `Forms/JCL_D91_Progress`
 
 確認事項:
 
-- `usage` / `SampleCode` は Examples 扱いがよさそう。
+- 使用例はCAT側の `zz_test_JCL_pgs.4dm` と `zz_test_JCL_pgs2.4dm` に残す。
+- `JCL_wait_*` は進捗メーターを持たない重複実装で、実利用がサンプル内だけだったため削除した。進捗・待機表示は `JCL_pgs_*` に一本化する。
 
 ### リストボックス系
 
@@ -316,7 +303,6 @@ JCL4D_Core
 - `Methods/JCL_btn_SetEnable_byListSelect.4dm`
 - `Methods/JCL_btn_SetEnable_byNSelect.4dm`
 - `Methods/JCL_btn_SetVisible.4dm`
-- `Methods/JCL_fld_SetFontSize_byLen.4dm`
 - `Methods/JCL_frm_AdjustHeight_byFontSize.4dm`
 - `Methods/JCL_frm_AdjustWidth_byFontSize.4dm`
 - `Methods/JCL_frm_DefaultFontSize.4dm`
@@ -324,7 +310,6 @@ JCL4D_Core
 - `Methods/JCL_frm_isExist.4dm`
 - `Methods/JCL_obj_LeftTop.4dm`
 - `Methods/JCL_obj_SetVisible.4dm`
-- `Methods/JCL_key_NumFilter_onBeforeKey.4dm`
 
 確認事項:
 
@@ -335,7 +320,6 @@ JCL4D_Core
 優先度: 中
 
 - `Methods/JCL_prt_PageBreak.4dm`
-- `Methods/JCL_prt_PageSetup.4dm`
 - `Methods/JCL_HTTP_Request_POST.4dm`
 - `Methods/JCL_num_GetAge.4dm`
 - `Methods/JCL_num_GetRGB.4dm`
@@ -588,7 +572,7 @@ CAT 候補:
 3. `JCL_ary_*`
 4. `JCL_err_*`
 5. `JCL_dlg_*`
-6. `JCL_pgs_*` / `JCL_wait_*`
+6. `JCL_pgs_*`
 7. `JCL_lst_*`
 8. `JCL_btn_*` / `JCL_frm_*` / `JCL_obj_*`
 
@@ -831,6 +815,33 @@ CAT 候補:
 - `JCL_lst_Export`、`JCL_lst_Export_pgs2`、`JCL_lst_Export_pgs4`: ダイアログと進捗表示への依存がある。
 - `JCL_lst_Make_Join`: ホストのテーブル選択を変更する。
 - `JCL_lst_remake_byStructure`: テーブル構造・命名規約への依存がある。
+
+## 不要メソッド整理
+
+実施日: 2026-09-24
+
+Coreへの移行候補を見直し、呼び出しがなく、標準機能で代替できるもの、重複実装、使用例だけのメソッドをCATから整理した。この作業はCoreへの移行回数には含めない。
+
+削除:
+
+- `JCL_dlg_Wait_Show`: 存在しない旧名 `Jiro_dlg_Wait_Open` と旧インタープロセス変数に依存していた。
+- `JCL_fld_SetFontSize_byLen`: 呼び出しがなく、フォームのフォント調整は第4弾で移行した `JCL_frm_AdjustHeight_byFontSize` と `JCL_frm_AdjustWidth_byFontSize` に整理した。
+- `JCL_key_NumFilter_onBeforeKey`: 呼び出しがなく、フォームイベントへ直接記述できる小規模な入力フィルターだった。
+- `JCL_prt_PageSetup`: 呼び出しがなく、旧コマンド `_O_PAGE SETUP` とホストフォーム名に依存していた。
+- `JCL_wait_Cancel`
+- `JCL_wait_DefInit`
+- `JCL_wait_IsCancel`
+- `JCL_wait_Open`
+- `JCL_wait_SampleCode`
+- `JCL_wait_SetValue`
+- `JCL_wait_Show`
+- `Forms/JCL_D91_Progress`: `JCL_wait_*` 専用フォーム。進捗・待機表示は `JCL_pgs_*` と `JCL_D90_ProgressBar` に一本化した。
+
+テスト用へ改名:
+
+- `JCL_dlg_usage` → `zz_test_JCL_dlg`
+- `JCL_pgs_usage` → `zz_test_JCL_pgs`
+- `JCL_pgs_usage2` → `zz_test_JCL_pgs2`
 
 ## 開発時とビルド時の構成方針（暫定）
 
