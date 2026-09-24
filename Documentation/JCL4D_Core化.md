@@ -129,7 +129,6 @@ JCL4D_Core
 - `Methods/JCL_str_RPos.4dm`
 - `Methods/JCL_str_Remove_LeftSpace.4dm`
 - `Methods/JCL_str_Week.4dm`
-- `Methods/JCL_str_byResources.4dm`
 - `Methods/JCL_str_dateTime.4dm`
 - `Methods/JCL_str_isComment.4dm`
 - `Methods/JCL_str_unifyCR.4dm`
@@ -137,7 +136,6 @@ JCL4D_Core
 
 確認事項:
 
-- `JCL_str_byResources.4dm` は Resources 参照方法を確認する。
 - `JCL_str_Extract_mp.4dm` は `shared` / プリエンプティブ対応の意図を確認する。
 
 ### ファイル系
@@ -233,7 +231,7 @@ JCL4D_Core
 
 確認事項:
 
-- フォームと画像リソースをセットで移す。
+- 6メソッドと対応する6フォームを第7弾でCoreへ移行した。追加の画像リソースは使用していない。
 - 使用例はCAT側の `zz_test_JCL_dlg.4dm` に残す。
 
 ### 進捗・待機
@@ -344,13 +342,10 @@ JCL4D_Core
 - この記法が属性の混在状態を表す目的だった可能性はあるが、旧コードとGit履歴から意図を確定できなかった。
 - 項目データそのものへ表示用メタ文字を混在させず、必要な箇所でメニュー文字列を組み立てる。
 
-### モデル保存・シリアル番号
+### シリアル番号
 
 優先度: 中〜低
 
-- `Methods/JCL_model_saveLong.4dm`
-- `Methods/JCL_model_saveReal.4dm`
-- `Methods/JCL_model_saveText.4dm`
 - `Methods/JCL_SerialNumber.4dm`
 - `Methods/JCL_SerialNumber_Reset.4dm`
 
@@ -506,15 +501,13 @@ CAT 候補:
 - 汎用カレンダーダイアログとして独立して使えるなら Core 候補。
 - CAT の画面や生成機能に従属しているなら CAT 側。
 
-### Common Window / Notes
+### Common Window
 
 - `Methods/JCL_CW_Dispatch.4dm`
-- `Methods/JCL_Notes.4dm`
 
 判断:
 
-- 汎用なら Core。
-- CAT 内部メモやデバッグ用途なら CAT または削除候補。
+- `JCL_CW_Dispatch` が汎用なら Core。CAT 固有なら CAT に残す。
 
 ## 削除・隔離候補
 
@@ -646,7 +639,6 @@ CAT 候補:
 
 保留:
 
-- `JCL_str_byResources`: ホスト側の `Resources/jiro` を固定参照しているため。
 - `Classes/JCL_str.4dm`: CAT が `cs.JCL_str` として参照しており、コンポーネントへ移すとクラス名前空間の変更が必要になるため。
 
 マニュアルとの照合:
@@ -716,10 +708,6 @@ CAT 候補:
 - `JCL_utl_MachineInfo`
 
 全メソッドをホスト公開した。`JCL_ary_debug_Logout` が使用する `JCL_file_Logout` と、`JCL_utl_MacAddress` が使用する `JCL_str_Extract` は移行済みのため、Core 内で依存関係が完結する。
-
-保留:
-
-- `JCL_str_byResources`: ホスト側の `Resources/jiro` を固定参照しており、現行のResources構成にも同フォルダがない。Component とホストのどちらの Resources を読むか決定してから移行する。
 
 ## 第4弾移行結果
 
@@ -816,6 +804,30 @@ CAT 候補:
 - `JCL_lst_Make_Join`: ホストのテーブル選択を変更する。
 - `JCL_lst_remake_byStructure`: テーブル構造・命名規約への依存がある。
 
+## 第7弾移行結果
+
+実施日: 2026-09-24
+
+汎用ダイアログのメソッドと対応フォームを `JCL4D_Core` へ移した。
+
+- `JCL_dlg_YesNo` / `Forms/JCL_D80_YesNo`
+- `JCL_dlg_NoYes` / `Forms/JCL_D81_NoYes`
+- `JCL_dlg_Inform` / `Forms/JCL_D82_Inform`
+- `JCL_dlg_Surprise` / `Forms/JCL_D83_Surprise`
+- `JCL_dlg_InputOne` / `Forms/JCL_D84_InputOne`
+- `JCL_dlg_Inform_ShowOnDisk` / `Forms/JCL_D85_Inform_ShowOnDisk`
+
+6メソッドは既存の `shared:true` 属性を維持した。`JCL_dlg_NoYes` の `vJCL_D81_txtMsg` 宣言の誤記を修正し、`YesNo`、`NoYes`、`Inform`、`Inform_ShowOnDisk` にボタン名省略時の初期値を追加した。ソース変更箇所には `//20260924 Codex/wat` を記録した。
+
+CAT側の `zz_test_JCL_dlg` と `zz_test_JCL_dlg_NoYes` は、ホストプロジェクトからの動作確認用として残した。
+
+4D上での確認項目:
+
+- 6種類のダイアログがホスト側から開くこと。
+- `YesNo` と `NoYes` で、既定ボタンと戻り値が正しいこと。
+- `InputOne` で、OK時だけポインタ先の文字列が更新されること。
+- `Inform_ShowOnDisk` から指定ファイルをFinderまたはExplorerに表示できること。
+
 ## 不要メソッド整理
 
 実施日: 2026-09-24
@@ -824,6 +836,11 @@ Coreへの移行候補を見直し、呼び出しがなく、標準機能で代�
 
 削除:
 
+- `JCL_str_byResources`: `Resources/jiro` 固定のテキスト読み込みで、汎用版の `JCL_file_GetFromResourcesFolder` と機能が重複し、呼び出しもなかった。
+- `JCL_model_saveLong`
+- `JCL_model_saveReal`
+- `JCL_model_saveText`: 3メソッドとも呼び出しがなく、旧モデル保存用の実装だった。
+- `JCL_Notes`: 呼び出しがなく、CATまたはCoreの現行機能として使用されていなかった。
 - `JCL_dlg_Wait_Show`: 存在しない旧名 `Jiro_dlg_Wait_Open` と旧インタープロセス変数に依存していた。
 - `JCL_fld_SetFontSize_byLen`: 呼び出しがなく、フォームのフォント調整は第4弾で移行した `JCL_frm_AdjustHeight_byFontSize` と `JCL_frm_AdjustWidth_byFontSize` に整理した。
 - `JCL_key_NumFilter_onBeforeKey`: 呼び出しがなく、フォームイベントへ直接記述できる小規模な入力フィルターだった。

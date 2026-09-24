@@ -1,5 +1,0 @@
-//保存先を表示
-
-SHOW ON DISK:C922(vJCL_D85_filePath)
-
-ACCEPT:C269
