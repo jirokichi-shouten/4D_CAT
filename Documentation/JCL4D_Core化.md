@@ -334,11 +334,6 @@ JCL4D_Core
 
 優先度: 中
 
-- `Methods/JCL_pop_Check.4dm`
-- `Methods/JCL_pop_CurrentSelected.4dm`
-- `Methods/JCL_pop_Get.4dm`
-- `Methods/JCL_pop_Init.4dm`
-- `Methods/JCL_pop_Make.4dm`
 - `Methods/JCL_prt_PageBreak.4dm`
 - `Methods/JCL_prt_PageSetup.4dm`
 - `Methods/JCL_HTTP_Request_POST.4dm`
@@ -353,6 +348,17 @@ JCL4D_Core
 
 - `JCL_num_GetTax.4dm` は税率固定なら業務別ライブラリ寄り。
 - `JCL_HTTP_Request_POST.4dm` は用途固有のヘッダやURLがないか確認する。
+
+対象外:
+
+- `JCL_pop_*` は、4D標準の `Pop up menu` が選択項目番号を返すためラッパーとしての必要性が薄く、現行CAT内にも呼び出しがないことから削除した。Coreには移行しない。
+
+4Dメニュー文字列の技術メモ:
+
+- `Pop up menu` に渡す項目文字列では、`!` とその直後の1文字がチェック欄の表現として解釈される。
+- 旧 `JCL_pop_*` の `!-項目名` は、macOSではチェック欄にハイフンを表示し、Windowsでは標準チェックを表示する記法である。
+- この記法が属性の混在状態を表す目的だった可能性はあるが、旧コードとGit履歴から意図を確定できなかった。
+- 項目データそのものへ表示用メタ文字を混在させず、必要な箇所でメニュー文字列を組み立てる。
 
 ### モデル保存・シリアル番号
 
