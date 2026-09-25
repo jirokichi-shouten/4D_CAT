@@ -249,6 +249,7 @@ JCL4D_Core
 
 確認事項:
 
+- 7メソッドと対応する進捗フォームを第8弾でCoreへ移行した。
 - 使用例はCAT側の `zz_test_JCL_pgs.4dm` と `zz_test_JCL_pgs2.4dm` に残す。
 - `JCL_wait_*` は進捗メーターを持たない重複実装で、実利用がサンプル内だけだったため削除した。進捗・待機表示は `JCL_pgs_*` に一本化する。
 
@@ -828,6 +829,31 @@ CAT側の `zz_test_JCL_dlg` と `zz_test_JCL_dlg_NoYes` は、ホストプロジ
 - `InputOne` で、OK時だけポインタ先の文字列が更新されること。
 - `Inform_ShowOnDisk` から指定ファイルをFinderまたはExplorerに表示できること。
 
+## 第8弾移行結果
+
+実施日: 2026-09-25
+
+進捗表示とキャンセル制御のメソッド群と対応フォームを `JCL4D_Core` へ移した。
+
+- `JCL_pgs_Cancel`
+- `JCL_pgs_DefInit`
+- `JCL_pgs_GetDenominator`
+- `JCL_pgs_IsCancel`
+- `JCL_pgs_Open`
+- `JCL_pgs_SetValue`
+- `JCL_pgs_Show`
+- `Forms/JCL_D90_ProgressBar`
+
+`JCL_pgs_GetDenominator` に `shared:true` を追加し、件数範囲の境界で分母が意図しない値になる条件と、到達不能だった条件を修正した。`JCL_pgs_Show` には `New process` が返すプロセス番号の変数宣言を追加した。ソース変更箇所には `//20260925 Codex/wat` を記録した。
+
+CAT側の `zz_test_JCL_pgs` と `zz_test_JCL_pgs2` は、ホストプロジェクトからの動作確認用として残した。
+
+4D上での確認項目:
+
+- ホスト側から進捗フォームを開き、メーター、メッセージ、処理件数が更新されること。
+- キャンセルボタンと `JCL_pgs_Cancel` のどちらからでもフォームが閉じ、`JCL_pgs_IsCancel` がキャンセル状態を返すこと。
+- `JCL_pgs_GetDenominator` が100、10000、100000、1000000の境界値でそれぞれ意図した分母を返すこと。
+
 ## 不要メソッド整理
 
 実施日: 2026-09-24
@@ -881,7 +907,6 @@ Coreへの移行候補を見直し、呼び出しがなく、標準機能で代�
 - ビルド済み配布で 4D Component を同梱するか、ビルド時に親プロジェクトへ展開するか。
 - 親プロジェクトへ展開する場合の対象、競合解決、更新・削除方法をどう自動化するか。
 - Core 側 Resources の参照パスをどうするか。
-- Core にフォームを含めるか。
 - Core に `JCL_D20` カレンダーを含めるか。
 - `JCL_tbl` 系を分割するか。
 - メソッド名の `JCL_` prefix は維持するか。
