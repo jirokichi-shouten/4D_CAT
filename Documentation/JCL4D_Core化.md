@@ -421,9 +421,8 @@ JCL4D_Core
 
 - fields ラベル仕様に依存するため CAT 側。
 
-### メソッド import/export・生成
+### メソッド import/export
 
-- `Methods/JCL_Add_byInitValues_generate.4dm`
 - `Methods/JCL_all_export.4dm`
 - `Methods/JCL_method_JCLexport.4dm`
 - `Methods/JCL_method_JCLimport.4dm`
@@ -451,18 +450,15 @@ Core 候補:
 
 - `Classes/JCL_tbl.4dm` の汎用部分
 - `Methods/JCL_tbl_DataSourceTypeHint.4dm`
-- `Methods/JCL_tbl_DataType.4dm`
 - `Methods/JCL_tbl_Fields_withAttr.4dm`
 - `Methods/JCL_tbl_Fld_GetPtr.4dm`
 - `Methods/JCL_tbl_GetIDFieldPtr.4dm`
 - `Methods/JCL_tbl_GetNumOfRecs.4dm`
-- `Methods/JCL_tbl_GetNumber.4dm`
 - `Methods/JCL_tbl_GetPrefix_fromStructure.4dm`
 - `Methods/JCL_tbl_Names_fromStructure.4dm`
 - `Methods/JCL_tbl_NumOfFlds.4dm`
 - `Methods/JCL_tbl_Prefix.4dm`
 - `Methods/JCL_tbl_Ptr_byName.4dm`
-- `Methods/JCL_tbl_StrValue.4dm`
 - `Methods/JCL_tbl_Type.4dm`
 - `Methods/JCL_tbl_aryFieldPtr_make.4dm`
 - `Methods/JCL_tbl_aryStrFieldPtr_make.4dm`
@@ -479,7 +475,6 @@ CAT 候補:
 - `Methods/JCL_tbl_GenerateSQL.4dm`
 - `Methods/JCL_tbl_GetFormColor.4dm`
 - `Methods/JCL_tbl_Index_create.4dm`
-- `Methods/JCL_tbl_InitValue.4dm`
 - `Methods/JCL_tbl_Names_fromFile.4dm`
 - `Methods/JCL_tbl_SetInitValue.4dm`
 - `Methods/JCL_tbl_Type_SQL.4dm`
@@ -862,6 +857,11 @@ Coreへの移行候補を見直し、呼び出しがなく、標準機能で代�
 
 削除:
 
+- `JCL_Add_byInitValues_generate`: 呼び出しがなく、`JCL_tableGenerator.createMethods()` と `method_templates_model/[--TBL_PREFIX]_Add_byInitValues` による現行のテンプレート生成と重複していた。生成コードが存在しない `JCL_Sequence number` と旧プラグイン処理に依存していたため、2026-09-26に削除した。
+- `JCL_tbl_DataType`: ジェネレーター用の型変換は `JCL_tbl.dataType()` と重複し、旧メソッドはBLOB対応も不足していたため削除した。
+- `JCL_tbl_InitValue`: ジェネレーター用の初期値変換は `JCL_tbl.initValue()` と重複し、旧メソッドはPictureとBLOBの仕様も不足していたため削除した。残存呼び出しは2026-09-26にクラスメソッドへ統一した。
+- `JCL_tbl_StrValue`: 2024年3月の生成テンプレート用途で追加されたが、対応タグとテンプレートは同月中に削除され、現行コードに呼び出しがないため削除した。
+- `JCL_tbl_GetNumber`: `JCL_tbl.getNumber()` と実装が重複していた。5か所の呼び出しをクラスメソッドへ統一し、2026-09-26に削除した。
 - `JCL_str_byResources`: `Resources/jiro` 固定のテキスト読み込みで、汎用版の `JCL_file_GetFromResourcesFolder` と機能が重複し、呼び出しもなかった。
 - `JCL_model_saveLong`
 - `JCL_model_saveReal`

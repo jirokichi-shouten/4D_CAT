@@ -16,7 +16,8 @@ $color_text:="#F4CB43"
 //プレフィックス
 $tbl_prefix:=JCL_tbl_GetPrefix_fromStructure($table_name)
 
-$tblNr:=JCL_tbl_GetNumber($table_name)
+//20260926 Codex/wat テーブル番号取得をJCL_tblクラスに統一
+$tblNr:=cs:C1710.JCL_tbl.new().getNumber($table_name)
 $tblPtr:=Table:C252($tblNr)
 
 

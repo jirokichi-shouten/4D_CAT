@@ -19,7 +19,8 @@ $tbl_prefix:=JCL_tbl_GetPrefix_fromStructure($table_name)
 $rec_name:="v"+$tbl_prefix+"01_rectTitle"
 $frmPrefix:=$tbl_prefix+"01"
 $form_name:=$frmPrefix+"_List"
-$tblNr:=JCL_tbl_GetNumber($table_name)
+//20260926 Codex/wat テーブル番号取得をJCL_tblクラスに統一
+$tblNr:=cs:C1710.JCL_tbl.new().getNumber($table_name)
 $tblPtr:=Table:C252($tblNr)
 
 $exist:=JCL_frm_isExist($tblPtr; $form_name)

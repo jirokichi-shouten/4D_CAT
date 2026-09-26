@@ -546,7 +546,8 @@ Function setTitleRectColor()
 	
 	//プレフィックス
 	$tbl_prefix:=JCL_tbl_GetPrefix_fromStructure($table_name)
-	$tblNr:=JCL_tbl_GetNumber($table_name)
+	//20260926 Codex/wat テーブル番号取得をJCL_tblクラスに統一
+	$tblNr:=cs:C1710.JCL_tbl.new().getNumber($table_name)
 	
 	//フォームのファイルを取得
 	$file:=File:C1566("/SOURCES/TableForms/"+String:C10($tblNr)+"/"+$form_name+"/form.4DForm")
@@ -619,4 +620,3 @@ Function formColor_get()
 	End if 
 	
 	$0:=$colorText
-	
