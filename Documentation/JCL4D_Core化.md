@@ -286,11 +286,9 @@ JCL4D_Core
 - `Methods/JCL_lst_Export_pgs2.4dm`
 - `Methods/JCL_lst_Export_pgs4.4dm`
 - `Methods/JCL_lst_Make_Join.4dm`
-- `Methods/JCL_lst_remake_byStructure.4dm`
 
 確認事項:
 
-- `JCL_lst_remake_byStructure.4dm` は構造ファイル依存が強ければ CAT 側。
 - `Export_pgs*` は進捗フォーム依存だけなら Core、CAT 出力仕様に依存するなら保留。
 
 ### ボタン・フォーム・オブジェクト系
@@ -450,17 +448,11 @@ Core 候補:
 
 - `Classes/JCL_tbl.4dm` の汎用部分
 - `Methods/JCL_tbl_DataSourceTypeHint.4dm`
-- `Methods/JCL_tbl_Fields_withAttr.4dm`
 - `Methods/JCL_tbl_Fld_GetPtr.4dm`
-- `Methods/JCL_tbl_GetIDFieldPtr.4dm`
 - `Methods/JCL_tbl_GetNumOfRecs.4dm`
-- `Methods/JCL_tbl_GetPrefix_fromStructure.4dm`
-- `Methods/JCL_tbl_Names_fromStructure.4dm`
 - `Methods/JCL_tbl_NumOfFlds.4dm`
-- `Methods/JCL_tbl_Prefix.4dm`
 - `Methods/JCL_tbl_Ptr_byName.4dm`
 - `Methods/JCL_tbl_Type.4dm`
-- `Methods/JCL_tbl_aryFieldPtr_make.4dm`
 - `Methods/JCL_tbl_aryStrFieldPtr_make.4dm`
 
 CAT 候補:
@@ -471,7 +463,6 @@ CAT 候補:
 - `Methods/JCL_tbl_Export.4dm`
 - `Methods/JCL_tbl_ExportOneSQL.4dm`
 - `Methods/JCL_tbl_ExportTable.4dm`
-- `Methods/JCL_tbl_FindForeignKey.4dm`
 - `Methods/JCL_tbl_GenerateSQL.4dm`
 - `Methods/JCL_tbl_GetFormColor.4dm`
 - `Methods/JCL_tbl_Index_create.4dm`
@@ -798,7 +789,6 @@ CAT 候補:
 
 - `JCL_lst_Export`、`JCL_lst_Export_pgs2`、`JCL_lst_Export_pgs4`: ダイアログと進捗表示への依存がある。
 - `JCL_lst_Make_Join`: ホストのテーブル選択を変更する。
-- `JCL_lst_remake_byStructure`: テーブル構造・命名規約への依存がある。
 
 ## 第7弾移行結果
 
@@ -857,11 +847,19 @@ Coreへの移行候補を見直し、呼び出しがなく、標準機能で代�
 
 削除:
 
+- `JCL_lst_remake_byStructure`: 表示中フォームのリストボックス列を動的に作り直す旧手動補助メソッドで、呼び出しがなく、フォームJSONと関連メソッドを生成する `JCL_formGenerator` に置き換えられているため、2026-09-27に削除した。
 - `JCL_Add_byInitValues_generate`: 呼び出しがなく、`JCL_tableGenerator.createMethods()` と `method_templates_model/[--TBL_PREFIX]_Add_byInitValues` による現行のテンプレート生成と重複していた。生成コードが存在しない `JCL_Sequence number` と旧プラグイン処理に依存していたため、2026-09-26に削除した。
 - `JCL_tbl_DataType`: ジェネレーター用の型変換は `JCL_tbl.dataType()` と重複し、旧メソッドはBLOB対応も不足していたため削除した。
 - `JCL_tbl_InitValue`: ジェネレーター用の初期値変換は `JCL_tbl.initValue()` と重複し、旧メソッドはPictureとBLOBの仕様も不足していたため削除した。残存呼び出しは2026-09-26にクラスメソッドへ統一した。
 - `JCL_tbl_StrValue`: 2024年3月の生成テンプレート用途で追加されたが、対応タグとテンプレートは同月中に削除され、現行コードに呼び出しがないため削除した。
 - `JCL_tbl_GetNumber`: `JCL_tbl.getNumber()` と実装が重複していた。5か所の呼び出しをクラスメソッドへ統一し、2026-09-26に削除した。
+- `JCL_tbl_Names_fromStructure`: `JCL_tbl.getNames()` と実装が重複していた。`JCL_tbl_Export` の呼び出しをクラスメソッドへ統一し、2026-09-26に削除した。
+- `JCL_tbl_FindForeignKey`: `JCL_tbl.findForeignKey()` と実装が重複していた。テストメソッドの呼び出しをクラスメソッドへ統一し、2026-09-26に削除した。
+- `JCL_tbl_GetPrefix_fromStructure`: `JCL_tbl.getPrefix_fromStructure()` と実装が重複していた。残存呼び出しをクラスメソッドへ統一し、2026-09-26に削除した。
+- `JCL_tbl_aryFieldPtr_make`: `JCL_tbl.aryFieldPtr_make()` と実装が重複し、旧 `JCL_tbl_FindForeignKey` 以外に呼び出しがなかったため、2026-09-26に削除した。
+- `JCL_tbl_Fields_withAttr`: `JCL_tbl.getFieldsAttributes()` と実装が重複していた。残存呼び出しをクラスメソッドへ統一し、2026-09-26に削除した。
+- `JCL_tbl_GetIDFieldPtr`: 呼び出しがなく、ID専用ではない実装が `JCL_tbl_Fld_GetPtr` と重複していたため、2026-09-26に削除した。
+- `JCL_tbl_Prefix`: 呼び出しがなく、フィールド名の共通先頭文字列を返す旧仕様が現行の接頭辞仕様と異なるため、2026-09-26に削除した。
 - `JCL_str_byResources`: `Resources/jiro` 固定のテキスト読み込みで、汎用版の `JCL_file_GetFromResourcesFolder` と機能が重複し、呼び出しもなかった。
 - `JCL_model_saveLong`
 - `JCL_model_saveReal`
@@ -901,6 +899,12 @@ Coreへの移行候補を見直し、呼び出しがなく、標準機能で代�
 - Finder エイリアスと Windows ショートカットには互換性がなく、別PCでリンク先が変わる可能性もあるため、原則として各開発環境で作成する。
 - 4D 20 R6 以降または 4D 21 系へ移行した環境では、`Project/Sources/dependencies.json` と Dependency Manager による参照を検討する。この方式はOS固有のエイリアス／ショートカットを不要にし、ローカルまたはGitHub上のコンポーネントを4Dが解決する。
 - `dependencies.json` への切り替えは、対象となる4Dのエディションとバージョンで動作を確認してから行う。現行環境へ無条件には導入しない。
+
+### 開発時のコンパイル確認
+
+- インタープリターモードでは、未コンパイルの `JCL4D_Core` でもホストから実行できる。
+- ホストのシンタックスチェックまたはコンパイルでは、Core の公開メソッドの型情報が必要になるため、`JCL4D_Core` を先にシンタックスチェックしてコンパイルする。
+- Core の公開メソッドを追加・変更・削除したときは、Core を再コンパイルし、`4D_CAT` を開き直してからホスト側を確認する。
 
 ## 未決事項
 

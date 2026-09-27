@@ -59,7 +59,8 @@ Function getNumber()
 	$0:=$outTblNr
 	
 Function dataType()
-	//JCL_tbl_DATATYPE
+	//JCL_tbl_DataType
+	//20260926 Codex/wat 旧プロジェクトメソッド名を出所として記録
 	//20130501
 	//メソッド生成時、テンプレートのDATATYPEを得る
 	
@@ -187,6 +188,8 @@ Function importItem()
 	$0:=$retText
 	
 Function findForeignKey()
+	//JCL_tbl_FindForeignKey
+	//20260926 Codex/wat 旧プロジェクトメソッド名を出所として記録
 	//20240225 wat
 	//外部キーを見つける。xx_yy_IDの形を見つけて、配列でテーブル名を返す。
 	//相手のテーブルが存在したら外部キーとみなす
@@ -241,6 +244,8 @@ Function findForeignKey()
 	$0:=$cnt
 	
 Function getPrefix_fromStructure()
+	//JCL_tbl_GetPrefix_fromStructure
+	//20260926 Codex/wat 旧プロジェクトメソッド名を出所として記録
 	//20210106 wat
 	//テーブル名からテーブルプリフィックスを取得
 	//20220430 wat valid検知を追加、削除されているテーブルがあるとエラーになるため。
@@ -272,6 +277,8 @@ Function getPrefix_fromStructure()
 	$0:=$prefix
 	
 Function aryFieldPtr_make()
+	//JCL_tbl_aryFieldPtr_make
+	//20260926 Codex/wat 旧プロジェクトメソッド名を出所として記録
 	//20221013 wat
 	//フィールドポインタの配列を作成
 	
@@ -357,4 +364,3 @@ Function getFieldsAttributes
 		End if 
 		
 	End for 
-	

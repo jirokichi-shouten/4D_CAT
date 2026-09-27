@@ -14,7 +14,8 @@ C_LONGINT:C283($tblNr)
 C_POINTER:C301($tblPtr)
 
 //プレフィックス
-$tbl_prefix:=JCL_tbl_GetPrefix_fromStructure($table_name)
+//20260926 Codex/wat テーブル接頭辞取得をJCL_tblクラスに統一
+$tbl_prefix:=cs:C1710.JCL_tbl.new().getPrefix_fromStructure($table_name)
 
 $rec_name:="v"+$tbl_prefix+"01_rectTitle"
 $frmPrefix:=$tbl_prefix+"01"

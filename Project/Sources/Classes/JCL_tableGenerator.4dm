@@ -122,7 +122,8 @@ Function createMethods($inBlockText : Text)
 	ARRAY TEXT:C222($aryFieldType; 0)  //フィールドタイプの配列
 	ARRAY TEXT:C222($aryFieldLength; 0)  //文字長さの配列
 	ARRAY TEXT:C222($aryFieldIndex; 0)
-	JCL_tbl_Fields_withAttr($aryTableItems{1}; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength; ->$aryFieldIndex)
+	//20260926 Codex/wat フィールド属性取得をJCL_tblクラスに統一
+	cs:C1710.JCL_tbl.new().getFieldsAttributes($aryTableItems{1}; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength; ->$aryFieldIndex)
 	
 	//テンプレートフォルダの場所
 	$templateFolderPath:=JCL_file_MakeFilePath(Get 4D folder:C485(Database folder:K5:14); "Resources")
@@ -277,4 +278,3 @@ Function createAdditionalMethods($inBlockText : Text)
 			
 		End for 
 	End if 
-	

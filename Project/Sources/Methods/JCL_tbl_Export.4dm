@@ -16,12 +16,14 @@ ARRAY TEXT:C222($aryFieldIndex;0)
 $doc:=Create document:C266("";"TEXT")
 If ((OK=1) & ($doc#0))
 	
-	JCL_tbl_Names_fromStructure (->$aryTableName)
+	//20260926 Codex/wat テーブル情報取得をJCL_tblクラスに統一
+	cs:C1710.JCL_tbl.new().getNames(->$aryTableName)
 	$numOfTables:=Size of array:C274($aryTableName)
 	
 	For ($i;1;$numOfTables)
 		
-		JCL_tbl_Fields_withAttr ($aryTableName{$i};->$aryFieldName;->$aryFieldType;->$aryFieldLength;->$aryFieldIndex)
+		//20260926 Codex/wat フィールド属性取得をJCL_tblクラスに統一
+		cs:C1710.JCL_tbl.new().getFieldsAttributes($aryTableName{$i}; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength; ->$aryFieldIndex)
 		
 		JCL_tbl_ExportTable ($doc;$aryTableName{$i};->$aryFieldName;->$aryFieldType;->$aryFieldLength;->$aryFieldIndex)
 		

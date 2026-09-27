@@ -101,8 +101,8 @@ Function generate()
 		$objParam.color_text:=This:C1470.colorRandom(3)
 		
 		//ストラクチャからフィールド情報を取得
+		//20260926 Codex/wat フィールド属性取得をJCL_tblクラスに統一
 		cs:C1710.JCL_tbl.new().getFieldsAttributes($tblName; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength; ->$aryFieldIndex)
-		JCL_tbl_Fields_withAttr($tblName; ->$aryFieldName; ->$aryFieldType; ->$aryFieldLength; ->$aryFieldIndex)
 		$sizeOfAry:=Size of array:C274($aryFieldName)
 		If ($sizeOfAry>0)
 			//テーブルからプリフィックスを取得、
@@ -545,7 +545,8 @@ Function setTitleRectColor()
 	C_OBJECT:C1216($frmDef)
 	
 	//プレフィックス
-	$tbl_prefix:=JCL_tbl_GetPrefix_fromStructure($table_name)
+	//20260926 Codex/wat テーブル接頭辞取得をJCL_tblクラスに統一
+	$tbl_prefix:=cs:C1710.JCL_tbl.new().getPrefix_fromStructure($table_name)
 	//20260926 Codex/wat テーブル番号取得をJCL_tblクラスに統一
 	$tblNr:=cs:C1710.JCL_tbl.new().getNumber($table_name)
 	
@@ -573,7 +574,8 @@ Function formColor_apply()
 	C_TEXT:C284($form_name)
 	
 	//プレフィックス
-	$tbl_prefix:=JCL_tbl_GetPrefix_fromStructure($table_name)
+	//20260926 Codex/wat テーブル接頭辞取得をJCL_tblクラスに統一
+	$tbl_prefix:=cs:C1710.JCL_tbl.new().getPrefix_fromStructure($table_name)
 	
 	$form_name:=$tbl_prefix+"01_List"
 	$rec_name:="v"+$tbl_prefix+"01_rectTitle"
