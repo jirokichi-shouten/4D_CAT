@@ -206,8 +206,7 @@
 					"events": [
 						"onDataChange"
 					],
-					"sizingY": "fixed",
-					"method": "ObjectMethods/vA02_txtAdjustHeight.4dm"
+					"sizingY": "fixed"
 				},
 				"vA02_lstTB": {
 					"type": "listbox",
