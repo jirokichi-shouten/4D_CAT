@@ -345,8 +345,6 @@ JCL4D_Core
 
 保留:
 
-- `Methods/JCL_tbl_SerialNumber.4dm`
-- `Methods/JCL_tbl_SerialNumber_Reset.4dm`
 - `Methods/JCL_tbl_ResetSN.4dm`
 
 確認事項:
@@ -439,23 +437,30 @@ JCL4D_Core
 `JCL_tbl` 系は Core 化の最大の判断ポイント。
 構造情報を読むだけの機能は Core 候補、テーブル生成・SQL生成・CAT固有規約に関わる機能は CAT 側候補。
 
-Core 候補:
+Core移行済み:
 
-- `Classes/JCL_tbl.4dm` の汎用部分
+- `JCL_tbl_Names_fromStructure`
+- `JCL_tbl_GetNumber`
+- `JCL_tbl_Ptr_byName`
+- `JCL_tbl_Fld_GetPtr`
+- `JCL_tbl_aryFieldPtr_make`
+- `JCL_tbl_aryStrFieldPtr_make`
+- `JCL_tbl_NumOfFlds`
+- `JCL_tbl_DelAll`
+- `JCL_tbl_SerialNumber_Reset`
+- `JCL_tbl_DeleteByAry`
+- `JCL_tbl_SetInitValue`
+- `JCL_tbl_UpdateFld_byNewStr`
 
 CAT 候補:
 
-- `Methods/JCL_tbl_DelAll.4dm`
-- `Methods/JCL_tbl_DeleteByAry.4dm`
 - `Methods/JCL_tbl_DropAllTables.4dm`
 - `Methods/JCL_tbl_Export.4dm`
 - `Methods/JCL_tbl_ExportTable.4dm`
-- `Methods/JCL_tbl_SetInitValue.4dm`
-- `Methods/JCL_tbl_UpdateFld_byNewStr.4dm`
 
 確認事項:
 
-- `Classes/JCL_tbl.4dm` を分割するか、そのまま保留するか。
+- Coreには `JCL_tbl` クラスを作成しない。CAT専用の生成・命名規約処理はCATの `JCL_tbl` クラスに残す。
 
 ### カレンダー
 
@@ -819,6 +824,34 @@ CAT側の `zz_test_JCL_pgs` と `zz_test_JCL_pgs2` は、ホストプロジェ�
 - キャンセルボタンと `JCL_pgs_Cancel` のどちらからでもフォームが閉じ、`JCL_pgs_IsCancel` がキャンセル状態を返すこと。
 - `JCL_pgs_GetDenominator` が100、10000、100000、1000000の境界値でそれぞれ意図した分母を返すこと。
 
+## 第9弾移行結果
+
+実施日: 2026-09-28
+
+CAT以外でも利用できるテーブル構造取得、ポインタ取得、レコード操作の12メソッドを `JCL4D_Core` へ移した。Coreに `JCL_tbl` クラスは作成せず、従来の `JCL_tbl_*` 名を持つ共有プロジェクトメソッドとして提供する。
+
+- `JCL_tbl_Names_fromStructure`
+- `JCL_tbl_GetNumber`
+- `JCL_tbl_Ptr_byName`
+- `JCL_tbl_Fld_GetPtr`
+- `JCL_tbl_aryFieldPtr_make`
+- `JCL_tbl_aryStrFieldPtr_make`
+- `JCL_tbl_NumOfFlds`
+- `JCL_tbl_DelAll`
+- `JCL_tbl_SerialNumber_Reset`
+- `JCL_tbl_DeleteByAry`
+- `JCL_tbl_SetInitValue`
+- `JCL_tbl_UpdateFld_byNewStr`
+
+CAT側の `JCL_tbl` クラスから汎用部分を除き、生成用の型変換、インポート式生成、JCL命名規約に基づく接頭辞・外部キー判定だけを残した。CAT内の既存呼び出しもCoreの共有メソッドへ切り替えた。
+
+4D上での確認項目:
+
+- `JCL4D_Core` を先にシンタックスチェック・コンパイルする。
+- CATを開き直し、CAT側のシンタックスチェックを実行する。
+- ジェネレータのテーブル選択とインデックス作成を確認する。
+- `JCL_tbl_DelAll` を使う既存の全件削除処理とシーケンス初期化を確認する。
+
 ## 不要メソッド整理
 
 実施日: 2026-09-24
@@ -834,23 +867,24 @@ Coreへの移行候補を見直し、呼び出しがなく、標準機能で代�
 - `JCL_tbl_Type_SQL`: SQL型変換を `JCL_tableGenerator.sqlType()` へ移し、2026-09-28に削除した。旧メソッド名はクラス側へ出所コメントとして残した。
 - `JCL_tbl_Type`: 4Dのフィールド型定数からfields定義用文字列への変換を `JCL_tbl.fieldType()` へ移し、2026-09-28に削除した。旧メソッド名はクラス側へ出所コメントとして残した。
 - `JCL_tbl_GetFormColor`: `JCL_formGenerator.formColor_get()` と実装が重複し、旧メソッドに呼び出しがなかったため、2026-09-28に削除した。旧メソッド名はクラス側へ出所コメントとして残した。
-- `JCL_tbl_Ptr_byName`: テーブルポインタ取得を `JCL_tbl.getPtr_byName()` へ移し、残存呼び出しをクラスメソッドへ統一して2026-09-28に削除した。
-- `JCL_tbl_Fld_GetPtr`: フィールドポインタ取得を `JCL_tbl.getFieldPtr()` へ移し、残存呼び出しをクラスメソッドへ統一して2026-09-28に削除した。
-- `JCL_tbl_aryStrFieldPtr_make`: テーブル内のAlpha・Textフィールドポインタを配列で返す機能は、対象フィールドを動的に決める全文検索等で利用価値があるため、`JCL_tbl.aryStrFieldPtr_make()` へクラス化した。旧プロジェクトメソッドは2026-09-28に削除した。
+- `JCL_tbl_Ptr_byName`: 一度CATの `JCL_tbl.getPtr_byName()` へ統合したが、CAT以外でも利用できるため、2026-09-28にCoreの共有メソッドとして再配置した。
+- `JCL_tbl_Fld_GetPtr`: 一度CATの `JCL_tbl.getFieldPtr()` へ統合したが、CAT以外でも利用できるため、2026-09-28にCoreの共有メソッドとして再配置した。
+- `JCL_tbl_aryStrFieldPtr_make`: Alpha・Textフィールドポインタを配列で返す機能は、対象フィールドを動的に決める全文検索等で汎用性があるため、2026-09-28にCoreの共有メソッドとして再配置した。
 - `JCL_tbl_DataSourceTypeHint`: フィールド型からフォームの `dataSourceTypeHint` を得る旧ジェネレータ用メソッドで、呼び出しがなく、現行の `JCL_formObjects.columnDataType()` と役割が重複するため、2026-09-28に削除した。
 - `JCL_tbl_GetNumOfRecs`: `ALL RECORDS` と `Records in selection` で全件数を得る実装は現在選択と現在レコードを変更する。副作用なしに `Records in table` で代替でき、全件書き出し時の `ALL RECORDS` は書き出し処理側で明示すべきため、2026-09-28に削除した。
-- `JCL_tbl_NumOfFlds`: 削除済みフィールドを除いた有効フィールド数を返す機能は構造情報を扱う際に利用価値があるため、`JCL_tbl.numOfFlds()` へクラス化した。旧プロジェクトメソッドは2026-09-28に削除した。
+- `JCL_tbl_NumOfFlds`: 削除済みフィールドを除いた有効フィールド数を返す機能は構造情報として汎用性があるため、2026-09-28にCoreの共有メソッドとして再配置した。
 - `JCL_tbl_Index_create`: fields定義からインデックスを作成する役割は `JCL_tableGenerator.createIndex()` へクラス化され、現行ジェネレータもクラス側を使用している。マニュアルサイトには未掲載であることも確認し、旧名をクラス側の出所コメントに残して2026-09-28に削除した。
+- `JCL_tbl_SerialNumber`: 4D標準の `Sequence number` を呼び出すだけで独自の処理や安全性を追加しておらず、マニュアルサイトにも未掲載のため、2026-09-28に削除した。
 - `JCL_lst_remake_byStructure`: 表示中フォームのリストボックス列を動的に作り直す旧手動補助メソッドで、呼び出しがなく、フォームJSONと関連メソッドを生成する `JCL_formGenerator` に置き換えられているため、2026-09-27に削除した。
 - `JCL_Add_byInitValues_generate`: 呼び出しがなく、`JCL_tableGenerator.createMethods()` と `method_templates_model/[--TBL_PREFIX]_Add_byInitValues` による現行のテンプレート生成と重複していた。生成コードが存在しない `JCL_Sequence number` と旧プラグイン処理に依存していたため、2026-09-26に削除した。
 - `JCL_tbl_DataType`: ジェネレーター用の型変換は `JCL_tbl.dataType()` と重複し、旧メソッドはBLOB対応も不足していたため削除した。
 - `JCL_tbl_InitValue`: ジェネレーター用の初期値変換は `JCL_tbl.initValue()` と重複し、旧メソッドはPictureとBLOBの仕様も不足していたため削除した。残存呼び出しは2026-09-26にクラスメソッドへ統一した。
 - `JCL_tbl_StrValue`: 2024年3月の生成テンプレート用途で追加されたが、対応タグとテンプレートは同月中に削除され、現行コードに呼び出しがないため削除した。
-- `JCL_tbl_GetNumber`: `JCL_tbl.getNumber()` と実装が重複していた。5か所の呼び出しをクラスメソッドへ統一し、2026-09-26に削除した。
-- `JCL_tbl_Names_fromStructure`: `JCL_tbl.getNames()` と実装が重複していた。`JCL_tbl_Export` の呼び出しをクラスメソッドへ統一し、2026-09-26に削除した。
+- `JCL_tbl_GetNumber`: 一度CATの `JCL_tbl.getNumber()` へ統合したが、テーブル番号取得は汎用機能のため、2026-09-28にCoreの共有メソッドとして再配置した。
+- `JCL_tbl_Names_fromStructure`: 一度CATの `JCL_tbl.getNames()` へ統合したが、テーブル名一覧取得は汎用機能のため、2026-09-28にCoreの共有メソッドとして再配置した。
 - `JCL_tbl_FindForeignKey`: `JCL_tbl.findForeignKey()` と実装が重複していた。テストメソッドの呼び出しをクラスメソッドへ統一し、2026-09-26に削除した。
 - `JCL_tbl_GetPrefix_fromStructure`: `JCL_tbl.getPrefix_fromStructure()` と実装が重複していた。残存呼び出しをクラスメソッドへ統一し、2026-09-26に削除した。
-- `JCL_tbl_aryFieldPtr_make`: `JCL_tbl.aryFieldPtr_make()` と実装が重複し、旧 `JCL_tbl_FindForeignKey` 以外に呼び出しがなかったため、2026-09-26に削除した。
+- `JCL_tbl_aryFieldPtr_make`: 一度CATのクラスへ統合したが、フィールドポインタ列挙は汎用機能のため、2026-09-28にCoreの共有メソッドとして再配置した。
 - `JCL_tbl_Fields_withAttr`: `JCL_tbl.getFieldsAttributes()` と実装が重複していた。残存呼び出しをクラスメソッドへ統一し、2026-09-26に削除した。
 - `JCL_tbl_GetIDFieldPtr`: 呼び出しがなく、ID専用ではない実装が `JCL_tbl_Fld_GetPtr` と重複していたため、2026-09-26に削除した。
 - `JCL_tbl_Prefix`: 呼び出しがなく、フィールド名の共通先頭文字列を返す旧仕様が現行の接頭辞仕様と異なるため、2026-09-26に削除した。

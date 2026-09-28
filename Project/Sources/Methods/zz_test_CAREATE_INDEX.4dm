@@ -11,9 +11,9 @@ C_TEXT:C284($tblName; $fldFullName)
 $tblName:="assign"
 $fldFullName:="as_pr_id"
 
-//20260928 Codex/wat テーブル・フィールドポインタ取得をJCL_tblクラスに統一
-$tblPtr:=cs:C1710.JCL_tbl.new().getPtr_byName($tblName)
-$retCode:=cs:C1710.JCL_tbl.new().getFieldPtr($tblPtr; $fldFullName; ->$fldPtr)
+//20260928 Codex/wat テーブル・フィールドポインタ取得をCoreに統一
+$tblPtr:=JCL_tbl_Ptr_byName($tblName)
+$retCode:=JCL_tbl_Fld_GetPtr($tblPtr; $fldFullName; ->$fldPtr)
 If ($retCode=0)
 	//フィールドポインタの配列を作ってわたす
 	DELETE FROM ARRAY:C228($fldAry; 1; Size of array:C274($fldAry))

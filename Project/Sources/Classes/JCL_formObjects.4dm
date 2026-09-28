@@ -33,7 +33,8 @@ Function saveForm($objParam : Object)
 	$file:=New object:C1471
 	C_LONGINT:C283($tblNr)
 	C_TEXT:C284($tblNrText)
-	$tblNr:=cs:C1710.JCL_tbl.new().getNumber($objParam.tbl_name)  //テーブル番号
+	//20260928 Codex/wat テーブル番号取得をCoreに統一
+	$tblNr:=JCL_tbl_GetNumber($objParam.tbl_name)  //テーブル番号
 	$tblNrText:=String:C10($tblNr)
 	$file:=File:C1566("/SOURCES/TableForms/"+String:C10($tblNr)+"/"+$objParam.frm_name+"/form.4DForm")
 	$bool:=$file.create()
@@ -48,7 +49,8 @@ Function saveObjMethod($objParam : Object; $objName : Text)
 	$file:=New object:C1471
 	C_LONGINT:C283($tblNr)
 	C_TEXT:C284($tblNrText)
-	$tblNr:=cs:C1710.JCL_tbl.new().getNumber($objParam.tbl_name)  //テーブル番号
+	//20260928 Codex/wat テーブル番号取得をCoreに統一
+	$tblNr:=JCL_tbl_GetNumber($objParam.tbl_name)  //テーブル番号
 	$tblNrText:=String:C10($tblNr)
 	C_TEXT:C284($new_name)
 	$new_name:="v"+$objName+".4dm"
@@ -67,7 +69,8 @@ Function saveFrmMethod($objParam : Object)
 	$file:=New object:C1471
 	C_LONGINT:C283($tblNr)
 	C_TEXT:C284($tblNrText)
-	$tblNr:=cs:C1710.JCL_tbl.new().getNumber($objParam.tbl_name)  //テーブル番号
+	//20260928 Codex/wat テーブル番号取得をCoreに統一
+	$tblNr:=JCL_tbl_GetNumber($objParam.tbl_name)  //テーブル番号
 	$tblNrText:=String:C10($tblNr)
 	$file:=File:C1566("/SOURCES/TableForms/"+String:C10($tblNr)+"/"+$objParam.frm_name+"/method.4dm")
 	$bool:=$file.create()

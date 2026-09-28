@@ -138,7 +138,8 @@ Function lstTB_make($block : Text)
 			If ($tbl_name#"")
 				//テーブルが作成されているか？
 				//20260926 Codex/wat テーブル番号取得をJCL_tblクラスに統一
-				$tblNr:=cs:C1710.JCL_tbl.new().getNumber($tbl_name)
+				//20260928 Codex/wat テーブル番号取得をCoreに統一
+				$tblNr:=JCL_tbl_GetNumber($tbl_name)
 				If ($tblNr#0)
 					$status:=String:C10($tblNr)
 					APPEND TO ARRAY:C911(vJCL_D02_lstTB_error; "作成済み")  //エラー文字

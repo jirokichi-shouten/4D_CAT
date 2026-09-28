@@ -28,7 +28,8 @@ $objFrm:=JSON Parse:C1218($text)
 C_LONGINT:C283($tblNr)
 C_TEXT:C284($tblNrText)
 //20260926 Codex/wat テーブル番号取得をJCL_tblクラスに統一
-$tblNr:=cs:C1710.JCL_tbl.new().getNumber($objParam.tbl_name)  //テーブル番号
+//20260928 Codex/wat テーブル番号取得をCoreに統一
+$tblNr:=JCL_tbl_GetNumber($objParam.tbl_name)  //テーブル番号
 $tblNrText:=String:C10($tblNr)
 $folderText:="/SOURCES/TableForms/"+String:C10($tblNr)
 $folderText:="/SOURCES/"+String:C10($tblNr)

@@ -196,7 +196,8 @@ Function lstTB_make()
 	C_TEXT:C284($colorText)
 	
 	//すべてのテーブル
-	cs:C1710.JCL_tbl.new().getNames(->$aryTblNames)
+	//20260928 Codex/wat テーブル名取得をCoreに統一
+	JCL_tbl_Names_fromStructure(->$aryTblNames)
 	
 	COPY ARRAY:C226($aryTblNames; vJCL_D01_lstTB_NAME)
 	

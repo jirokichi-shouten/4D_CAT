@@ -16,8 +16,8 @@ ARRAY TEXT:C222($aryFieldIndex;0)
 $doc:=Create document:C266("";"TEXT")
 If ((OK=1) & ($doc#0))
 	
-	//20260926 Codex/wat テーブル情報取得をJCL_tblクラスに統一
-	cs:C1710.JCL_tbl.new().getNames(->$aryTableName)
+	//20260928 Codex/wat テーブル名取得をCoreに統一
+	JCL_tbl_Names_fromStructure(->$aryTableName)
 	$numOfTables:=Size of array:C274($aryTableName)
 	
 	For ($i;1;$numOfTables)

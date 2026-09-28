@@ -548,7 +548,8 @@ Function setTitleRectColor()
 	//20260926 Codex/wat テーブル接頭辞取得をJCL_tblクラスに統一
 	$tbl_prefix:=cs:C1710.JCL_tbl.new().getPrefix_fromStructure($table_name)
 	//20260926 Codex/wat テーブル番号取得をJCL_tblクラスに統一
-	$tblNr:=cs:C1710.JCL_tbl.new().getNumber($table_name)
+	//20260928 Codex/wat テーブル番号取得をCoreに統一
+	$tblNr:=JCL_tbl_GetNumber($table_name)
 	
 	//フォームのファイルを取得
 	$file:=File:C1566("/SOURCES/TableForms/"+String:C10($tblNr)+"/"+$form_name+"/form.4DForm")
@@ -610,7 +611,8 @@ Function formColor_get()
 	$rec_name:="v"+$tbl_prefix+"01_rectTitle"
 	$frmPrefix:=$tbl_prefix+"01"
 	$form_name:=$frmPrefix+"_List"
-	$tblNr:=cs:C1710.JCL_tbl.new().getNumber($table_name)
+	//20260928 Codex/wat テーブル番号取得をCoreに統一
+	$tblNr:=JCL_tbl_GetNumber($table_name)
 	$tblPtr:=Table:C252($tblNr)
 	
 	$exist:=JCL_frm_isExist($tblPtr; $form_name)

@@ -4,118 +4,6 @@
 
 Class constructor
 	
-Function getNames()
-	//JCL_tbl_Names_fromStructure
-	//JCL_tbl_GetTableNameAry
-	//20130430 yabe
-	//テーブル名配列を返す
-	//20220430 wat valid検知を追加、削除されているテーブルがあるとエラーになるため。
-	
-	C_POINTER:C301($1; $ioAryTableNamePtr)
-	$ioAryTableNamePtr:=$1
-	C_LONGINT:C283($i; $numOfTables)
-	C_TEXT:C284($tblName)
-	C_BOOLEAN:C305($isValid)
-	
-	DELETE FROM ARRAY:C228($ioAryTableNamePtr->; 1; Size of array:C274($ioAryTableNamePtr->))
-	
-	$numOfTables:=Get last table number:C254
-	
-	For ($i; 1; $numOfTables)
-		
-		$isValid:=Is table number valid:C999($i)
-		If ($isValid=True:C214)
-			$tblName:=Table name:C256($i)
-			
-			APPEND TO ARRAY:C911($ioAryTableNamePtr->; $tblName)
-			
-		End if 
-	End for 
-	
-Function getNumber()
-	//JCL_tbl_GetNumber
-	//20210330 ike wat
-	//テーブル名からテーブル番号を得る
-	//20220430 wat valid検知を追加、削除されているテーブルがあるとエラーになるため。
-	
-	C_TEXT:C284($1; $inTableName)
-	$inTableName:=$1
-	C_LONGINT:C283($0; $outTblNr)
-	$outTblNr:=0
-	C_LONGINT:C283($i; $numOfTables)
-	C_BOOLEAN:C305($isValid)
-	
-	$numOfTables:=Get last table number:C254
-	For ($i; 1; $numOfTables)
-		$isValid:=Is table number valid:C999($i)
-		If ($isValid=True:C214)
-			If (Table name:C256($i)=$inTableName)
-				$outTblNr:=$i
-				
-			End if 
-		End if 
-	End for 
-	
-	$0:=$outTblNr
-	
-Function getPtr_byName()
-	//JCL_tbl_Ptr_byName
-	//JCL_tbl_GetPtr_byName
-	//20260928 Codex/wat 旧プロジェクトメソッドをJCL_tblクラスへ移行
-	//テーブル名からポインタを返す
-	
-	C_TEXT:C284($1; $inTblName)
-	$inTblName:=$1
-	C_POINTER:C301($0; $outTblPtr)
-	C_TEXT:C284($tblName)
-	C_POINTER:C301($tblPtr)
-	C_LONGINT:C283($numOfTables; $i)
-	
-	$numOfTables:=Get last table number:C254
-	For ($i; 1; $numOfTables)
-		If (Is table number valid:C999($i)=True:C214)
-			$tblPtr:=Table:C252($i)
-			$tblName:=Table name:C256($i)
-			If ($tblName=$inTblName)
-				$outTblPtr:=$tblPtr
-			End if 
-		End if 
-	End for 
-	
-	$0:=$outTblPtr
-	
-Function getFieldPtr()
-	//JCL_tbl_Fld_GetPtr
-	//JCL_tbl_GetFldPtr
-	//20260928 Codex/wat 旧プロジェクトメソッドをJCL_tblクラスへ移行
-	//テーブルポインタとフィールド名からフィールドポインタを得る
-	
-	C_POINTER:C301($1; $inTablePtr)
-	$inTablePtr:=$1
-	C_TEXT:C284($2; $searchStr)
-	$searchStr:=$2
-	C_POINTER:C301($3; $outFieldPtrPtr)
-	$outFieldPtrPtr:=$3
-	C_LONGINT:C283($0; $retCode)
-	$retCode:=1
-	C_LONGINT:C283($tableNr; $numOfFields; $i)
-	C_TEXT:C284($fieldName)
-	
-	$tableNr:=Table:C252($inTablePtr)
-	$numOfFields:=Get last field number:C255($inTablePtr)
-	For ($i; 1; $numOfFields)
-		If (Is field number valid:C1000($inTablePtr; $i)=True:C214)
-			$fieldName:=Field name:C257($tableNr; $i)
-			If ($searchStr=$fieldName)
-				$outFieldPtrPtr->:=Field:C253($tableNr; $i)
-				$i:=$numOfFields
-				$retCode:=0
-			End if 
-		End if 
-	End for 
-	
-	$0:=$retCode
-	
 Function dataType()
 	//JCL_tbl_DataType
 	//20260926 Codex/wat 旧プロジェクトメソッド名を出所として記録
@@ -278,7 +166,8 @@ Function findForeignKey()
 			If ($inTablName#$table_name)
 				//テーブル名が異なるので別テーブル
 				DELETE FROM ARRAY:C228($aryFldPtr; 1; Size of array:C274($aryFldPtr))
-				$numOfFlds:=This:C1470.aryFieldPtr_make($tblNr; ->$aryFldPtr)
+				//20260928 Codex/wat 汎用フィールドポインタ取得をCoreに統一
+				$numOfFlds:=JCL_tbl_aryFieldPtr_make($tblNr; ->$aryFldPtr)
 				For ($k; 1; $numOfFlds)
 					$field_name:=Field name:C257($aryFldPtr{$k})
 					$pos:=Position:C15("_"; $field_name)
@@ -333,88 +222,6 @@ Function getPrefix_fromStructure()
 	End for 
 	
 	$0:=$prefix
-	
-Function aryFieldPtr_make()
-	//JCL_tbl_aryFieldPtr_make
-	//20260926 Codex/wat 旧プロジェクトメソッド名を出所として記録
-	//20221013 wat
-	//フィールドポインタの配列を作成
-	
-	C_LONGINT:C283($1; $tblNr)  //テーブル番号を得る
-	$tblNr:=$1
-	C_POINTER:C301($2; $aryFldPtr)
-	$aryFldPtr:=$2
-	C_LONGINT:C283($0; $numOfFlds)
-	$numOfFlds:=0
-	C_LONGINT:C283($numOfFields; $i)
-	
-	//フィールド情報取得
-	$numOfFields:=Get last field number:C255($tblNr)
-	For ($i; 1; $numOfFields)
-		
-		If (Is field number valid:C1000($tblNr; $i)=True:C214)
-			
-			$fldPtr:=Field:C253($tblNr; $i)
-			APPEND TO ARRAY:C911($aryFldPtr->; $fldPtr)
-			
-			
-		End if 
-		
-	End for 
-	
-	$0:=$numOfFields
-	
-	
-Function aryStrFieldPtr_make()
-	//JCL_tbl_aryStrFieldPtr_make
-	//20260928 Codex/wat 全文検索等で使う文字列系フィールドポインタ取得をクラス化
-	//指定テーブルのAlpha・Textフィールドポインタを配列で返す
-	
-	C_TEXT:C284($1; $tblName)
-	$tblName:=$1
-	C_POINTER:C301($2; $aryFldPtr)
-	$aryFldPtr:=$2
-	C_LONGINT:C283($0; $fieldCount)
-	C_POINTER:C301($tblPtr; $fldPtr)
-	C_LONGINT:C283($tableNr; $numOfFields; $i; $type; $len)
-	C_BOOLEAN:C305($index; $unique; $visible)
-	
-	$tblPtr:=This:C1470.getPtr_byName($tblName)
-	$tableNr:=Table:C252($tblPtr)
-	$numOfFields:=Get last field number:C255($tblPtr)
-	For ($i; 1; $numOfFields)
-		If (Is field number valid:C1000($tblPtr; $i)=True:C214)
-			GET FIELD PROPERTIES:C258($tableNr; $i; $type; $len; $index; $unique; $visible)
-			If (($type=Is alpha field:K8:1) | ($type=Is text:K8:3))
-				$fldPtr:=Field:C253($tableNr; $i)
-				APPEND TO ARRAY:C911($aryFldPtr->; $fldPtr)
-			End if 
-		End if 
-	End for 
-	
-	$fieldCount:=Size of array:C274($aryFldPtr->)
-	$0:=$fieldCount
-	
-	
-Function numOfFlds()
-	//JCL_tbl_NumOfFlds
-	//20260928 Codex/wat 削除済みフィールドを除いた有効フィールド数取得をクラス化
-	
-	C_POINTER:C301($1; $tblPtr)
-	$tblPtr:=$1
-	C_LONGINT:C283($0; $validFldCnt)
-	$validFldCnt:=0
-	C_LONGINT:C283($numOfFields; $i)
-	
-	$numOfFields:=Get last field number:C255($tblPtr)
-	For ($i; 1; $numOfFields)
-		If (Is field number valid:C1000($tblPtr; $i)=True:C214)
-			$validFldCnt:=$validFldCnt+1
-		End if 
-	End for 
-	
-	$0:=$validFldCnt
-	
 	
 Function fieldType($type : Integer) : Text
 	//JCL_tbl_Type
