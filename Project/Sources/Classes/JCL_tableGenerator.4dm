@@ -109,6 +109,8 @@ Function createTable($inBlockText : Text)
 	
 	
 Function createIndex($inBlockText : Text)
+	//JCL_tbl_Index_create
+	//20260928 Codex/wat 旧プロジェクトメソッド名を出所として記録
 	//インデックス作成は４Dのコマンドで作成する
 	//引数１：ブロックの中身
 	//C_TEXT($1; $inBlockText)

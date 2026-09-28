@@ -450,7 +450,6 @@ CAT 候補:
 - `Methods/JCL_tbl_DropAllTables.4dm`
 - `Methods/JCL_tbl_Export.4dm`
 - `Methods/JCL_tbl_ExportTable.4dm`
-- `Methods/JCL_tbl_Index_create.4dm`
 - `Methods/JCL_tbl_SetInitValue.4dm`
 - `Methods/JCL_tbl_UpdateFld_byNewStr.4dm`
 
@@ -837,10 +836,11 @@ Coreへの移行候補を見直し、呼び出しがなく、標準機能で代�
 - `JCL_tbl_GetFormColor`: `JCL_formGenerator.formColor_get()` と実装が重複し、旧メソッドに呼び出しがなかったため、2026-09-28に削除した。旧メソッド名はクラス側へ出所コメントとして残した。
 - `JCL_tbl_Ptr_byName`: テーブルポインタ取得を `JCL_tbl.getPtr_byName()` へ移し、残存呼び出しをクラスメソッドへ統一して2026-09-28に削除した。
 - `JCL_tbl_Fld_GetPtr`: フィールドポインタ取得を `JCL_tbl.getFieldPtr()` へ移し、残存呼び出しをクラスメソッドへ統一して2026-09-28に削除した。
-- `JCL_tbl_aryStrFieldPtr_make`: 文字列系フィールドのポインタ配列を作るメソッドだったが、呼び出しがないため、2026-09-28に削除した。
+- `JCL_tbl_aryStrFieldPtr_make`: テーブル内のAlpha・Textフィールドポインタを配列で返す機能は、対象フィールドを動的に決める全文検索等で利用価値があるため、`JCL_tbl.aryStrFieldPtr_make()` へクラス化した。旧プロジェクトメソッドは2026-09-28に削除した。
 - `JCL_tbl_DataSourceTypeHint`: フィールド型からフォームの `dataSourceTypeHint` を得る旧ジェネレータ用メソッドで、呼び出しがなく、現行の `JCL_formObjects.columnDataType()` と役割が重複するため、2026-09-28に削除した。
-- `JCL_tbl_GetNumOfRecs`: 現在選択中のレコード件数を返すメソッドだったが、呼び出しがないため、2026-09-28に削除した。
-- `JCL_tbl_NumOfFlds`: 有効なフィールド数を返すメソッドだったが、呼び出しがないため、2026-09-28に削除した。
+- `JCL_tbl_GetNumOfRecs`: `ALL RECORDS` と `Records in selection` で全件数を得る実装は現在選択と現在レコードを変更する。副作用なしに `Records in table` で代替でき、全件書き出し時の `ALL RECORDS` は書き出し処理側で明示すべきため、2026-09-28に削除した。
+- `JCL_tbl_NumOfFlds`: 削除済みフィールドを除いた有効フィールド数を返す機能は構造情報を扱う際に利用価値があるため、`JCL_tbl.numOfFlds()` へクラス化した。旧プロジェクトメソッドは2026-09-28に削除した。
+- `JCL_tbl_Index_create`: fields定義からインデックスを作成する役割は `JCL_tableGenerator.createIndex()` へクラス化され、現行ジェネレータもクラス側を使用している。マニュアルサイトには未掲載であることも確認し、旧名をクラス側の出所コメントに残して2026-09-28に削除した。
 - `JCL_lst_remake_byStructure`: 表示中フォームのリストボックス列を動的に作り直す旧手動補助メソッドで、呼び出しがなく、フォームJSONと関連メソッドを生成する `JCL_formGenerator` に置き換えられているため、2026-09-27に削除した。
 - `JCL_Add_byInitValues_generate`: 呼び出しがなく、`JCL_tableGenerator.createMethods()` と `method_templates_model/[--TBL_PREFIX]_Add_byInitValues` による現行のテンプレート生成と重複していた。生成コードが存在しない `JCL_Sequence number` と旧プラグイン処理に依存していたため、2026-09-26に削除した。
 - `JCL_tbl_DataType`: ジェネレーター用の型変換は `JCL_tbl.dataType()` と重複し、旧メソッドはBLOB対応も不足していたため削除した。

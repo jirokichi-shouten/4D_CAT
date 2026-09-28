@@ -365,6 +365,57 @@ Function aryFieldPtr_make()
 	$0:=$numOfFields
 	
 	
+Function aryStrFieldPtr_make()
+	//JCL_tbl_aryStrFieldPtr_make
+	//20260928 Codex/wat 全文検索等で使う文字列系フィールドポインタ取得をクラス化
+	//指定テーブルのAlpha・Textフィールドポインタを配列で返す
+	
+	C_TEXT:C284($1; $tblName)
+	$tblName:=$1
+	C_POINTER:C301($2; $aryFldPtr)
+	$aryFldPtr:=$2
+	C_LONGINT:C283($0; $fieldCount)
+	C_POINTER:C301($tblPtr; $fldPtr)
+	C_LONGINT:C283($tableNr; $numOfFields; $i; $type; $len)
+	C_BOOLEAN:C305($index; $unique; $visible)
+	
+	$tblPtr:=This:C1470.getPtr_byName($tblName)
+	$tableNr:=Table:C252($tblPtr)
+	$numOfFields:=Get last field number:C255($tblPtr)
+	For ($i; 1; $numOfFields)
+		If (Is field number valid:C1000($tblPtr; $i)=True:C214)
+			GET FIELD PROPERTIES:C258($tableNr; $i; $type; $len; $index; $unique; $visible)
+			If (($type=Is alpha field:K8:1) | ($type=Is text:K8:3))
+				$fldPtr:=Field:C253($tableNr; $i)
+				APPEND TO ARRAY:C911($aryFldPtr->; $fldPtr)
+			End if 
+		End if 
+	End for 
+	
+	$fieldCount:=Size of array:C274($aryFldPtr->)
+	$0:=$fieldCount
+	
+	
+Function numOfFlds()
+	//JCL_tbl_NumOfFlds
+	//20260928 Codex/wat 削除済みフィールドを除いた有効フィールド数取得をクラス化
+	
+	C_POINTER:C301($1; $tblPtr)
+	$tblPtr:=$1
+	C_LONGINT:C283($0; $validFldCnt)
+	$validFldCnt:=0
+	C_LONGINT:C283($numOfFields; $i)
+	
+	$numOfFields:=Get last field number:C255($tblPtr)
+	For ($i; 1; $numOfFields)
+		If (Is field number valid:C1000($tblPtr; $i)=True:C214)
+			$validFldCnt:=$validFldCnt+1
+		End if 
+	End for 
+	
+	$0:=$validFldCnt
+	
+	
 Function fieldType($type : Integer) : Text
 	//JCL_tbl_Type
 	//JCL_tbl_GetType
