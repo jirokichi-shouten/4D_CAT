@@ -5,10 +5,9 @@
 
 Class constructor
 	
-Function createTable($inBlockText : Text)
-	//fieldsのテキストブロックからSQL文を作成、実行してテーブル作成
-	//20240121 yabe wat UNIQUE 追加。
-	//20240209 wat PRIMARY KEY追加。INDEX修正。
+Function buildSQL($inBlockText : Text) : Text
+	//fieldsのテキストブロックからSQL文を作成
+	//20260928 wat createTableをリファクター
 	
 	//C_TEXT($1; $inBlockText)
 	//$inBlockText:=$1  //ブロックの中身
@@ -27,7 +26,7 @@ Function createTable($inBlockText : Text)
 	$tblName:=$aryTableItems{1}  //テーブル名
 	$prefix:=$aryTableItems{2}  //プリフィックス
 	
-	//テーブル作成　２行目以降のフィールド情報でSQL文を組み立てて実行
+	//テーブル作成　２行目以降のフィールド情報でSQL文を組み立て
 	$sql:="CREATE TABLE "+$tblName+"("
 	
 	For ($i; 2; $numOfLines)
@@ -38,13 +37,67 @@ Function createTable($inBlockText : Text)
 		//ＳＱＬのカラム定義節を組み立て
 		$fldName:=Replace string:C233($aryFieldItems{1}; " "; "_")  //フィールド名にスペースがあったらアンダースコアに置き換える
 		$fldFullName:=$prefix+"_"+$fldName
-		$typeStr:=JCL_tbl_Type_SQL($aryFieldItems{2}; $aryFieldItems{3}; $aryFieldItems{5})  //20240121
+		//20260928 Codex/wat SQL型変換をJCL_tableGeneratorクラスに統一
+		$typeStr:=This:C1470.sqlType($aryFieldItems{2}; $aryFieldItems{3}; $aryFieldItems{5})
 		$sql:=$sql+$fldFullName+$typeStr
 		
 	End for 
 	
 	//最後のカンマのあとにプライマリーキーを追加して括弧とセミコロンを追加
 	$sql:=$sql+" PRIMARY KEY("+$prefix+"_ID));"
+	
+	$0:=$sql
+	
+	
+Function sqlType($type : Text; $charLength : Text; $unique : Text) : Text
+	//JCL_tbl_Type_SQL
+	//20260928 Codex/wat 旧プロジェクトメソッドをJCL_tableGeneratorクラスへ移行
+	//フィールド型からCREATE TABLE文のカラム型を得る
+	
+	C_TEXT:C284($sqlType; $sqlUnique)
+	$sqlUnique:=""
+	If ($unique="1")
+		$sqlUnique:="UNIQUE"
+	End if 
+	
+	Case of 
+		: ($type="Is Alpha Field")
+			$sqlType:=" VARCHAR("+$charLength+") NOT NULL "+$sqlUnique+","
+		: ($type="Is Text")
+			$sqlType:=" VARCHAR NOT NULL "+$sqlUnique+","
+		: ($type="Is Real")
+			$sqlType:=" REAL NOT NULL "+$sqlUnique+","
+		: ($type="Is Integer")
+			$sqlType:=" INT16 NOT NULL "+$sqlUnique+","
+		: ($type="Is LongInt")
+			$sqlType:=" INT32 NOT NULL "+$sqlUnique+","
+		: ($type="Is Date")
+			$sqlType:=" TIMESTAMP NOT NULL "+$sqlUnique+","
+		: ($type="Is Time")
+			$sqlType:=" INTERVAL NOT NULL "+$sqlUnique+","
+		: ($type="Is Boolean")
+			$sqlType:=" BOOLEAN NOT NULL "+$sqlUnique+","
+		: ($type="Is Picture")
+			$sqlType:=" PICTURE NOT NULL "+$sqlUnique+","
+		: ($type="Is BLOB")
+			$sqlType:=" BLOB "+$sqlUnique+","
+	End case 
+	
+	$0:=$sqlType
+	
+	
+Function createTable($inBlockText : Text)
+	//fieldsのテキストブロックからSQL文を作成、実行してテーブル作成
+	//20240121 yabe wat UNIQUE 追加。
+	//20240209 wat PRIMARY KEY追加。INDEX修正。
+	//20260928 wat refactor
+	
+	//C_TEXT($1; $inBlockText)
+	//$inBlockText:=$1  //ブロックの中身
+	C_TEXT:C284($sql)
+	
+	//20260928 Codex/wat SQL生成をbuildSQLに統一
+	$sql:=This:C1470.buildSQL($inBlockText)
 	
 	JCL_err_OnErrCall_sql($sql)
 	SQL LOGIN:C817(SQL_INTERNAL:K49:11; ""; "")
@@ -278,3 +331,4 @@ Function createAdditionalMethods($inBlockText : Text)
 			
 		End for 
 	End if 
+	

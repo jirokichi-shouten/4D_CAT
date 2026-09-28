@@ -306,6 +306,42 @@ Function aryFieldPtr_make()
 	
 	$0:=$numOfFields
 	
+	
+Function fieldType($type : Integer) : Text
+	//JCL_tbl_Type
+	//JCL_tbl_GetType
+	//20260928 Codex/wat 旧プロジェクトメソッドをJCL_tblクラスへ移行
+	//4Dのフィールド型定数からfields定義用の型文字列を得る
+	
+	C_TEXT:C284($typeStr)
+	$typeStr:=""
+	Case of 
+		: ($type=Is alpha field:K8:1)
+			$typeStr:="Is Alpha Field"
+		: ($type=Is text:K8:3)
+			$typeStr:="Is Text"
+		: ($type=Is real:K8:4)
+			$typeStr:="Is Real"
+		: ($type=Is integer:K8:5)
+			$typeStr:="Is Integer"
+		: ($type=Is longint:K8:6)
+			$typeStr:="Is LongInt"
+		: ($type=Is date:K8:7)
+			$typeStr:="Is Date"
+		: ($type=Is time:K8:8)
+			$typeStr:="Is Time"
+		: ($type=Is boolean:K8:9)
+			$typeStr:="Is Boolean"
+		: ($type=Is picture:K8:10)
+			$typeStr:="Is Picture"
+		: ($type=Is subtable:K8:11)
+			$typeStr:="Is Subtable"
+		: ($type=Is BLOB:K8:12)
+			$typeStr:="Is BLOB"
+	End case 
+	
+	$0:=$typeStr
+	
 Function getFieldsAttributes
 	//JCL_tbl_Fields_withAttr
 	//JCL_tbl_GetFields
@@ -354,7 +390,8 @@ Function getFieldsAttributes
 					GET FIELD PROPERTIES:C258($i; $k; $type; $len; $index; $unique; $visible)
 					
 					APPEND TO ARRAY:C911($ioAryFieldName->; $name)
-					APPEND TO ARRAY:C911($ioAryFieldType->; JCL_tbl_Type($type))
+					//20260928 Codex/wat フィールド型変換をJCL_tblクラスに統一
+					APPEND TO ARRAY:C911($ioAryFieldType->; This:C1470.fieldType($type))
 					APPEND TO ARRAY:C911($ioAryFieldLength->; String:C10($len))
 					APPEND TO ARRAY:C911($ioAryFieldIndex->; String:C10(Num:C11($index); "1;;0"))
 					

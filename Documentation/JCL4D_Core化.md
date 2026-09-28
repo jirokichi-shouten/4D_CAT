@@ -170,14 +170,9 @@ JCL4D_Core
 - `Methods/JCL_file_WriteTab.4dm`
 - `Methods/JCL_file_csv_ReadRow.4dm`
 
-保留:
-
-- `Methods/JCL_file_SQLOut.4dm`
-
 確認事項:
 
 - `JCL_file_GetFromResourcesFolder.4dm` は Core 側 Resources を読むのか、呼び出し元 Project の Resources を読むのか決める。
-- `JCL_file_SQLOut.4dm` は SQL生成ログ用途が強ければ CAT 側に残す。
 
 ### 配列系
 
@@ -452,7 +447,6 @@ Core 候補:
 - `Methods/JCL_tbl_GetNumOfRecs.4dm`
 - `Methods/JCL_tbl_NumOfFlds.4dm`
 - `Methods/JCL_tbl_Ptr_byName.4dm`
-- `Methods/JCL_tbl_Type.4dm`
 - `Methods/JCL_tbl_aryStrFieldPtr_make.4dm`
 
 CAT 候補:
@@ -461,20 +455,14 @@ CAT 候補:
 - `Methods/JCL_tbl_DeleteByAry.4dm`
 - `Methods/JCL_tbl_DropAllTables.4dm`
 - `Methods/JCL_tbl_Export.4dm`
-- `Methods/JCL_tbl_ExportOneSQL.4dm`
 - `Methods/JCL_tbl_ExportTable.4dm`
-- `Methods/JCL_tbl_GenerateSQL.4dm`
-- `Methods/JCL_tbl_GetFormColor.4dm`
 - `Methods/JCL_tbl_Index_create.4dm`
-- `Methods/JCL_tbl_Names_fromFile.4dm`
 - `Methods/JCL_tbl_SetInitValue.4dm`
-- `Methods/JCL_tbl_Type_SQL.4dm`
 - `Methods/JCL_tbl_UpdateFld_byNewStr.4dm`
 
 確認事項:
 
 - `Classes/JCL_tbl.4dm` を分割するか、そのまま保留するか。
-- `JCL_tbl_Type_SQL.4dm` は SQL helper として汎用化するか、CAT 側に残すか。
 
 ### カレンダー
 
@@ -666,7 +654,6 @@ CAT 候補:
 
 - `JCL_file_GetFromResourcesFolder`: Component とホストのどちらの Resources を読むか未決定。
 - `JCL_file_HTML_toWebArea`: Web Area とホストフォームの実行コンテキスト、および固定フォルダ名 `DMS4D_TMP` の整理が必要。
-- `JCL_file_SQLOut`: CAT の SQL 出力用途として残す。
 - `JCL_file_SelectSJIS`: 固定プロンプトとデバッグ用 `ALERT` があり、汎用化が必要。
 - `JCL_file_SelectXMac`: 固定プロンプトがあり、汎用化が必要。
 - `JCL_file_StructureName`: Component から `Structure file` を呼んだ場合の対象がホストかCoreかを確認する必要がある。
@@ -847,6 +834,13 @@ Coreへの移行候補を見直し、呼び出しがなく、標準機能で代�
 
 削除:
 
+- `JCL_tbl_GenerateSQL`
+- `JCL_tbl_Names_fromFile`
+- `JCL_tbl_ExportOneSQL`
+- `JCL_file_SQLOut`: 4メソッドで構成されていた旧SQLファイル出力経路は現行の `fields.txt` 形式と一致せず、呼び出しもなかったため、2026-09-28に削除した。CREATE TABLE文の生成は `JCL_tableGenerator.buildSQL()` に統一した。
+- `JCL_tbl_Type_SQL`: SQL型変換を `JCL_tableGenerator.sqlType()` へ移し、2026-09-28に削除した。旧メソッド名はクラス側へ出所コメントとして残した。
+- `JCL_tbl_Type`: 4Dのフィールド型定数からfields定義用文字列への変換を `JCL_tbl.fieldType()` へ移し、2026-09-28に削除した。旧メソッド名はクラス側へ出所コメントとして残した。
+- `JCL_tbl_GetFormColor`: `JCL_formGenerator.formColor_get()` と実装が重複し、旧メソッドに呼び出しがなかったため、2026-09-28に削除した。旧メソッド名はクラス側へ出所コメントとして残した。
 - `JCL_lst_remake_byStructure`: 表示中フォームのリストボックス列を動的に作り直す旧手動補助メソッドで、呼び出しがなく、フォームJSONと関連メソッドを生成する `JCL_formGenerator` に置き換えられているため、2026-09-27に削除した。
 - `JCL_Add_byInitValues_generate`: 呼び出しがなく、`JCL_tableGenerator.createMethods()` と `method_templates_model/[--TBL_PREFIX]_Add_byInitValues` による現行のテンプレート生成と重複していた。生成コードが存在しない `JCL_Sequence number` と旧プラグイン処理に依存していたため、2026-09-26に削除した。
 - `JCL_tbl_DataType`: ジェネレーター用の型変換は `JCL_tbl.dataType()` と重複し、旧メソッドはBLOB対応も不足していたため削除した。
