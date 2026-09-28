@@ -8,11 +8,12 @@ ARRAY POINTER:C280($fldAry; 0)
 C_POINTER:C301($fldPtr)
 C_TEXT:C284($indexName)
 C_TEXT:C284($tblName; $fldFullName)
-$tblName:="USERS"
-$fldFullName:="US_EMAIL"
+$tblName:="assign"
+$fldFullName:="as_pr_id"
 
-$tblPtr:=JCL_tbl_Ptr_byName($tblName)
-$retCode:=JCL_tbl_Fld_GetPtr($tblPtr; $fldFullName; ->$fldPtr)
+//20260928 Codex/wat テーブル・フィールドポインタ取得をJCL_tblクラスに統一
+$tblPtr:=cs:C1710.JCL_tbl.new().getPtr_byName($tblName)
+$retCode:=cs:C1710.JCL_tbl.new().getFieldPtr($tblPtr; $fldFullName; ->$fldPtr)
 If ($retCode=0)
 	//フィールドポインタの配列を作ってわたす
 	DELETE FROM ARRAY:C228($fldAry; 1; Size of array:C274($fldAry))
@@ -22,4 +23,3 @@ If ($retCode=0)
 	CREATE INDEX:C966($tblPtr->; $fldAry; 0; $indexName)
 	
 End if 
-

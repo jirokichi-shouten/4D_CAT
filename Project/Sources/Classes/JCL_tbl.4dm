@@ -58,6 +58,64 @@ Function getNumber()
 	
 	$0:=$outTblNr
 	
+Function getPtr_byName()
+	//JCL_tbl_Ptr_byName
+	//JCL_tbl_GetPtr_byName
+	//20260928 Codex/wat 旧プロジェクトメソッドをJCL_tblクラスへ移行
+	//テーブル名からポインタを返す
+	
+	C_TEXT:C284($1; $inTblName)
+	$inTblName:=$1
+	C_POINTER:C301($0; $outTblPtr)
+	C_TEXT:C284($tblName)
+	C_POINTER:C301($tblPtr)
+	C_LONGINT:C283($numOfTables; $i)
+	
+	$numOfTables:=Get last table number:C254
+	For ($i; 1; $numOfTables)
+		If (Is table number valid:C999($i)=True:C214)
+			$tblPtr:=Table:C252($i)
+			$tblName:=Table name:C256($i)
+			If ($tblName=$inTblName)
+				$outTblPtr:=$tblPtr
+			End if 
+		End if 
+	End for 
+	
+	$0:=$outTblPtr
+	
+Function getFieldPtr()
+	//JCL_tbl_Fld_GetPtr
+	//JCL_tbl_GetFldPtr
+	//20260928 Codex/wat 旧プロジェクトメソッドをJCL_tblクラスへ移行
+	//テーブルポインタとフィールド名からフィールドポインタを得る
+	
+	C_POINTER:C301($1; $inTablePtr)
+	$inTablePtr:=$1
+	C_TEXT:C284($2; $searchStr)
+	$searchStr:=$2
+	C_POINTER:C301($3; $outFieldPtrPtr)
+	$outFieldPtrPtr:=$3
+	C_LONGINT:C283($0; $retCode)
+	$retCode:=1
+	C_LONGINT:C283($tableNr; $numOfFields; $i)
+	C_TEXT:C284($fieldName)
+	
+	$tableNr:=Table:C252($inTablePtr)
+	$numOfFields:=Get last field number:C255($inTablePtr)
+	For ($i; 1; $numOfFields)
+		If (Is field number valid:C1000($inTablePtr; $i)=True:C214)
+			$fieldName:=Field name:C257($tableNr; $i)
+			If ($searchStr=$fieldName)
+				$outFieldPtrPtr->:=Field:C253($tableNr; $i)
+				$i:=$numOfFields
+				$retCode:=0
+			End if 
+		End if 
+	End for 
+	
+	$0:=$retCode
+	
 Function dataType()
 	//JCL_tbl_DataType
 	//20260926 Codex/wat 旧プロジェクトメソッド名を出所として記録

@@ -17,7 +17,8 @@ C_BOOLEAN:C305($unique)
 C_BOOLEAN:C305($visible)
 
 //テーブル番号を得る
-$tblPtr:=JCL_tbl_Ptr_byName($tbl_name)
+//20260928 Codex/wat テーブルポインタ取得をJCL_tblクラスに統一
+$tblPtr:=cs:C1710.JCL_tbl.new().getPtr_byName($tbl_name)
 $table_num:=Table:C252($tblPtr)
 
 //フィールド情報取得

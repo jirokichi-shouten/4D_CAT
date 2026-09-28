@@ -353,6 +353,11 @@
 			<table_ref uuid="6A5ACF8C03DC4D268C8FCEDDEB5D53CC" name="worker"/>
 		</field_ref>
 	</index>
+	<index kind="regular" name="as_pr_id_index" uuid="9A27512402DB4717B9C1E985AB77BE65" type="7">
+		<field_ref uuid="57CC1FEE66C4435E8AE263BFBB767CD9" name="as_pr_id">
+			<table_ref uuid="EF0BE2DE4FCA4876BD8E456FA36FC559" name="assign"/>
+		</field_ref>
+	</index>
 	<index kind="regular" unique_keys="true" uuid="BB1B8360F2F14CBBAB5E226C5A22EA4F" type="1">
 		<field_ref uuid="DB69B3A8DBC44ECF83B0C5EE179F7774" name="ho_id">
 			<table_ref uuid="4035951B2600454A95E3FF8151178CFA" name="(holiday)"/>

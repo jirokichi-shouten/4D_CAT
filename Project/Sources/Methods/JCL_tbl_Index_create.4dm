@@ -46,9 +46,10 @@ For ($i; $inStartLineNr+1; $numOfLines)
 			//インデックス作成
 			If ($itemAry{4}="1")
 				
-				$tblPtr:=JCL_tbl_Ptr_byName($inTableName)
+				//20260928 Codex/wat テーブル・フィールドポインタ取得をJCL_tblクラスに統一
+				$tblPtr:=cs:C1710.JCL_tbl.new().getPtr_byName($inTableName)
 				$fldName:=$inPrefix+"_"+$itemAry{1}  //20130501
-				$retCode:=JCL_tbl_Fld_GetPtr($tblPtr; $fldName; ->$fldPtr)
+				$retCode:=cs:C1710.JCL_tbl.new().getFieldPtr($tblPtr; $fldName; ->$fldPtr)
 				If ($retCode=0)
 					
 					DELETE FROM ARRAY:C228($fldAry; 1; Size of array:C274($fldAry))
