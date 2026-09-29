@@ -6,6 +6,90 @@
 Class constructor
 	
 	
+Function export()
+	//JCL_tbl_Export
+	//フィールドプロパティをタブ区切りで書き出し
+	//20080807 矢部 新規作成
+	//20130430 矢部 JCL4Dに追加
+	//20260929 Codex/wat fields定義の書き出しをJCL_fieldsクラスへ統合
+	//ストラクチャーとラベルキャッシュから8列のfields定義を書き出す
+	
+	C_TIME:C306($doc)
+	C_LONGINT:C283($i; $numOfTables)
+	ARRAY TEXT:C222($aryTableName; 0)
+	
+	//ラベル、説明、備考をfields_labelsから取得できるようにする
+	This:C1470.cache_make()
+	
+	//ファイル保存ダイアログ表示
+	$doc:=Create document:C266(""; "TEXT")
+	If ((OK=1) & ($doc#0))
+		JCL_tbl_Names_fromStructure(->$aryTableName)
+		$numOfTables:=Size of array:C274($aryTableName)
+		
+		For ($i; 1; $numOfTables)
+			This:C1470.exportTable($doc; $aryTableName{$i})
+		End for 
+		
+		CLOSE DOCUMENT:C267($doc)
+		ALERT:C41("出力が終わりました。")
+	End if 
+	
+	
+Function exportTable($doc : Time; $tableName : Text)
+	//JCL_tbl_ExportTable
+	//20130430 yabe
+	//一つのテーブルとそのフィールド書き出し
+	//20240223 yabe wat プリフィックスはアンダースコア抜きの文字列とした。
+	//20260929 Codex/wat 8列のfields定義をストラクチャーから書き出す
+	
+	C_LONGINT:C283($tableNumber; $fieldNumber; $numOfFields)
+	C_LONGINT:C283($type; $length)
+	C_BOOLEAN:C305($index; $unique; $invisible)
+	C_TEXT:C284($prefix; $fieldName; $exportFieldName; $typeText)
+	C_TEXT:C284($tableLabel; $fieldLabel; $comment; $remark; $line)
+	
+	$tableNumber:=JCL_tbl_GetNumber($tableName)
+	If ($tableNumber>0)
+		$prefix:=cs:C1710.JCL_tbl.new().getPrefix_fromStructure($tableName)
+		$tableLabel:=This:C1470.cache_TableLabel_get($tableName)
+		If (($tableLabel="") | ($tableLabel="ClassUnknown"))
+			$tableLabel:=$tableName
+		End if 
+		
+		//テーブル行: 名前、接頭辞、フォーム抑止、予約、予約、論理名、説明、備考
+		$line:=$tableName+Char:C90(Tab:K15:37)+$prefix+Char:C90(Tab:K15:37)+Char:C90(Tab:K15:37)+Char:C90(Tab:K15:37)+Char:C90(Tab:K15:37)+$tableLabel+Char:C90(Tab:K15:37)+Char:C90(Tab:K15:37)+Char:C90(Carriage return:K15:38)
+		SEND PACKET:C103($doc; $line)
+		
+		$numOfFields:=Get last field number:C255($tableNumber)
+		For ($fieldNumber; 1; $numOfFields)
+			If (Is field number valid:C1000($tableNumber; $fieldNumber)=True:C214)
+				$fieldName:=Field name:C257($tableNumber; $fieldNumber)
+				GET FIELD PROPERTIES:C258($tableNumber; $fieldNumber; $type; $length; $index; $unique; $invisible)
+				$typeText:=cs:C1710.JCL_tbl.new().fieldType($type)
+				
+				$exportFieldName:=$fieldName
+				If (($prefix#"") & (Position:C15($prefix+"_"; $fieldName)=1))
+					$exportFieldName:=Substring:C12($fieldName; Length:C16($prefix)+2)
+				End if 
+				
+				$fieldLabel:=This:C1470.cache_FieldLabel_get($fieldName)
+				If ($fieldLabel="")
+					$fieldLabel:=$exportFieldName
+				End if 
+				$comment:=This:C1470.cache_FieldComment_get($fieldName)
+				$remark:=This:C1470.cache_FieldRemark_get($fieldName)
+				
+				//フィールド行: 名前、型、長さ、インデックス、ユニーク、論理名、説明、備考
+				$line:=$exportFieldName+Char:C90(Tab:K15:37)+$typeText+Char:C90(Tab:K15:37)+String:C10($length)+Char:C90(Tab:K15:37)+String:C10(Num:C11($index); "1;;0")+Char:C90(Tab:K15:37)+String:C10(Num:C11($unique); "1;;0")+Char:C90(Tab:K15:37)+$fieldLabel+Char:C90(Tab:K15:37)+$comment+Char:C90(Tab:K15:37)+$remark+Char:C90(Carriage return:K15:38)
+				SEND PACKET:C103($doc; $line)
+			End if 
+		End for 
+		
+		SEND PACKET:C103($doc; "-"+Char:C90(Tab:K15:37)+Char:C90(Tab:K15:37)+Char:C90(Tab:K15:37)+Char:C90(Tab:K15:37)+Char:C90(Tab:K15:37)+Char:C90(Tab:K15:37)+Char:C90(Tab:K15:37)+Char:C90(Carriage return:K15:38))
+	End if 
+	
+	
 Function createLabelFile($inBlockText : Text)
 	//fieldsのテキストブロックからラベルファイルを作成
 	//20240316 wat

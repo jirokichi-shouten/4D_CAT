@@ -875,6 +875,8 @@ Coreへの移行候補を見直し、呼び出しがなく、標準機能で代�
 - `JCL_tbl_NumOfFlds`: 削除済みフィールドを除いた有効フィールド数を返す機能は構造情報として汎用性があるため、2026-09-28にCoreの共有メソッドとして再配置した。
 - `JCL_tbl_Index_create`: fields定義からインデックスを作成する役割は `JCL_tableGenerator.createIndex()` へクラス化され、現行ジェネレータもクラス側を使用している。マニュアルサイトには未掲載であることも確認し、旧名をクラス側の出所コメントに残して2026-09-28に削除した。
 - `JCL_tbl_SerialNumber`: 4D標準の `Sequence number` を呼び出すだけで独自の処理や安全性を追加しておらず、マニュアルサイトにも未掲載のため、2026-09-28に削除した。
+- `JCL_tbl_Export` / `JCL_tbl_ExportTable`: fields定義の読み込みとラベルキャッシュを担う `JCL_fields` に帰属させ、2026-09-29に `JCL_fields.export()` / `exportTable()` へ統合した。書き出しは8列仕様とし、5列目のユニーク属性と6〜8列目の論理名・説明・備考を保持する。
+- `JCL_tbl_DropAllTables`: ジェネレータに依存しないテーブル全削除機能として、2026-09-29に挙動を変えずCoreの共有メソッドへ移行した。生成済みのメソッドやフォームは削除しない。
 - `JCL_lst_remake_byStructure`: 表示中フォームのリストボックス列を動的に作り直す旧手動補助メソッドで、呼び出しがなく、フォームJSONと関連メソッドを生成する `JCL_formGenerator` に置き換えられているため、2026-09-27に削除した。
 - `JCL_Add_byInitValues_generate`: 呼び出しがなく、`JCL_tableGenerator.createMethods()` と `method_templates_model/[--TBL_PREFIX]_Add_byInitValues` による現行のテンプレート生成と重複していた。生成コードが存在しない `JCL_Sequence number` と旧プラグイン処理に依存していたため、2026-09-26に削除した。
 - `JCL_tbl_DataType`: ジェネレーター用の型変換は `JCL_tbl.dataType()` と重複し、旧メソッドはBLOB対応も不足していたため削除した。
