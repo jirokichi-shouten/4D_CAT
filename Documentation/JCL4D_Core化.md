@@ -772,7 +772,6 @@ CAT 候補:
 
 保留:
 
-- `JCL_lst_Export`、`JCL_lst_Export_pgs2`、`JCL_lst_Export_pgs4`: ダイアログと進捗表示への依存がある。
 - `JCL_lst_Make_Join`: ホストのテーブル選択を変更する。
 
 ## 第7弾移行結果
@@ -851,6 +850,16 @@ CAT側の `JCL_tbl` クラスから汎用部分を除き、生成用の型変換
 - CATを開き直し、CAT側のシンタックスチェックを実行する。
 - ジェネレータのテーブル選択とインデックス作成を確認する。
 - `JCL_tbl_DelAll` を使う既存の全件削除処理とシーケンス初期化を確認する。
+
+## 第11弾移行結果
+
+実施日: 2026-10-01
+
+- `JCL_lst_Export` と現行の高機能版 `JCL_lst_Export_pgs4` をCoreの共有メソッドへ移行した。`pgs4` にはホスト公開のため `shared:true` を追加した。
+- `JCL_lst_Export_pgs4` の本文は変更せず、従来コメントも保持した。CATのメソッド生成テンプレートは引き続き `JCL_lst_Export_pgs4` を呼び出す。
+- 依存する文字列、ダイアログ、ファイル操作、`JCL_pgs_*` はすべてCore内にあり、CAT固有の依存はない。
+- 呼び出しがなく、`pgs4` に置き換えられた旧版 `JCL_lst_Export_pgs2` はCATから削除した。
+- CAT側に追加した `A02_btnExport` と `A02_btnExport_PGS` で、基本版と `pgs4` をホストから確認する。
 
 ## 不要メソッド整理
 

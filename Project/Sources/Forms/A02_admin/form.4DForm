@@ -277,11 +277,71 @@
 					"action": "",
 					"class": "JCL_YuGothic12",
 					"method": "ObjectMethods/vA02_btnTestLstbx.4dm"
+				},
+				"vA02_btnData": {
+					"type": "button",
+					"text": "DATA+",
+					"top": 221,
+					"left": 223,
+					"width": 110,
+					"height": 26,
+					"events": [
+						"onClick"
+					],
+					"dataSource": "vA02_btnData",
+					"shortcutAccel": false,
+					"shortcutControl": false,
+					"shortcutShift": false,
+					"shortcutAlt": false,
+					"shortcutKey": "",
+					"action": "",
+					"class": "JCL_YuGothic12",
+					"method": "ObjectMethods/vA02_btnData.4dm"
+				},
+				"vA02_btnExport": {
+					"type": "button",
+					"text": "Export",
+					"top": 254,
+					"left": 574,
+					"width": 110,
+					"height": 26,
+					"events": [
+						"onClick"
+					],
+					"dataSource": "vA02_btnExport",
+					"shortcutAccel": false,
+					"shortcutControl": false,
+					"shortcutShift": false,
+					"shortcutAlt": false,
+					"shortcutKey": "",
+					"action": "",
+					"class": "JCL_YuGothic12",
+					"method": "ObjectMethods/vA02_btnExport.4dm"
+				},
+				"vA02_btnExport_pgs": {
+					"type": "button",
+					"text": "Export_PGS",
+					"top": 287,
+					"left": 574,
+					"width": 110,
+					"height": 26,
+					"events": [
+						"onClick"
+					],
+					"dataSource": "vA02_btnExport_pgs",
+					"shortcutAccel": false,
+					"shortcutControl": false,
+					"shortcutShift": false,
+					"shortcutAlt": false,
+					"shortcutKey": "",
+					"action": "",
+					"class": "JCL_YuGothic12",
+					"method": "ObjectMethods/vA02_btnExport_pgs.4dm"
 				}
 			}
 		}
 	],
-	"geometryStamp": 1020,
+	"geometryStamp": 1046,
 	"editor": {
 		"activeView": "View 1",
 		"defaultView": "View 1",

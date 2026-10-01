@@ -146,11 +146,31 @@
 					],
 					"sizingY": "fixed",
 					"textAlign": "automatic"
+				},
+				"vA01_btnA02": {
+					"type": "button",
+					"text": "Admin",
+					"top": 16,
+					"left": 950,
+					"width": 110,
+					"height": 26,
+					"events": [
+						"onClick"
+					],
+					"dataSource": "vA01_btnA02",
+					"shortcutAccel": false,
+					"shortcutControl": false,
+					"shortcutShift": false,
+					"shortcutAlt": false,
+					"shortcutKey": "",
+					"action": "design",
+					"class": "JCL_YuGothic12",
+					"method": "ObjectMethods/vA01_btnA02.4dm"
 				}
 			}
 		}
 	],
-	"geometryStamp": 817,
+	"geometryStamp": 832,
 	"editor": {
 		"activeView": "View 1",
 		"defaultView": "View 1",
