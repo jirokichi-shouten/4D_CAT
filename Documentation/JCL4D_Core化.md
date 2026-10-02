@@ -952,6 +952,8 @@ CAT固有メソッドの接頭辞:
 - `JCL_method_export` → `APL_method_export`
 - `JCL_method_import` → `APL_method_import`
 - `JCL_method_info` → `APL_method_info`
+- エラー処理群はホストとコンポーネントで`ON ERR CALL`およびプロセス変数が分離されるためCATに残し、専用接頭辞`JCLERR_`を使用する。
+- `JCL_err_*` → `JCLERR_*`。標準エラーとSQLエラーはデスクトップの`JCLERR_log.txt`へ記録する。
 
 削除:
 

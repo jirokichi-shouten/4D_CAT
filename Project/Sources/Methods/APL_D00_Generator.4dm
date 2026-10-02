@@ -6,7 +6,8 @@
 //20261002 Codex/wat CAT固有メソッドとしてAPL_へ改名
 
 ////必要に応じてエラーハンドリング開始
-//ON ERR CALL("JCL_err_OnErrCall")
+//20261002 Codex/wat CAT側エラー処理のJCLERR_改名に追随
+//ON ERR CALL("JCLERR_OnErrCall")
 //ON ERR CALL("")
 
 //// メニューバーを適用

@@ -15,8 +15,9 @@ $sql:="create table staff_UNIQUE1(st_id INT32, st_name varchar(20) UNIQUE Not nu
 //$sql:="create UNIQUE index name_idx on staff(name);"
 
 
-JCL_err_OnErrCall_sql($sql)
+//20261002 Codex/wat CAT側エラー処理のJCLERR_改名に追随
+JCLERR_OnErrCall_sql($sql)
 SQL LOGIN:C817(SQL_INTERNAL:K49:11; ""; "")
 SQL EXECUTE:C820($sql)
 SQL LOGOUT:C872
-JCL_err_OnErrCall_stop
+JCLERR_OnErrCall_stop

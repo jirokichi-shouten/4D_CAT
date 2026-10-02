@@ -1,7 +1,9 @@
 //%attributes = {}
-//JCL_err_OnErrCall_SQL_EXECUTE
+//JCLERR_OnErrCall_SQL_EXECUTE
+//旧名 JCL_err_OnErrCall_SQL_EXECUTE
 //20240121 wat
 //sql実行時のエラーハンドリング: all local or process variables must be declared
+//20261002 Codex/wat JCLERR_へ改名し、JCLERR_log.txtへの記録と変数宣言を追加
 
 C_TEXT:C284($msg)
 $msg:=""
@@ -10,6 +12,9 @@ ARRAY LONGINT:C221($aryCords; 0)
 ARRAY TEXT:C222($aryComp; 0)
 ARRAY TEXT:C222($aryText; 0)
 C_TEXT:C284($errorText)
+C_TEXT:C284($err_text)
+C_LONGINT:C283(vJCL_ERROR)
+C_TEXT:C284(vSQL)
 
 //$msg:=$msg+vSQL+Char(Tab)
 vJCL_ERROR:=1  //メッセージング
@@ -22,7 +27,7 @@ For ($i; 1; $sizeOfAry)
 	$msg:=$msg+"component=["+$aryComp{$i}+"]"+Char:C90(Tab:K15:37)
 	$msg:=$msg+"error text=["+$aryText{$i}+"]"+Char:C90(Tab:K15:37)
 	
-	$err_text:=JCL_err_4D_Error($aryCords{$i}; "error_codes_sql.txt")
+	$err_text:=JCLERR_4D_Error($aryCords{$i}; "error_codes_sql.txt")
 	$msg:=$msg+"code text=["+$err_text+"]"+Char:C90(Tab:K15:37)
 	
 End for 
@@ -32,4 +37,5 @@ $msg:=$msg+"method["+Error method+"],"
 $msg:=$msg+"line["+String:C10(Error line)+"]"+Char:C90(Tab:K15:37)
 $msg:=$msg+vSQL+Char:C90(Carriage return:K15:38)
 
+JCL_file_Logout($msg; "JCLERR_log.txt")
 ALERT:C41($msg)

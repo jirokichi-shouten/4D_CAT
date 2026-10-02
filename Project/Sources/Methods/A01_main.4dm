@@ -4,7 +4,8 @@
 // メインメソッド
 
 //必要に応じてエラーハンドリング開始
-ON ERR CALL:C155("JCL_err_OnErrCall")
+//20261002 Codex/wat CAT側エラー処理のJCLERR_改名に追随
+ON ERR CALL:C155("JCLERR_OnErrCall")
 ON ERR CALL:C155("")
 
 // メニューバーを適用

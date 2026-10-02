@@ -99,11 +99,12 @@ Function createTable($inBlockText : Text)
 	//20260928 Codex/wat SQL生成をbuildSQLに統一
 	$sql:=This:C1470.buildSQL($inBlockText)
 	
-	JCL_err_OnErrCall_sql($sql)
+	//20261002 Codex/wat CAT側エラー処理のJCLERR_改名に追随
+	JCLERR_OnErrCall_sql($sql)
 	SQL LOGIN:C817(SQL_INTERNAL:K49:11; ""; "")
 	SQL EXECUTE:C820($sql)
 	SQL LOGOUT:C872
-	$error:=JCL_err_OnErrCall_stop
+	$error:=JCLERR_OnErrCall_stop
 	
 	$0:=$error
 	
