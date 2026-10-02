@@ -1,7 +1,9 @@
 //%attributes = {"shared":true}
-  //JCL_method_import
+//APL_method_import
+//旧名 JCL_method_import
   //20150524 yabe wat v14対応
   //20150911 wat コンポーネントで共有
+//20261002 Codex/wat CAT固有メソッドとしてAPL_へ改名
 
 C_TEXT:C284($dir)  //メソッドを読み込むディレクトリ
 C_LONGINT:C283($i;$numOfFile)

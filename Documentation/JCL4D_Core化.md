@@ -923,6 +923,41 @@ Coreへの移行候補を見直し、呼び出しがなく、標準機能で代�
 - `JCL_pgs_usage` → `zz_test_JCL_pgs`
 - `JCL_pgs_usage2` → `zz_test_JCL_pgs2`
 
+## 2026-10-02 の整理
+
+Coreへ移行:
+
+- `JCL_HTTP_Request_POST`
+- `JCL_method_cntLines`: コンポーネントからホストメソッドを集計するため、`METHOD GET NAMES`と`METHOD GET CODE`に`*`を指定する。
+- `JCL_prt_PageBreak`
+- `JCL_file_SelectSJIS`
+- `JCL_file_SelectXMac`
+- `JCL_file_GetFromResourcesFolder`: `Get 4D folder(Current resources folder;*)`でホストのResourcesを参照する。
+- `JCL_file_StructureName`: `Structure file(*)`でホストのストラクチャー名を取得する。
+- `JCL_file_HTML_toWebArea`: HTML一時ファイルは固定フォルダーではなくOSの`Temporary folder`へ保存する。
+
+CAT内でクラス化:
+
+- `JCL_method_isExist` → `JCL_formGenerator.methodIsExist()`
+- `JCL_frm_isExist` → `JCL_formGenerator.tableFormIsExist()`
+- `JCL_fields_Label` → `JCL_fields.cache_FieldLabel_get()`
+- `JCL_fields_cache_TableLabel` → `JCL_fields.cache_TableLabel_get()`
+
+CAT固有メソッドの接頭辞:
+
+- クラス化せずCATだけに残す共通処理には`APL_`を使用する。
+- `JCL_CW_Dispatch` → `APL_CW_Dispatch`
+- `JCL_D00_Generator` → `APL_D00_Generator`。同名だったフォーム`JCL_D00_Generator`は変更しない。
+- `JCL_method_JCLimport` → `APL_method_JCLimport`
+- `JCL_method_export` → `APL_method_export`
+- `JCL_method_import` → `APL_method_import`
+- `JCL_method_info` → `APL_method_info`
+
+削除:
+
+- `JCL_lst_Make_Join`
+- `JCL_method_JCLexport`: CoreをGit管理する現在の運用ではJCLメソッド専用の書き出しを使用しない。
+
 ## 開発時とビルド時の構成方針（暫定）
 
 - 開発時は `JCL4D_Core` を独立した隣接リポジトリとして管理し、Core の `.4DProject` ファイルに対する macOS の Finder エイリアスを親プロジェクトの `Components` に置いて参照する。POSIX シンボリックリンクは使用しない。
@@ -949,10 +984,8 @@ Coreへの移行候補を見直し、呼び出しがなく、標準機能で代�
 
 - ビルド済み配布で 4D Component を同梱するか、ビルド時に親プロジェクトへ展開するか。
 - 親プロジェクトへ展開する場合の対象、競合解決、更新・削除方法をどう自動化するか。
-- Core 側 Resources の参照パスをどうするか。
 - Core に `JCL_D20` カレンダーを含めるか。
 - `JCL_tbl` 系を分割するか。
-- メソッド名の `JCL_` prefix は維持するか。
 - CAT 側から Core をどう参照するか。
 - Dependency Manager へ切り替える4Dの対象バージョンと時期。
 - バージョン番号・リリースノートをどこで管理するか。

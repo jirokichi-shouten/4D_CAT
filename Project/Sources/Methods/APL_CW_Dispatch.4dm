@@ -1,9 +1,11 @@
 //%attributes = {}
-//JCL_CW_Dispatch
+//APL_CW_Dispatch
+//旧名 JCL_CW_Dispatch
 //20221010 wat
 //Call Worker Dispather スレッド数のCWを呼び出す
 //元ネタ：CW_RIM_pick_MD_Init //20171228 yabe
 //20221016 wat 引数でフォーム情報をもらって、ライブラリー化
+//20261002 Codex/wat CAT固有メソッドとしてAPL_へ改名
 
 C_TEXT:C284($1; $methodName)
 $methodName:=$1

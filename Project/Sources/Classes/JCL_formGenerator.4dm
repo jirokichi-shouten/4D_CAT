@@ -132,6 +132,47 @@ Function generate()
 		End if 
 	End if 
 	
+Function methodIsExist()
+	//JCL_method_isExist
+	//20240207 hisa wat
+	//メソッド名があるか？
+	//20261001 Codex/wat JCL_formGeneratorのクラスメソッドに移行
+	
+	C_TEXT:C284($1; $methodName)
+	$methodName:=$1
+	C_LONGINT:C283($0)
+	
+	ARRAY TEXT:C222($aryNames; 0)
+	
+	METHOD GET NAMES:C1166($aryNames; $methodName)
+	
+	$0:=Size of array:C274($aryNames)
+	
+Function tableFormIsExist()
+	//JCL_frm_isExist
+	//20220425 hisa wat
+	//フォームがあるかどうか、確認する
+	//20261001 Codex/wat JCL_formGeneratorのクラスメソッドに移行
+	
+	C_POINTER:C301($1; $tblPtr)  //テーブルポインタ
+	$tblPtr:=$1
+	C_TEXT:C284($2; $form_name)  //フォーム名
+	$form_name:=$2
+	C_BOOLEAN:C305($0; $exist)
+	$exist:=False:C215
+	C_LONGINT:C283($index)
+	ARRAY TEXT:C222($arynames; 0)
+	
+	FORM GET NAMES:C1167($tblPtr->; $arynames)
+	
+	$index:=Find in array:C230($arynames; $form_name)
+	If ($index#-1)
+		$exist:=True:C214
+		
+	End if 
+	
+	$0:=$exist
+	
 Function form01_List()
 	//JCL_prj_FG_tblFrm01V4
 	//20240215 
@@ -401,7 +442,8 @@ Function form03_Input_mod()
 	For ($i; 1; $sizeOfAry)
 		//フィールドラベルを取得
 		$fld_name:=$inAryFldNamePtr->{$i}
-		$label:=JCL_fields_Label($fld_name)
+		//20261002 Codex/wat フィールドラベル取得をJCL_fieldsクラスに統合
+		$label:=cs:C1710.JCL_fields.new().cache_FieldLabel_get($fld_name)
 		If ($label="")
 			//ラベルが取得できなかったらフィールド名を使う
 			$label:=$fld_name
@@ -615,7 +657,8 @@ Function formColor_get()
 	$tblNr:=JCL_tbl_GetNumber($table_name)
 	$tblPtr:=Table:C252($tblNr)
 	
-	$exist:=JCL_frm_isExist($tblPtr; $form_name)
+	//20261001 Codex/wat フォーム存在確認をJCL_formGeneratorに統合
+	$exist:=This:C1470.tableFormIsExist($tblPtr; $form_name)
 	If ($exist=True:C214)
 		FORM LOAD:C1103($tblPtr->; $form_name)
 		OBJECT GET RGB COLORS:C1074(*; $rec_name; $colorText)

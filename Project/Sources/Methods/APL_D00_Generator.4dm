@@ -1,7 +1,9 @@
 //%attributes = {}
-//JCL_D00_Generator
+//APL_D00_Generator
+//旧名 JCL_D00_Generator
 //20240328 Jirokichi
 //ジェネレータメイン画面
+//20261002 Codex/wat CAT固有メソッドとしてAPL_へ改名
 
 ////必要に応じてエラーハンドリング開始
 //ON ERR CALL("JCL_err_OnErrCall")

@@ -452,7 +452,8 @@ Function btnForm()
 		
 		//メソッド実行
 		$methodName:=$tbl_prefix+"01_List"
-		$cnt:=JCL_method_isExist($methodName)
+		//20261001 Codex/wat メソッド存在確認をJCL_formGeneratorに統合
+		$cnt:=cs:C1710.JCL_formGenerator.new().methodIsExist($methodName)
 		If ($cnt=0)
 			//なければ作る。01がないことでまだ未作成と判断、01だけでなく02と03も作成
 			This:C1470.formGenerateOne($tblName)
@@ -514,7 +515,8 @@ Function formGenerateOne()
 	
 	//メソッド実行
 	$methodName:=$tbl_prefix+"01_List"
-	$cnt:=JCL_method_isExist($methodName)
+	//20261001 Codex/wat メソッド存在確認をJCL_formGeneratorに統合
+	$cnt:=cs:C1710.JCL_formGenerator.new().methodIsExist($methodName)
 	If ($cnt=0)
 		//なければ作る。01がないことでまだ未作成と判断、01だけでなく02と03も作成
 		cs:C1710.JCL_formGenerator.new().generate($tblName)

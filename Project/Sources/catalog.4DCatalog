@@ -12,7 +12,12 @@
 		<field name="cl_shortname" uuid="4DFF62C797E54413836CFCFED7A6754A" type="10" limiting_length="100" not_null="true" id="7"/>
 		<field name="cl_id" uuid="D944B0786D4142DAACFACF34A1C45B37" type="4" unique="true" not_null="true" id="8"/>
 		<primary_key field_name="cl_id" field_uuid="D944B0786D4142DAACFACF34A1C45B37"/>
-		<table_extra output_form="フォーム2" input_form="フォーム1" trashed="true"/>
+		<table_extra output_form="フォーム2" input_form="フォーム1" trashed="true">
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="40" top="40" width="120" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
 	</table>
 	<table name="(comment)" uuid="C0232168340A4E1582C2F25580B06EDA" id="2" leave_tag_on_delete="true" hide_in_REST="true" prevent_journaling="true">
 		<field name="cm_id" uuid="6836490153D146DE91A31CDE6B81B9B0" type="4" unique="true" not_null="true" id="1"/>
@@ -22,7 +27,12 @@
 		<field name="cm_up_date" uuid="3162E2D5DD6842F79BA4AF05F377DB10" type="8" not_null="true" id="5"/>
 		<field name="cm_del_date" uuid="27B5BE2F28CC4414A3780418CF5B985A" type="8" not_null="true" id="6"/>
 		<primary_key field_name="cm_id" field_uuid="6836490153D146DE91A31CDE6B81B9B0"/>
-		<table_extra output_form="フォーム2" input_form="フォーム1" trashed="true"/>
+		<table_extra output_form="フォーム2" input_form="フォーム1" trashed="true">
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="240" top="40" width="120" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
 	</table>
 	<table name="(counter)" uuid="798C9433DE4B44768F440AC973587DC9" id="3" leave_tag_on_delete="true" hide_in_REST="true" prevent_journaling="true">
 		<field name="co_id" uuid="578B7325F911429EA13112D3949400A9" type="4" unique="true" not_null="true" id="1"/>
@@ -33,7 +43,12 @@
 		<field name="co_ho_id_seq" uuid="192AF3F101954785A4648CF8F70A29CE" type="4" not_null="true" id="6"/>
 		<field name="co_cl_id_seq" uuid="72D4505E4A7E48768D5C63F6626FD8DC" type="4" not_null="true" id="7"/>
 		<primary_key field_name="co_id" field_uuid="578B7325F911429EA13112D3949400A9"/>
-		<table_extra trashed="true"/>
+		<table_extra trashed="true">
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="440" top="40" width="120" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
 	</table>
 	<table name="(holiday)" uuid="4035951B2600454A95E3FF8151178CFA" id="4" leave_tag_on_delete="true" hide_in_REST="true" prevent_journaling="true">
 		<field name="ho_id" uuid="DB69B3A8DBC44ECF83B0C5EE179F7774" type="4" unique="true" not_null="true" id="1"/>
@@ -43,7 +58,12 @@
 		<field name="ho_up_date" uuid="C17EC6BEC9664C0492227C7BC40B9CBD" type="8" not_null="true" id="5"/>
 		<field name="ho_del_date" uuid="266F564EB58A40B2A46E660EBEDD1310" type="8" not_null="true" id="6"/>
 		<primary_key field_name="ho_id" field_uuid="DB69B3A8DBC44ECF83B0C5EE179F7774"/>
-		<table_extra trashed="true"/>
+		<table_extra trashed="true">
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="640" top="40" width="120" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
 	</table>
 	<table name="(project)" uuid="858AC920A0CC41D3A82B910FD9EF906E" id="5" leave_tag_on_delete="true" hide_in_REST="true" prevent_journaling="true">
 		<field name="pr_id" uuid="66E05502D412476AA138229730741EED" type="4" unique="true" not_null="true" id="1"/>
@@ -61,7 +81,12 @@
 		<field name="pr_end_date" uuid="88282BE93B524255B1DABFEF9014C814" type="8" not_null="true" id="13"/>
 		<field name="pr_budget_hours" uuid="750410C48C1746789544E1B100DDCB31" type="4" not_null="true" id="14"/>
 		<primary_key field_name="pr_id" field_uuid="66E05502D412476AA138229730741EED"/>
-		<table_extra trashed="true"/>
+		<table_extra trashed="true">
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="40" top="287" width="120" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
 	</table>
 	<table name="(work_time)" uuid="10B61E0E164E4453BF8431D7FDEAC69C" id="6" leave_tag_on_delete="true" hide_in_REST="true" prevent_journaling="true">
 		<field name="wt_id" uuid="2CEDAD1BC86C41EA8B8182CE30C2BA62" type="4" unique="true" not_null="true" id="1"/>
@@ -73,7 +98,12 @@
 		<field name="wt_up_date" uuid="A2666E40979A4C419329A49EDBB9B81E" type="8" not_null="true" id="7"/>
 		<field name="wt_del_date" uuid="FFD1001C5C9E4998BC60A00F59C0A183" type="8" not_null="true" id="8"/>
 		<primary_key field_name="wt_id" field_uuid="2CEDAD1BC86C41EA8B8182CE30C2BA62"/>
-		<table_extra trashed="true"/>
+		<table_extra trashed="true">
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="240" top="287" width="120" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
 	</table>
 	<table name="(worker)" uuid="809CB3D268164B779E0F4B9156BC8F7F" id="7" leave_tag_on_delete="true" hide_in_REST="true" prevent_journaling="true">
 		<field name="wo_id" uuid="56A5E9D8E55B4D8093C2372986BFC1D8" type="4" unique="true" not_null="true" id="1"/>
@@ -87,7 +117,12 @@
 		<field name="wo_showhide" uuid="0C1A4A553E6D4E129AF84180775E0BC9" type="4" not_null="true" id="9"/>
 		<field name="wo_sort_order" uuid="3568FC2B6E2343BFA47C60E3011B5386" type="4" not_null="true" id="10"/>
 		<primary_key field_name="wo_id" field_uuid="56A5E9D8E55B4D8093C2372986BFC1D8"/>
-		<table_extra trashed="true"/>
+		<table_extra trashed="true">
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="440" top="287" width="120" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
 	</table>
 	<table name="(client_1)" uuid="5CE6CF21B9DC4879B19EE96CBDB37FF9" id="8" leave_tag_on_delete="true" hide_in_REST="true" prevent_journaling="true">
 		<field name="cl_code" uuid="8D275AD8040441919DE32661F4D4721A" type="10" limiting_length="20" not_null="true" id="1"/>
@@ -99,7 +134,12 @@
 		<field name="cl_shortname" uuid="200EEC4532684D42BB4CF4700658A789" type="10" limiting_length="100" not_null="true" id="7"/>
 		<field name="cl_id" uuid="78AD2892928E4366B9197D7C121BE576" type="4" unique="true" not_null="true" id="8"/>
 		<primary_key field_name="cl_id" field_uuid="78AD2892928E4366B9197D7C121BE576"/>
-		<table_extra trashed="true"/>
+		<table_extra trashed="true">
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="640" top="287" width="120" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
 	</table>
 	<table name="(comment_1)" uuid="173609443CAB46F2B255EF6116D12578" id="9" leave_tag_on_delete="true" hide_in_REST="true" prevent_journaling="true">
 		<field name="cm_id" uuid="CF94ECF4A1264408B5EAA99ADCB37CA8" type="4" unique="true" not_null="true" id="1"/>
@@ -109,7 +149,12 @@
 		<field name="cm_up_date" uuid="806C1DBE56404B54A08F8D4AC0F34751" type="8" not_null="true" id="5"/>
 		<field name="cm_del_date" uuid="F0F24B24A9CF4F6799F02FA301BD0F01" type="8" not_null="true" id="6"/>
 		<primary_key field_name="cm_id" field_uuid="CF94ECF4A1264408B5EAA99ADCB37CA8"/>
-		<table_extra trashed="true"/>
+		<table_extra trashed="true">
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="40" top="534" width="120" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
 	</table>
 	<table name="(counter_1)" uuid="EAE20FAE7BD248ECA49709FF63DF5362" id="10" leave_tag_on_delete="true" hide_in_REST="true" prevent_journaling="true">
 		<field name="co_id" uuid="501F56846C344E848A1F59650CB4CF3B" type="4" unique="true" not_null="true" id="1"/>
@@ -120,7 +165,12 @@
 		<field name="co_ho_id_seq" uuid="A699B261AE0F44419C24D59EE33AFF26" type="4" not_null="true" id="6"/>
 		<field name="co_cl_id_seq" uuid="C402FB992B5547CABF8BF949530AFE31" type="4" not_null="true" id="7"/>
 		<primary_key field_name="co_id" field_uuid="501F56846C344E848A1F59650CB4CF3B"/>
-		<table_extra trashed="true"/>
+		<table_extra trashed="true">
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="240" top="534" width="120" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
 	</table>
 	<table name="(holiday_1)" uuid="F303E51672FC4DF7A1E7EFD9E118C69C" id="11" leave_tag_on_delete="true" hide_in_REST="true" prevent_journaling="true">
 		<field name="ho_id" uuid="BCCC9AA403004666BED705F94A14E9E3" type="4" unique="true" not_null="true" id="1"/>
@@ -130,7 +180,12 @@
 		<field name="ho_up_date" uuid="6FBE31CC2F8C42A3BD6022E9550C2B4E" type="8" not_null="true" id="5"/>
 		<field name="ho_del_date" uuid="6B194E3949FD42C7A92876736A799D69" type="8" not_null="true" id="6"/>
 		<primary_key field_name="ho_id" field_uuid="BCCC9AA403004666BED705F94A14E9E3"/>
-		<table_extra trashed="true"/>
+		<table_extra trashed="true">
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="440" top="534" width="120" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
 	</table>
 	<table name="(project_1)" uuid="5A7E59A7A37F4E94AC7EF62E4F0E9090" id="12" leave_tag_on_delete="true" hide_in_REST="true" prevent_journaling="true">
 		<field name="pr_id" uuid="69F6537D56E04ECAA072B1C9A356187A" type="4" unique="true" not_null="true" id="1"/>
@@ -148,7 +203,12 @@
 		<field name="pr_end_date" uuid="8E4DFAB2DCD743D6B76FB562848D5A6E" type="8" not_null="true" id="13"/>
 		<field name="pr_budget_hours" uuid="47A2856A4FF14A9F978CEF7502844300" type="4" not_null="true" id="14"/>
 		<primary_key field_name="pr_id" field_uuid="69F6537D56E04ECAA072B1C9A356187A"/>
-		<table_extra trashed="true"/>
+		<table_extra trashed="true">
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="640" top="534" width="120" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
 	</table>
 	<table name="(work_time_1)" uuid="9765D4FA10814FFC9BD78F68366D59E1" id="13" leave_tag_on_delete="true" hide_in_REST="true" prevent_journaling="true">
 		<field name="wt_id" uuid="ABB86767E2D143C4B6EDBDEB9947FCC9" type="4" unique="true" not_null="true" id="1"/>
@@ -160,7 +220,12 @@
 		<field name="wt_up_date" uuid="66EB7F60508445D4B4FB8B8D401BBA36" type="8" not_null="true" id="7"/>
 		<field name="wt_del_date" uuid="9360541F8C8041708C6A1FC8D96148A9" type="8" not_null="true" id="8"/>
 		<primary_key field_name="wt_id" field_uuid="ABB86767E2D143C4B6EDBDEB9947FCC9"/>
-		<table_extra trashed="true"/>
+		<table_extra trashed="true">
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="40" top="781" width="120" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
 	</table>
 	<table name="(worker_1)" uuid="41CA75C86B0D434CA3A782FF6811B4EF" id="14" leave_tag_on_delete="true" hide_in_REST="true" prevent_journaling="true">
 		<field name="wo_id" uuid="AD771A2ADF5745048EBE51B298A13850" type="4" unique="true" not_null="true" id="1"/>
@@ -174,7 +239,12 @@
 		<field name="wo_showhide" uuid="4F9B151332874156994CF0A1116A6C3D" type="4" not_null="true" id="9"/>
 		<field name="wo_sort_order" uuid="D908DDBDD7D847F19B07E2768461E72A" type="4" not_null="true" id="10"/>
 		<primary_key field_name="wo_id" field_uuid="AD771A2ADF5745048EBE51B298A13850"/>
-		<table_extra trashed="true"/>
+		<table_extra trashed="true">
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="240" top="781" width="120" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
 	</table>
 	<table name="(client_2)" uuid="A172E5D361F64744BEE9F831090C4CDF" id="15" leave_tag_on_delete="true" hide_in_REST="true" prevent_journaling="true">
 		<field name="cl_code" uuid="0AA7C18940184953ABF142738F748FCE" type="10" limiting_length="20" not_null="true" id="1"/>
@@ -186,7 +256,12 @@
 		<field name="cl_shortname" uuid="5BF3DC1342C845038F444822319B5298" type="10" limiting_length="100" not_null="true" id="7"/>
 		<field name="cl_id" uuid="33257B03D1F044EE8F65401224996DB4" type="4" unique="true" not_null="true" id="8"/>
 		<primary_key field_name="cl_id" field_uuid="33257B03D1F044EE8F65401224996DB4"/>
-		<table_extra trashed="true"/>
+		<table_extra trashed="true">
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="440" top="781" width="120" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
 	</table>
 	<table name="(comment_2)" uuid="B831144FA7004D858B49AE467D8F4B77" id="16" leave_tag_on_delete="true" hide_in_REST="true" prevent_journaling="true">
 		<field name="cm_id" uuid="CE57581F669E4D99A7279F7E2920E620" type="4" unique="true" not_null="true" id="1"/>
@@ -196,7 +271,12 @@
 		<field name="cm_up_date" uuid="6CFDE6146DBE47CFBE2802FB2C6AB3CB" type="8" not_null="true" id="5"/>
 		<field name="cm_del_date" uuid="1893482B4C4F44B3AA0D520B5F2AB302" type="8" not_null="true" id="6"/>
 		<primary_key field_name="cm_id" field_uuid="CE57581F669E4D99A7279F7E2920E620"/>
-		<table_extra trashed="true"/>
+		<table_extra trashed="true">
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="640" top="781" width="120" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
 	</table>
 	<table name="(counter_2)" uuid="7BA8795B62B044719A35DB7C5EA6642F" id="17" leave_tag_on_delete="true" hide_in_REST="true" prevent_journaling="true">
 		<field name="co_id" uuid="08ECEFB2D9314D43A81B756B556EF5EF" type="4" unique="true" not_null="true" id="1"/>
@@ -207,16 +287,33 @@
 		<field name="co_ho_id_seq" uuid="D938AF4C13DF4BF99B17BA0759267D47" type="4" not_null="true" id="6"/>
 		<field name="co_cl_id_seq" uuid="D53D05FBF7F1415695B8D6E632E551A4" type="4" not_null="true" id="7"/>
 		<primary_key field_name="co_id" field_uuid="08ECEFB2D9314D43A81B756B556EF5EF"/>
-		<table_extra trashed="true"/>
+		<table_extra trashed="true">
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="40" top="1028" width="120" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
 	</table>
 	<table name="assign" uuid="EF0BE2DE4FCA4876BD8E456FA36FC559" id="18" leave_tag_on_delete="true" prevent_journaling="true">
-		<field name="as_pr_id" uuid="57CC1FEE66C4435E8AE263BFBB767CD9" type="4" not_null="true" id="1"/>
+		<field name="as_pr_id" uuid="57CC1FEE66C4435E8AE263BFBB767CD9" type="4" not_null="true" id="1">
+			<field_extra multi_line="false">
+				<editor_field_info>
+					<color red="255" green="255" blue="255" alpha="0"/>
+				</editor_field_info>
+			</field_extra>
+		</field>
 		<field name="as_wo_id" uuid="9AF240D4A29E4F808F1C662FBA375F61" type="4" not_null="true" id="2"/>
 		<field name="as_assigner" uuid="57431EFE8DD94A0EBFF0C3184A527823" type="4" not_null="true" id="3"/>
 		<field name="as_reg_date" uuid="7D249488CF8548109CC268F5E317B796" type="8" not_null="true" id="4"/>
 		<field name="as_up_date" uuid="8C10F16F0265451BB2697AEA84A219A2" type="8" not_null="true" id="5"/>
 		<field name="as_del_date" uuid="7AFE13538F9D493F9B292119BDD76149" type="8" not_null="true" id="6"/>
 		<field name="as_unreg_date" uuid="219ED00F66AE43D79447AD7592C7F696" type="8" not_null="true" id="7"/>
+		<table_extra>
+			<editor_table_info fields_ordering="1" displayable_fields_count="8">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="240" top="1028" width="146.78515625" height="223.12890625"/>
+			</editor_table_info>
+		</table_extra>
 	</table>
 	<table name="client" uuid="989CEDDAD21649749423EDCF2DC063E5" id="19" leave_tag_on_delete="true" prevent_journaling="true">
 		<field name="cl_code" uuid="9C2F1A7620384D8295A649EBFB170B86" type="10" limiting_length="20" not_null="true" id="1"/>
@@ -228,6 +325,12 @@
 		<field name="cl_shortname" uuid="69840592A9844827AFF9CB408D3D6091" type="10" limiting_length="100" not_null="true" id="7"/>
 		<field name="cl_id" uuid="296324455C6541DAAEC57105A802A9D9" type="4" unique="true" not_null="true" id="8"/>
 		<primary_key field_name="cl_id" field_uuid="296324455C6541DAAEC57105A802A9D9"/>
+		<table_extra>
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="440" top="1028" width="120" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
 	</table>
 	<table name="comment" uuid="80425B2BC65C46F585A4628CEBC18F57" id="20" leave_tag_on_delete="true" prevent_journaling="true">
 		<field name="cm_id" uuid="D08C47A99A43467B8F836007ED86F639" type="4" unique="true" not_null="true" id="1"/>
@@ -237,6 +340,12 @@
 		<field name="cm_up_date" uuid="FE479B806FF448CB87D83B0B625CB0E0" type="8" not_null="true" id="5"/>
 		<field name="cm_del_date" uuid="4F9D8986CDC14B018BC1BE704C186122" type="8" not_null="true" id="6"/>
 		<primary_key field_name="cm_id" field_uuid="D08C47A99A43467B8F836007ED86F639"/>
+		<table_extra>
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="640" top="1028" width="120" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
 	</table>
 	<table name="counter" uuid="3B201D14311747EE8DBADBE897AD39DE" id="21" leave_tag_on_delete="true" prevent_journaling="true">
 		<field name="co_id" uuid="9DE06126AF3F4B98AED9EA1AF4AA1F71" type="4" unique="true" not_null="true" id="1"/>
@@ -247,6 +356,12 @@
 		<field name="co_ho_id_seq" uuid="AB934972042B4D35959BA6277ADD9303" type="4" not_null="true" id="6"/>
 		<field name="co_cl_id_seq" uuid="82E4C80464E142B398A792D207F2F1D4" type="4" not_null="true" id="7"/>
 		<primary_key field_name="co_id" field_uuid="9DE06126AF3F4B98AED9EA1AF4AA1F71"/>
+		<table_extra>
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="40" top="1275" width="120" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
 	</table>
 	<table name="holiday" uuid="152969CEECAC46C7AFCFD394646F8B90" id="22" leave_tag_on_delete="true" prevent_journaling="true">
 		<field name="ho_id" uuid="EE9386472C6341ABBA81E6545FA9F2E9" type="4" unique="true" not_null="true" id="1"/>
@@ -256,6 +371,12 @@
 		<field name="ho_up_date" uuid="CCE50FAE601B45518E4EBC8E9D36C88B" type="8" not_null="true" id="5"/>
 		<field name="ho_del_date" uuid="41510926F004433AA4ADF2C70E73C801" type="8" not_null="true" id="6"/>
 		<primary_key field_name="ho_id" field_uuid="EE9386472C6341ABBA81E6545FA9F2E9"/>
+		<table_extra>
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="240" top="1275" width="120" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
 	</table>
 	<table name="project" uuid="8CEB5D3247B24FEFB05EA569167E6308" id="23" leave_tag_on_delete="true" prevent_journaling="true">
 		<field name="pr_id" uuid="C7B2C88BDB7B4CFEA606757861DC2CB2" type="4" unique="true" not_null="true" id="1"/>
@@ -273,6 +394,12 @@
 		<field name="pr_end_date" uuid="C71F2BD5AC5B442490EB6BF555DD49D7" type="8" not_null="true" id="13"/>
 		<field name="pr_budget_hours" uuid="2F8550956F3B440D8D93A49BCEC217EF" type="4" not_null="true" id="14"/>
 		<primary_key field_name="pr_id" field_uuid="C7B2C88BDB7B4CFEA606757861DC2CB2"/>
+		<table_extra>
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="440" top="1275" width="120" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
 	</table>
 	<table name="work_time" uuid="D3045D59530F45A681BE414753186DA0" id="24" leave_tag_on_delete="true" prevent_journaling="true">
 		<field name="wt_id" uuid="823E03F43F5843958CA609B1AB49C0CF" type="4" unique="true" not_null="true" id="1"/>
@@ -284,6 +411,12 @@
 		<field name="wt_up_date" uuid="3E15FE2583A14D3CA522B0BCCDB37C0B" type="8" not_null="true" id="7"/>
 		<field name="wt_del_date" uuid="4CFC8563EFAA43389620E86852F019F0" type="8" not_null="true" id="8"/>
 		<primary_key field_name="wt_id" field_uuid="823E03F43F5843958CA609B1AB49C0CF"/>
+		<table_extra>
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="640" top="1275" width="120" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
 	</table>
 	<table name="worker" uuid="6A5ACF8C03DC4D268C8FCEDDEB5D53CC" id="25" leave_tag_on_delete="true" prevent_journaling="true">
 		<field name="wo_id" uuid="C393EA8C5E624B058B5B2C0DE87AA428" type="4" unique="true" not_null="true" id="1"/>
@@ -297,6 +430,12 @@
 		<field name="wo_showhide" uuid="416C7C7BCE0948A4A7CB070F65CD9001" type="4" not_null="true" id="9"/>
 		<field name="wo_sort_order" uuid="7B4B931214E44505A728BFC3428CB8C1" type="4" not_null="true" id="10"/>
 		<primary_key field_name="wo_id" field_uuid="C393EA8C5E624B058B5B2C0DE87AA428"/>
+		<table_extra>
+			<editor_table_info fields_ordering="1" displayable_fields_count="6">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="40" top="1522" width="120" height="167.33203125"/>
+			</editor_table_info>
+		</table_extra>
 	</table>
 	<index kind="regular" unique_keys="true" uuid="0A67880A271B4CAE8887F673CADF7C9C" type="1">
 		<field_ref uuid="296324455C6541DAAEC57105A802A9D9" name="cl_id">
@@ -348,14 +487,14 @@
 			<table_ref uuid="5A7E59A7A37F4E94AC7EF62E4F0E9090" name="(project_1)"/>
 		</field_ref>
 	</index>
+	<index kind="regular" name="as_pr_id_index" uuid="84509853810B4DE492D179525D3C3A45" type="7">
+		<field_ref uuid="57CC1FEE66C4435E8AE263BFBB767CD9" name="as_pr_id">
+			<table_ref uuid="EF0BE2DE4FCA4876BD8E456FA36FC559" name="assign"/>
+		</field_ref>
+	</index>
 	<index kind="regular" unique_keys="true" uuid="88DD65AEA7944446A1D05E03CFFEB7D1" type="1">
 		<field_ref uuid="C393EA8C5E624B058B5B2C0DE87AA428" name="wo_id">
 			<table_ref uuid="6A5ACF8C03DC4D268C8FCEDDEB5D53CC" name="worker"/>
-		</field_ref>
-	</index>
-	<index kind="regular" name="as_pr_id_index" uuid="9A27512402DB4717B9C1E985AB77BE65" type="7">
-		<field_ref uuid="57CC1FEE66C4435E8AE263BFBB767CD9" name="as_pr_id">
-			<table_ref uuid="EF0BE2DE4FCA4876BD8E456FA36FC559" name="assign"/>
 		</field_ref>
 	</index>
 	<index kind="regular" unique_keys="true" uuid="BB1B8360F2F14CBBAB5E226C5A22EA4F" type="1">

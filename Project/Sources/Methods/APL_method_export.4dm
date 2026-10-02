@@ -1,6 +1,8 @@
 //%attributes = {"shared":true}
-  //jcl_method_export
+//APL_method_export
+//旧名 JCL_method_export
   //20130429 yabe new
+//20261002 Codex/wat CAT固有メソッドとしてAPL_へ改名
 
 C_TEXT:C284($dir)  //メソッドを書き出すディレクトリ
 C_TEXT:C284($folderName;$dateStr;$timeStr)  //メソッド入れるフォルダの名前

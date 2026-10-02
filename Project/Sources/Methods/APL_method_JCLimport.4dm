@@ -1,9 +1,11 @@
 //%attributes = {}
-  //JCL_method_JCLimport
+//APL_method_JCLimport
+//旧名 JCL_method_JCLimport
   // フォルダ選択ダイアログを表示して、JCLメソッドを取り込む。
   //拡張子があれば除く
   //20170627 yabe wat
   //20180917 wat なぜかmacOSのフォルダーに見えないファイル名が空白文字のファイルがあるようだ。
+//20261002 Codex/wat CAT固有メソッドとしてAPL_へ改名
 
 C_TEXT:C284($dir)  //メソッドを読み込むディレクトリ
 C_LONGINT:C283($i;$numOfFile)
@@ -53,7 +55,7 @@ If (OK=1)
 		
 		$methodName:=$aryMethodNames{$i}
 		If ($methodName#"")  //20180917 ファイル名に空白があった、そこでエラーになった。
-			$pos:=Position:C15("JCL_method_JCLimport";$methodName)  //20170808 yabe wat
+			$pos:=Position:C15("APL_method_JCLimport";$methodName)  //20170808 yabe wat
 			
 			If ($pos=0)
 				
@@ -70,7 +72,7 @@ If (OK=1)
 		$filePath:=$dir+$aryFileList{$i}
 		$methodName:=$aryMethodNames{$i}
 		If ($methodName#"")  //20180917 ファイル名に空白があった、そこでエラーになった。
-			$pos:=Position:C15("JCL_method_JCLimport";$methodName)  //20170808 yabe wat
+			$pos:=Position:C15("APL_method_JCLimport";$methodName)  //20170808 yabe wat
 			If ($pos=0)
 				
 				  //v14
@@ -89,4 +91,3 @@ If (OK=1)
 	ALERT:C41($retText)
 	
 End if 
-

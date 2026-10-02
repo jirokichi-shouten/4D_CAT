@@ -1,7 +1,9 @@
 //%attributes = {"shared":true}
-//JCL_method_info
+//APL_method_info
+//旧名 JCL_method_info
 //20170625 yabe
 //メソッド名、更新日時、コメント（最初のから行まで）をタブ区切りでデスクトップに書き出す
+//20261002 Codex/wat CAT固有メソッドとしてAPL_へ改名
 
 ARRAY TEXT:C222($ary_method_names; 0)
 

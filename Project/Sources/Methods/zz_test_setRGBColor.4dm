@@ -25,7 +25,8 @@ $tblPtr:=Table:C252($tblNr)
 
 $form_name:=$tbl_prefix+"01_List"
 $rec_name:="v"+$tbl_prefix+"01_rectTitle"
-$exist:=JCL_frm_isExist($tblPtr; $form_name)
+//20261001 Codex/wat フォーム存在確認をJCL_formGeneratorに統合
+$exist:=cs:C1710.JCL_formGenerator.new().tableFormIsExist($tblPtr; $form_name)
 If ($exist=True:C214)
 	//フォームのファイルを取得
 	C_OBJECT:C1216($frmDef)
