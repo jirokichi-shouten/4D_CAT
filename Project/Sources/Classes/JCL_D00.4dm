@@ -488,13 +488,32 @@ Function btnFormAll()
 	
 	C_LONGINT:C283($i; $sizeOfAry)
 	
+	//プログレスバー
+	C_BOOLEAN:C305($done)
+	C_LONGINT:C283($i; $cnt)
+	C_LONGINT:C283($denominator)
+	$denominator:=1
+	JCL_pgs_DefInit
+	JCL_pgs_Show("フォームを作成しています...")
+	
 	$sizeOfAry:=Size of array:C274(vD00_lstT_name)
 	For ($i; 1; $sizeOfAry)
 		$tblName:=vD00_lstT_name{$i}
 		
+		If (Mod:C98($i; $denominator)=0)
+			JCL_pgs_SetValue(($i/$sizeOfAry)*100; String:C10($i)+"個目："+$tblName; $i; $sizeOfAry)
+			DELAY PROCESS:C323(Current process:C322; 1)
+		End if 
+		
 		This:C1470.formGenerateOne($tblName)
 		
+		$done:=JCL_pgs_IsCancel
+		If ($done=True:C214)
+			//キャンセルされたらループから抜ける
+			$i:=$cnt+1
+		End if 
 	End for 
+	JCL_pgs_Cancel
 	
 	This:C1470.lstT_make()
 	
@@ -645,4 +664,5 @@ Function lstFL_make()
 			
 		End if 
 	End for 
+	
 	
